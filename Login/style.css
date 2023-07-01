@@ -1,0 +1,29 @@
+.login-container {
+    width: 200px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+   
+    ;
+  }
+
+  
+  
+  
+  h2 {
+    text-align: center;
+  }
+  
+  
+  
+  #sub1{
+    position: relative;
+    width: 200px;
+    margin: 0 auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #4CAF50;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+  }
+  
