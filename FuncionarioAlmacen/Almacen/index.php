@@ -4,27 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="estilo.css">
-    <title>Articulos</title>
+    <link rel="stylesheet" href="CSS/estilo.css">
+    <title>GEstion de Productos</title>
 
 </head>
 
 <body>
+    <div class="padre">
 
     <div class="bajas">
         <h1>
             Eliminar
         </h1>
-        <form action="AlmacenBajas.php" method="post">
+        <form action="CRUD/AlmacenBajas.php" method="post">
             <label for="id2">Borrar por id</label>
             <input type="text" name="id2">
             <button type="submit">borrar articulo</button>
         </form>
     </div>
 
-    <h1 id="h1">Registro de Articulos</h1><br><br>
+   
+    
     <div class="form-container">
-        <form action="almacenApi.php" method="post">
+    <h1 id="h1">
+        Registro de Articulos
+    </h1>
+        <form action="CRUD/almacenAltas.php" method="post">
             <label for="Codigo">Codigo</label>
             <input type="text" name="Codigo"><br>
             <label for="Nombre">Nombre de Producto</label>
@@ -39,7 +44,7 @@
     </div>
     <div class="modifi">
         <h1>modificar articulo</h1>
-        <form action="almacenModificar.php" method="post">
+        <form action="CRUD/almacenModificar.php" method="post">
             <label for="id">id</label>
             <input type="text" name="id">
             <label for="Codigo">Codigo</label>
@@ -61,67 +66,17 @@
         <h1>Lista Almacen</h1>
 
         <?php
-        function httpRequest($url)
-        {
-            $curl = curl_init();
-            curl_setopt($curl, CURLOPT_URL, $url);
-            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-            $data = curl_exec($curl);
-            return $data;
-        }
-        $dato = json_decode(httpRequest("http://127.0.0.1/Projectov4/Almacen/AlmacenLista.php"), true);
-        $colores = array();
-
-
+        require "ConsultaRecibida.php";
         ?>
 
-        <table border="1">
-
-            <thead>
-
-                <tr>
-                    <?php
-
-                    $array = array("ID ", "Codigo ", "Nombre ", "Precio ", "Stock ");
-
-                    foreach ($array as $valor) {
-
-                        echo '<th>' . $valor . '</th>';
-
-                    }
-
-                    ?>
-
-                </tr>
-
-            </thead>
-
-            <tbody>
-
-                <?php
-
-                // obtenemos los colores
-                
-                foreach ($dato as $array) {
-
-                    echo "<tr>";
-
-                    foreach ($array as $contenido) {
-
-                        echo "<td>" . $contenido . "</td>";
-
-                    }
-
-                    echo "</tr>";
-
-                }
-
-                ?>
-
-            </tbody>
+        </tbody>
 
         </table>
     </div>
+    
+</div>
+<br>
+
 </body>
 
 </html>

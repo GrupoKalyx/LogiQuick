@@ -1,3 +1,9 @@
+.padre{
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .form-container{
     width: 300px;
     margin: 0 auto;
@@ -14,9 +20,7 @@ input[type="text"],
     margin-bottom: 10px;
     
   }
-  #h1{
-    text-align: center;
-  }
+ 
   .div-container{
     width: 300px;
     margin: 0 auto;
@@ -30,5 +34,5 @@ input[type="text"],
    
   }
   .modifi{
-  width: 200px;
+  width: 300px;
   }

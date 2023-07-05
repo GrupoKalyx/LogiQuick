@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+/* #c1c9c8 */
+
+*{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none; 
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+html{
+  min-height: 100%;
+  position: relative;
+}
+body{
+  margin: 0;
+  margin-bottom: 40px;
+}
+  
+
+
+.navbar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: #ffc870;
+  height: 100px;
+}
+.navbar__logo{
+  height: 100px;
+}
+
+.navbar__logo img{
+  height: 100px;
+  width: 150px;
+}
+
+.navbar__list{
+  display: flex;
+  flex: auto;
+  justify-content: space-evenly;
+  align-items: center;
+  
+}
+
+.navbar__list__item {
+  padding: 20px;
+  border-left: 2px solid black;
+  height: 100%;
+  position: relative;
+}
+
+.navbar__list__item:hover{
+  transform: scale(1.1);
+  transition: all ease 0.5s;
+  
+}
+
+.navbar__list__item a{
+  font-size: 18px;
+  text-decoration: none;
+  color: #f4faf9;
+}
+
+.navbar__logout__button{
+text-decoration:none;
+font-size: 18px;
+padding: 20px;
+background-color:#ffc870;
+border-color: #000000;
+border-width: 2px;
+border-style: solid;
+border-radius:35px;
+margin-right: 5px;
+}
+
+.navbar__logout__button:hover{
+  transform: scale(1.05);
+  transition: all ease 0.5s;
+}
+
+.navbar__logout__button a{
+  color: #f4faf9;
+}
+
+.navbar__submenu{
+  position: absolute;
+  background: #ffc870;
+  width: 120%;
+  padding: 20px;
+  visibility :hidden;
+  opacity: 0;
+}
+
+.navbar__submenu__item{
+  border-bottom: 1px solid black;
+  margin-top: 5px;
+}
+
+.navbar__submenu__item a{
+  display: block;
+  padding: 15px;
+  color: #f4faf9 ;
+  
+}
+
+.navbar__list__item:hover .navbar__submenu{
+  visibility: visible;
+  opacity: 1;
+}
+
+.navbar__submenu__item a:hover{
+  transform: scale(1.05);
+  transition: all ease 0.2s;
+}
+
+.footer{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: #000000;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 55px;
+}
+
+.footer__logo{
+  height: 40px;
+}
+
+.footer__logo img{
+  height: 40px;
+  width: auto;
+}
+
+.footer__copyright{
+  color: white;
+}
+
+.footer__list__item a{
+  color: white;
+}
+
+.footer__list__item:hover{
+  color: white;
+  transform: scale(1.05);
+}
+
+
+
+
+
+
+

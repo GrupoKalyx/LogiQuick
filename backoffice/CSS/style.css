@@ -1,0 +1,45 @@
+.div1{
+    border: none;
+    background: rgb(240, 200, 0);
+    border-radius: 10px;
+    text-decoration: dashed;
+ }
+.container{
+    width: auto;
+  
+  background-color: white;
+  border-radius: 1rem;
+  text-align: center;
+}
+.grupo{
+    height: 20rem;
+  width: 94%;
+  margin: 0.7rem 1rem;
+  
+  border-radius: 1rem;
+  display: flex; 
+  justify-content: space-between; 
+  flex-wrap: wrap; 
+  padding: 15px 15px 0px 15px;
+}
+.form {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .form input {
+    
+    
+    margin: 0.5rem;
+  }
+  form button {
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 10px;
+    background: rgb(240, 200, 0);
+    cursor: pointer;
+  }
