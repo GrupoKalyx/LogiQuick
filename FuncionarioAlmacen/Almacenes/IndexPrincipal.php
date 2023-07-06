@@ -2,7 +2,7 @@
 require 'SessionStartFuncionario.php';
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -16,15 +16,18 @@ require 'SessionStartFuncionario.php';
     <header>
         <nav class="navbar">
             <div class="navbar__logo">
-                <img src="assets/logo.png" alt="logo">
+                <img src="../../assets/logo.png">
+            </div>
+            <div>
+                <h2>Bienvenido:  
+                        <?php echo " ".$usuarioigresado ?></h2>
             </div>
             <ul class="navbar__list">
-                <li class="navbar__list__item"><a href="">Bienvenido
-                        <?php echo $usuarioigresado ?>
+                
                 <li class="navbar__list__item"><a href="#">Verificar Entrada</a></li>
                 <li class="navbar__list__item"><a href="#">Asignación</a>
                     <ul class="navbar__submenu">
-                        <li class="navbar__submenu__item"><a href="referencias/AsignacionDeLotes.html">Paquete a
+                        <li class="navbar__submenu__item"><a href="../../referencias/AsignacionDeLotes.php">Paquete a
                                 Lote</a></li>
                         <li class="navbar__submenu__item"><a href="referencias/LoteACamion.html">Lote a Camión</a></li>
                         <li class="navbar__submenu__item"><a href="referencias/CamioneroACamion.html">Camionero a
@@ -40,82 +43,60 @@ require 'SessionStartFuncionario.php';
             </div>
         </nav>
     </header>
-    <div class="divTableAltas">
-        <div class="form">
-            <form action="" method="POST">
-
-                <h3 class="form__text">Generar un Paquete</h3>
-                <h4>ID del nuevo paquete :</h4><input type="text" name="paquete" placeholder="ID del paquete">
-                <br><br>
-                <h4>Contenido</h4>
-
-                
-                <input type="text" id="cont" name="contenido[]" placeholder="ingrese id de articulo">
-          
-                <input type="text" id="cont" name="contenido[]" placeholder="ingrese id de articulo">
-              
-                <input type="text" id="cont" name="contenido[]" placeholder="ingrese id de articulo">
-          
-                <input type="text" id="cont" name="contenido[]" placeholder="ingrese id de articulo">
-             
-                <input type="text" id="cont" name="contenido[]" placeholder="ingrese id de articulo">
-                
-                <p>articulos agregados : <span id="mostrar"></span> </p>
-                <?php include'gencontent.php';?>
-
-
-
-                <button type="submit" name="enviarDatosPaquete">Empaquetar!</button>
-                
-
-        </div>
-
-        <div>
-
-            <?php require '../Almacen/ConsultaRecibida.php'; ?>
-
-
-
-            <div>
-                <table class="tableAltas">
-                    <h2 class="form__text">Lista de Articulos</h2>
-
-                    <thead>
-                        <tr>
-                            <?php
-                            $array = array(" ID ", " Codigo ", " Nombre ", " Precio ", " Stock ");
-                            foreach ($array as $valor) {
-                                echo '<th>' . $valor . '</th>';
-                            }
-                            ?>
-                        </tr>
-                    </thead>
-                    <tbody class="tbody">
-                        <?php
-                        foreach ($dato as $array) {
-
-                            echo "<tr>";
-
-                            foreach ($array as $contenido) {
-
-                                echo "<td>" . $contenido . "</td>";
-
-                            }
-
-                            echo "</tr>";
-
-                        }
-
-                        ?>
-            </div>
-
-
-
-        </div>
-        
-        
-    </div>
-
+    <div class="form__container">
+    <form class="form" method="POST">
+  
+      <h2 class="form__text">Genere un lote</h2>
+  
+      <div class="form__group">
+        <label class="form__label" for="Paquete">Paquete:</label>
+        <select class="form__select" id="Paquete" name="Paquete" required>
+          <option value="">Seleccionar paquete</option>
+          <option value="lote1">Paquete 1</option>
+          <option value="lote2">Paquete 2</option>
+          <option value="lote3">Paquete 3</option>
+        </select>
+      </div>
+      <div class="form__group">
+        <label class="form__label" for="Paquete">Paquete:</label>
+        <select class="form__select" id="Paquete" name="Paquete" required>
+          <option value="">Seleccionar paquete</option>
+          <option value="lote1">Paquete 1</option>
+          <option value="lote2">Paquete 2</option>
+          <option value="lote3">Paquete 3</option>
+        </select>
+      </div>
+      <div class="form__group">
+        <label class="form__label" for="Paquete">Paquete:</label>
+        <select class="form__select" id="Paquete" name="Paquete" required>
+          <option value="">Seleccionar paquete</option>
+          <option value="lote1">Paquete 1</option>
+          <option value="lote2">Paquete 2</option>
+          <option value="lote3">Paquete 3</option>
+        </select>
+      </div>
+      <div class="form__group">
+        <label class="form__label" for="Paquete">Paquete:</label>
+        <select class="form__select" id="Paquete" name="Paquete" required>
+          <option value="">Seleccionar paquete</option>
+          <option value="lote1">Paquete 1</option>
+          <option value="lote2">Paquete 2</option>
+          <option value="lote3">Paquete 3</option>
+        </select>
+      </div>
+      <div class="form__group">
+        <label class="form__label" for="Paquete">Paquete:</label>
+        <select class="form__select" id="Paquete" name="Paquete" required>
+          <option value="">Seleccionar paquete</option>
+          <option value="lote1">Paquete 1</option>
+          <option value="lote2">Paquete 2</option>
+          <option value="lote3">Paquete 3</option>
+        </select>
+      </div>
+      
+      <button class="form__button" type="submit">Generar</button>
+    </form>
+      </div>
 
 
 

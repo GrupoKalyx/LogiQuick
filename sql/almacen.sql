@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-07-2023 a las 14:39:55
+-- Tiempo de generación: 06-07-2023 a las 17:09:24
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -29,56 +29,31 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `almacenes` (
   `id` int(15) NOT NULL,
-  `nombre` varchar(255) NOT NULL,
-  `numero` int(255) NOT NULL
+  `TipoAlm` varchar(255) NOT NULL,
+  `numeroAlm` int(255) NOT NULL,
+  `Ubicacion` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `almacenes`
 --
 
-INSERT INTO `almacenes` (`id`, `nombre`, `numero`) VALUES
-(1, 'Almacen de Muebles', 1);
+INSERT INTO `almacenes` (`id`, `TipoAlm`, `numeroAlm`, `Ubicacion`) VALUES
+(1, 'Almacen de Muebles', 1, '');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `articulos`
+-- Estructura de tabla para la tabla `paquetes`
 --
 
-CREATE TABLE `articulos` (
-  `ID` int(11) NOT NULL,
-  `Codigo` int(10) NOT NULL,
-  `Nombre` varchar(255) NOT NULL,
-  `Precio` int(255) NOT NULL,
-  `Stock` int(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `articulos`
---
-
-INSERT INTO `articulos` (`ID`, `Codigo`, `Nombre`, `Precio`, `Stock`) VALUES
-(9684, 43535, 'rayo mq', 123123, 123123),
-(9685, 223, 'AUTO RAYO', 500, 5),
-(9686, 223, 'AUTO RAYO', 500, 5),
-(9687, 9999, 'nn', 6, 9),
-(9688, 9999, 'nn', 6, 9),
-(9689, 9999, 'nn', 6, 9),
-(9690, 3, 'dd', 3, 3);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `articulos2`
---
-
-CREATE TABLE `articulos2` (
-  `ID` int(11) NOT NULL,
-  `Codigo` int(10) NOT NULL,
-  `Nombre` varchar(255) NOT NULL,
-  `Precio` int(255) NOT NULL,
-  `Stock` int(255) NOT NULL
+CREATE TABLE `paquetes` (
+  `idLote` int(15) NOT NULL,
+  `NumBulto` int(15) NOT NULL,
+  `Volumen` int(255) NOT NULL COMMENT 'M3',
+  `Destino` varchar(255) NOT NULL,
+  `Estado` varchar(255) NOT NULL,
+  `Gmail` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -86,32 +61,10 @@ CREATE TABLE `articulos2` (
 --
 
 --
--- Indices de la tabla `articulos`
+-- Indices de la tabla `paquetes`
 --
-ALTER TABLE `articulos`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indices de la tabla `articulos2`
---
-ALTER TABLE `articulos2`
-  ADD PRIMARY KEY (`ID`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `articulos`
---
-ALTER TABLE `articulos`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9693;
-
---
--- AUTO_INCREMENT de la tabla `articulos2`
---
-ALTER TABLE `articulos2`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `paquetes`
+  ADD PRIMARY KEY (`NumBulto`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

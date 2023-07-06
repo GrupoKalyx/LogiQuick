@@ -3,17 +3,19 @@
     flex-direction: column; 
     width: 500px;
     margin:auto;
-    margin-top: 100px;
+    margin-top: 50px;
+    margin-bottom: 100px;
 }
 .form__container2{
   display: flex;
   flex-direction: row; 
  
-  max-height: 600px;
-  max-width: 1800px;
+  max-height: 700px;
+ 
 
   margin:0;
-  margin-top: 100px;
+  margin-top: 50px;
+  margin-bottom: 100px;
 }
 
 

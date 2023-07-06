@@ -8,16 +8,11 @@ $userRecivedP = $_POST['user'];
 $passwordRecivedP = $_POST['pass'];
 $newuserRecivedP = $_POST['usernew'];
 
-$sql = "UPDATE typeuser  SET  username = '$newuserRecivedP' , password = '$passwordRecivedP' WHERE typeUser = 'AdminAlm ' and username = '$userRecivedP' ";
+
+$sql = "UPDATE  Usuarios SET  Username = '$newuserRecivedP' ,  Password = '$passwordRecivedP'  WHERE Username = '$userRecivedP'";
 
 if($conn->query($sql)) {
     echo '<p>Cliente actualizado con éxito</p>';
     header("location:http://localhost/Projectov4/backoffice/indexAdministrator.php");
-    
-
   } 
   ?>
-
-
-
-

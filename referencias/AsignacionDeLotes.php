@@ -1,3 +1,7 @@
+<?php
+session_start();
+ $usuarioigresado =$_SESSION['nombredeusuario'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,8 +16,12 @@
   <header>
     <nav class="navbar">
       <div class="navbar__logo">
-        <img src="assets/logo.png" alt="logo">
+        <img src="../assets/logo.png" >
       </div>
+      <div>
+        <h2>Bienvenido:  
+                <?php echo " ".$usuarioigresado ?></h2>
+    </div>
       <ul class="navbar__list">
         <li class="navbar__list__item"><a href="#">Verificar Entrada</a></li>
         <li class="navbar__list__item"><a href="#">Asignación</a>
@@ -26,7 +34,7 @@
         <li class="navbar__list__item"><a href="#">Seguimiento</a></li>
       </ul>
       <div class="navbar__logout"> 
-        <button class="navbar__logout__button"><a href="#">Cerrar Sesión</a></button>
+        <button class="navbar__logout__button"><a href="..">Volver!</a></button>
       </div>
     </nav>
   </header>

@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 require "dbconection.php";
 $tokenRecived = $_SESSION['chkT'];
@@ -19,7 +18,7 @@ if (isset($_POST['btncerrar'])) {
     header("location: http://localhost/Projectov4/Login/Login.php");
 }
 }else{
-    echo"ERROOOOOOOOOOOOOOOOOOOR";
+    echo"ERROOOOOOOOOOOOOOOOOOOR"; 
     header("location: http://localhost/Projectov4/Login/Login.php");
 }
 

@@ -13,22 +13,25 @@ require 'SessionStartAdmin.php';
 <body>
     <header>
         <nav class="navbar">
+          
           <div class="navbar__logo">
-            <img src="/assets/logo.png" alt="logo">
+            <img src="../assets/logo.png">
+            <h1 class="nav__text">Bienvenido: <?php echo $_SESSION['nombredeusuario']; ?> </h1>
           </div>
           <div class="navbar__logout">
                 <form method="post">
                     <button class="navbar__logout__button" name="btncerrar" type="submit">Cerrar Sesión</button>
                 </form>
             </div>
+
         </nav>
-          <h1 class="nav__text">Bienvenido Admin! </h1>
+          
     </header>
 
     <div class="form__container2">
 
     <div class="form">
-                <h2>usuarios comunes registrados</h2>
+                <h2>usuarios  registrados</h2>
                 <?php
                 require 'ConsultaRecibida.php';
                     ?>
@@ -36,11 +39,13 @@ require 'SessionStartAdmin.php';
     
     <div class="form">
     <h2>Ingresar Usuarios Nuevos</h2>
-                <form  action="CRUD/Altas.php" method="post">
+                <form  action="CRUD/Altas.php"  action=""  method="post">
 
                     Nombre de Usuario <input class="form__input" type="text" name="user"><br>
                     Password <input class="form__input" type="text" name="pass"><br><br>
+                    Tipo <input class="form__input" type="text" name="type" placeholder="'Almacen' , 'Externo' o 'Camionero'"><br><br>
                     <button class="form__button" type="submit">Ingresar</button>
+                    
                 </form>
     
     

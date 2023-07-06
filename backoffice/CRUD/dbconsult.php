@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 // Conexión a la base de datos 
 $server = "localhost";
 $user = "root";
@@ -15,7 +15,7 @@ if ($conn->connect_error) {
 
 mysqli_set_charset($conn, "utf8");
 
-$query = "SELECT * FROM `typeuser` WHERE typeUser ='AdminAlm'"; 
+$query = "SELECT * FROM Usuarios WHERE TipoDeUsuario ='Almacen' or TipoDeUsuario = 'Camionero' or TipoDeUsuario = 'Externo'"; 
 $result = mysqli_query($conn, $query);
 
 
@@ -24,11 +24,11 @@ $arrayConsulta = array();
 
 foreach ($result->fetch_all(MYSQLI_ASSOC)as $row) {
     
-    $user  = $row['username'];
-    $password = $row['password'];
-    $acounttype = $row['typeUser'];
+    $user  = $row['Username'];
+    $password = $row['Password'];
+    $acounttype = $row['TipoDeUsuario'];
  
-    array_push( $arrayConsulta,[ 'Nombre de usuario: ' => $user ,'<br> password: ' =>  $password ,  '<br> type: ' => $acounttype. '<br><br>' ]);
+    array_push( $arrayConsulta,[ 'Usuario: ' => $user ,'<br> password: ' =>  $password ,  '<br> type: ' => $acounttype. '<br><br>' ]);
     
 
 

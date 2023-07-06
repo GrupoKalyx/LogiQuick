@@ -19,6 +19,6 @@ foreach ($dato as $value) {
     }
    
 }
-$_SESSION['keystored'] = $key;
-$_SESSION['vstored'] = $v;
+//$_SESSION['keystored'] = $key;
+//$_SESSION['vstored'] = $v;
 ?>

@@ -1,6 +1,7 @@
 <?php
+require 'dbconection.php';
 if (isset($_POST['login'])) {
-    require "dbconection.php";
+
     function createGUID()
     {
         if (function_exists('com_create_guid')) {
@@ -27,41 +28,39 @@ if (isset($_POST['login'])) {
 
     $username = $_POST['username'];
     $password = $_POST['password'];
-    // $typeU = $_POST['typeU'];
-
-
+    $typeofuser = $_POST['typeofuser'];
 
     $query2 = mysqli_query($conn, "INSERT INTO sessiontoken VALUES ('$new_GUID' , '$username')");
 
- 
-   
 
-    $query = mysqli_query($conn, "SELECT * FROM `typeuser` WHERE username  = '" . $username . "' and password = '" . $password . "' ");
-    $queryType = "SELECT typeUser FROM `typeuser` WHERE username  = '" . $username . "'	";
+    $query = mysqli_query($conn, "SELECT * FROM `Usuarios` WHERE Username  = '" . $username . "' and Password = '" . $password . "' and TipoDeUsuario = '$typeofuser' ");
+
     $nrows = mysqli_num_rows($query);
+    // nao funca !! $result = mysqli_query($conn, "SELECT 'TipoDeUsuario' FROM Usuarios WHERE 'Username' = '" . $username . "'");
 
-
-
-    if ($nrows == 1 && $queryType = 'AdminAlm') {
-        $_SESSION['nombredeusuario'] = $username;
-        $_SESSION['chkT'] = $new_GUID;
-        header("Location:../FuncionarioALmacen/Almacenes/IndexPrincipal.php");
-
-
-    }else if ($nrows == 1 && $queryType ='Administrator') {
+    if ($nrows == 1 && $typeofuser === 'Admin') {
         $_SESSION['nombredeusuario'] = $username;
         $_SESSION['chkT'] = $new_GUID;
         header("Location:../backoffice/IndexAdministrator.php");
-
-
-    }else if ($nrows == 1 && $queryType == 'Camioner'){
-        
-    }else if($nrows == 0) {
-
-        echo "<script>alert('usuario inexistente , re intente por favor!');window.location='Login.php' </script>";
+    } elseif ($nrows == 1 && $typeofuser === 'Almacen') {
+        $_SESSION['nombredeusuario'] = $username;
+        $_SESSION['chkT'] = $new_GUID;
+        header("location: ../FuncionarioAlmacen/Almacenes/IndexPrincipal.php");
+    } elseif ($nrows == 1 && $typeofuser === 'Externo') {
+        $_SESSION['nombredeusuario'] = $username;
+        $_SESSION['chkT'] = $new_GUID;
+        header("location: ../FuncionarioAlmacen/Almacenes/IndexPrincipal.php");
+    } elseif ($nrows == 1 && $typeofuser === 'Camionero') {
+        $_SESSION['nombredeusuario'] = $username;
+        $_SESSION['chkT'] = $new_GUID;
+        header("location:../Camionero.html");
+    } elseif ($nrows == 0) {
+        echo "<script>alert('usuario inexistente , re intente por favor!');window.location='Login.php'</script>";
     }
-
 }
+
+
+
 
 
 

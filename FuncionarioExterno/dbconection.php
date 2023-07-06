@@ -2,14 +2,10 @@
 $server = "localhost";
 $user = "root";
 $password = "";
-$dbname = "almacen";
+$dbname = "multiuser";
 
-$conectionn = new mysqli($server, $user, $password, $dbname);
-if ($conectionn->connect_error) {
+$conn = new mysqli ($server, $user, $password, $dbname);
+if ($conn->connect_error) {
     die("Error en la conexión a la base de datos: " . $conn->connect_error);
 }
-
-
-
-
 ?>
