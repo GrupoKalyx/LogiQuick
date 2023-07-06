@@ -1,100 +1,101 @@
-.form__container{
-    display: flex;
-    flex-direction: column; 
-    width: 500px;
-    margin:auto;
-    margin-top: 50px;
-    margin-bottom: 100px;
-}
-.form__container2{
+.abuelo {
   display: flex;
-  flex-direction: row; 
- 
-  max-height: 700px;
- 
+  flex-direction: column;
 
-  margin:0;
+}
+
+.form__container2 {
+  display: flex;
+  flex-direction: row;
+  max-height: 700px;
+  margin: 0;
   margin-top: 50px;
   margin-bottom: 100px;
 }
 
+.form__container {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
 
 .form {
-  
-  
-    margin: 20px;
-    
-    border-radius: 5px ;
-    border: #ffc870 3px solid;
-    padding: 30px;
-  }
-  
-  
-  .form__group {
-    margin-bottom: 20px;
-    
-  }
-  
-  .form__label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
-  
-  .form__input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .form__button {
-    padding: 10px 20px;
-    background-color: #ffc870;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    
-  }
-  
-  .form__button:hover {
-    background-color: #f8b549;
-  }
+  margin: 20px;
+  border-radius: 5px;
+  border: #ffc870 3px solid;
+  padding: 30px;
+}
 
-  .form__text{
-    margin-bottom: 20px;
-    text-align: center;
-  }
+.form__group {
+  margin-bottom: 20px;
 
-  /* lote a camion */
+}
 
-  .form__select {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  .divTableAltas{
+.form__label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
 
-    display: grid;
-    place-content: center;
-  }
-  .tableAltas{
-   
-    margin: 10px;
-    width: 500px;
-    border-radius: 5px ;
-    border: #ffc870 3px solid;
-    padding: 30px;
+.form__input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
 
-  }
-  .tbody{
-    text-align: center;
-  }
-  .txtarea1{
-    resize: none;
-  }
-  .echo1{
-    font-size: 15px;
-  }
+.form__button {
+  padding: 10px 20px;
+  background-color: #ffc870;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.form__button:hover {
+  background-color: #f8b549;
+}
+
+.form__text {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* lote a camion */
+
+.form__select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.divTableAltas {
+  display: grid;
+  place-content: center;
+}
+
+.tableAltas {
+  margin: 10px;
+  width: 500px;
+  border-radius: 5px;
+  border: #ffc870 3px solid;
+  padding: 30px;
+
+}
+
+.tbody {
+  text-align: center;
+}
+
+.txtarea1 {
+  resize: none;
+}
+
+.echo1 {
+  font-size: 15px;
+}
