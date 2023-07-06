@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['nombredeusuario'])) {
-    header("location: http://localhost/Projectov4/Login/Login.php");
+    header("location: http://localhost/Projectov4/Login/LoginBack.php");
 }
 ?>
 <!DOCTYPE html>
@@ -11,7 +11,7 @@ if (isset($_SESSION['nombredeusuario'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../estilos/FormStyle.css">
     <link rel="stylesheet" href="../estilos/Style.css">
-    <title>Login Usuario</title>
+    <title>Administracion</title>
 </head>
 <body>
     <header>
@@ -19,9 +19,9 @@ if (isset($_SESSION['nombredeusuario'])) {
           <div class="navbar__logo">
             <img src="/assets/logo.png" alt="logo">
           </div>
-          
+          <div class="navbar"></div>
         </nav>
-          <h1 class="nav__text">Bienvenido a LogiQuick! </h1>
+          <h1 class="nav__text">Administracion de LogiQuick </h1>
     </header>
 
     <div class="form__container">
@@ -60,6 +60,6 @@ if (isset($_SESSION['nombredeusuario'])) {
 </body>
 </html>
 <?php
-require 'LoginCodeMain.php';
+require 'LoginbackCodeMain.php';
 
 ?>

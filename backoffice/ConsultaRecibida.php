@@ -15,7 +15,7 @@ foreach ($dato as $value) {
 
     foreach ($value as $key => $v) {
 
-        echo " " . $key . " " . $v;
+        echo "<a class='echo1'> " . $key . " " . $v ."</a>";
     }
    
 }

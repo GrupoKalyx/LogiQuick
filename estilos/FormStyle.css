@@ -1,21 +1,36 @@
 .form__container{
     display: flex;
     flex-direction: column; 
-    max-width: 500px;
-    margin: auto;
+    width: 500px;
+    margin:auto;
     margin-top: 100px;
 }
+.form__container2{
+  display: flex;
+  flex-direction: row; 
+ 
+  max-height: 600px;
+  max-width: 1800px;
+
+  margin:0;
+  margin-top: 100px;
+}
+
 
 .form {
+  
+  
     margin: 20px;
-    width: 500px;
+    
     border-radius: 5px ;
     border: #ffc870 3px solid;
     padding: 30px;
   }
   
+  
   .form__group {
     margin-bottom: 20px;
+    
   }
   
   .form__label {
@@ -78,4 +93,6 @@
   .txtarea1{
     resize: none;
   }
-  
+  .echo1{
+    font-size: 15px;
+  }

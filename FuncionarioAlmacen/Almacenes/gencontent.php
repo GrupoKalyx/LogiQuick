@@ -1,21 +1,57 @@
 <?php
-$arrayResult = array();
-if (isset($_POST['sub1'])){
-            
+require 'dbconectionArticulos.php';
+if (isset($_POST['enviarDatosPaquete'])){
+               
+    $idRecibed1 = $_POST['contenido'];
+    $Recibedlote = $_POST['paquete'];
+  
+    foreach ($idRecibed1 as  $value) {
+       
+    
+       $sql = "SELECT Nombre  FROM articulos WHERE ID = '$value'";
+       $result =$conectionn->query($sql);
+       while($row = mysqli_fetch_array($result)){
+      
+        echo $row['Nombre']. "<br>";
    
-
-    require '../Almacen/CRUD/dbconection.php';
-    $idRecibed = $_POST['contenido'];
- 
-
-    $query = "SELECT * FROM articulos WHERE ID = '$idRecibed'";
-    $result=$conectionn->query($query);
-    $resultArray = array($result);
-    $file = json_encode($resultArray);
-    $filename = 'tempArrayArt';
-    file_put_contents($file, $filename);
-
-    $query2 = "INSERT INTO `lote`(`ID`, `ArticulosLote`) VALUES ($idRecibed,'$arrayResult')";
-    $result2=$conectionn->query($query2);
+       }
+    }
+       foreach ($idRecibed1 as  $value2) {
+        //$sql2 = "SELECT Nombre  FROM articulos WHERE ID = '$value2'";
+        $sql5 = "SELECT Nombre  FROM articulos WHERE ID = '$value2'";
+        $sql2y5 = "SELECT ID  FROM articulos WHERE ID = '$value2'";
+        $result5 =$conectionn->query($sql5);
+        $result3 =$conectionn->query($sql2y5);
+        while ($rows = mysqli_fetch_array($result3) and $rowsN=mysqli_fetch_array($result5) ) {
+            $rowXD = $rows['ID'];
+            $rown = $rowsN['Nombre'];
+            
+            $sql3 = "INSERT INTO lote (idLote, idPaquete , ArticulosLote) VALUES ($Recibedlote , $rowXD, '$rown'  )";
+            $result2 =$conectionn->query($sql3);
+            if( $result2 ===true){
+            
+            }else{
+             echo "fail";
+            }
+        }
+      
+          
+   
+       
+      
+       
+    }
+    echo "<script>alert('Paquete armando con exito!');window.location='IndexPrincipal.php'</script>";
 }
-   ?>
+
+
+        
+
+
+
+
+
+
+
+
+?>

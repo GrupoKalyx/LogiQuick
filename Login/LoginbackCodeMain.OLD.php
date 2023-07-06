@@ -27,38 +27,27 @@ if (isset($_POST['login'])) {
 
     $username = $_POST['username'];
     $password = $_POST['password'];
-    // $typeU = $_POST['typeU'];
+   $typeU = 'Administrator';
 
 
 
     $query2 = mysqli_query($conn, "INSERT INTO sessiontoken VALUES ('$new_GUID' , '$username')");
 
- 
-   
 
-    $query = mysqli_query($conn, "SELECT * FROM `typeuser` WHERE username  = '" . $username . "' and password = '" . $password . "' ");
-    $queryType = "SELECT typeUser FROM `typeuser` WHERE username  = '" . $username . "'	";
+
+    $query = mysqli_query($conn, "SELECT * FROM `typeuser` WHERE typeUser = '$typeU' and username  = '" . $username . "' and password = '" . $password . "' ");
     $nrows = mysqli_num_rows($query);
 
 
 
-    if ($nrows == 1 && $queryType = 'AdminAlm') {
+    if ($nrows == 1 ) {
         $_SESSION['nombredeusuario'] = $username;
         $_SESSION['chkT'] = $new_GUID;
-        header("Location:../FuncionarioALmacen/Almacenes/IndexPrincipal.php");
 
-
-    }else if ($nrows == 1 && $queryType ='Administrator') {
-        $_SESSION['nombredeusuario'] = $username;
-        $_SESSION['chkT'] = $new_GUID;
         header("Location:../backoffice/IndexAdministrator.php");
-
-
-    }else if ($nrows == 1 && $queryType == 'Camioner'){
-        
-    }else if($nrows == 0) {
-
-        echo "<script>alert('usuario inexistente , re intente por favor!');window.location='Login.php' </script>";
+    
+    } else if ($nrows == 0) {
+        echo "<script>alert('usuario inexistente , re intente por favor!');window.location='LoginBack.php' </script>";
     }
 
 }

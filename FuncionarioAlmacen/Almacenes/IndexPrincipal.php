@@ -16,7 +16,7 @@ require 'SessionStartFuncionario.php';
     <header>
         <nav class="navbar">
             <div class="navbar__logo">
-                <img src="http://localhost/Projectov4/assets/logo.png" alt="logo">
+                <img src="assets/logo.png" alt="logo">
             </div>
             <ul class="navbar__list">
                 <li class="navbar__list__item"><a href="">Bienvenido
@@ -42,21 +42,30 @@ require 'SessionStartFuncionario.php';
     </header>
     <div class="divTableAltas">
         <div class="form">
-            <form method="POST">
+            <form action="" method="POST">
 
                 <h3 class="form__text">Generar un Paquete</h3>
-                <h4>Nombre de nuevo paquete :</h4><input type="text" name="paquete" placeholder="nombre del paquete">
+                <h4>ID del nuevo paquete :</h4><input type="text" name="paquete" placeholder="ID del paquete">
                 <br><br>
                 <h4>Contenido</h4>
 
-                <form action="gencontent.php" method="POST">
-                    <input type="text" id="cont" name="contenido" placeholder="ingrese id de articulo">
-                    <button type="submit" name="sub1" class="boton">+</button>
-                    <p>articulos agregados <span id="mostrar"></span> </p>
+                
+                <input type="text" id="cont" name="contenido[]" placeholder="ingrese id de articulo">
+          
+                <input type="text" id="cont" name="contenido[]" placeholder="ingrese id de articulo">
+              
+                <input type="text" id="cont" name="contenido[]" placeholder="ingrese id de articulo">
+          
+                <input type="text" id="cont" name="contenido[]" placeholder="ingrese id de articulo">
+             
+                <input type="text" id="cont" name="contenido[]" placeholder="ingrese id de articulo">
+                
+                <p>articulos agregados : <span id="mostrar"></span> </p>
+                <?php include'gencontent.php';?>
 
 
-                </form>
 
+                <button type="submit" name="enviarDatosPaquete">Empaquetar!</button>
                 
 
         </div>
@@ -103,6 +112,8 @@ require 'SessionStartFuncionario.php';
 
 
         </div>
+        
+        
     </div>
 
 
