@@ -56,18 +56,20 @@
   /* backoffice */
 
   .form__container__backoffice{
+    
     display: grid;
+    
     grid-template-columns: repeat(4,1fr);
     margin-top: 20px;
     margin-left: 20px;
   }
 
   .form {
-    margin: 20px;
-    width: 400px;
+    margin: 10px;
+    width: 350px;
     border-radius: 5px ;
     border: #ffc870 3px solid;
-    padding: 30px;
+    padding: 20px;
   }
   .nav__text{
     text-align: center;

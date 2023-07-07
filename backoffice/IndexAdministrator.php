@@ -35,10 +35,10 @@ require 'SessionStartAdmin.php';
     </div>
     <div class="form__container__backoffice">
         <div class="form">
-            <h2>Usuarios registrados</h2>
-            <?php
-            require 'CRUD/usuarios/Consultas.php';
-            ?>
+            <h2>Usuarios registrados</h2><br>
+            <iframe src="CRUD/usuarios/mostrarLista.php"
+                style="; height: 400px;  border-radius: 5px ;border: #ffc870 3px solid;">
+            </iframe>
         </div>
         <div class="form">
             <h2>Ingresar Usuarios Nuevos</h2>
@@ -70,10 +70,10 @@ require 'SessionStartAdmin.php';
         </div>
 
         <div class="form">
-            <h2>Almacenes registrados</h2>
-            <?php
-            require 'CRUD/almacenes/Consultas.php';
-            ?>
+            <h2>Almacenes registrados</h2><br>
+            <iframe src="CRUD/almacenes/mostrarLista.php"
+                style="; height: 400px;  border-radius: 5px ;border: #ffc870 3px solid;">
+            </iframe>
         </div>
         <div class="form">
             <h2> Ingresar datos de Almacen</h2>
@@ -103,9 +103,9 @@ require 'SessionStartAdmin.php';
     </div>
     <div class="form__container__backoffice">
         <div class="form">
-            <h2>Lista de paquetes!</h2>
+            <h2>Lista de paquetes</h2><br>
             <iframe src="CRUD/paquetes/mostrarLista.php"
-                style="; height: 500px;  border-radius: 5px ;border: #ffc870 3px solid;">>
+                style="; height: 400px;  border-radius: 5px ;border: #ffc870 3px solid;">>
             </iframe>
         </div>
         <div class="form">

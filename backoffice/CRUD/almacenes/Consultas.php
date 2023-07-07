@@ -25,7 +25,7 @@ foreach ($result->fetch_all(MYSQLI_ASSOC) as $row) {
 
 foreach ($arrayConsulta as $value) {
     foreach ($value as $key => $v) {
-        echo "<a class='echo1'> " . $key . " " . $v . "</a>";
+        echo "<a class='form__viewContent'> " . $key . " " . $v . "</a>";
     }
 }
 ?>
