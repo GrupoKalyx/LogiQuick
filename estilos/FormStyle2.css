@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+.form {
+    margin: 20px;
+    max-width: 500px;
+    border-radius: 5px ;
+    border: #ffc870 3px solid;
+    padding: 30px;
+  }
+  
+  .form__group {
+    margin-bottom: 20px;
+  }
+  
+  .form__label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .form__input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .form__button {
+    padding: 10px 20px;
+    background-color: #ffc870;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    
+  }
+  
+  .form__button:hover {
+    background-color: #f8b549;
+  }
+
+  .form__text{
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  /* lote a camion */
+
+  .form__select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  /* backoffice */
+
+  .form__container__backoffice{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+
+  .form {
+    margin: 20px;
+    width: 400px;
+    border-radius: 5px ;
+    border: #ffc870 3px solid;
+    padding: 30px;
+  }
+  .nav__text{
+    text-align: center;
+     
+   }
+   .form__viewContent{
+    text-align: center;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+
+    
+   }

@@ -3,10 +3,12 @@ session_start();
 require '../../dbconection.php';
 mysqli_set_charset($conn, "utf8");
 
-$numReceived = $_POST['almacen']['0'];
-$tipoReceived = $_POST['almacen']['1'];
-$ubicacionReceived = $_POST['almacen']['2'];
-$sql = "UPDATE almacenes SET tipoAlmacen = '$tipoReceived', ubicacion = '$ubicacionReceived' WHERE numAlmacen = '$numReceived'";
+$numBulto = $_POST['numBulto'];
+$volumen = $_POST['vol'];
+$estado = $_POST['estado'];
+$correo = $_POST['correo'];
+
+$sql = "UPDATE paquetes SET volumen = '$volumen' , estado = '$estado' , gmailCliente = '$correo' WHERE numBulto = '$numBulto'";
 
 if ($conn->query($sql)) {
   echo '<p>Cliente actualizado con éxito</p>';

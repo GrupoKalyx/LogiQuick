@@ -1,8 +1,8 @@
 <?php
+require 'dbconection.php';
 
-require "dbconection.php";
 $tokenRecived = $_SESSION['chkT'];
-//$typeRecibed =  $_SESSION['tipodeu'];
+
 
 if (mysqli_query($conn, "SELECT userToken FROM sessiontoken WHERE userToken = '$tokenRecived'") == true) {
     if (isset($_SESSION['nombredeusuario'])) {

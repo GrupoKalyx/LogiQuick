@@ -1,8 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['nombredeusuario'])) {
-  session_destroy();
-  header("location:Login/Login.php");
+session_destroy(); 
 }
 ?>
 <!DOCTYPE html>
@@ -44,14 +43,7 @@ if (isset($_SESSION['nombredeusuario'])) {
         <label class="form__label" for="Contraseña">Contraseña:</label>
         <input class="form__input" type="password" id="Contraseña" name="password" required>
       </div>
-      <div>
-        <select class="form__select" name="typeofuser">
-          <option value="Admin">Admin</option>
-          <option value="Almacen">FuncionarioCentral</option>
-          <option value="Externo">FuncionarioExCentral</option>
-          <option value="Camionero">Camionero</option>
-        </select>
-      </div>
+      
       <br>
       <button class="form__button" name="login" type="submit">Iniciar Sesión</button>
     </form>

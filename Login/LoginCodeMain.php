@@ -28,29 +28,34 @@ if (isset($_POST['login'])) {
 
     $username = $_POST['username'];
     $password = $_POST['password'];
-    $typeofuser = $_POST['typeofuser'];
+   // $typeofuser = $_POST['typeofuser'];
+
 
     $query2 = mysqli_query($conn, "INSERT INTO sessiontoken VALUES ('$new_GUID' , '$username')");
-
-
-    $query = mysqli_query($conn, "SELECT * FROM `Usuarios` WHERE Username  = '" . $username . "' and Password = '" . $password . "' and TipoDeUsuario = '$typeofuser' ");
+    $query4 = mysqli_query($conn, "SELECT TipoDeUsuario FROM `Usuarios` WHERE Username  = '" . $username . "' ");
+    
+    while ($row = $query4->fetch_array()) {
+        $key = $row[0];
+    }
+    print_r($key);
+    $query = mysqli_query($conn, "SELECT * FROM `Usuarios` WHERE Username  = '" . $username . "' and Password = '" . $password . "' and TipoDeUsuario = '$key' ");
 
     $nrows = mysqli_num_rows($query);
     // nao funca !! $result = mysqli_query($conn, "SELECT 'TipoDeUsuario' FROM Usuarios WHERE 'Username' = '" . $username . "'");
-
-    if ($nrows == 1 && $typeofuser === 'Admin') {
+    print_r($nrows);
+    if ($nrows == 1 &&  $key == 'Admin') {
         $_SESSION['nombredeusuario'] = $username;
         $_SESSION['chkT'] = $new_GUID;
         header("Location:../backoffice/IndexAdministrator.php");
-    } elseif ($nrows == 1 && $typeofuser === 'Almacen') {
+    } elseif ($nrows == 1 && $key == 'Almacen') {
         $_SESSION['nombredeusuario'] = $username;
         $_SESSION['chkT'] = $new_GUID;
         header("location: ../FuncionarioAlmacen/Almacenes/IndexPrincipal.php");
-    } elseif ($nrows == 1 && $typeofuser === 'Externo') {
+    } elseif ($nrows == 1 && $key == 'Externo') {
         $_SESSION['nombredeusuario'] = $username;
         $_SESSION['chkT'] = $new_GUID;
         header("location: ../FuncionarioAlmacen/Almacenes/IndexPrincipal.php");
-    } elseif ($nrows == 1 && $typeofuser === 'Camionero') {
+    } elseif ($nrows == 1 && $key =='Camionero') {
         $_SESSION['nombredeusuario'] = $username;
         $_SESSION['chkT'] = $new_GUID;
         header("location:../Camionero.html");

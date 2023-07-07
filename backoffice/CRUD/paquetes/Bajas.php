@@ -3,8 +3,8 @@ session_start();
 require '../../dbconection.php';
 mysqli_set_charset($conn, "utf8");
 
-$numReceived = $_POST['eliminarAlmacen'];
-$sql = "DELETE FROM almacenes WHERE numAlmacen = $numReceived";
+$numBulto = $_POST['numBulto'];
+$sql = "DELETE FROM paquetes WHERE numBulto = $numBulto";
 
 if ($conn->query($sql) === TRUE) {
   echo '<p>Cliente actualizado con éxito</p>';
