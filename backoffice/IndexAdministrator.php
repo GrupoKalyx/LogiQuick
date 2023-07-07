@@ -61,7 +61,7 @@ require 'SessionStartAdmin.php';
             </div>
             <div class="form">
                 <h2>Dar de baja Usuario</h2>
-                <form class="form" action="CRUD/usuarios/Bajas.php" method="post">
+                <form class="m" action="CRUD/usuarios/Bajas.php" method="post">
                     Nombre de Usuario <input class="form__input" type="text" name="user[]"><br><br>
                     <button class="form__button" type="submit">Eliminar</button>
                 </form>
@@ -90,15 +90,27 @@ require 'SessionStartAdmin.php';
                     Tipo de almacen<input class="form__input" type="text" name="almacen[]">
                     Ubicacion de almacen<input class="form__input" type="text" name="almacen[]"><br><br>
                     <button class="form__button" type="submit">Modificar!</button>
+                </form>
             </div>
             <div class="form">
-                <h2>Eliminar almacen</h2>
-                <form action="CRUD/Bajas.php" method="post">
-                    Id de almacen<input class="form__input" type="text" name="eliminarAlmacen"><br><br>
-                    <button type="submit" class="form__button">Eliminar!</button>
+                <h2>Eliminar un almacen</h2>
+                <form action="CRUD/almacenes/Bajas.php" method="post">
+                    Id de almacen<input class="from_input" type="text" name="eliminarAlmacen"><br><br>
+                    <button class="form__button" type="submit">Eliminar</button>
                 </form>
             </div>
         </div>
+        <?php
+        /*
+         $numero = '';
+         for ($i = 0; $i < 16; $i++) {
+             $numero .= mt_rand(0, 9);
+         }
+         
+         echo $numero;*/
+        ?>
+
+
     </div>
     <footer>
         <div class="footer">
