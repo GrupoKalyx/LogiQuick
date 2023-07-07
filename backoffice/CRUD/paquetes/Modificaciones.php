@@ -12,6 +12,6 @@ $sql = "UPDATE paquetes SET volumen = '$volumen' , estado = '$estado' , gmailCli
 
 if ($conn->query($sql)) {
   echo '<p>Cliente actualizado con éxito</p>';
-  header("location:http://localhost/Projectov4/backoffice/indexAdministrator.php");
+  header("location:http://localhost/LogiQuick/backoffice/indexAdministrator.php");
 }
 ?>

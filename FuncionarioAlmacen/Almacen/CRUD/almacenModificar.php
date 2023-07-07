@@ -10,7 +10,7 @@ $stock = $_POST['Stock'];
 $query = "UPDATE articulos SET  Codigo = $codigo , Nombre = '$nombre' , Precio = $precio , Stock = $stock WHERE ID = $id";
 $result = mysqli_query($conectionn, $query);
 if($conectionn->query($query) === TRUE  ){
-    header("Location:http://localhost/Projectov4/Almacen/index.php");
+    header("Location:http://localhost/LogiQuick/Almacen/index.php");
     
 }
 

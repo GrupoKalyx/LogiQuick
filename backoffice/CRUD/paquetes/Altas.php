@@ -23,9 +23,9 @@ $sql = "INSERT INTO paquetes VALUES ($numBulto , $volumen , '$estado','$correo',
 
 if ($conn->query($sql) ===  true) {
   echo '<p>Cliente actualizado con éxito</p>';
-  header("location:http://localhost/Projectov4/backoffice/indexAdministrator.php");
+  header("location:http://localhost/LogiQuick/backoffice/indexAdministrator.php");
 }else{
-  header("location:http://localhost/Projectov4/backoffice/indexAdministrator.php");
+  header("location:http://localhost/LogiQuick/backoffice/indexAdministrator.php");
   echo "<script>alert('error! Complete todos los campos plis!');window.location='IndexAdministrator.php'</script>";
 }
 ?>

@@ -96,7 +96,7 @@ require 'SessionStartAdmin.php';
         <div class="form">
             <h2>Eliminar un almacen</h2>
             <form action="CRUD/almacenes/Bajas.php" method="post">
-                Id de almacen<input class="from_input" type="text" name="eliminarAlmacen"><br><br>
+                Id de almacen<input class="form__input" type="text" name="eliminarAlmacen"><br><br>
                 <button class="form__button" type="submit">Eliminar</button>
             </form>
         </div>
@@ -111,21 +111,21 @@ require 'SessionStartAdmin.php';
         <div class="form">
             <h2>Ingresar paquete</h2>
             <form action="CRUD\paquetes\Altas.php" method="post">
-                Numero de paquete<input class="from_input" type="text" name="numBulto"><br><br>
-                volumen <br><input class="from_input" type="text" name="vol" placeholder="Metros Cubicos (m3)"><br><br>
-                Estado actual<input class="from_input" type="text" name="estado"><br><br>
-                Correo del Cliente<input class="from_input" type="text" name="correo"><br><br>
+                Numero de paquete<input class="form__input" type="text" name="numBulto"><br><br>
+                volumen <br><input class="form__input" type="text" name="vol" placeholder="Metros Cubicos (m3)"><br><br>
+                Estado actual<input class="form__input" type="text" name="estado"><br><br>
+                Correo del Cliente<input class="form__input" type="text" name="correo"><br><br>
                 <button type="submit"  class="form__button" name="actionbtn">Ingresar!</button>
             </form>
         </div>
         <div class="form">
             <h2>Modificar datos de paquete</h2>
             <form action="CRUD\paquetes\Modificaciones.php" method="post">
-                Numero de paquete<input class="from_input" type="text" name="numBulto"><br><br>
+                Numero de paquete<input class="form__input" type="text" name="numBulto"><br><br>
                 <h2>nuevos datos</h2>
-                volumen <br><input class="from_input" type="text" name="vol" placeholder="Metros Cubicos (m3)"><br><br>
-                Estado actual<input class="from_input" type="text" name="estado"><br><br>
-                Correo del Cliente<input class="from_input" type="text" name="correo"><br><br>
+                volumen <br><input class="form__input" type="text" name="vol" placeholder="Metros Cubicos (m3)"><br><br>
+                Estado actual<input class="form__input" type="text" name="estado"><br><br>
+                Correo del Cliente<input class="form__input" type="text" name="correo"><br><br>
                 <button type="submit" class="form__button" name="actionbtn2">Modificar!</button>
             </form>
 
@@ -133,7 +133,7 @@ require 'SessionStartAdmin.php';
         <div class="form">
             <h2>Eliminar paquete</h2>
             <form action="CRUD\paquetes\Bajas.php" method="post">
-                Numero de paquete<input class="from_input" type="text" name="numBulto"><br><br>
+                Numero de paquete<input class="form__input" type="text" name="numBulto"><br><br>
                 <button class="form__button" type="submit">Eliminar!</button>
             </form>
 

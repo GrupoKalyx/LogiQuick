@@ -10,6 +10,6 @@ $sql = "INSERT INTO usuarios VALUES ('$userRecived' , '$passwordRecived' , '$typ
 
 if ($conn->query($sql)) {
   echo '<p>Cliente actualizado con éxito</p>';
-  header("location:http://localhost/Projectov4/backoffice/indexAdministrator.php");
+  header("location:http://localhost/LogiQuick/backoffice/indexAdministrator.php");
 }
 ?>

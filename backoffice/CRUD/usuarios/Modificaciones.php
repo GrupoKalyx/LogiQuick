@@ -10,6 +10,6 @@ $sql = "UPDATE  Usuarios SET  Username = '$newuserRecived' ,  Password = '$passw
 
 if ($conn->query($sql)) {
   echo '<p>Cliente actualizado con éxito</p>';
-  header("location:http://localhost/Projectov4/backoffice/indexAdministrator.php");
+  header("location:http://localhost/LogiQuick/backoffice/indexAdministrator.php");
 }
 ?>
