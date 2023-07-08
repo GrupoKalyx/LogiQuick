@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-07-2023 a las 19:08:35
+-- Tiempo de generación: 08-07-2023 a las 04:13:28
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -38,7 +38,57 @@ CREATE TABLE `almacenes` (
 --
 
 INSERT INTO `almacenes` (`numAlmacen`, `tipoAlmacen`, `ubicacion`) VALUES
+(0, 'Central ', 'rio negro'),
+(1, 'Central', 'Pocitos'),
+(2, 'Central', 'pando'),
 (3, 'Central', 'shangrila');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `lotes`
+--
+
+CREATE TABLE `lotes` (
+  `numLote` int(20) NOT NULL,
+  `estado` varchar(255) NOT NULL DEFAULT 'En Almacen',
+  `idPaquete` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `lotes`
+--
+
+INSERT INTO `lotes` (`numLote`, `estado`, `idPaquete`) VALUES
+(1, 'Salida', 1),
+(4, 'en calle', 4),
+(1, 'Salida', 1),
+(1, 'Salida', 1),
+(1, 'Salida', 2),
+(1, 'Salida', 15),
+(1, 'Salida', 73);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `paquetes`
+--
+
+CREATE TABLE `paquetes` (
+  `numBulto` int(20) NOT NULL,
+  `volumen` int(255) NOT NULL COMMENT 'm3',
+  `estado` varchar(255) NOT NULL,
+  `gmailCliente` varchar(255) NOT NULL,
+  `idRastreo` bigint(16) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `paquetes`
+--
+
+INSERT INTO `paquetes` (`numBulto`, `volumen`, `estado`, `gmailCliente`, `idRastreo`) VALUES
+(2, 70, 'destino', '@example.com', 8530122412),
+(73, 50, 'en destino', 'example@hotmail.com ', 8334095785);
 
 -- --------------------------------------------------------
 
@@ -277,7 +327,120 @@ INSERT INTO `sessiontoken` (`userToken`, `UserT`) VALUES
 ('{0C0FFCA5-F96B-8C35-5372-81402FE51AE1}', 'User'),
 ('{4911DCD5-65DF-59D8-84F8-30F2DCE5AD9E}', 'User'),
 ('{7B9D8082-5820-D8F9-3AD0-E071DDC999A9}', 'AdminNahue'),
-('{380D7B17-951E-EA1C-4674-FB11E7DD51AF}', 'AdminNahue');
+('{380D7B17-951E-EA1C-4674-FB11E7DD51AF}', 'AdminNahue'),
+('{5ED73A80-680F-FCB8-1DA1-7EC0A25BF982}', 'Admin'),
+('{2905DE69-C8E8-4E33-4FC0-EDB0394CB0E4}', 'AdminNahue'),
+('{0EF554DE-4A8B-727F-B424-DEDC7A89AC90}', 'AdminNahue'),
+('{20212EEE-6933-B259-133A-EA0AF66D2595}', 'AdminNahue'),
+('{FE69D39F-9D6F-E03F-0010-42FA3438713B}', 'user'),
+('{5EAA8B4D-C859-066A-6204-15BBCD0ADFA5}', 'user'),
+('{A475DA85-8069-B498-EB9A-9D3E9ADCE93C}', 'user'),
+('{15E61B8C-4FD1-CA92-CE5F-CFF4F59FC60D}', 'User'),
+('{58622741-87C6-F56D-7D75-9C2DA8318342}', 'User'),
+('{AC2FDEEC-31F0-C430-575A-3978F73B6CC9}', 'user'),
+('{C43122C9-12F5-DA1E-DFFB-6763EEA307B5}', 'user'),
+('{71B402AA-5B6D-B2BC-6C0D-B543EADBE0D5}', 'user'),
+('{2DC223F3-317C-59B9-E382-18701F8763D0}', 'user'),
+('{E87AA632-42BC-8CE6-FAC2-01E1A0FF2D5F}', 'AdminNahue'),
+('{0BD718C7-2298-6103-D9F8-345B731FB60A}', 'user'),
+('{147D157A-21E6-9BBB-444A-EA5DC5CE3D83}', 'user'),
+('{6DB9B811-0D2D-FBD3-D64F-A4CD1E0BD8A0}', 'user'),
+('{CE6BE3B6-1189-83EB-D56B-B6B64FD2BE89}', 'user'),
+('{E282C417-52F7-91C5-D84E-F405A991098E}', 'Paysandu'),
+('{29CD73E6-9020-5C0E-B29D-38469708D3D2}', 'Paysandu'),
+('{BAACCECC-AB63-566A-896F-CD3A60633DD0}', 'Paysandu'),
+('{1CE1A798-3113-9B5B-EB7B-0C8E5AF8915D}', 'Paysandu'),
+('{67B2371F-6ED8-BF4C-D13E-87F148E93617}', 'user'),
+('{E72ED8D5-7D00-29FD-3F32-D2833063D9B2}', 'AdminNahue'),
+('{5EC1746A-0969-F607-B8A8-6151A3DCC735}', 'AdminNahue'),
+('{725621D5-B6A1-7D4F-4703-24DB9495882F}', 'AdminNahue'),
+('{43754E48-43C2-D79D-2F30-7217E1484CA7}', 'AdminNahue'),
+('{2C328034-D95C-87C6-FFFB-6460E39C5404}', 'AdminNahue'),
+('{BBB57AA2-EE27-8761-D555-5CFF7B4C66E9}', 'AdminNahue'),
+('{5465A562-157B-0BE1-F163-14B2AEDCCA99}', 'AdminNahue'),
+('{700D4565-9F6D-0C80-F29D-00DB426F425A}', 'AdminNahue'),
+('{C55FE49C-5FE4-A9B6-0596-91810D4D7B00}', 'user'),
+('{F625830E-5223-F00B-502D-45EB10DE00C7}', 'user'),
+('{6A0AEC1E-473C-11E4-FC3C-82F818152E77}', 'user'),
+('{07178B2D-25A1-1966-01F5-D0F46B1503ED}', 'user'),
+('{F19F6700-649B-F10E-D9FD-3BE7CE9FC325}', 'user'),
+('{E55951F5-38D0-FC5C-51BC-D9445F9EDD98}', 'user'),
+('{35EDBC70-F6B0-BE83-0529-D3784107446C}', 'user'),
+('{B98F8628-956A-8765-7E85-0D434324FAF1}', 'user'),
+('{459B30CE-B606-6427-A9DB-911E3A120F30}', 'user'),
+('{3D3496F5-3B35-5762-CF31-51C74C741FA7}', 'user'),
+('{4D7BC1A6-1A67-91FD-432B-8D7FED6362B7}', 'user'),
+('{1A266FFD-1FD4-0E50-F8BC-DDA3E761F909}', 'user'),
+('{F0241369-F6CC-1F28-B882-F0C0F533D925}', 'AdminNahue'),
+('{589BEDCE-4705-05CC-04DE-1C0FF1449B64}', 'user'),
+('{A86A9ACF-318F-F86B-F6D3-71812267CC65}', 'user'),
+('{ED641B0F-CBA3-B70E-AB10-B112DACD1E95}', 'user'),
+('{5F63D01A-2648-44D7-2CA2-09FF8D0390F2}', 'user'),
+('{8442758B-218D-0485-C797-0F3DFBD6C3AC}', 'user'),
+('{D8256CC0-51E0-EB35-BA1F-2C65E00881A0}', 'user'),
+('{CD6074F2-6AEC-B152-203B-F1B4739BA5F9}', 'user'),
+('{77E5D1B0-6EC5-391C-0133-DB4F888F5EA9}', 'AdminNahue'),
+('{80144B7F-60E9-991F-7677-6BF0FBF6A92B}', 'Paysandu'),
+('{C3825C22-87C2-0B6F-F8A3-78798D44F9AC}', 'user'),
+('{1B0573A1-01BF-23D1-A4BB-2ABD81338039}', 'user'),
+('{5E3FA29E-059E-FECF-E25E-47941D2C3A59}', 'user'),
+('{0EC581F6-B76E-7980-DBD5-86AB88B9F33F}', 'user'),
+('{0D126ECC-7BA0-A4E3-A12E-1FD1329200B9}', 'user'),
+('{E5E6C10C-AD8F-7D41-E8AE-355FCB24E720}', 'user'),
+('{2B805FA8-52A3-B8D9-015C-075237F3B73B}', 'AdminNahue'),
+('{D008FA60-4FDF-C271-B1AA-55820CDADA9A}', 'Paysandu'),
+('{69E4B1F9-5D44-6014-627E-3617ECC9CBEF}', 'Paysandu'),
+('{325234D4-2631-6A13-BCFB-A09C69C38962}', 'AdminNahue'),
+('{28C3BC0E-1958-53E8-47E3-504C33842CA4}', 'Paysandu'),
+('{7F3C9493-9ED5-F52C-5D9B-597DB3BA3A62}', 'Paysandu'),
+('{EB4324BF-56B4-7A80-099B-85B3D4A77439}', 'Paysandu'),
+('{A4A8053D-A012-76B0-E602-A3BD428EC8DD}', 'AdminNahue'),
+('{42F7B8CE-3CD8-B73B-71F6-EE23FEB44116}', 'user'),
+('{8272CE8E-A74A-1A6E-CFC6-2A1042759715}', 'user'),
+('{69F9783C-C54B-6FBC-A89E-C69C459DD0B1}', 'Admin'),
+('{18FB26E1-361C-1635-A7FC-FDFA74DD6193}', 'AdminNahue'),
+('{91E6AC50-DE96-0C78-3A6D-15D09094C369}', 'AdminNahue'),
+('{0D1F2072-E437-B5F5-100A-3E15C42A0E73}', 'AdminNahue'),
+('{45F61D7E-8FC8-4D02-42C0-5A93FF1702BE}', 'AdminNahue'),
+('{3B68EAA1-1F14-895B-3CC8-EC220D888DDA}', 'user'),
+('{0F3C7E27-A8D3-6E2B-115A-84E81B2EAD86}', 'user'),
+('{C34B846F-F920-F4B8-5CE1-62FC64F59983}', 'AdminNahue'),
+('{E039095A-6ED1-B6A0-0269-9619B4E370D3}', 'Paysandu'),
+('{2999C23D-3773-EBC4-7B87-58B3EA27AD95}', 'AdminNahue'),
+('{A325B67C-46F8-000E-1798-0055ECC5FDA7}', 'AdminNahue'),
+('{EC8E393A-C204-2A16-23ED-C051DADCA515}', 'Agus'),
+('{B08F8FFD-7721-6BDC-7227-6287694977C7}', 'Agus'),
+('{64FB74FF-7372-D34C-BCA4-276DD4147CC1}', 'Agus'),
+('{5E0D6F53-8925-BAC2-382D-C8F800714146}', 'Agus'),
+('{393E7D04-69CB-1A14-4ACD-E148F7DB05EA}', 'Agus'),
+('{8D7B4A3E-7E3C-8CEE-30CA-E80A5DAEE24F}', 'AdminNahue'),
+('{9D495785-F244-ACC4-4B64-292A4DE8A7CA}', 'Agus'),
+('{B0320B5E-ECE1-9847-E85A-3F0DC53F4FC6}', 'Agus'),
+('{3C7D6933-61E6-4FD1-AEF2-DA29FD5A9F83}', 'Admin'),
+('{9D482511-96E7-5DA9-FA87-82F2E3189296}', 'AdminNahue'),
+('{ECC3B0E5-7F51-E50C-E9E0-3C4CAA128E65}', 'Agus'),
+('{DD1413FB-EA62-5227-82B1-33E1D29CEC9D}', 'Agus'),
+('{4C075004-2ECA-3711-0FBE-62B43D9C68ED}', 'AdminNahue'),
+('{B95A6AE7-7575-93EE-508B-F126A706B786}', 'AdminNahue'),
+('{2794D691-2715-EF38-BED1-6D3170D97AF9}', 'AdminNahue'),
+('{0C9174D6-3C27-91C2-61CC-262311108F2B}', 'user'),
+('{A275D53A-DAC7-01CB-50DE-B1C130F2CC20}', 'Agus'),
+('{600E6E58-A09F-A318-170C-C972855F77A4}', 'AdminNahue'),
+('{D8420E3D-5948-9E66-8033-0A4D5EAF3279}', 'AdminNahue'),
+('{383F4245-420F-29A8-AE72-A48F8CB02884}', 'AdminNahue'),
+('{137E576E-4F7F-2CFF-980B-ED91E3DE446D}', 'AdminNahue'),
+('{D4AE4A2A-7021-D03E-B09F-F5BE03A325CA}', 'AdminNahue'),
+('{C39CD297-27A4-A2C6-B290-4F472680F843}', 'AdminNahue'),
+('{910A7E75-4EA5-4CFC-240F-A0B40489F8DA}', 'AdminNahue'),
+('{BC61D312-CBAB-5165-9156-E59C250FA5AF}', 'AdminNahue'),
+('{7B05E8BB-62D6-D442-9F22-A003ACD22F56}', 'AdminNahue'),
+('{428A4E3D-E140-FD2E-A179-2AF6C999BDE7}', 'AdminNahue'),
+('{C5B5179E-9B32-429A-6B5F-6FD46B24B4D2}', 'Agus'),
+('{BFAE0BF1-FDD0-436D-01D7-8616D2A00367}', 'Paysandu'),
+('{EC78B1C7-4420-FBA0-C4FD-D4D8761D9535}', 'AdminNahue'),
+('{B184494A-DE16-3460-B287-A2874DF1E2F6}', 'AdminNahue'),
+('{EB81197A-9CDF-93C0-C396-98A440D5B1F6}', 'AdminNahue'),
+('{6CFB481A-482D-8BC8-60DA-345BF0D43528}', 'AdminNahue');
 
 -- --------------------------------------------------------
 
@@ -298,7 +461,10 @@ CREATE TABLE `usuarios` (
 INSERT INTO `usuarios` (`Username`, `Password`, `TipoDeUsuario`) VALUES
 ('AdminNahue', 'Root', 'Admin'),
 ('Paysandu', 'vacaloca', 'Externo'),
-('User', 'root', 'Almacen');
+('Augustin', 'root', 'Camionero'),
+('Malena', 'root', 'Almacen'),
+('diego', 'villa1', 'Externo'),
+('ejemplo 2', 'root', 'Almacen');
 
 --
 -- Índices para tablas volcadas
@@ -309,6 +475,12 @@ INSERT INTO `usuarios` (`Username`, `Password`, `TipoDeUsuario`) VALUES
 --
 ALTER TABLE `almacenes`
   ADD PRIMARY KEY (`numAlmacen`);
+
+--
+-- Indices de la tabla `paquetes`
+--
+ALTER TABLE `paquetes`
+  ADD PRIMARY KEY (`numBulto`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 require "dbconection.php";
 $tokenRecived = $_SESSION['chkT'];
 
