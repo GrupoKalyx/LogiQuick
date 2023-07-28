@@ -4,6 +4,7 @@ session_start();
 if (isset($_SESSION['ci'])) {
     session_destroy();
 }
+var_dump($_SESSION);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -28,15 +29,15 @@ if (isset($_SESSION['ci'])) {
         </nav>
     </header>
     <div class="form__container">
-        <form class="form" method="POST">
+        <form class="form" method="POST" action="LoginCodeMain.php">
             <h2 class="form__text">Ingrese sus datos</h2>
             <div class="form__group">
-                <label class="form__label" for="usuario">Usuario:</label>
-                <input class="form__input" type="text" id="nombreUsuario" name="nombreUsuario" required>
+                <label class="form__label" for="ciUsuario">ID:</label>
+                <input class="form__input" type="text" name="ciUsuario" required>
             </div>
             <div class="form__group">
                 <label class="form__label" for="contrasenia">Contraseña:</label>
-                <input class="form__input" type="password" id="contraseniaUsuario" name="contraseniaUsuario" required>
+                <input class="form__input" type="password" name="contraseniaUsuario" required>
             </div>
             <br>
             <button class="form__button" name="login" type="submit">Iniciar sesión</button>
@@ -48,7 +49,6 @@ if (isset($_SESSION['ci'])) {
                 <li class="footer__list__item"><a href="">¡Contactanos!</a></li>
                 <li class="footer__list__item"><a href="">Sobre Nosotros</a></li>
             </ul>
-
             <div class="footer__copyright">
                 <p>Copyright © 2023 Kalyx Software. Todos los derechos reservados</p>
             </div>
@@ -57,6 +57,3 @@ if (isset($_SESSION['ci'])) {
 </body>
 
 </html>
-<?php
-require 'LoginCodeMain.php';
-?>

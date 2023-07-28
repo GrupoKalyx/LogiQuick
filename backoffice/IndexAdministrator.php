@@ -1,8 +1,9 @@
 <?php
 session_start();
+var_dump($_SESSION);
 require 'SessionStartAdmin.php';
-$_SESSION['numLoteRecibed'] = isset($_POST['numLote']);
-$_SESSION['numPaqueteRecibed'] = isset($_POST['paquete']);
+// $_SESSION['numLoteRecibed'] = isset($_POST['numLote']);
+// $_SESSION['numPaqueteRecibed'] = isset($_POST['paquete']);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -31,7 +32,12 @@ $_SESSION['numPaqueteRecibed'] = isset($_POST['paquete']);
     <div>
         <br>
         <h1 class="nav__text"> Bienvenido:
-            <?php echo $_SESSION['nombreUsuario']; ?>
+            <?php
+            $queryNombre = mysqli_query($conn, "SELECT nombreUsuario FROM `usuarios` WHERE ci = '" . $_SESSION['ciSesion'] . "'");
+            $rows = $queryNombre->fetch_array();
+            $name = $rows[0];
+            echo $name;
+            ?>
         </h1>
     </div>
     <div class="form__container__backoffice">
@@ -70,7 +76,7 @@ $_SESSION['numPaqueteRecibed'] = isset($_POST['paquete']);
         <div class="form">
             <h2>Almacenes registrados</h2><br>
             <iframe src="CRUD/almacenes/mostrarLista.php"
-                style="; height: 400px;  border-radius: 5px ;border: #ffc870 3px solid;">
+                style="height: 400px;  border-radius: 5px ;border: #ffc870 3px solid;">
             </iframe>
         </div>
         <div class="form">
