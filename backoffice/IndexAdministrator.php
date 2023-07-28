@@ -1,8 +1,9 @@
 <?php
 session_start();
+var_dump($_SESSION);
 require 'SessionStartAdmin.php';
-$_SESSION['numLoteRecibed'] = isset($_POST['numLote']);
-$_SESSION['numPaqueteRecibed'] = isset($_POST['paquete']);
+// $_SESSION['numLoteRecibed'] = isset($_POST['numLote']);
+// $_SESSION['numPaqueteRecibed'] = isset($_POST['paquete']);
 ?>
 <DOCTYPE html>
     <html lang="es">

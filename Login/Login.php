@@ -1,4 +1,5 @@
 <?php
+//ELPEPE3
 session_start();
 if (isset($_SESSION['nombredeusuario'])) {
     session_destroy();
@@ -52,9 +53,6 @@ if (isset($_SESSION['nombredeusuario'])) {
             </div>
         </div>
     </footer>
-</body>
+</body>F
 
 </html>
-<?php
-require 'LoginCodeMain.php';
-?>

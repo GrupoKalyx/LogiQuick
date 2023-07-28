@@ -14,7 +14,7 @@ $estado = $_POST['estado'];
 $correo = $_POST['correo'];
 
 //$numeroSeguiminto = $_SESSION['numSeguimiento'];
-$sql = "INSERT INTO paquetes VALUES ('$numBulto', '$estado', '$correo', '$idRastreo')";
+$sql = "INSERT INTO paquetes VALUES ('$numBulto', '$estado', '$correvo', '$idRastreo')";
 
 if ($conn->query($sql) ===  true) {
     echo "<script>alert('Cliente actualizado con éxito.');window.location='IndexAdministrator.php'</script>";
