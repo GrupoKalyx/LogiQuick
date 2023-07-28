@@ -3,13 +3,12 @@ session_start();
 require '../../dbconection.php';
 mysqli_set_charset($conn, "utf8");
 
-$userRecived = $_POST['user']['0'];
-$sql = "DELETE FROM usuarios WHERE Username = '$userRecived'";
+$ci = $_POST['user']['0'];
+$sql = "DELETE FROM usuarios WHERE ci = '$ci'";
 
 if ($conn->query($sql) === TRUE) {
-  echo '<p>Cliente actualizado con éxito</p>';
-  header("location:http://localhost/LogiQuick/backoffice/IndexAdministrator.php");
+    echo '<p>Cliente actualizado con éxito</p>';
+    header("location:http://localhost/LogiQuick/backoffice/IndexAdministrator.php");
 } else {
-  echo "<script>alert('error, usuario no encotrado u otro error !');window.location='indexAdministrator.php' </script>";
+    echo "<script>alert('Usuario no encontrado.');window.location='indexAdministrator.php' </script>";
 }
-?>

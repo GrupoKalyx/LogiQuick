@@ -1,13 +1,12 @@
 <?php
 require '../sql/dbconection.php';
 if (isset($_POST['login'])) {
-
     function createGUID()
     {
         if (function_exists('com_create_guid')) {
             return com_create_guid();
         } else {
-            mt_srand((double) microtime() * 10000);
+            mt_srand((float) microtime() * 10000);
             //optional for php 4.2.0 and up.
             $set_charid = strtoupper(md5(uniqid(rand(), true)));
             $set_hyphen = chr(45);
@@ -25,49 +24,37 @@ if (isset($_POST['login'])) {
     }
     $new_GUID = createGUID();
 
+    $ci = $_POST['ci'];
 
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-   // $typeofuser = $_POST['typeofuser'];
+    $queryToken = mysqli_query($conn, "INSERT INTO token VALUES ('$new_GUID' , '$ci')");
+    $queryTipo = mysqli_query($conn, "SELECT tipoUsuario FROM `usuarios` WHERE ci  = '" . $ci . "' ");
 
-
-    $query2 = mysqli_query($conn, "INSERT INTO sessiontoken VALUES ('$new_GUID' , '$username')");
-    $query4 = mysqli_query($conn, "SELECT TipoDeUsuario FROM `Usuarios` WHERE Username  = '" . $username . "' ");
-    
-    while ($row = $query4->fetch_array()) {
+    while ($row = $queryTipo->fetch_array()) {
         $key = $row[0];
     }
-    print_r($key);
-    $query = mysqli_query($conn, "SELECT * FROM `Usuarios` WHERE Username  = '" . $username . "' and Password = '" . $password . "' and TipoDeUsuario = '$key' ");
 
-    $nrows = mysqli_num_rows($query);
+    $queryUsuario = mysqli_query($conn, "SELECT * FROM `Usuarios` WHERE ci  = '" . $ci . "'");
+
+    $nrows = mysqli_num_rows($queryUsuario);
     // nao funca !! $result = mysqli_query($conn, "SELECT 'TipoDeUsuario' FROM Usuarios WHERE 'Username' = '" . $username . "'");
     print_r($nrows);
     if ($nrows == 1 &&  $key == 'Admin') {
-        $_SESSION['nombredeusuario'] = $username;
+        $_SESSION['ci'] = $ci;
         $_SESSION['chkT'] = $new_GUID;
         header("Location:../backoffice/IndexAdministrator.php");
     } elseif ($nrows == 1 && $key == 'Almacen') {
-        $_SESSION['nombredeusuario'] = $username;
+        $_SESSION['ci'] = $ci;
         $_SESSION['chkT'] = $new_GUID;
         header("location: ../FuncionarioAlmacen/Almacenes/IndexPrincipal.php");
     } elseif ($nrows == 1 && $key == 'Externo') {
-        $_SESSION['nombredeusuario'] = $username;
+        $_SESSION['ci'] = $ci;
         $_SESSION['chkT'] = $new_GUID;
         header("location: ../FuncionarioAlmacen/Almacenes/IndexPrincipal.php");
-    } elseif ($nrows == 1 && $key =='Camionero') {
-        $_SESSION['nombredeusuario'] = $username;
+    } elseif ($nrows == 1 && $key == 'Camionero') {
+        $_SESSION['ci'] = $ci;
         $_SESSION['chkT'] = $new_GUID;
         header("location:../Camionero.html");
     } elseif ($nrows == 0) {
         echo "<script>alert('usuario inexistente , re intente por favor!');window.location='Login.php'</script>";
     }
 }
-
-
-
-
-
-
-
-?>
