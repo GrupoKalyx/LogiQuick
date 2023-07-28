@@ -1,8 +1,8 @@
 <?php
 //ELPEPE3
 session_start();
-if (isset($_SESSION['nombredeusuario'])) {
-session_destroy();
+if (isset($_SESSION['ci'])) {
+    session_destroy();
 }
 ?>
 <!DOCTYPE html>
@@ -13,7 +13,7 @@ session_destroy();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../estilos/FormStyle.css">
     <link rel="stylesheet" href="../estilos/Style.css">
-    <title>Ingresar a LogiQuick!</title>
+    <title>Ingresar a LogiQuick</title>
 </head>
 
 <body>
@@ -23,36 +23,27 @@ session_destroy();
                 <img src="../assets/logo.png">
             </div>
             <div class="navbar">
-                <h1 class="nav__text">Bienvenido a LogiQuick! </h1>
+                <h1 class="nav__text">Bienvenido a LogiQuick</h1>
             </div>
-
         </nav>
-
     </header>
-
     <div class="form__container">
         <form class="form" method="POST">
-
-            <h2 class="form__text">Ingrese sus Datos</h2>
-
+            <h2 class="form__text">Ingrese sus datos</h2>
             <div class="form__group">
-                <label class="form__label" for="Usuario">Usuario:</label>
-                <input class="form__input" type="text" id="Usuario" name="username" required>
+                <label class="form__label" for="usuario">Usuario:</label>
+                <input class="form__input" type="text" id="nombreUsuario" name="nombreUsuario" required>
             </div>
-
             <div class="form__group">
-                <label class="form__label" for="Contraseña">Contraseña:</label>
-                <input class="form__input" type="password" id="Contraseña" name="password" required>
+                <label class="form__label" for="contrasenia">Contraseña:</label>
+                <input class="form__input" type="password" id="contraseniaUsuario" name="contraseniaUsuario" required>
             </div>
-
             <br>
-            <button class="form__button" name="login" type="submit">Iniciar Sesión</button>
+            <button class="form__button" name="login" type="submit">Iniciar sesión</button>
         </form>
     </div>
-
     <footer>
         <div class="footer">
-
             <ul class="footer_list">
                 <li class="footer__list__item"><a href="">¡Contactanos!</a></li>
                 <li class="footer__list__item"><a href="">Sobre Nosotros</a></li>
