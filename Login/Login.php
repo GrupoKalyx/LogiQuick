@@ -1,5 +1,5 @@
 <?php
-//ELPEPE
+//ELPEPE2
 session_start();
 if (isset($_SESSION['nombredeusuario'])) {
 session_destroy();
