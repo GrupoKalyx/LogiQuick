@@ -1,5 +1,4 @@
 <?php
-require '../sql/dbconection.php';
 if (isset($_POST['login'])) {
     function createGUID()
     {
@@ -23,21 +22,16 @@ if (isset($_POST['login'])) {
         }
     }
     $new_GUID = createGUID();
-
     $ci = $_POST['ci'];
+    $query->exec($conn, "INSERT INTO token VALUES ('$new_GUID' , '$ci')");
 
-    $queryToken = mysqli_query($conn, "INSERT INTO token VALUES ('$new_GUID' , '$ci')");
     $queryTipo = mysqli_query($conn, "SELECT tipoUsuario FROM `usuarios` WHERE ci  = '" . $ci . "' ");
-
     while ($row = $queryTipo->fetch_array()) {
         $key = $row[0];
     }
 
     $queryUsuario = mysqli_query($conn, "SELECT * FROM `Usuarios` WHERE ci  = '" . $ci . "'");
-
     $nrows = mysqli_num_rows($queryUsuario);
-    // nao funca !! $result = mysqli_query($conn, "SELECT 'TipoDeUsuario' FROM Usuarios WHERE 'Username' = '" . $username . "'");
-    print_r($nrows);
     if ($nrows == 1 &&  $key == 'Admin') {
         $_SESSION['ci'] = $ci;
         $_SESSION['chkT'] = $new_GUID;
@@ -55,6 +49,6 @@ if (isset($_POST['login'])) {
         $_SESSION['chkT'] = $new_GUID;
         header("location:../Camionero.html");
     } elseif ($nrows == 0) {
-        echo "<script>alert('usuario inexistente , re intente por favor!');window.location='Login.php'</script>";
+        echo "<script>alert('Usuario inexistente ,re intente por favor!');window.location='login.php'</script>";
     }
 }

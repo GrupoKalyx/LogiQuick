@@ -1,8 +1,8 @@
 <?php
-//ELPEPE3
 session_start();
-if (isset($_SESSION['nombredeusuario'])) {
-    session_destroy();
+require 'Control/superControlador.php';
+if (isset($_POST['login'])) {
+    superControlador::controladorLogin();
 }
 ?>
 <!DOCTYPE html>
@@ -11,8 +11,8 @@ if (isset($_SESSION['nombredeusuario'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../estilos/FormStyle.css">
-    <link rel="stylesheet" href="../estilos/Style.css">
+    <link rel="stylesheet" href="Vista/estilos/FormStyle.css">
+    <link rel="stylesheet" href="Vista/estilos/Style.css">
     <title>Ingresar a LogiQuick!</title>
 </head>
 
@@ -20,7 +20,7 @@ if (isset($_SESSION['nombredeusuario'])) {
     <header>
         <nav class="navbar">
             <div class="navbar__logo">
-                <img src="../assets/logo.png">
+                <img src="assets/logo.png">
             </div>
             <div class="navbar">
                 <h1 class="nav__text">Bienvenido a LogiQuick! </h1>
@@ -28,7 +28,7 @@ if (isset($_SESSION['nombredeusuario'])) {
         </nav>
     </header>
     <div class="form__container">
-        <form class="form" method="POST">
+        <form class="form" method="POST" action="">
             <h2 class="form__text">Ingrese sus Datos</h2>
             <div class="form__group">
                 <label class="form__label" for="ci">Id:</label>
@@ -53,6 +53,6 @@ if (isset($_SESSION['nombredeusuario'])) {
             </div>
         </div>
     </footer>
-</body>F
+</body>
 
 </html>
