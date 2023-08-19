@@ -1,18 +1,11 @@
 <?php
-require 'controladorBD.php';
-require 'controladorLogin.php';
+//http://localhost/Logiquick/Control/superControlador.php/Login/chequear
+$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$uri = explode('/', $uri);
 
-class superControlador
-{
-    public static function controladorBD()
-    {
-        $conn = controladorBD::conectar();
-        return $conn;
-    }
+$Controlador = "controlador" . $uri[sizeof($uri) - 2];
+$metodo = $uri[sizeof($uri) - 1];
 
-    public static function controladorLogin()
-    {
-        $conn = json_decode(self::controladorBD());
-        controladorLogin::controladorUsuario($conn, $_POST['$ci'], $_POST['$contrasenia']);
-    }
-}
+require  "$Controlador" . ".php";
+$context = ['post' => $_POST, 'get' => $_GET];
+call_user_func("$Controlador::$metodo", $context);

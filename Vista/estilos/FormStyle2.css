@@ -1,15 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
-
-.form {
-    margin: 20px;
-    max-width: 500px;
+/* .form {
+    margin: 1.25rem;
+    max-width: 31.25rem;
     border-radius: 5px ;
-    border: #ffc870 3px solid;
-    padding: 30px;
-  }
+    border: #3e838c 3px solid;
+    padding: 1.875rem;
+  } */
   
   .form__group {
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
   }
   
   .form__label {
@@ -20,14 +18,14 @@
   
   .form__input {
     width: 100%;
-    padding: 10px;
+    padding: 0.625rem;
     border: 1px solid #ccc;
     border-radius: 4px;
   }
   
   .form__button {
-    padding: 10px 20px;
-    background-color: #ffc870;
+    padding: 0.625rem 1.25rem;
+    background-color: #3e838c;
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -36,11 +34,11 @@
   }
   
   .form__button:hover {
-    background-color: #f8b549;
+    background-color: #195e63;
   }
 
   .form__text{
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
     text-align: center;
   }
 
@@ -48,7 +46,7 @@
 
   .form__select {
     width: 100%;
-    padding: 10px;
+    padding: 0.625rem;
     border: 1px solid #ccc;
     border-radius: 4px;
   }
@@ -56,29 +54,136 @@
   /* backoffice */
 
   .form__container__backoffice{
-    
     display: grid;
-    
     grid-template-columns: repeat(4,1fr);
-    margin-top: 20px;
-    margin-left: 20px;
+    grid-template-areas: 
+    'form  form   form  form'
+    'form  form   form  form';
+    margin-top: 1.25rem;
+    justify-items: center;
+    
+    
   }
 
   .form {
-    margin: 10px;
-    width: 350px;
+    margin: 1.25rem;
+    width: 20rem;
     border-radius: 5px ;
-    border: #ffc870 3px solid;
-    padding: 20px;
+    border: #3e838c 3px solid;
+    padding: 1.875rem;
   }
-  .nav__text{
-    text-align: center;
-     
-   }
-   .form__viewContent{
-    text-align: center;
-    font-size: 16px;
-    font-family: 'Poppins', sans-serif;
 
+  @media (max-width: 1200px) {
+    .form__container__backoffice{
+      grid-template-columns: repeat(2,1fr);
+      grid-template-areas: 
+    'form  form'
+    'form  form'
+    'form  form'
+    'form  form';
+    }
     
-   }
+    .form {
+      margin: 1.25rem;
+      width: 20rem;
+      padding: 1.5rem;
+    }
+  }
+
+  @media (max-width: 992px) {
+    .form__container__backoffice{
+      grid-template-columns: repeat(2,1fr);
+      grid-template-areas: 
+    'form  form'
+    'form  form'
+    'form  form'
+    'form  form';
+    }
+    .form {
+      margin: 1rem;
+      width: 18rem;
+      padding: 1.2rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .form__container__backoffice{
+      grid-template-columns: repeat(2,1fr);
+      grid-template-areas: 
+    'form  form'
+    'form  form'
+    'form  form'
+    'form  form';
+    }
+    .form {
+      margin: .8rem;
+      width: 16rem;
+      padding: 1rem;
+    }
+    .navtext{
+      font-size: 12px;
+    }
+ 
+  }
+  
+  @media (max-width: 576px) {
+    .form__container__backoffice{
+      grid-template-columns: repeat(2,1fr);
+      grid-template-areas: 
+    'form  form'
+    'form  form'
+    'form  form'
+    'form  form';
+    }
+    .form {
+      margin: .6rem;
+      width: 12rem;
+      padding: .8rem;
+    }
+    .navtext{
+      font-size: 9px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .form__container__backoffice{
+      align-items: center;
+      grid-template-columns: repeat(1,1fr);
+      grid-template-areas: 
+      'form'
+      'form'
+      'form'
+      'form'
+      'form'
+      'form'
+      'form'
+      'form';
+    }
+    .form {
+      margin: 0.5rem;
+      width: 15rem;
+      padding: 0.3rem;
+    }
+  }
+  
+  @media (max-width: 400px) {
+    .form__container__backoffice{
+      align-items: center;
+      grid-template-columns: repeat(1,1fr);
+      grid-template-areas: 
+      'form'
+      'form'
+      'form'
+      'form'
+      'form'
+      'form'
+      'form'
+      'form';
+   
+    }
+    .form {
+      margin: 0.2rem;
+      width: 15rem;
+      padding: 0.2rem;
+    }
+  }

@@ -1,7 +1,0 @@
-{
-    "php.stubs": [
-        "*",
-        "com"
-    ],
-    "editor.fontSize": 15
-}

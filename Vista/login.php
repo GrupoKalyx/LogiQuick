@@ -1,18 +1,11 @@
-<?php
-session_start();
-require 'Control/superControlador.php';
-if (isset($_POST['login'])) {
-    superControlador::controladorLogin();
-}
-?>
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Vista/estilos/FormStyle.css">
-    <link rel="stylesheet" href="Vista/estilos/Style.css">
+    <link rel="stylesheet" href="estilos/FormStyle.css">
+    <link rel="stylesheet" href="estilos/Style.css">
     <title>Ingresar a LogiQuick!</title>
 </head>
 
@@ -28,7 +21,7 @@ if (isset($_POST['login'])) {
         </nav>
     </header>
     <div class="form__container">
-        <form class="form" method="POST" action="">
+        <form class="form" method="POST" action="../Control/superControlador.php/Login/chequear">
             <h2 class="form__text">Ingrese sus Datos</h2>
             <div class="form__group">
                 <label class="form__label" for="ci">Id:</label>
