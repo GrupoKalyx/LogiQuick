@@ -34,12 +34,15 @@ class modeloToken extends modeloBd
     {
         $query = "INSERT INTO token VALUES (?, ?)";
         $result = $this->conn->execute_query($query, [$token, $ci]);
-        $result->fetch_array(MYSQLI_ASSOC);
+        $fresult = $result->fetch_array(MYSQLI_ASSOC);
         return $result;
     }
 
     public function chkToken($token)
     {
-        mysqli_query($this->conn, "SELECT userToken FROM sessiontoken WHERE userToken = '$token'") == true;
+        $query = "SELECT * FROM tokens WHERE tokenUsuario = ? LIMIT 1";
+        $result = $this->conn->execute_query($query, $token);
+        $num = mysqli_num_rows($result);
+        return $num;
     }
 }
