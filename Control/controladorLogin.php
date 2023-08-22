@@ -14,22 +14,23 @@ class controladorLogin
                 $_SESSION['ci'] = $ci;
                 $t = new modeloToken();
                 $_SESSION['chkT'] = $t->generateToken();
-                $tipo = json_decode($l->tipo($ci));
+                $objTipo = json_decode($l->tipo($ci), true);
+                $tipo = $objTipo['tipo'];
                 switch ($tipo) {
                     case 'Admin':
-                        header("Location:../backoffice/IndexAdministrator.php");
+                        header("Location: ../../../backoffice/IndexAdministrator.php");
                         break;
                     case 'Almacen':
-                        header("location: ../Vista/FunCentral.php");
+                        header("location: ../../../Vista/FunCentral.php");
                         break;
                     case 'Externo':
-                        header("location: ../Vista/FunExternoCentral.php");
+                        header("location: ../../../Vista/FunExternoCentral.php");
                         break;
                     case 'Camionero':
-                        header("location:../Vista/Camionero.html");
+                        header("location: ../../../Vista/Camionero.html");
                         break;
                     default:
-                        echo "<script>alert('Tipo de usuario desconocido, re intente por favor!');window.location='../Vista/login.php'</script>";
+                        echo "<script>alert('Tipo de usuario desconocido, re intente por favor!');window.location='../../../Vista/login.php'</script>";
                         break;
                 }
             } else {

@@ -7,6 +7,7 @@ class modeloToken extends modeloBd
     {
         parent::__construct();
     }
+
     public function generateToken()
     {
         if (function_exists('com_create_guid')) {
