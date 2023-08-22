@@ -7,10 +7,12 @@ class modeloLogin extends modeloBd
     {
         parent::__construct();
     }
+
     public function existe($ci)
     {
         $query = "SELECT * FROM `Usuarios` WHERE ci = ? LIMIT 1";
-        $result = $this->conn->execute_query($query, [$ci]);    //da error "Funcion inexistente mysqli::execute_query"
+        $conexion = $this->conn;
+        $result = $conexion->execute_query($query, [$ci]);    //da error "Funcion inexistente mysqli::execute_query"
         $num = mysqli_num_rows($result);
         return $num;
     }
