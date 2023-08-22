@@ -34,8 +34,6 @@ class modeloToken extends modeloBd
     {
         $query = "INSERT INTO token VALUES (?, ?)";
         $result = $this->conn->execute_query($query, [$token, $ci]);
-        $fresult = $result->fetch_array(MYSQLI_ASSOC);
-        return $result;
     }
 
     public function chkToken($token)
