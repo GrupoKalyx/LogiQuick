@@ -1,8 +1,10 @@
 <?php
 class modeloBd
 {
-    protected static function conexion()
+    protected $conn;
+
+    protected function __construct()
     {
-        return $conn = new mysqli("localhost", "root", "", "logiquickbd");
+        $this->conn = new mysqli("localhost", "root", "", "logiquickbd");
     }
 }

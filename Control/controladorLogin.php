@@ -15,23 +15,24 @@ class controladorLogin
                 $t = new modeloToken();
                 $_SESSION['chkT'] = $t->generateToken();
                 $tipo = json_decode($l->tipo($ci));
-                switch ($tipo) {
-                    case 'Admin':
-                        header("Location:../backoffice/IndexAdministrator.php");
-                        break;
-                    case 'Almacen':
-                        header("location: ../Vista/FunCentral.php");
-                        break;
-                    case 'Externo':
-                        header("location: ../Vista/FunExternoCentral.php");
-                        break;
-                    case 'Camionero':
-                        header("location:../Vista/Camionero.html");
-                        break;
-                    default:
-                        echo "<script>alert('Tipo de usuario desconocido, re intente por favor!');window.location='../Vista/login.php'</script>";
-                        break;
-                }
+                var_dump($tipo);
+                // switch ($tipo) {
+                //     case 'Admin':
+                //         header("Location: ../../../backoffice/IndexAdministrator.php");
+                //         break;
+                //     case 'Almacen':
+                //         header("location: ../../../Vista/FunCentral.php");
+                //         break;
+                //     case 'Externo':
+                //         header("location: ../../../Vista/FunExternoCentral.php");
+                //         break;
+                //     case 'Camionero':
+                //         header("location: ../../../Vista/Camionero.html");
+                //         break;
+                //     default:
+                //         echo "<script>alert('Tipo de usuario desconocido, re intente por favor!');window.location='../../../Vista/login.php'</script>";
+                //         break;
+                // }
             } else {
                 echo "<script>alert('La contraseña ingresada es incorrecta, revise los datos ingresados y vuelva a intentar.');window.location='../Vista/login.php'</script>";
             }
