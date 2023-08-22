@@ -29,8 +29,7 @@ class modeloLogin extends modeloBd
     {
         $query = "SELECT tipo FROM `usuarios` WHERE ci = ? LIMIT 1";
         $result = $this->conn->execute_query($query, [$ci]);
-        $result->fetch_array(MYSQLI_ASSOC);
-        var_dump($result);
-        return json_encode($result);
+        $fResult = $result->fetch_array(MYSQLI_ASSOC);
+        return json_encode($fResult);
     }
 }
