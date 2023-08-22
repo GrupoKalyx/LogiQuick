@@ -12,13 +12,12 @@ class controladorLogin
         if ($l->existe($ci)) {
             if ($l->contrasenia($ci, $contrasenia)) {
                 $_SESSION['ci'] = $ci;
-                $t = new modeloToken();
-                $_SESSION['chkT'] = $t->generateToken();
+                $_SESSION['token'] = self::createToken($ci);
                 $objTipo = json_decode($l->tipo($ci), true);
                 $tipo = $objTipo['tipo'];
                 switch ($tipo) {
                     case 'Admin':
-                        header("Location: ../../../backoffice/IndexAdministrator.php");
+                        header("Location: ../../../Vista/IndexAdministrator.php");
                         break;
                     case 'Almacen':
                         header("location: ../../../Vista/FunCentral.php");
@@ -38,6 +37,22 @@ class controladorLogin
             }
         } else {
             echo "<script>alert('Usuario inexistente ,re intente por favor.');window.location='../Vista/login.php'</script>";
+        }
+    }
+
+    public static function createToken($ci)
+    {
+        $t = new modeloToken();
+        $token = $t->generateToken();
+        $t->setToken($token, $ci);
+        return $token;
+    }
+
+    public static function verify($content)
+    {
+        $t = new modeloToken();
+        $token = $_SESSION['chkToken'];
+        if ($t->chkToken($token) == 0) {
         }
     }
 }

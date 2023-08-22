@@ -33,7 +33,7 @@ class modeloToken extends modeloBd
     public function setToken($token, $ci)
     {
         $query = "INSERT INTO token VALUES (?, ?)";
-        $result = $this->conn->execute_query($query, $token, $ci);
+        $result = $this->conn->execute_query($query, [$token, $ci]);
         $result->fetch_array(MYSQLI_ASSOC);
         return $result;
     }
