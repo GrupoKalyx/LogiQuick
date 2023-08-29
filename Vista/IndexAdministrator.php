@@ -1,6 +1,8 @@
 <?php
 session_start();
-var_dump($_SESSION);
+if(isset($_POST['btncerrar'])){header('location: login.php');}
+require '../Control/superControlador.php';
+header('location: https');
 ?>
 <DOCTYPE html>
     <html lang="es">
@@ -34,7 +36,7 @@ var_dump($_SESSION);
         <div class="form__container__backoffice">
             <div class="form">
                 <h2>Usuarios registrados</h2><br>
-                <iframe src="CRUD/usuarios/mostrarLista.php" style="height: 400px;  border-radius: 5px ;border: #ffc870 3px solid;">
+                <iframe src="CRUD/usuarios/mostrarL ista.php" style="height: 400px;  border-radius: 5px ;border: #ffc870 3px solid;">
                 </iframe>
             </div>
             <div class="form">
