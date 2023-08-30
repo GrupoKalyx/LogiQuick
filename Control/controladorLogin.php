@@ -1,19 +1,19 @@
 <?php
+require '../Modelo/modeloBd.php';
 require '../Modelo/modeloLogin.php';
 require '../Modelo/modeloToken.php';
-
 class controladorLogin
 {
     public static function chequear($content)
     {
+        $conn = modeloBd::conexion();
         $ci = $content['post']['ci'];
         $contrasenia = $content['post']['contrasenia'];
-        $l = new modeloLogin();
-        if ($l->existe($ci)) {
-            if ($l->contrasenia($ci, $contrasenia)) {
+        if (modeloLogin::existe($ci, $conn)) {
+            if (modeloLogin::contrasenia($ci, $contrasenia, $conn)) {
                 $_SESSION['ci'] = $ci;
                 $_SESSION['token'] = self::createToken($ci);
-                $objTipo = json_decode($l->tipo($ci), true);
+                $objTipo = json_decode(modeloLogin::tipo($ci, $conn), true);
                 $tipo = $objTipo['tipo'];
                 switch ($tipo) {
                     case 'Admin':
@@ -42,17 +42,18 @@ class controladorLogin
 
     public static function createToken($ci)
     {
-        $t = new modeloToken();
-        $token = $t->generateToken();
-        $t->setToken($token, $ci);
+        $conn = modeloBd::conexion();
+        $token = modeloToken::generateToken();
+        modeloToken::setToken($token, $ci, $conn);
         return $token;
     }
 
     public static function verify($content)
     {
-        $t = new modeloToken();
-        $token = $_SESSION['chkToken'];
-        if ($t->chkToken($token) == 0) {
+        $conn = modeloBd::conexion();
+        $token = $content['post']['chkToken'];
+        if (modeloToken::chkToken($token,  $conn) == 0) {
+            echo "<script>alert('Hubo un error en la sesión, intente volverse a ingresar.');window.location='../../../Vista/login.php'</script>";
         }
     }
 }

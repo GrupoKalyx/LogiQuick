@@ -1,6 +1,9 @@
 <?php
 session_start();
-if(isset($_POST['btncerrar'])){header('location: login.php');}
+if(isset($_POST['btncerrar'])){
+    session_destroy();
+    header('location: login.php');
+}
 require '../Control/superControlador.php';
 header('location: https');
 ?>
