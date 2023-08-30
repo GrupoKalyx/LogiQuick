@@ -1,4 +1,4 @@
-<?session_destroy();?>
+<?session_start();?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -17,7 +17,7 @@
                 <img src="assets/logo.png">
             </div>
             <div class="navbar">
-                <h1 class="nav__text">Bienvenido a LogiQuick! </h1>
+                <h1 class="nav__text">Bienvenido a LogiQuick!</h1>
             </div>
         </nav>
     </header>

@@ -1,23 +1,29 @@
 <?php
-require '../Modelo/modeloBd.php';
 require '../Modelo/modeloLogin.php';
-require '../Modelo/modeloToken.php';
+require 'controladorToken.php';
+
 class controladorLogin
 {
-    public static function chequear($content)
+    private $conn;
+
+    function __construct($conn)
     {
-        $conn = modeloBd::conexion();
+        $this->conn = $conn;
+    }
+
+    public function chequear($content)
+    {
         $ci = $content['post']['ci'];
         $contrasenia = $content['post']['contrasenia'];
-        if (modeloLogin::existe($ci, $conn)) {
-            if (modeloLogin::contrasenia($ci, $contrasenia, $conn)) {
-                $_SESSION['ci'] = $ci;
-                $_SESSION['token'] = self::createToken($ci);
-                $objTipo = json_decode(modeloLogin::tipo($ci, $conn), true);
+        if (modeloLogin::existe($ci, $this->conn)) {
+            if (modeloLogin::contrasenia($ci, $contrasenia, $this->conn)) {
+                $t = new controladorToken($this->conn);
+                $_SESSION['token'] = $t->createToken($ci);
+                $objTipo = json_decode(modeloLogin::tipo($ci, $this->conn), true);
                 $tipo = $objTipo['tipo'];
                 switch ($tipo) {
                     case 'Admin':
-                        header("Location: ../../../Vista/IndexAdministrator.php");
+                        header("Location: ../../../Vista/IndexAdministrador.php");
                         break;
                     case 'Almacen':
                         header("location: ../../../Vista/FunCentral.php");
@@ -37,23 +43,6 @@ class controladorLogin
             }
         } else {
             echo "<script>alert('Usuario inexistente ,re intente por favor.');window.location='../Vista/login.php'</script>";
-        }
-    }
-
-    public static function createToken($ci)
-    {
-        $conn = modeloBd::conexion();
-        $token = modeloToken::generateToken();
-        modeloToken::setToken($token, $ci, $conn);
-        return $token;
-    }
-
-    public static function verify($content)
-    {
-        $conn = modeloBd::conexion();
-        $token = $content['post']['chkToken'];
-        if (modeloToken::chkToken($token,  $conn) == 0) {
-            echo "<script>alert('Hubo un error en la sesión, intente volverse a ingresar.');window.location='../../../Vista/login.php'</script>";
         }
     }
 }
