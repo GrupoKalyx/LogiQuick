@@ -1,6 +1,6 @@
 <?php
-require '../Modelo/modeloAlmacenes.php';
-class controladorAlmacenes
+require '../Modelo/modeloPaquetes.php';
+class controladorPaquetes
 {
     private $conn;
 
@@ -20,7 +20,7 @@ class controladorAlmacenes
             $idAlmacen = $row->idAlmacen;
             $ubicacion = $row->ubicacion;
             $descUbi = $row->descUbi;
-            array_push($arrayConsulta, ['ID: ' => $idAlmacen, '<br> Ubicación: ' => $ubicacion, '<br> Descripidón de ubicaidón: ' => $descUbi . '<br><br>']);
+            array_push($arrayConsulta, ['ID: ' => $idAlmacen, '<br> Ubicación: ' => $ubicacion, '<br> Descripción de ubicación: ' => $descUbi . '<br><br>']);
         }
 
         foreach ($arrayConsulta as $value) {

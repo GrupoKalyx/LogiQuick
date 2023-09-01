@@ -44,7 +44,7 @@ if(isset($_POST['btncerrar'])){
             </div>
             <div class="form">
                 <h2>Ingresar Usuarios Nuevos</h2>
-                <form action="../Control/superControlador.php/usuarios/ingresar" method="post">
+                <form action="../Control/superControlador.php/Usuarios/ingresar" method="post">
                     ID <input class="form__input" type="text" name="id"><br>
                     Nombre de Usuario <input class="form__input" type="text" name="nombre"><br>
                     Contraseña <input class="form__input" type="password" name="contrasenia"><br><br>
@@ -54,7 +54,7 @@ if(isset($_POST['btncerrar'])){
             </div>
             <div class="form">
                 <h2>Modificar Usuario</h2>
-                <form action="../Control/superControlador.php/usuarios/modificar" method="post">
+                <form action="../Control/superControlador.php/Usuarios/modificar" method="post">
                     ID <input class="form__input" type="text" name="id"><br>
                     Nuevo nombre de usuario <input class="form__input" type="text" name="nombre"><br>
                     Nueva contraseña <input class="form__input" type="text" name="contrasenia"><br><br>
@@ -63,7 +63,7 @@ if(isset($_POST['btncerrar'])){
             </div>
             <div class="form">
                 <h2>Dar de baja Usuario</h2>
-                <form class="m" action="../Control/superControlador.php/usuarios/eliminar" method="post">
+                <form class="m" action="../Control/superControlador.php/Usuarios/eliminar" method="post">
                     ID de Usuario <input class="form__input" type="text" name="id"><br><br>
                     <button class="form__button" type="submit">Eliminar</button>
                 </form>
@@ -75,7 +75,7 @@ if(isset($_POST['btncerrar'])){
             </div>
             <div class="form">
                 <h2> Ingresar datos de Almacen</h2>
-                <form action="../Control/superControlador.php/almacenes/ingresar" method="post">
+                <form action="../Control/superControlador.php/Almacenes/ingresar" method="post">
                     Id de almacen <input type="text" class="form__input" name="almacen[]">
                     Tipo de almacen<input class="form__input" type="text" name="almacen[]">
                     Ubicacion de almacen<input class="form__input" type="text" name="almacen[]"><br><br>
@@ -84,7 +84,7 @@ if(isset($_POST['btncerrar'])){
             </div>
             <div class="form">
                 <h2> Ingresar datos de Almacen a modificar</h2>
-                <form action="../Control/superControlador.php/almacenes/modificar" method="post">
+                <form action="../Control/superControlador.php/Almacenes/modificar" method="post">
                     Id de almacen<input class="form__input" type="text" name="almacen[]">
                     Tipo de almacen<input class="form__input" type="text" name="almacen[]">
                     Ubicacion de almacen<input class="form__input" type="text" name="almacen[]"><br><br>
@@ -93,7 +93,7 @@ if(isset($_POST['btncerrar'])){
             </div>
             <div class="form">
                 <h2>Eliminar un almacen</h2>
-                <form action="../Control/superControlador.php/almacenes/eliminar" method="post">
+                <form action="../Control/superControlador.php/Almacenes/eliminar" method="post">
                     Id de almacen<input class="form__input" type="text" name="eliminarAlmacen"><br><br>
                     <button class="form__button" type="submit">Eliminar</button>
                 </form>
@@ -107,7 +107,7 @@ if(isset($_POST['btncerrar'])){
             </div>
             <div class="form">
                 <h2>Ingresar paquete</h2>
-                <form action="../Control/superControlador.php/paquetes/ingresar" method="post">
+                <form action="../Control/superControlador.php/Paquetes/ingresar" method="post">
                     Numero de Bulto<input class="form__input" type="text" name="numBulto"><br><br>
                     Estado actual<input class="form__input" type="text" name="estado"><br><br>
                     Correo del Cliente<input class="form__input" type="text" name="correo"><br><br>
@@ -116,7 +116,7 @@ if(isset($_POST['btncerrar'])){
             </div>
             <div class="form">
                 <h2>Modificar datos de paquete</h2>
-                <form action="../Control/superControlador.php/paquetes/modificar>
+                <form action="../Control/superControlador.php/Paquetes/modificar>
                     Numero de paquete<input class="form__input" type="text" name="numBulto"><br>
                     <h2>nuevos datos</h2>
                     volumen <br><input class="form__input" type="text" name="vol" placeholder="Metros Cubicos (m3)"><br><br>
@@ -127,7 +127,7 @@ if(isset($_POST['btncerrar'])){
             </div>
             <div class="form">
                 <h2>Eliminar paquete</h2>
-                <form action="../Control/superControlador.php/paquetes/eliminar" method="post">
+                <form action="../Control/superControlador.php/Paquetes/eliminar" method="post">
                     Numero de paquete<input class="form__input" type="text" name="numBulto"><br><br>
                     <button class="form__button" type="submit">Eliminar</button>
                 </form>
@@ -136,12 +136,12 @@ if(isset($_POST['btncerrar'])){
         <div class="form__container__backoffice">
             <div class="form">
                 <h2>Lista de lotes</h2><br>
-                <iframe src="../Control/superControlador.php/lotes/mostrar" style="height: 400px;  border-radius: 5px ;border: #ffc870 3px solid;">>
+                <iframe src="../Control/superControlador.php/Lotes/mostrar" style="height: 400px;  border-radius: 5px ;border: #ffc870 3px solid;">>
                 </iframe>
             </div>
             <div class="form">
                 <h2>Ingresar lote</h2>
-                <form action="../Control/superControlador.php/lotes/ingresar" method="post">
+                <form action="../Control/superControlador.php/Lotes/ingresar" method="post">
 
                     Numero de lote<input class="form__input" type="text" name="numLote"><br><br>
                     Estado <input class="form__input" type="text" name="estado"><br><br>
@@ -164,7 +164,7 @@ if(isset($_POST['btncerrar'])){
             </div>
             <div class="form">
                 <h2>Modificar datos del Lote</h2>
-                <form action="../Control/superControlador.php/lotes/modificar" method="post">
+                <form action="../Control/superControlador.php/Lotes/modificar" method="post">
                     Numero de lote<input class="form__input" type="text" name="numeroLote"><br>
                     <h2>nuevos datos</h2>
                     Estado actual<input class="form__input" type="text" name="estadoAct"><br><br>
@@ -173,7 +173,7 @@ if(isset($_POST['btncerrar'])){
             </div>
             <div class="form">
                 <h2>Eliminar Lote</h2>
-                <form action="../Control/superControlador.php/lotes/eliminar" method="post">
+                <form action="../Control/superControlador.php/Lotes/eliminar" method="post">
                     Numero de Lote<input class="form__input" type="text" name="eliminacion"><br><br>
                     <button class="form__button" type="submit">Eliminar</button>
                 </form>
