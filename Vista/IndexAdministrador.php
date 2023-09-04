@@ -39,7 +39,7 @@ if(isset($_POST['btncerrar'])){
         <div class="form__container__backoffice">
             <div class="form">
                 <h2>Usuarios registrados</h2><br>
-                <iframe src="../Control/superControlador.php/Usuarios/mostrar" style="height: 400px;  border-radius: 5px ;border: #ffc870 3px solid;">
+                <iframe src="../Control/superControlador.php/Usuarios/mostrar" style=" width: 16em; height: 400px;  border-radius: 5px ;border: #ffc870 3px solid;">
                 </iframe>
             </div>
             <div class="form">
@@ -70,7 +70,7 @@ if(isset($_POST['btncerrar'])){
             </div>
             <div class="form">
                 <h2>Almacenes registrados</h2><br>
-                <iframe src="../Control/superControlador.php/almacenes/mostrar" style="height: 400px;  border-radius: 5px ;border: #ffc870 3px solid;">
+                <iframe src="../Control/superControlador.php/almacenes/mostrar" style="height: 400px;  width: 16em; border-radius: 5px ;border: #ffc870 3px solid;">
                 </iframe>
             </div>
             <div class="form">
@@ -102,7 +102,7 @@ if(isset($_POST['btncerrar'])){
         <div class="form__container__backoffice">
             <div class="form">
                 <h2>Lista de paquetes</h2><br>
-                <iframe src="../Control/superControlador.php/paquetes/mostrar" style="height: 400px;  border-radius: 5px ;border: #ffc870 3px solid;">>
+                <iframe src="../Control/superControlador.php/paquetes/mostrar" style="height: 400px; width: 16em; border-radius: 5px ;border: #ffc870 3px solid;">>
                 </iframe>
             </div>
             <div class="form">
@@ -136,7 +136,7 @@ if(isset($_POST['btncerrar'])){
         <div class="form__container__backoffice">
             <div class="form">
                 <h2>Lista de lotes</h2><br>
-                <iframe src="../Control/superControlador.php/Lotes/mostrar" style="height: 400px;  border-radius: 5px ;border: #ffc870 3px solid;">>
+                <iframe src="../Control/superControlador.php/Lotes/mostrar" style="height: 400px; width: 16em; border-radius: 5px ;border: #ffc870 3px solid;">>
                 </iframe>
             </div>
             <div class="form">
