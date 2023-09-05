@@ -38,13 +38,15 @@
   background: #3e838c;
   height: 6.25em;
 }
+
 .navbar__logo{
-  height: 6.25em;
+  height: 5em;
 }
 
 .navbar__logo img{
-  height: 6.25em;
-  width: 9.375em;
+  height: 5em;
+  width: 5em;
+  margin-left: 1em;
 }
 
 .navbar__list{
