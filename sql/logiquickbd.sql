@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 22, 2023 at 07:29 PM
+-- Generation Time: Sep 05, 2023 at 07:37 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -28,20 +28,20 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `almacenes` (
-  `numAlmacen` int(255) NOT NULL,
-  `tipoAlmacen` varchar(255) NOT NULL,
-  `ubicacion` varchar(255) NOT NULL
+  `idAlmacen` int(16) NOT NULL,
+  `ubicacion` varchar(64) NOT NULL,
+  `descUbi` varchar(127) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `almacenes`
 --
 
-INSERT INTO `almacenes` (`numAlmacen`, `tipoAlmacen`, `ubicacion`) VALUES
-(0, 'central ', 'Montevideo'),
-(1, 'externo', 'Paysandu'),
-(2, 'externo', 'Pando'),
-(3, 'externo', 'Shangrila');
+INSERT INTO `almacenes` (`idAlmacen`, `ubicacion`, `descUbi`) VALUES
+(0, 'Montevideo', ''),
+(1, 'Paysandu', ''),
+(2, 'Pando', ''),
+(3, 'Shangrila', '');
 
 -- --------------------------------------------------------
 
@@ -50,7 +50,7 @@ INSERT INTO `almacenes` (`numAlmacen`, `tipoAlmacen`, `ubicacion`) VALUES
 --
 
 CREATE TABLE `logins` (
-  `id` int(9) NOT NULL,
+  `idLogin` int(9) NOT NULL,
   `contrasenia` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -58,9 +58,14 @@ CREATE TABLE `logins` (
 -- Dumping data for table `logins`
 --
 
-INSERT INTO `logins` (`id`, `contrasenia`) VALUES
+INSERT INTO `logins` (`idLogin`, `contrasenia`) VALUES
 (1, 'root'),
-(2, '2');
+(2, '2'),
+(3, 'destructor'),
+(5574, 'superEpicaYDificilContraseña'),
+(56777777, '4s4y45y45y'),
+(7, '7777777'),
+(55741419, 'root');
 
 -- --------------------------------------------------------
 
@@ -105,37 +110,31 @@ INSERT INTO `paquetes` (`numBulto`, `estado`, `gmailCliente`, `idRastreo`) VALUE
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pickups`
+-- Table structure for table `tokens`
 --
 
-CREATE TABLE `pickups` (
-  `matricula` varchar(8) NOT NULL DEFAULT 'ABC 1234'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `token`
---
-
-CREATE TABLE `token` (
-  `tokenUsuario` varchar(255) NOT NULL,
-  `ci` int(8) NOT NULL
+CREATE TABLE `tokens` (
+  `tokenUsuario` varchar(64) NOT NULL,
+  `idToken` int(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `token`
+-- Dumping data for table `tokens`
 --
 
-INSERT INTO `token` (`tokenUsuario`, `ci`) VALUES
-('{44DFB69C-E036-123E-06B7-8E8FC24E8F42}', 1),
-('{CFCD6641-BB0A-3443-574A-23AC16257BC2}', 1),
-('{7CB26EAD-5688-6EFC-8D9E-8B6EBC8297E8}', 1),
-('{4394D6D0-8281-5268-67E0-1A1DD5CF312C}', 1),
-('{72C4312E-C274-82D7-A3C0-B8BBC804E57C}', 1),
-('{6736564A-D5D0-9F4D-FD65-E26735361AC2}', 1),
-('{5880162F-0885-8119-095F-1D099B156A87}', 1),
-('{8BA60926-0D79-ADA2-405C-2B66A555573C}', 1);
+INSERT INTO `tokens` (`tokenUsuario`, `idToken`) VALUES
+('a7732fc8f71c2bf9d644bf5eb0c7a25b90616aa2e678b18a43292b1290027959', 1),
+('96e74fbfd5bb57c4269c79e378c3d6053b99ed37d3a0cb1df21267f4126dc94d', 1),
+('3b0dca164621d811c37cd6ad9f7a497e34433bd32b3a82b377be776bcbb0752b', 1),
+('28dd6dcb764583d289da55bafa5df53c4395b42a8168cefa58f99ab063d416c4', 1),
+('7382059314b9eca307ee5259269ad2bbb37e88b440943062a812eb6f8e54716c', 1),
+('d2fac01c95845675d6e694cdfd34573d26c0ac6161a1e1cf9a7de34fe708c18e', 1),
+('418c088984489df55ac88e5d06f414dae8b73da6de7efcc8aae7c3fd9f472592', 7),
+('d471f9889622fae75ead1a6832b70cbec07d86bde467c24894d32d0294b525fd', 7),
+('7508bd528de85d34c0025007e863def7960f2f60199612e535b94360357b84a1', 7),
+('406f7bd2e89c7ee9d532eed620685c5a11b697488033528974bd85aec645792f', 7),
+('4872af195e574219ef2564bdbe6b4bb4d360ee06706b4e0a218f763e7125793b', 7),
+('ac4422a8b5370c00e496943121bf24ded19f46d6ff1039d60b84b6ef2c40cfad', 7);
 
 -- --------------------------------------------------------
 
@@ -154,8 +153,18 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`ci`, `nombre`, `tipo`) VALUES
-(1, 'AdminNahue', 'Admin'),
-(2, 'Elpepe', 'Camionero');
+(7, 'Séptimo', 'Admin');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vehiculos`
+--
+
+CREATE TABLE `vehiculos` (
+  `matricula` varchar(7) NOT NULL,
+  `disponibilidad` varchar(32) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indexes for dumped tables
@@ -165,7 +174,7 @@ INSERT INTO `usuarios` (`ci`, `nombre`, `tipo`) VALUES
 -- Indexes for table `almacenes`
 --
 ALTER TABLE `almacenes`
-  ADD PRIMARY KEY (`numAlmacen`);
+  ADD PRIMARY KEY (`idAlmacen`);
 
 --
 -- Indexes for table `lotes`
@@ -178,12 +187,6 @@ ALTER TABLE `lotes`
 --
 ALTER TABLE `paquetes`
   ADD PRIMARY KEY (`numBulto`);
-
---
--- Indexes for table `pickups`
---
-ALTER TABLE `pickups`
-  ADD PRIMARY KEY (`matricula`);
 
 --
 -- Indexes for table `usuarios`

@@ -1,8 +1,13 @@
 <?php
 class modeloBd
 {
+    static $server = "127.0.0.1";
+    static $user = "root";
+    static $password = "";
+    static $dbname = "logiquickbd";
+
     public static function conexion()
     {
-        return $conn = new mysqli("localhost", "root", "", "logiquickbd");
+        return $conn = new mysqli(self::$server, self::$user, self::$password, self::$dbname);
     }
 }

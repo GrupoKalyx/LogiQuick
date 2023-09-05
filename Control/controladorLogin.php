@@ -22,9 +22,6 @@ class controladorLogin
                 $objTipo = json_decode(modeloLogin::tipo($ci, $this->conn), true);
                 $tipo = $objTipo['tipo'];
                 switch ($tipo) {
-                    case 'Admin':
-                        header("Location: ../../../Vista/IndexAdministrador.php");
-                        break;
                     case 'Almacen':
                         header("location: ../../../Vista/FunCentral.php");
                         break;
@@ -39,10 +36,10 @@ class controladorLogin
                         break;
                 }
             } else {
-                echo "<script>alert('La contraseña ingresada es incorrecta, revise los datos ingresados y vuelva a intentar.');window.location='../Vista/login.php'</script>";
+                echo "<script>alert('La contraseña ingresada es incorrecta, revise los datos ingresados y vuelva a intentar.');window.location='../../../Vista/login.php'</script>";
             }
         } else {
-            echo "<script>alert('Usuario inexistente ,re intente por favor.');window.location='../Vista/login.php'</script>";
+            echo "<script>alert('Usuario inexistente ,re intente por favor.');window.location='../../../Vista/login.php'</script>";
         }
     }
 }
