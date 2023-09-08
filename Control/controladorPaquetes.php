@@ -9,6 +9,22 @@ class controladorPaquetes
         $this->conn = $conn;
     }
 
+    public function ingresar($context)
+    {
+        $id = $context['post']['id'];
+        $ubicaidon = $context['post']['ubicaidon'];
+        $descUbi = $context['post']['descUbi'];
+        modeloAlmacenes::alta($id, $ubicaidon, $descUbi, $this->conn);
+        header('location: ../../../Vista/indexAdministrador.php');
+    }
+
+    public function eliminar($context)
+    {
+        $id = $context['post']['id'];
+        modeloAlmacenes::baja($id, $this->conn);
+        header('location: ../../../Vista/indexAdministrador.php');
+    }
+
     public function mostrar($context)
     {
         $json = json_decode(modeloAlmacenes::listado($this->conn));
@@ -28,22 +44,6 @@ class controladorPaquetes
                 echo "<a class='form__viewContent'> " . $key . " " . $v . "</a>";
             }
         }
-    }
-
-    public function ingresar($context)
-    {
-        $id = $context['post']['id'];
-        $ubicaidon = $context['post']['ubicaidon'];
-        $descUbi = $context['post']['descUbi'];
-        modeloAlmacenes::alta($id, $ubicaidon, $descUbi, $this->conn);
-        header('location: ../../../Vista/indexAdministrador.php');
-    }
-
-    public function eliminar($context)
-    {
-        $id = $context['post']['id'];
-        modeloAlmacenes::baja($id, $this->conn);
-        header('location: ../../../Vista/indexAdministrador.php');
     }
 
     public function modificar($context)
