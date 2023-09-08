@@ -11,14 +11,6 @@ class modeloUsuarios
         $conn->execute_query($query, [$ci, $contrasenia]);
     }
 
-    public static function modificacion($ci, $nombre, $contrasenia, $conn)
-    {
-        $query = "UPDATE usuarios SET nombre = '$nombre' WHERE ci = '$ci'";
-        $conn->execute_query($query, [$nombre, $ci]);
-        $query = "UPDATE logins SET contrasenia = '$contrasenia' WHERE ci = '$ci'";
-        $conn->execute_query($query, [$contrasenia, $ci]);
-    }
-
     public static function baja($ci, $conn)
     {
         $query = "DELETE FROM usuarios WHERE ci = ?";
@@ -31,5 +23,13 @@ class modeloUsuarios
         $result = $conn->execute_query($query);
         $result = $result->fetch_all(MYSQLI_ASSOC);
         return json_encode($result);
+    }
+
+    public static function modificacion($ci, $nombre, $contrasenia, $conn)
+    {
+        $query = "UPDATE usuarios SET nombre = '$nombre' WHERE ci = '$ci'";
+        $conn->execute_query($query, [$nombre, $ci]);
+        $query = "UPDATE logins SET contrasenia = '$contrasenia' WHERE ci = '$ci'";
+        $conn->execute_query($query, [$contrasenia, $ci]);
     }
 }

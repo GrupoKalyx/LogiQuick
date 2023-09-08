@@ -9,6 +9,23 @@ class controladorUsuarios
         $this->conn = $conn;
     }
 
+    public function ingresar($context)
+    {
+        $ci = $context['post']['id'];
+        $nombre = $context['post']['nombre'];
+        $contrasenia = $context['post']['contrasenia'];
+        $tipo = $context['post']['tipo'];
+        modeloUsuarios::alta($ci, $nombre, $contrasenia, $tipo, $this->conn);
+        header('location: ../../../Vista/indexAdministrador.php');
+    }
+
+    public function eliminar($context)
+    {
+        $ci = $context['post']['id'];
+        modeloUsuarios::baja($ci, $this->conn);
+        header('location: ../../../Vista/indexAdministrador.php');
+    }
+
     public function mostrar($context)
     {
         $json = json_decode(modeloUsuarios::listado($this->conn));
@@ -28,23 +45,6 @@ class controladorUsuarios
                 echo "<a class='form__viewContent'> " . $key . " " . $v . "</a>";
             }
         }
-    }
-
-    public function ingresar($context)
-    {
-        $ci = $context['post']['id'];
-        $nombre = $context['post']['nombre'];
-        $contrasenia = $context['post']['contrasenia'];
-        $tipo = $context['post']['tipo'];
-        modeloUsuarios::alta($ci, $nombre, $contrasenia, $tipo, $this->conn);
-        header('location: ../../../Vista/indexAdministrador.php');
-    }
-
-    public function eliminar($context)
-    {
-        $ci = $context['post']['id'];
-        modeloUsuarios::baja($ci, $this->conn);
-        header('location: ../../../Vista/indexAdministrador.php');
     }
 
     public function modificar($context)
