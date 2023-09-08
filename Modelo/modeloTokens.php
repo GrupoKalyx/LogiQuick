@@ -1,6 +1,6 @@
 <?php
 
-class modeloToken
+class modeloTokens
 {
     public static function generateToken()
     {

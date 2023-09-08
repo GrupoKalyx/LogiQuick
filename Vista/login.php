@@ -22,7 +22,7 @@
         </nav>
     </header>
     <div class="form__container">
-        <form class="form" method="POST" action="../Control/superControlador.php/Login/chequear">
+        <form class="form" method="POST" action="../Control/superControlador.php/Logins/chequear">
             <h2 class="form__text">Ingrese sus Datos</h2>
             <div class="form__group">
                 <label class="form__label" for="ci">Id:</label>

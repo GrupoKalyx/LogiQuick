@@ -1,6 +1,6 @@
 <?php
 
-class modeloLogin
+class modeloLogins
 {
     public static function existe($ci, $conn)
     {

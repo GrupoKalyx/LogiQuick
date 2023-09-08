@@ -1,8 +1,8 @@
 <?php
-require '../Modelo/modeloLogin.php';
-require 'controladorToken.php';
+require '../Modelo/modeloLogins.php';
+require 'controladorTokens.php';
 
-class controladorLogin
+class controladorLogins
 {
     private $conn;
 
@@ -15,7 +15,7 @@ class controladorLogin
     {
         $ci = $content['post']['ci'];
         $contrasenia = $content['post']['contrasenia'];
-        if (modeloLogin::existe($ci, $this->conn)) {
+        if (modeloLogins::existe($ci, $this->conn)) {
             if (modeloLogin::contrasenia($ci, $contrasenia, $this->conn)) {
                 $t = new controladorToken($this->conn);
                 $_SESSION['token'] = $t->createToken($ci);
