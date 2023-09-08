@@ -5,7 +5,7 @@ class modeloLogin
     public static function existe($ci, $conn)
     {
         $query = "SELECT * FROM `usuarios` WHERE ci = ? LIMIT 1";
-        $result = $conn->execute_query($query, ['1']);
+        $result = $conn->execute_query($query, [$ci]);
         $num = mysqli_num_rows($result);
         return $num;
     }
