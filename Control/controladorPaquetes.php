@@ -11,32 +11,45 @@ class controladorPaquetes
 
     public function ingresar($context)
     {
-        $id = $context['post']['id'];
-        $ubicaidon = $context['post']['ubicaidon'];
-        $descUbi = $context['post']['descUbi'];
-        modeloAlmacenes::alta($id, $ubicaidon, $descUbi, $this->conn);
+        // $numBulto, $gmailCliente, $fechaLlegada, $num, $calle, $localidad, $departamento
+        $numBulto = $context['post']['numBulto'];
+        $gmailCliente = $context['post']['gmailCliente'];
+        $fechaLlegada = $context['post']['fechaLlegada'];
+        $num = $context['post']['num'];
+        $calle = $context['post']['calle'];
+        $localidad = $context['post']['localidad'];
+        $departamento = $context['post']['departamento'];
+
+        modeloPaquetes::alta($numBulto, $gmailCliente, $fechaLlegada, $num, $calle, $localidad, $departamento, $this->conn);
         header('location: ../../../Vista/indexAdministrador.php');
     }
 
     public function eliminar($context)
     {
-        $id = $context['post']['id'];
-        modeloAlmacenes::baja($id, $this->conn);
+        $numBulto = $context['post']['numBulto'];
+        modeloPaquetes::baja($numBulto, $this->conn);
         header('location: ../../../Vista/indexAdministrador.php');
     }
 
     public function mostrar($context)
     {
-        $json = json_decode(modeloAlmacenes::listado($this->conn));
+        $json = json_decode(modeloPaquetes::listado($this->conn));
         $result = $json;
 
         $arrayConsulta = array();
 
         foreach ($result as $row) {
-            $idAlmacen = $row->idAlmacen;
-            $ubicacion = $row->ubicacion;
-            $descUbi = $row->descUbi;
-            array_push($arrayConsulta, ['ID: ' => $idAlmacen, '<br> Ubicación: ' => $ubicacion, '<br> Descripción de ubicación: ' => $descUbi . '<br><br>']);
+            // numBulto, gmailCliente, idRastreo, fechaLlegada, num, calle, localidad, departamento
+            $numBulto = $row->numBulto;
+            $gmailCliente = $row->gmailCliente;
+            $idRastreo = $row->idRastreo;
+            $fechaLlegada = $row->fechaLlegada;
+            $fechaEntrega = $row->fechaEntrega;
+            $num = $row->num;
+            $calle = $row->calle;
+            $localidad = $row->localidad;
+            $departamento = $row->departamento;
+            array_push($arrayConsulta, ['Número de bulto: ' => $numBulto, '<br> Gmail del cliente: ' => $gmailCliente, '<br> ID de rastreo: ' => $idRastreo, '<br> Fecha de llegada: ' => $fechaLlegada, '<br> Fecha de entrega: ' => $fechaEntrega, '<br> Num: ' => $num, '<br> Calle: ' => $calle, '<br> Localidad: ' => $localidad, '<br> Departamento: ' => $departamento . '<br><br>']);
         }
 
         foreach ($arrayConsulta as $value) {

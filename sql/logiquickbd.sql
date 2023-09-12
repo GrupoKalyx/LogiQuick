@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Sep 05, 2023 at 07:37 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 08-09-2023 a las 16:34:06
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `logiquickbd`
+-- Base de datos: `logiquickbd`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `almacenes`
+-- Estructura de tabla para la tabla `almacenes`
 --
 
 CREATE TABLE `almacenes` (
@@ -34,19 +34,20 @@ CREATE TABLE `almacenes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `almacenes`
+-- Volcado de datos para la tabla `almacenes`
 --
 
 INSERT INTO `almacenes` (`idAlmacen`, `ubicacion`, `descUbi`) VALUES
 (0, 'Montevideo', ''),
 (1, 'Paysandu', ''),
 (2, 'Pando', ''),
-(3, 'Shangrila', '');
+(3, 'Shangrila', ''),
+(4, 'UIYHBIDUBQAWIUOBh', '23454235234264');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `logins`
+-- Estructura de tabla para la tabla `logins`
 --
 
 CREATE TABLE `logins` (
@@ -55,22 +56,16 @@ CREATE TABLE `logins` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `logins`
+-- Volcado de datos para la tabla `logins`
 --
 
 INSERT INTO `logins` (`idLogin`, `contrasenia`) VALUES
-(1, 'root'),
-(2, '2'),
-(3, 'destructor'),
-(5574, 'superEpicaYDificilContraseña'),
-(56777777, '4s4y45y45y'),
-(7, '7777777'),
-(55741419, 'root');
+(1, '5623');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `lotes`
+-- Estructura de tabla para la tabla `lotes`
 --
 
 CREATE TABLE `lotes` (
@@ -79,38 +74,45 @@ CREATE TABLE `lotes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `lotes`
+-- Volcado de datos para la tabla `lotes`
 --
 
 INSERT INTO `lotes` (`numLote`, `estado`) VALUES
-(4, 'en calle');
+(4, 'en calle'),
+(5, 'enDestino');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `paquetes`
+-- Estructura de tabla para la tabla `paquetes`
 --
 
 CREATE TABLE `paquetes` (
-  `numBulto` int(20) NOT NULL,
-  `estado` varchar(255) NOT NULL,
-  `gmailCliente` varchar(255) NOT NULL,
-  `idRastreo` bigint(16) NOT NULL
+  `numBulto` int(10) NOT NULL,
+  `gmailCliente` varchar(64) NOT NULL,
+  `idRastreo` bigint(16) NOT NULL,
+  `fechaLlegada` datetime DEFAULT NULL,
+  `fechaEntrega` datetime DEFAULT NULL,
+  `num` int(4) NOT NULL,
+  `calle` int(64) NOT NULL,
+  `localidad` int(32) DEFAULT NULL,
+  `departamento` varchar(16) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `paquetes`
+-- Volcado de datos para la tabla `paquetes`
 --
 
-INSERT INTO `paquetes` (`numBulto`, `estado`, `gmailCliente`, `idRastreo`) VALUES
-(1, 'enDestino', 'example@hotmail.com ', 8334095785),
-(2, 'enDestino', 'example@gmail.com', 8530122412),
-(3, 'enDestino', 'elpepetilin@gmail.com', 3381331158);
+INSERT INTO `paquetes` (`numBulto`, `gmailCliente`, `idRastreo`, `fechaLlegada`, `fechaEntrega`, `num`, `calle`, `localidad`, `departamento`) VALUES
+(1, 'example@hotmail.com ', 8334095785, NULL, NULL, 0, 0, NULL, ''),
+(2, 'example@gmail.com', 8530122412, NULL, NULL, 0, 0, NULL, ''),
+(3, 'elpepetilin@gmail.com', 3381331158, NULL, NULL, 0, 0, NULL, ''),
+(7, 'elpepetilin@gmail.com', 8302816760, NULL, NULL, 0, 0, NULL, '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tokens`
+-- Estructura de tabla para la tabla `tokens`
 --
 
 CREATE TABLE `tokens` (
@@ -119,7 +121,7 @@ CREATE TABLE `tokens` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tokens`
+-- Volcado de datos para la tabla `tokens`
 --
 
 INSERT INTO `tokens` (`tokenUsuario`, `idToken`) VALUES
@@ -139,7 +141,7 @@ INSERT INTO `tokens` (`tokenUsuario`, `idToken`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuarios`
+-- Estructura de tabla para la tabla `usuarios`
 --
 
 CREATE TABLE `usuarios` (
@@ -149,16 +151,16 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `usuarios`
+-- Volcado de datos para la tabla `usuarios`
 --
 
 INSERT INTO `usuarios` (`ci`, `nombre`, `tipo`) VALUES
-(7, 'Séptimo', 'Admin');
+(1, '7895', 'Admin');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `vehiculos`
+-- Estructura de tabla para la tabla `vehiculos`
 --
 
 CREATE TABLE `vehiculos` (
@@ -167,29 +169,29 @@ CREATE TABLE `vehiculos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `almacenes`
+-- Indices de la tabla `almacenes`
 --
 ALTER TABLE `almacenes`
   ADD PRIMARY KEY (`idAlmacen`);
 
 --
--- Indexes for table `lotes`
+-- Indices de la tabla `lotes`
 --
 ALTER TABLE `lotes`
   ADD PRIMARY KEY (`numLote`);
 
 --
--- Indexes for table `paquetes`
+-- Indices de la tabla `paquetes`
 --
 ALTER TABLE `paquetes`
   ADD PRIMARY KEY (`numBulto`);
 
 --
--- Indexes for table `usuarios`
+-- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`ci`);
