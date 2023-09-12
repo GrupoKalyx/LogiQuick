@@ -1,18 +1,21 @@
--<?php
+<?php
     require_once('../../sql/dbconection.php');
-    echo '<link rel="stylesheet" href="../../../estilos/FormStyle2.css">';
 
     $query = "SELECT * FROM paquetes";
     $result = mysqli_query($conn, $query);
     $arrayConsulta = array();
 
     foreach ($result->fetch_all(MYSQLI_ASSOC) as $row) {
-        $num = $row['numBulto'];
-        // $vol = $row['volumen'];
-        $est = $row['estado'];
-        $correo = $row['gmailCliente'];
-        $idr = $row['idRastreo'];
-        array_push($arrayConsulta, ['Numero de bulto : ' => $num, /*'<br> volumen: ' => $vol, */ '<br>Estado: ' => $est, '<br>Correo del cliente: ' => $correo, '<br>ID de rastreo: ' => $idr . '<br><br>']);
+        $numBulto = $row['numBulto'];
+        $gmailCliente = $row['gmailCliente'];
+        $idRastreo = $row['idRastreo'];
+        $fechaLlegada = $row['fechaLlegada'];
+        $fechaEntrega = $row['fechaEntrega'];
+        $num = $row['num'];
+        $calle = $row['calle'];
+        $localidad = $row['localidad'];
+        $departamento = $row['departamento'];
+        array_push($arrayConsulta, ['Número de bulto: ' => $numBulto, '<br> Gmail del cliente: ' => $gmailCliente, '<br> ID de rastreo: ' => $idRastreo, '<br> Fecha de llegada: ' => $fechaLlegada, '<br> Fecha de entrega: ' => $fechaEntrega, '<br> Num: ' => $num, '<br> Calle: ' => $calle, '<br> Localidad: ' => $localidad, '<br> Departamento: ' => $departamento . '<br><br>']);
     }
 
     foreach ($arrayConsulta as $value) {
@@ -20,4 +23,3 @@
             echo "<a class='form__viewContent'> " . $key . " " . $v . "</a>";
         }
     }
-    ?>

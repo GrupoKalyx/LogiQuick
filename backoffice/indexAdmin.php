@@ -1,6 +1,9 @@
-<? if (isset($_POST['btncerrar'])) {
+<?php
+if (isset($_POST['btncerrar'])) {
+    echo "iruaghhhhhhhhhhhhhhhhhhhhhfkvjsabbbbbbbbbbbbdd";
     header("location: loginAdmin.php");
-} ?>
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -32,6 +35,7 @@
             <?php // echo $_SESSION['nombre']; 
             ?>
         </h1>
+        <?= var_dump(isset($_POST['btncerrar'])); ?>
     </div>
     <div class="form__container__backoffice">
         <div class="form">
@@ -103,25 +107,33 @@
     <div class="form__container__backoffice">
         <div class="form">
             <h2>Lista de paquetes</h2><br>
-            <iframe src="CRUD/paquetes/Consultas.php" style="height: 400px;  border-radius: 5px ;border: #ffc870 3px solid;">>
+            <iframe src="CRUD/paquetes/Consultas.php" style="height: 700px;  border-radius: 5px ;border: #ffc870 3px solid;">>
             </iframe>
         </div>
         <div class="form">
             <h2>Ingresar paquete</h2>
             <form action="CRUD\paquetes\Altas.php" method="post">
-                Numero de Bulto<input class="form__input" type="text" name="numBulto"><br><br>
-                Estado actual<input class="form__input" type="text" name="estado"><br><br>
-                Correo del Cliente<input class="form__input" type="text" name="correo"><br><br>
+                Numero de bulto<input class="form__input" type="text" name="numBulto"><br><br>
+                Correo del cliente<input class="form__input" type="text" name="gmailCilente"><br><br>
+                Numero<input class="form__input" type="text" name="num"><br><br>
+                Calle<input class="form__input" type="text" name="calle"><br><br>
+                Localidad<input class="form__input" type="text" name="localidad"><br><br>
+                Departmaneto<input class="form__input" type="text" name="departamento"><br><br>
                 <button type="submit" class="form__button" name="actionbtn">Ingresar</button>
             </form>
         </div>
         <div class="form">
             <h2>Modificar datos de paquete</h2>
             <form action="CRUD\paquetes\Modificaciones.php" method="post">
-                Numero de paquete<input class="form__input" type="text" name="numBulto"><br>
+                <!-- $numBulto, $gmailCliente, $fechaLlegada, $num, $calle, $localidad, $departamento -->
+                Numero de bulto<input class="form__input" type="text" name="numBulto"><br>
                 <h2>Nuevos datos</h2>
-                Estado actual<input class="form__input" type="text" name="estado"><br><br>
-                Correo del Cliente<input class="form__input" type="text" name="correo"><br><br>
+                Correo del cliente<input class="form__input" type="text" name="gmailCliente"><br><br>
+                Fecha llegada<input class="form__input" type="text" name="fechaLlegada"><br><br>
+                Numero<input class="form__input" type="text" name="num"><br><br>
+                Calle<input class="form__input" type="text" name="calle"><br><br>
+                Localidad<input class="form__input" type="text" name="localidad"><br><br>
+                Departamento<input class="form__input" type="text" name="departamento"><br><br>
                 <button type="submit" class="form__button" name="actionbtn2">Modificar</button>
             </form>
         </div>

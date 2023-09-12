@@ -1,6 +1,6 @@
-<?
-session_start();
-?>
+<?php
+require 'firstAdmin.php';
+if (isset($_SESSION)) { session_destroy(); } ?>
 <!DOCTYPE html>
 <html lang="es">
 

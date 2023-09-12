@@ -38,7 +38,6 @@ class controladorPaquetes
         $arrayConsulta = array();
 
         foreach ($result as $row) {
-            // numBulto, gmailCliente, idRastreo, fechaLlegada, num, calle, localidad, departamento
             $numBulto = $row->numBulto;
             $gmailCliente = $row->gmailCliente;
             $idRastreo = $row->idRastreo;

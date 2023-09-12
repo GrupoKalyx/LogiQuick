@@ -1,6 +1,5 @@
 <?php
 require_once('../../sql/dbconection.php');
-echo '<link rel="stylesheet" href="../../../estilos/FormStyle2.css">';
 
 $query = "SELECT * FROM almacenes";
 $result = mysqli_query($conn, $query);
