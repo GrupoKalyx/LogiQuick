@@ -11,7 +11,6 @@ class controladorPaquetes
 
     public function ingresar($context)
     {
-        // $numBulto, $gmailCliente, $fechaLlegada, $num, $calle, $localidad, $departamento
         $numBulto = $context['post']['numBulto'];
         $gmailCliente = $context['post']['gmailCliente'];
         $fechaLlegada = $context['post']['fechaLlegada'];
@@ -61,10 +60,15 @@ class controladorPaquetes
 
     public function modificar($context)
     {
-        $id = $context['post']['id'];
-        $ubicacion = $context['post']['ubicacion'];
-        $descUbi = $context['post']['descUbi'];
-        modeloAlmacenes::modificacion($id, $ubicacion, $descUbi, $this->conn);
+        $numBulto = $context['post']['numBulto'];
+        $gmailCliente = $context['post']['gmailCliente'];
+        $fechaLlegada = $context['post']['fechaLlegada'];
+        $num = $context['post']['num'];
+        $calle = $context['post']['calle'];
+        $localidad = $context['post']['localidad'];
+        $departamento = $context['post']['departamento'];
+        
+        modeloPaquetes::modificacion($numBulto, $gmailCliente, $fechaLlegada, $num, $calle, $localidad, $departamento, $this->conn);
         header('location: ../../../Vista/indexAdministrador.php');
     }
 }

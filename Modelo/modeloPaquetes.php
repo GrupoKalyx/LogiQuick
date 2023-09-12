@@ -15,8 +15,8 @@ class modeloPaquetes
 
     public static function modificacion($numBulto, $gmailCliente, $fechaLlegada, $num, $calle, $localidad, $departamento, $conn)
     {
-        $query = "UPDATE paquetes SET ubicacion = '$ubicacion' AND descUbi = '$desc' WHERE id = '$id'";
-        $conn->execute_query($query, [$id, $ubicacion, $desc]);
+        $query = "UPDATE paquetes SET gmailCliente = ? AND fechaLlegada = ? AND num = ? AND calle = ? AND localidad = ? AND departamento = ? WHERE numBulto = ?";
+        $conn->execute_query($query, [$gmailCliente, $fechaLlegada, $num, $calle, $localidad, $departamento, $numBulto]);
     }
 
     public static function baja($ci, $conn)
@@ -33,10 +33,10 @@ class modeloPaquetes
         return json_encode($result);
     }
 
-    public static function existe($idRastreo, $conn){
-        $query = "SELECT * FROM paquetes WHERE idRastreo = ?";
-        $result = $conn->execute_query($query, [$idRastreo]);
-        $num =
-        return $num
+    public static function existe($numBulto, $conn){
+        $query = "SELECT * FROM paquetes WHERE numBulto = ?";
+        $result = $conn->execute_query($query, [$numBulto]);
+        $num = mysqli_num_rows($result);
+        return $num;
     }
 }
