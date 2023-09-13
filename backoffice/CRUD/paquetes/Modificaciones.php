@@ -2,13 +2,17 @@
 require_once('../../sql/dbconection.php');
 
 $numBulto = $_POST['numBulto'];
-// $volumen = $_POST['vol'];
-$nuevoEstado = $_POST['estado'];
-$nuevoCorreo = $_POST['correo'];
+$gmailCliente = $_POST['gmailCliente'];
+$num = $_POST['num'];
+$calle = $_POST['calle'];
+$localidad = $_POST['localidad'];
+$departamento = $_POST['departamento'];
 
-$sql = "UPDATE paquetes SET /*volumen = '$volumen' , */estado = '$nuevoEstado' , gmailCliente = '$nuevoCorreo' WHERE numBulto = '$numBulto'";
+$query = "UPDATE paquetes SET gmailCliente = ? , num = ?, calle = ?, localidad = ?, departamento = ? WHERE numBulto = ?";
+$exc = $conn->execute_query($query, [$gmailCliente, $num, $calle, $localidad, $departamento, $numBulto]);
 
-if ($conn->query($sql)) {
-  echo '<p>Cliente actualizado con éxito</p>';
-  header("location:http://localhost/LogiQuick/backoffice/indexAdministrator.php");
+if ($exc) {
+  echo "<script>alert('Paquete actualizado con éxito.');window.location='../../indexAdmin.php'</script>";
+} else {
+  echo "<script>alert('Ha ocurrido un error inesperado.');window.location='../../indexAdmin.php'</script>";
 }

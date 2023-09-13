@@ -1,6 +1,5 @@
 <?php
 if (isset($_POST['btncerrar'])) {
-    echo "iruaghhhhhhhhhhhhhhhhhhhhhfkvjsabbbbbbbbbbbbdd";
     header("location: loginAdmin.php");
 }
 ?>
@@ -32,26 +31,38 @@ if (isset($_POST['btncerrar'])) {
     <div>
         <br>
         <h1 class="nav__text"> Bienvenido:
-            <?php // echo $_SESSION['nombre']; 
+            <?php // echo $_SESSION['nombre'];
             ?>
         </h1>
-        <?= var_dump(isset($_POST['btncerrar'])); ?>
     </div>
-    <div class="form__container__backoffice">
+    <div class="form__container__backoffice"> <!-- CRUD de Usuarios -->
+        <div class="form">
+            <h2>Ingresar Usuarios Nuevos</h2>
+            <form action="CRUD/usuarios/Altas.php" method="post">
+                ID <input class="form__input" type="text" name="id" required><br>
+                Nombre de Usuario <input class="form__input" type="text" name="nombre"><br>
+                Contraseña <input class="form__input" type="password" name="contrasenia"><br><br>
+                Tipo de usuario <select class="form__input" name="tipo">
+                    <option value="Admin">Admin</option>
+                    <option value="Funcionario">Funcionario</option>
+                    <option value="Externo">Externo</option>
+                    <option value="Camionero">Camionero</option>
+                    <option value="Delivery">Delivery</option>
+                </select><br><br>
+                <button class="form__button" type="submit">Ingresar</button>
+            </form>
+        </div>
+        <div class="form">
+            <h2>Dar de baja Usuario</h2>
+            <form class="m" action="CRUD/usuarios/Bajas.php" method="post">
+                ID de usuario <input class="form__input" type="text" name="id"><br><br>
+                <button class="form__button" type="submit">Eliminar</button>
+            </form>
+        </div>
         <div class="form">
             <h2>Usuarios registrados</h2><br>
             <iframe src="CRUD/usuarios/Consultas.php" style="height: 400px;  border-radius: 5px ;border: #ffc870 3px solid;">
             </iframe>
-        </div>
-        <div class="form">
-            <h2>Ingresar Usuarios Nuevos</h2>
-            <form action="CRUD/usuarios/Altas.php" method="post">
-                ID <input class="form__input" type="text" name="id"><br>
-                Nombre de Usuario <input class="form__input" type="text" name="nombre"><br>
-                Contraseña <input class="form__input" type="password" name="contrasenia"><br><br>
-                Tipo de usuario<input class="form__input" type="text" name="tipo" placeholder="'Admin', 'Almacen', 'Externo' o 'Camionero'"><br><br>
-                <button class="form__button" type="submit">Ingresar</button>
-            </form>
         </div>
         <div class="form">
             <h2>Modificar Usuario</h2>
@@ -63,78 +74,53 @@ if (isset($_POST['btncerrar'])) {
                 <button class="form__button" type="submit">Modificar</button>
             </form>
         </div>
+    </div>
+    <div class="form__container__backoffice"> <!-- CRUD de Almacenes -->
         <div class="form">
-            <h2>Dar de baja Usuario</h2>
-            <form class="m" action="CRUD/usuarios/Bajas.php" method="post">
-                ID de usuario <input class="form__input" type="text" name="id"><br><br>
+            <h2> Ingresar datos de Almacen</h2>
+            <form action="CRUD/almacenes/Altas.php" method="post">
+                Numero de almacen <input type="text" class="form__input" name="numAlmacen">
+                Ubicacion de almacen<input class="form__input" type="text" name="ubicacion">
+                Desc. de ubicación del almacen<input class="form__input" type="text" name="descUbi"><br><br>
+                <button class="form__button" type="submit">Ingresar</button>
+            </form>
+        </div>
+        <div class="form">
+            <h2>Eliminar un almacen</h2>
+            <form action="CRUD/almacenes/Bajas.php" method="post">
+                Numero de almacen<input class="form__input" type="text" name="numAlmacen"><br><br>
                 <button class="form__button" type="submit">Eliminar</button>
             </form>
         </div>
-    </div>
-    <div class="form__container__backoffice">
         <div class="form">
             <h2>Almacenes registrados</h2><br>
             <iframe src="CRUD/almacenes/Consultas.php" style="height: 400px;  border-radius: 5px ;border: #ffc870 3px solid;">
             </iframe>
         </div>
         <div class="form">
-            <h2> Ingresar datos de Almacen</h2>
-            <form action="CRUD/almacenes/Altas.php" method="post">
-                Id de almacen <input type="text" class="form__input" name="idAlmacen">
-                Ubicacion de almacen<input class="form__input" type="text" name="ubiAlmacen">
-                Desc. de ubicación del almacen<input class="form__input" type="text" name="descUbiAlmacen"><br><br>
-                <button class="form__button" type="submit">Ingresar</button>
-            </form>
-        </div>
-        <div class="form">
             <h2> Ingresar datos de Almacen a modificar</h2>
             <form action="CRUD/almacenes/Modificaciones.php" method="post">
-                Id de almacen<input class="form__input" type="text" name="almacen[]">
+                Numero de almacen <input class="form__input" type="text" name="numAlmacen">
                 <h2>Nuevos datos</h2>
-                Tipo de almacen<input class="form__input" type="text" name="almacen[]">
-                Ubicacion de almacen<input class="form__input" type="text" name="almacen[]"><br><br>
+                Ubicacion de almacen <input class="form__input" type="text" name="ubicacion">
+                Descripcion de ubicacion <input class="form__input" type="text" name="descUbi"><br><br>
                 <button class="form__button" type="submit">Modificar</button>
             </form>
         </div>
-        <div class="form">
-            <h2>Eliminar un almacen</h2>
-            <form action="CRUD/almacenes/Bajas.php" method="post">
-                Id de almacen<input class="form__input" type="text" name="eliminarAlmacen"><br><br>
-                <button class="form__button" type="submit">Eliminar</button>
-            </form>
-        </div>
     </div>
-    <div class="form__container__backoffice">
-        <div class="form">
-            <h2>Lista de paquetes</h2><br>
-            <iframe src="CRUD/paquetes/Consultas.php" style="height: 700px;  border-radius: 5px ;border: #ffc870 3px solid;">>
-            </iframe>
-        </div>
+    <div class="form__container__backoffice"> <!-- CRUD de Paquetes-->
         <div class="form">
             <h2>Ingresar paquete</h2>
             <form action="CRUD\paquetes\Altas.php" method="post">
-                Numero de bulto<input class="form__input" type="text" name="numBulto"><br><br>
-                Correo del cliente<input class="form__input" type="text" name="gmailCilente"><br><br>
-                Numero<input class="form__input" type="text" name="num"><br><br>
-                Calle<input class="form__input" type="text" name="calle"><br><br>
-                Localidad<input class="form__input" type="text" name="localidad"><br><br>
-                Departmaneto<input class="form__input" type="text" name="departamento"><br><br>
+                Numero de bulto <input class="form__input" type="text" name="numBulto" required><br><br>
+                Correo del cliente <input class="form__input" type="text" name="gmailCliente"><br><br>
+                Fecha de llegada <input class="form__input" type="date" name="fechaLlegada"required><br><br>
+                Horario de llegada <input class="form__input" type="time" name="horaLlegada"required><br><br>
+                Numero <input class="form__input" type="text" name="num"><br><br>
+                Calle <input class="form__input" type="text" name="calle"><br><br>
+                Localidad <input class="form__input" type="text" name="localidad"><br><br>
+                Departamento <input class="form__input" type="text" name="departamento"><br><br>
                 <button type="submit" class="form__button" name="actionbtn">Ingresar</button>
-            </form>
-        </div>
-        <div class="form">
-            <h2>Modificar datos de paquete</h2>
-            <form action="CRUD\paquetes\Modificaciones.php" method="post">
-                <!-- $numBulto, $gmailCliente, $fechaLlegada, $num, $calle, $localidad, $departamento -->
-                Numero de bulto<input class="form__input" type="text" name="numBulto"><br>
-                <h2>Nuevos datos</h2>
-                Correo del cliente<input class="form__input" type="text" name="gmailCliente"><br><br>
-                Fecha llegada<input class="form__input" type="text" name="fechaLlegada"><br><br>
-                Numero<input class="form__input" type="text" name="num"><br><br>
-                Calle<input class="form__input" type="text" name="calle"><br><br>
-                Localidad<input class="form__input" type="text" name="localidad"><br><br>
-                Departamento<input class="form__input" type="text" name="departamento"><br><br>
-                <button type="submit" class="form__button" name="actionbtn2">Modificar</button>
             </form>
         </div>
         <div class="form">
@@ -144,20 +130,32 @@ if (isset($_POST['btncerrar'])) {
                 <button class="form__button" type="submit">Eliminar</button>
             </form>
         </div>
-    </div>
-    <div class="form__container__backoffice">
         <div class="form">
-            <h2>Lista de lotes</h2><br>
-            <iframe src="CRUD/lotes/Consultas.php" style="height: 400px;  border-radius: 5px ;border: #ffc870 3px solid;">>
+            <h2>Lista de paquetes</h2><br>
+            <iframe src="CRUD/paquetes/Consultas.php" style="height: 700px;  border-radius: 5px ;border: #ffc870 3px solid;">>
             </iframe>
         </div>
+        <div class="form">
+            <h2>Modificar datos de paquete</h2>
+            <form action="CRUD\paquetes\Modificaciones.php" method="post">
+                Numero de bulto <input class="form__input" type="text" name="numBulto" required><br><br>
+                Correo del cliente <input class="form__input" type="text" name="gmailCliente"><br><br>
+                Numero <input class="form__input" type="text" name="num"><br><br>
+                Calle <input class="form__input" type="text" name="calle"><br><br>
+                Localidad <input class="form__input" type="text" name="localidad"><br><br>
+                Departamento <input class="form__input" type="text" name="departamento"><br><br>
+                <button class="form__button" type="submit">Modificar</button>
+            </form>
+        </div>
+    </div>
+    <div class="form__container__backoffice"> <!-- CRUD de Lotes -->
         <div class="form">
             <h2>Ingresar lote</h2>
             <form action="CRUD\lotes\Altas.php" method="post">
                 Numero de lote<input class="form__input" type="text" name="numLote"><br><br>
                 Estado <input class="form__input" type="text" name="estado"><br><br>
                 <button type="submit" class="form__button" name="actionbtn">Crear</button>
-            </form>
+            
             <!-- <form action="CRUD\lotes\AltasPaquete.php" method="post">
                 Agregar paquete <br><input class="form__input" type="text" id="paquete" name="paquete"><br><br>
                 <button class="form__button" formaction="CRUD\lotes\MandarPaquetesLote.php" type="button" name="btn" id="btn">Agregar</button><br>
@@ -173,7 +171,19 @@ if (isset($_POST['btncerrar'])) {
                     Ultimo paquete ingresado (ID) : <span id="textoRecibido">#</span>
                 </span><br><br>
                 <button type="submit" class="form__button" name="actionbtn">Ingresar</button>
-                </form>-->
+                </form>--></form>
+        </div>
+        <div class="form">
+            <h2>Eliminar Lote</h2>
+            <form action="CRUD\lotes\Bajas.php" method="post">
+                Numero de Lote<input class="form__input" type="text" name="eliminacion"><br><br>
+                <button class="form__button" type="submit">Eliminar</button>
+            </form>
+        </div>
+        <div class="form">
+            <h2>Lista de lotes</h2><br>
+            <iframe src="CRUD/lotes/Consultas.php" style="height: 400px;  border-radius: 5px ;border: #ffc870 3px solid;">>
+            </iframe>
         </div>
         <div class="form">
             <h2>Modificar datos del Lote</h2>
@@ -182,13 +192,6 @@ if (isset($_POST['btncerrar'])) {
                 <h2>Nuevos datos</h2>
                 Estado actual <input class="form__input" type="text" name="estadoAct"><br><br>
                 <button type="submit" class="form__button">Modificar</button>
-            </form>
-        </div>
-        <div class="form">
-            <h2>Eliminar Lote</h2>
-            <form action="CRUD\lotes\Bajas.php" method="post">
-                Numero de Lote<input class="form__input" type="text" name="eliminacion"><br><br>
-                <button class="form__button" type="submit">Eliminar</button>
             </form>
         </div>
     </div>

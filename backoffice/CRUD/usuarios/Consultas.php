@@ -1,8 +1,7 @@
 <?php
 require_once('../../sql/dbconection.php');
-echo '<link rel="stylesheet" href="../../estilos/FormStyleBackoffice.css">';
 
-$query = "SELECT * FROM usuarios JOIN logins";
+$query = "SELECT * FROM usuarios INNER JOIN logins WHERE usuarios.ci = logins.idLogin";
 $result = $conn->execute_query($query);
 
 $arrayConsulta = array();
