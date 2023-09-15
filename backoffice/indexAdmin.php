@@ -31,7 +31,11 @@ if (isset($_POST['btncerrar'])) {
     <div>
         <br>
         <h1 class="nav__text"> Bienvenido:
-            <?php // echo $_SESSION['nombre'];
+            <?php
+            // header("location: ../Controlador/superControlador.php/Usuarios/mostrar?url=`" . $_SERVER['REQUEST_URI'] . "`");
+            // $json = json_decode();
+            // $userName = ;
+            // echo $userName;
             ?>
         </h1>
     </div>
@@ -39,7 +43,7 @@ if (isset($_POST['btncerrar'])) {
         <div class="form">
             <h2>Ingresar Usuarios Nuevos</h2>
             <form action="CRUD/usuarios/Altas.php" method="post">
-                ID <input class="form__input" type="text" name="id" required><br>
+                CI <input class="form__input" type="text" name="ci" required><br>
                 Nombre de Usuario <input class="form__input" type="text" name="nombre"><br>
                 Contraseña <input class="form__input" type="password" name="contrasenia"><br><br>
                 Tipo de usuario <select class="form__input" name="tipo">

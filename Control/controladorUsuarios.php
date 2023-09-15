@@ -11,7 +11,7 @@ class controladorUsuarios
 
     public function ingresar($context)
     {
-        $ci = $context['post']['id'];
+        $ci = $context['post']['ci'];
         $nombre = $context['post']['nombre'];
         $contrasenia = $context['post']['contrasenia'];
         $tipo = $context['post']['tipo'];
@@ -21,15 +21,20 @@ class controladorUsuarios
 
     public function eliminar($context)
     {
-        $ci = $context['post']['id'];
+        $ci = $context['post']['ci'];
         modeloUsuarios::baja($ci, $this->conn);
         header('location: ../../../Vista/indexAdministrador.php');
     }
 
-    public function mostrar($context)
+    public function mostrar($context){
+        $ci = $context;
+        $result = json_decode(modeloUsuarios::muestra($ci, $this->conn), true);
+        return $result;
+    }
+
+    public function listar($context)
     {
-        $json = json_decode(modeloUsuarios::listado($this->conn));
-        $result = $json;
+        $result = json_decode(modeloUsuarios::listado($this->conn));
 
         $arrayConsulta = array();
 
@@ -49,7 +54,7 @@ class controladorUsuarios
 
     public function modificar($context)
     {
-        $ci = $context['post']['id'];
+        $ci = $context['post']['ci'];
         $nombre = $context['post']['nombre'];
         $contrasenia = $context['post']['contrasenia'];
         modeloUsuarios::modificacion($ci, $nombre, $contrasenia, $this->conn);

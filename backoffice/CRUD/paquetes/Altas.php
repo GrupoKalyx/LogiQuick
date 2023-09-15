@@ -25,7 +25,7 @@ $query = "INSERT INTO paquetes (numBulto, gmailCliente, idRastreo, fechaLlegada,
 $exc = $conn->execute_query($query, [$numBulto, $gmailCliente, $idRastreo, $fechaLlegada, $num, $calle, $localidad, $departamento]);
 
 if ($exc) {
-    echo "<script>alert('Cliente actualizado con éxito.');window.location='../../indexAdmin.php'</script>";
+    echo "<script>alert('Paquete ingresado con éxito.');window.location='../../indexAdmin.php'</script>";
 } else {
     echo "<script>alert('Ha ocurrido un error inesperado.');window.location='../../indexAdmin.php'</script>";
 }

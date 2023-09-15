@@ -23,7 +23,13 @@
       </div>
     </nav>
   </header>
-
+        <br>
+        <h1 class="nav__text"> Bienvenido:<b>
+            <?php
+            echo ($_GET['nombre']);
+            ?>
+            </b>
+        </h1>
   <footer>
     <div class="footer">
 

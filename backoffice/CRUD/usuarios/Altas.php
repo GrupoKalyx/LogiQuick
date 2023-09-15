@@ -1,7 +1,7 @@
 <?php
 require_once('../../sql/dbconection.php');
 
-$ci = $_POST['id'];
+$ci = $_POST['ci'];
 $nombre = $_POST['nombre'];
 $contrasenia = $_POST['contrasenia'];
 $tipo = $_POST['tipo'];

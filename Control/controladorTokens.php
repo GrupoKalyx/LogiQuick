@@ -9,17 +9,17 @@ class controladorTokens
         $this->conn = $conn;
     }
 
-    public function createToken($content)
+    public function createToken($context)
     {
-        $ci = $content;
+        $ci = $context;
         $token = modeloTokens::generateToken();
         modeloTokens::setToken($token, $ci, $this->conn);
         return $token;
     }
 
-    public function verify($content)
+    public function verify($context)
     {
-        $token = $content['post']['chkToken'];
+        $token = $context['post']['chkToken'];
         if (modeloTokens::chkToken($token,  $this->conn) == 0) {
             echo "<script>alert('Hubo un error en la sesión, intente volverse a ingresar.');window.location='../../../Vista/login.php'</script>";
         }
