@@ -21,8 +21,7 @@ class modeloUsuarios
         $query = "SELECT * FROM usuarios WHERE ci = ? LIMIT 1";
         $exc = $conn->execute_query($query, [$ci]);
         $fResult = $exc->fetch_array(MYSQLI_ASSOC);
-        $json = json_encode($fResult);
-        return $json;
+        return json_encode($fResult);
     }
 
     public static function listado($conn)

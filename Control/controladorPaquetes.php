@@ -30,7 +30,13 @@ class controladorPaquetes
         header('location: ../../../Vista/indexAdministrador.php');
     }
 
-    public function mostrar($context)
+    public function rastrear($context){
+        $ci = $context;
+        $result = modeloUsuarios::muestra($ci, $this->conn);
+        return $result;
+    }
+
+    public function listar($context)
     {
         $json = json_decode(modeloPaquetes::listado($this->conn));
         $result = $json;

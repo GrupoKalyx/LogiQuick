@@ -24,6 +24,13 @@
   font-size: 16px;
 } */
 
+.espacio__blanco{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
   
 /* LOGIN TEXT */
 .nav__text{
@@ -38,15 +45,16 @@
   background: #3e838c;
   height: 6.25em;
 }
-
 .navbar__logo{
-  height: 5em;
+  padding-left: 1em;
+  height: 6.25em;
+  display: grid;
+  place-items: center;
 }
 
 .navbar__logo img{
   height: 5em;
   width: 5em;
-  margin-left: 1em;
 }
 
 .navbar__list{
@@ -257,3 +265,12 @@ padding: 1em;
   width: 0em;
 }
 }
+
+
+
+
+
+
+
+
+

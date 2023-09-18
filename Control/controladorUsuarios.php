@@ -28,7 +28,7 @@ class controladorUsuarios
 
     public function mostrar($context){
         $ci = $context;
-        $result = json_decode(modeloUsuarios::muestra($ci, $this->conn), true);
+        $result = modeloUsuarios::muestra($ci, $this->conn);
         return $result;
     }
 

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="estilos/style.css">
-  <title>LogiQuick</title>
+  <title>Document</title>
 </head>
 <body class="body">
 
@@ -13,18 +13,29 @@
       <div class="navbar__logo">
         <img src="assets/logo.png" alt="logo">
       </div>
+
       <ul class="navbar__list">
         <li class="navbar__list__item"><a href="#">Verificar Entrada</a></li>
-        <li class="navbar__list__item"><a href="referencias/IngresarPaquete.html">Ingresar Paquete</a></li>
+        <li class="navbar__list__item"><a href="#">Asignación</a>
+          <ul class="navbar__submenu">
+            <li class="navbar__submenu__item"><a href="referencias/AsignacionDeLotes.html">Paquete a Lote</a></li>
+            <li class="navbar__submenu__item"><a href="referencias/LoteACamion.html">Lote a Camión</a></li>
+            <li class="navbar__submenu__item"><a href="referencias/CamioneroACamion.html">Camionero a Camión</a></li>
+          </ul>
+        </li>
+        <li class="navbar__list__item"><a href="#">Seguimiento</a></li>
+        <li class="navbar__logout">  <button class="navbar__logout__button"><a href="login.php">Cerrar Sesión</a></button>
+        </li>
       </ul>
+
       <!-- <button class="form__button" id="traductor-btn">Traducir Pagina </button> -->
-      <div class="navbar__logout"> 
-        <button class="navbar__logout__button"><a href="login.php">Cerrar Sesión</a></button>
-      </div>
+
     </nav>
   </header>
 
   <div class="espacio__blanco"></div>
+  
+  <script src="Traducir.js"></script>
 
   <footer>
     <div class="footer">
@@ -34,7 +45,6 @@
         <li class="footer__list__item"><a href="">Sobre Nosotros</a></li>
       </ul>
 
-      <script src="Traducir.js"></script>
       <div class="footer__copyright">
         <p>Copyright © 2023 Kalyx Software. Todos los derechos reservados</p>
       </div>

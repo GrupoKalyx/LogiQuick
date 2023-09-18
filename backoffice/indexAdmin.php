@@ -13,7 +13,7 @@ session_start();
     <link rel="stylesheet" href="estilos/FormStyleBackoffice2.css">
     <link rel="stylesheet" href="estilos/backofficeStyle.css">
     <link rel="icon" type="image/x-icon" href="assets/logo.png">
-    <title>Backoffice</title>
+    <title>LogiQuick</title>
 </head>
 
 <body>

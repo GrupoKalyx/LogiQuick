@@ -1,80 +1,93 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/estilos/FormStyle2.css">
-    <link rel="stylesheet" href="/estilos/style.css">
+    <title>QuickCarry</title>
     <link rel="stylesheet" href="/estilos/QuickCarryStyle.css">
-    <title>Document</title>
+    <meta name="title" content="QuickCarry">
 </head>
+
 <body>
-    <header>
-        <nav class="navbar">
-          <div class="navbar__logo">
-            <img src="/assets/logo.png" alt="logo">
-          </div>
-          <h1 class="nav__text">Bienvenido a Quick Carry</h1>
+
+    <header class="header">
+        <nav class="nav container">
+            <div class="nav__logo">
+                <h2 class="nav__title">QuickCarry</h2>
+            </div>
+
+            <ul class="nav__links nav__links--menu">
+                <li class="nav__item">
+                    <a href="#" class="nav__item__link">AA</a>
+                </li>
+                <li class="nav__item">
+                    <a href="#" class="nav__item__link">AA</a>
+                </li>
+                <li class="nav__item">
+                    <a href="#" class="nav__item__link">AA</a>
+                </li>
+                <li class="nav__item">
+                    <a href="#" class="nav__item__link">AA</a>
+                </li>
+
+                <img src="/assets/close.svg" class="nav__close">
+            </ul>
+
+            <div class="nav__menu">
+                <img src="/assets/menu.svg" class="nav__img">
+            </div>
         </nav>
-       </header>
 
-    <div class="container">
-        <section class="section">
-            <p class="section__text">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis assumenda nesciunt explicabo laborum in? Neque minus dolore, ratione saepe animi earum dolor, aperiam provident doloribus est magni a officiis similique.
-                Ea pariatur, odit voluptatem facilis minima deserunt ex iure eius ipsam assumenda quidem veniam iusto voluptatum quos at sit vel porro illum dicta quae tenetur. Libero velit facilis odit fugiat.
-                Iste, nulla. Exercitationem consequatur omnis officiis, id sed, nihil explicabo pariatur a fugit unde laudantium, placeat illo tempore natus voluptates error quidem. Provident ipsa eius at fugit sed magnam modi.
-                Aliquid esse asperiores quasi, exercitationem tempore porro consequatur, quod dolore sit voluptatibus illo in ratione ipsa culpa iste eum? Sed quam a autem porro cumque et dolorum incidunt ducimus esse!
-                Quo nesciunt fuga cumque possimus neque eum expedita maiores doloribus ratione. Delectus totam rem sunt necessitatibus. Cum voluptatem voluptatum beatae eaque aut laboriosam suscipit, numquam qui quisquam cupiditate eligendi dicta!
-                Rem quam iste id maiores qui delectus numquam, inventore a corrupti rerum nulla praesentium iusto fugit perspiciatis modi voluptas dolore, at temporibus molestias expedita. Itaque iusto ab delectus distinctio enim!
-                Distinctio, voluptates assumenda optio aliquid eos fugiat! Itaque impedit, minus eos labore quos quaerat officiis quae id nihil animi, corporis nisi ab? Delectus iusto culpa incidunt, ab eos enim adipisci!
-                Odio amet reprehenderit laudantium corrupti, cupiditate inventore iste perspiciatis magnam temporibus autem eius tenetur natus mollitia tempora ratione! Maxime, nobis quod consequatur rerum ut saepe aspernatur facere dolorem placeat labore?
-                Esse cumque eum vero minus soluta neque, quam rerum quibusdam ex beatae quae excepturi atque vitae ab sunt rem nam suscipit repellat voluptatem consequuntur ut. Quibusdam cum voluptate id velit.
-                Amet autem labore commodi harum, inventore quod recusandae optio sed minus dolorem maxime illum accusamus quo asperiores. Provident at eveniet dolor mollitia, doloribus ullam unde nobis quisquam, saepe dicta alias?
-            </p>
+          <section class="header__container container">
+            <h1 class="header__title">Rastrea tu paquete</h1>
+                <form id="tracking-form">
+                    <label class="tracking__id" for="tracking-id">ID de Rastreo:</label>
+                    <input class="tracking__text" type="text" id="tracking-id" name="tracking-id" placeholder="Ingrese su ID de Rastreo" required>
+                    <button class="tracking__submit" type="submit">Seguir Paquete</button>
+                </form>
+                 <div id="tracking-result"></div>
         </section>
-        <section class="section--form">
-                <h2>¡Rastree Su Pedido!</h2>
-                <form class="form" method="POST">
-            
-                    <h2 class="form__text">Ingrese el ID de Rastreo</h2>
-            
-                    <div class="form__group">
-                      <label class="form__label" for="IdRastreo">Id Rastreo:</label>
-                      <input class="form__input" type="number" id="IdRastreo" name="IdRastreo" required>
-                    </div>
-                    <button class="form__button" type="submit">Seguir</button>
-                  </form>
-        </section>
-        <section class="section">
-            <p class="section__text">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis assumenda nesciunt explicabo laborum in? Neque minus dolore, ratione saepe animi earum dolor, aperiam provident doloribus est magni a officiis similique.
-                Ea pariatur, odit voluptatem facilis minima deserunt ex iure eius ipsam assumenda quidem veniam iusto voluptatum quos at sit vel porro illum dicta quae tenetur. Libero velit facilis odit fugiat.
-                Iste, nulla. Exercitationem consequatur omnis officiis, id sed, nihil explicabo pariatur a fugit unde laudantium, placeat illo tempore natus voluptates error quidem. Provident ipsa eius at fugit sed magnam modi.
-                Aliquid esse asperiores quasi, exercitationem tempore porro consequatur, quod dolore sit voluptatibus illo in ratione ipsa culpa iste eum? Sed quam a autem porro cumque et dolorum incidunt ducimus esse!
-                Quo nesciunt fuga cumque possimus neque eum expedita maiores doloribus ratione. Delectus totam rem sunt necessitatibus. Cum voluptatem voluptatum beatae eaque aut laboriosam suscipit, numquam qui quisquam cupiditate eligendi dicta!
-                Rem quam iste id maiores qui delectus numquam, inventore a corrupti rerum nulla praesentium iusto fugit perspiciatis modi voluptas dolore, at temporibus molestias expedita. Itaque iusto ab delectus distinctio enim!
-                Distinctio, voluptates assumenda optio aliquid eos fugiat! Itaque impedit, minus eos labore quos quaerat officiis quae id nihil animi, corporis nisi ab? Delectus iusto culpa incidunt, ab eos enim adipisci!
-                Odio amet reprehenderit laudantium corrupti, cupiditate inventore iste perspiciatis magnam temporibus autem eius tenetur natus mollitia tempora ratione! Maxime, nobis quod consequatur rerum ut saepe aspernatur facere dolorem placeat labore?
-                Esse cumque eum vero minus soluta neque, quam rerum quibusdam ex beatae quae excepturi atque vitae ab sunt rem nam suscipit repellat voluptatem consequuntur ut. Quibusdam cum voluptate id velit.
-                Amet autem labore commodi harum, inventore quod recusandae optio sed minus dolorem maxime illum accusamus quo asperiores. Provident at eveniet dolor mollitia, doloribus ullam unde nobis quisquam, saepe dicta alias?
-            </p>
-        </section>
-    </div>
+    </header> 
 
-    <footer>
-        <div class="footer">
     
-          <ul class="footer_list">
-            <li class="footer__list__item"><a href="">¡Contactanos!</a></li>
-            <li class="footer__list__item"><a href="">Sobre Nosotros</a></li>
-          </ul>
-    
-          <div class="footer__copyright">
-            <p>Copyright © 2023 Kalyx Software. Todos los derechos reservados</p>
-          </div>
-        </div>
-      </footer> 
-    
+
+    <footer class="footer">
+        <section class="footer__container container">
+            <nav class="nav footer__nav">
+                <h2 class="footer__title">QuickCarry</h2>
+
+                <!-- <ul class="nav__links nav__links--footer">
+                    <li class="nav__item">
+                        <a href="#" class="nav__item__link">AA</a>
+                    </li>
+                    <li class="nav__items">
+                        <a href="#" class="nav__item__link">AA</a>
+                    </li>
+                    <li class="nav__items">
+                        <a href="#" class="nav__item__link">AA</a>
+                    </li>
+                    <li class="nav__items">
+                        <a href="#" class="nav__item__link">AA</a>
+                    </li>
+                </ul> -->
+            </nav>
+
+            <form class="footer__form" action="aa" method="POST">
+                <h2 class="footer__newsletter">Recibe nuestras noticias</h2>
+                <div class="footer__inputs">
+                    <input type="email" placeholder="Email:" class="footer__input" name="_replyto">
+                    <input type="submit" value="Registrate" class="footer__submit">
+                </div>
+                </section>
+                    <h3 class="footer__copyright">Derechos reservados QuickCarry</h3>
+                 </section>
+            </form>
+    </footer> 
+
+    <script src="/menu.js"></script> 
 </body>
+
 </html>
