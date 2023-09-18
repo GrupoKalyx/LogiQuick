@@ -17,10 +17,11 @@ class modeloUsuarios
         $conn->execute_query($query, [$ci]);
     }
 
-    public static function muestra ($ci, $conn){
+    public static function muestra($ci, $conn){
         $query = "SELECT * FROM usuarios WHERE ci = ? LIMIT 1";
         $exc = $conn->execute_query($query, [$ci]);
-        $json = json_encode($exc); 
+        $fResult = $exc->fetch_array(MYSQLI_ASSOC);
+        $json = json_encode($fResult);
         return $json;
     }
 

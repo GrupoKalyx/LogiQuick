@@ -1,26 +1,27 @@
 <?php
 require_once('sql/dbconection.php');
+session_start();
 
 $ci = $_POST['ci'];
 $contrasenia = $_POST['contrasenia'];
 
-$query = "SELECT * FROM `usuarios` WHERE ci = ? LIMIT 1";
-$result = $conn->execute_query($query, [$ci]);
-$existe = mysqli_num_rows($result);
+$queryUser = "SELECT * FROM `usuarios` WHERE ci = ? LIMIT 1";
+$resultUser = $conn->execute_query($queryUser, [$ci]);
+$existe = mysqli_num_rows($resultUser);
 if ($existe) {
-    $query = "SELECT * FROM `logins` WHERE idLogin = ? AND contrasenia = ? LIMIT 1";
-    $result = $conn->execute_query($query, [$ci, $contrasenia]);
-    $contrasenia = mysqli_num_rows($result);
+    $queryPasswd = "SELECT * FROM `logins` WHERE idLogin = ? AND contrasenia = ? LIMIT 1";
+    $resultPasswd = $conn->execute_query($queryPasswd, [$ci, $contrasenia]);
+    $contrasenia = mysqli_num_rows($resultPasswd);
     if ($contrasenia) {
+        $_SESSION['ci'] = $ci;
         $token = bin2hex(random_bytes(32));
         $_SESSION['token'] = $token;
-        $query = "INSERT INTO tokens VALUES (?, ?)";
-        $conn->execute_query($query, [$token, $ci]);
-        $query = "SELECT tipo FROM `usuarios` WHERE ci = ? LIMIT 1";
-        $result = $conn->execute_query($query, [$ci]);
-        $fResult =  $result->fetch_array(MYSQLI_ASSOC);
+        $queryToken = "INSERT INTO tokens VALUES (?, ?)";
+        $conn->execute_query($queryToken, [$token, $ci]);
+        $queryType = "SELECT tipo FROM `usuarios` WHERE ci = ? LIMIT 1";
+        $resultType = $conn->execute_query($queryType, [$ci]);
+        $fResult =  $resultType->fetch_array(MYSQLI_ASSOC);
         $tipo = $fResult['tipo'];
-        var_dump($tipo);
         if ($tipo === "Admin") {
             header("location: indexAdmin.php");
         } else {

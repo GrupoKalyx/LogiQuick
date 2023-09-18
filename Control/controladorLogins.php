@@ -3,6 +3,8 @@ require '../Modelo/modeloLogins.php';
 require 'controladorTokens.php';
 require 'controladorUsuarios.php';
 
+session_start();
+
 class controladorLogins
 {
     private $conn;
@@ -19,31 +21,31 @@ class controladorLogins
         if (modeloLogins::existe($ci, $this->conn)) {
             if (modeloLogins::contrasenia($ci, $contrasenia, $this->conn)) {
                 $t = new controladorTokens($this->conn);
+                $_SESSION['ci'] = $ci;
                 $_SESSION['token'] = $t->createToken($ci);
                 $objTipo = json_decode(modeloLogins::tipo($ci, $this->conn), true);
                 $tipo = $objTipo['tipo'];
-                $u = new controladorUsuarios($this->conn);
-                $userInfo = $u->mostrar($ci);
-                $nombre= $userInfo['nombre'];
                 switch ($tipo) {
                     case 'Almacen':
-                        header("location: ../../../Vista/FunCentral.php?nombre=" . $nombre);
+                        header("location: ../../../Vista/FunCentral.php");
                         break;
                     case 'Externo':
-                        header("location: ../../../Vista/FunExternoCentral.php?nombre=" . $nombre);
+                        header("location: ../../../Vista/FunExternoCentral.php");
                         break;
                     case 'Camionero':
-                        header("location: ../../../Vista/Camionero.html?nombre=" . $nombre);
+                        header("location: ../../../Vista/Camionero.html");
+                        break;
+                    case 'Delivery':
+                        header("location: ../../../Vista/Delivery.html");
                         break;
                     default:
-                        echo "<script>alert('Tipo de usuario desconocido, re intente por favor!');window.location='../../../Vista/login.php . $nombre'</script>";
-                        break;
+                        echo "<script>alert('Tipo de usuario desconocido, re intente por favor!');window.location='../../../Vista/login.php</script>";
                 }
             } else {
-                echo "<script>alert('La contraseña ingresada es incorrecta, revise los datos ingresados y vuelva a intentar.');window.location='../../../Vista/login.php . $nombre'</script>";
+                echo "<script>alert('La contraseña ingresada es incorrecta, revise los datos ingresados y vuelva a intentar.');window.location='../../../Vista/login.php</script>";
             }
         } else {
-            echo "<script>alert('Usuario inexistente ,re intente por favor.');window.location='../../../Vista/login.php . $nombre'</script>";
+            echo "<script>alert('Usuario inexistente, re intente por favor.');window.location='../../../Vista/login.php'</script>";
         }
     }
 }

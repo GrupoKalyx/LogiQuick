@@ -1,7 +1,7 @@
 <?php
-if (isset($_POST['btncerrar'])) {
-    header("location: loginAdmin.php");
-}
+if (isset($_POST['btncerrar'])) { header("location: loginAdmin.php"); }
+require_once('sql/dbconection.php');
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -30,13 +30,16 @@ if (isset($_POST['btncerrar'])) {
     </header>
     <div>
         <br>
-        <h1 class="nav__text"> Bienvenido:
+        <h1 class="nav__text"> Bienvenido: <b>
             <?php
-            // header("location: ../Controlador/superControlador.php/Usuarios/mostrar?url=`" . $_SERVER['REQUEST_URI'] . "`");
-            // $json = json_decode();
-            // $userName = ;
-            // echo $userName;
+            $ci = $_SESSION['ci'];
+            $queryName = "SELECT nombre FROM `usuarios` WHERE ci = ? LIMIT 1";
+            $resultName = $conn->execute_query($queryName, [$ci]);
+            $fName = $resultName->fetch_array(MYSQLI_ASSOC);
+            $name = $fName['nombre'];
+            echo ($name);
             ?>
+            </b>
         </h1>
     </div>
     <div class="form__container__backoffice"> <!-- CRUD de Usuarios -->
