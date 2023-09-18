@@ -1,5 +1,5 @@
 <?php
-require 'sql/dbconection.php';
+require_once('sql/dbconection.php');
 
 $query = 'SELECT * FROM usuarios WHERE ci = "0" LIMIT 1';
 $result = mysqli_execute_query($conn, $query);

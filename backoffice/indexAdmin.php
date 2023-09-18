@@ -1,5 +1,6 @@
 <?php
 if (isset($_POST['btncerrar'])) { header("location: loginAdmin.php"); }
+
 require_once('sql/dbconection.php');
 session_start();
 ?>
@@ -30,7 +31,7 @@ session_start();
     </header>
     <div>
         <br>
-        <h1 class="nav__text"> Bienvenido: <b>
+        <h1 class="nav__text"> Bienvenido: 
             <?php
             $ci = $_SESSION['ci'];
             $queryName = "SELECT nombre FROM `usuarios` WHERE ci = ? LIMIT 1";
@@ -39,7 +40,7 @@ session_start();
             $name = $fName['nombre'];
             echo ($name);
             ?>
-            </b>
+            <b></b>
         </h1>
     </div>
     <div class="form__container__backoffice"> <!-- CRUD de Usuarios -->
