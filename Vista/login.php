@@ -1,4 +1,6 @@
-<?php if (isset($_SESSION)) { session_destroy(); } ?>
+<?php if (isset($_SESSION)) {
+    session_destroy();
+} ?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -8,7 +10,8 @@
     <link rel="stylesheet" href="estilos/FormStyle.css">
     <link rel="stylesheet" href="estilos/Style.css">
     <link rel="icon" type="image/x-icon" href="assets/logo.png">
-    <title>Ingresar a LogiQuick!</title>
+    <script src="Traducir.js"></script>
+    <title>LogiQuick</title>
 </head>
 
 <body>
@@ -17,6 +20,7 @@
             <div class="navbar__logo">
                 <img src="assets/logo.png">
             </div>
+            <button class="form__button" id="traductor-btn">Traducir Pagina</button>
             <div class="navbar">
                 <h1 class="nav__text">Bienvenido a LogiQuick!</h1>
             </div>
