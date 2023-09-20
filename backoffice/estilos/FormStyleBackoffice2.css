@@ -194,10 +194,3 @@
         padding: 0.2rem;
     }
 }
-
-iframe {
-    width: 16em;
-    height: 400px;
-    border-radius: 5px;
-    border: #ffc870 3px solid;
-}
