@@ -120,10 +120,9 @@ session_start();
         <div class="form">
             <h2>Ingresar paquete</h2>
             <form action="CRUD\paquetes\Altas.php" method="post">
-                Numero de bulto <input class="form__input" type="text" name="numBulto" required><br><br>
                 Correo del cliente <input class="form__input" type="text" name="gmailCliente"><br><br>
-                Fecha de llegada <input class="form__input" type="date" name="fechaLlegada"required><br><br>
-                Horario de llegada <input class="form__input" type="time" name="horaLlegada"required><br><br>
+                Fecha de llegada <input class="form__input" type="date" name="fechaLlegada"><br><br>
+                Horario de llegada <input class="form__input" type="time" name="horaLlegada"><br><br>
                 Numero <input class="form__input" type="text" name="num"><br><br>
                 Calle <input class="form__input" type="text" name="calle"><br><br>
                 Localidad <input class="form__input" type="text" name="localidad"><br><br>

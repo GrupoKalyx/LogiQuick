@@ -26,43 +26,29 @@
   </header>
 
   <div class="form__container">
-    <form class="form" method="POST" action="../../Control/superControlador.php/Paquetes/ingresar">
+    <form class="form" method="POST">
 
         <h2 class="form__text">Ingrese datos del paquete</h2>
+
         <div class="form__group">
-          <label class="form__label" for="gmailCliente">Correo del cliente:</label>
-          <input class="form__input" type="text" id="gmailCliente" name="gmailCliente" required>
+          <label class="form__label" for="destino">Destino:</label>
+          <input class="form__input" type="text" id="destino" name="destino" required>
         </div>
       
         <div class="form__group">
-          <label class="form__label" for="fechaLlegada">Fecha de llegada:</label>
-          <input class="form__input" type="date" id="fechaLlegada" name="fechaLlegada" required>
+          <label class="form__label" for="ciudad">Ciudad:</label>
+          <input class="form__input" type="text" id="ciudad" name="ciudad" required>
+        </div>
+      
+        <div class="form__group">
+          <label class="form__label" for="direccion">Dirección:</label>
+          <input class="form__input" type="text" id="direccion" name="direccion" required>
         </div>
 
         <div class="form__group">
-          <label class="form__label" for="horaLlegada">Horario de llegada:</label>
-          <input class="form__input" type="time" id="horaLlegada" name="horaLlegada" required>
-        </div>
-
-        <div class="form__group">
-          <label class="form__label" for="num">Numero de puerta/KM:</label>
-          <input class="form__input" type="text" id="num" name="num" required>
-        </div>
-
-        <div class="form__group">
-          <label class="form__label" for="calle">Calle/Ruta:</label>
-          <input class="form__input" type="text" id="calle" name="calle" required>
-        </div>
-
-        <div class="form__group">
-          <label class="form__label" for="localidad">Localidad:</label>
-          <input class="form__input" type="text" id="localidad" name="localidad" required>
-        </div>
-
-        <div class="form__group">
-          <label class="form__label" for="departamento">Departamento:</label>
-          <input class="form__input" type="text" id="departamento" name="departamento" required>
-        </div>
+            <label class="form__label" for="Volumen">Volumen (M3):</label>
+            <input class="form__input" type="number" id="Volumen" name="Volumen" required>
+          </div>
       
         <button class="form__button" type="submit">Enviar</button>
     </form>
@@ -85,4 +71,3 @@
   </footer>
 </body>
 </html>
-

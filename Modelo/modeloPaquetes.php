@@ -3,14 +3,14 @@
 class modeloPaquetes
 {
 
-    public static function alta($numBulto, $gmailCliente, $fechaLlegada, $num, $calle, $localidad, $departamento, $conn)
+    public static function alta($gmailCliente, $fechaLlegada, $num, $calle, $localidad, $departamento, $conn)
     {
         do {
             $idRastreo = "";
             for ($i = 0; $i < 16; $i++) { $idRastreo .= mt_rand(0, 9); }
         } while (self::existe($idRastreo, $conn));
-        $query = "INSERT INTO paquetes(numBulto, gmailCliente, idRastreo, fechaLlegada, num, calle, localidad, departamento) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?))";
-        $conn->execute_query($query, [$numBulto, $gmailCliente, $idRastreo, $fechaLlegada, $num, $calle, $localidad, $departamento]);
+        $query = "INSERT INTO paquetes(gmailCliente, idRastreo, fechaLlegada, num, calle, localidad, departamento) VALUES (?, ?, ?, ?, ?, ?, ?, ?))";
+        $conn->execute_query($query, [$gmailCliente, $idRastreo, $fechaLlegada, $num, $calle, $localidad, $departamento]);
     }
 
     public static function modificacion($numBulto, $gmailCliente, $fechaLlegada, $num, $calle, $localidad, $departamento, $conn)

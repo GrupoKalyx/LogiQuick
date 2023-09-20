@@ -14,8 +14,8 @@
         <img src="assets/logo.png" alt="logo">
       </div>
       <ul class="navbar__list">
-        <li class="navbar__list__item"><a href="#">Verificar Entrada</a></li>
-        <li class="navbar__list__item"><a href="referencias/IngresarPaquete.html">Ingresar Paquete</a></li>
+        <li class="navbar__list__item"><a href="referencias/VerificarLlegadas.html">Verificar Llegadas</a></li>
+        <li class="navbar__list__item"><a href="referencias/IngresarPaquete.html">Ingresar Paquetes</a></li>
       </ul>
       <!-- <button class="form__button" id="traductor-btn">Traducir Pagina </button> -->
       <div class="navbar__logout"> 

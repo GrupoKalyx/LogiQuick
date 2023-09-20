@@ -11,7 +11,6 @@ class controladorPaquetes
 
     public function ingresar($context)
     {
-        $numBulto = $context['post']['numBulto'];
         $gmailCliente = $context['post']['gmailCliente'];
         $fechaLlegada = $context['post']['fechaLlegada'];
         $num = $context['post']['num'];
@@ -19,7 +18,7 @@ class controladorPaquetes
         $localidad = $context['post']['localidad'];
         $departamento = $context['post']['departamento'];
 
-        modeloPaquetes::alta($numBulto, $gmailCliente, $fechaLlegada, $num, $calle, $localidad, $departamento, $this->conn);
+        modeloPaquetes::alta($gmailCliente, $fechaLlegada, $num, $calle, $localidad, $departamento, $this->conn);
         header('location: ../../../Vista/indexAdministrador.php');
     }
 

@@ -30,7 +30,7 @@ class controladorLogins
                         header("location: ../../../Vista/FunCentral.php");
                         break;
                     case 'Externo':
-                        header("location: ../../../Vista/FunExternoCentral.php");
+                        header("location: ../../../Vista/FunExtCentral.php");
                         break;
                     case 'Camionero':
                         header("location: ../../../Vista/Camionero.html");
