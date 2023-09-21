@@ -3,14 +3,10 @@
 class modeloLotes
 {
 
-    public static function alta($numBulto, $gmailCliente, $fechaLlegada, $num, $calle, $localidad, $departamento, $conn)
+    public static function alta($conn)
     {
-        do {
-            $idRastreo = "";
-            for ($i = 0; $i < 16; $i++) { $idRastreo .= mt_rand(0, 9); }
-        } while (self::existe($idRastreo, $conn));
-        $query = "INSERT INTO paquetes(numBulto, gmailCliente, idRastreo, fechaLlegada, num, calle, localidad, departamento) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?))";
-        $conn->execute_query($query, [$numBulto, $gmailCliente, $idRastreo, $fechaLlegada, $num, $calle, $localidad, $departamento]);
+        $query = "INSERT INTO paquetes  VALUES ()";
+        $conn->execute_query($query);
     }
 
     public static function modificacion($numBulto, $gmailCliente, $fechaLlegada, $num, $calle, $localidad, $departamento, $conn)

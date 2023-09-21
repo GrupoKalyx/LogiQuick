@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="../estilos/style.css">
   <link rel="stylesheet" href="../estilos/FormStyle.css">
   <title>LogiQuick</title>
+  <script src="../Traducir.js"></script>
 </head>
 <body class="body">
 
@@ -15,10 +16,10 @@
         <img src="../assets/logo.png" alt="logo">
       </div>
       <ul class="navbar__list">
-        <li class="navbar__list__item"><a href="#">Verificar Entrada</a></li>
-        <li class="navbar__list__item"><a href="#">Ingresar Paquete</a></li>
+        <li class="navbar__list__item"><a href="#">Verificar Llegadas</a></li>
+        <li class="navbar__list__item"><a href="#">Ingresar Paquetes</a></li>
       </ul>
-      <!-- <button class="form__button" id="traductor-btn">Traducir Pagina </button> -->
+      <button class="form__button" id="traductor-btn">Traducir Pagina</button>
       <div class="navbar__logout"> 
         <button class="navbar__logout__button"><a href="#">Cerrar Sesión</a></button>
       </div>
@@ -27,7 +28,7 @@
 
   <div class="form__container">
     <form class="form" method="POST" action="../../Control/superControlador.php/Paquetes/ingresar">
-
+      <input type="hidden" name="url" value="<?=$_SERVER['HOST_URI'] . $_SERVER['REQUEST_URI']?>">
         <h2 class="form__text">Ingrese datos del paquete</h2>
         <div class="form__group">
           <label class="form__label" for="gmailCliente">Correo del cliente:</label>

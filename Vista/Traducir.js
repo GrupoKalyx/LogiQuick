@@ -1,4 +1,3 @@
-
 const traductorBtn = document.getElementById('traductor-btn');
 
 
@@ -7,11 +6,21 @@ traductorBtn.addEventListener('click', () => {
     const currentFileName = window.location.pathname.split('/').pop();
 
     // Verifica el nombre del archivo actual usando el if
-    if (currentFileName === 'Login.html') {
-        window.location.href = '/indexEng/LoginEng.html';
-    } else if (currentFileName === 'FunExternoCentral.html') {
-        window.location.href = '/indexEng/FunExternoCentralEng.html';
-    } else if (currentFileName === 'FuncionarioCentral.html') {
+    switch (currentFileName) {
+        case 'login.php':
+            window.location.href = 'indexEng/LoginEng.html';
+            break;
+
+        case 'FunExtCentral.php':
+            window.location.href = 'indexEng/FunExtCentralEng.html';
+        break;
+
+        default:
+            break;
+    }
+    
+    
+    if (currentFileName === 'FuncionarioCentral.html') {
         window.location.href = '/indexEng/FuncionarioCentralEng.html';
     } else if (currentFileName === 'Camionero.html') {
         window.location.href = '/indexEng/CamioneroEng.html';

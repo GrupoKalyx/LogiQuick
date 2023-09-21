@@ -11,15 +11,14 @@ class controladorLotes
 
     public function ingresar($context)
     {
-        $numBulto = $context['post']['numBulto'];
-        $gmailCliente = $context['post']['gmailCliente'];
-        $fechaLlegada = $context['post']['fechaLlegada'];
-        $num = $context['post']['num'];
-        $calle = $context['post']['calle'];
-        $localidad = $context['post']['localidad'];
-        $departamento = $context['post']['departamento'];
+        $paquete1 = $context['post']['paquete1'];
+        $paquete2 = $_POST['post']['paquete2'];
+        $paquete3 = $context['post']['paquete3'];
+        $paquete4 = $context['post']['paquete4'];
+        $paquete5 = $context['post']['paquete5'];
 
-        modeloPaquetes::alta($numBulto, $gmailCliente, $fechaLlegada, $num, $calle, $localidad, $departamento, $this->conn);
+        modeloLotes::alta($this->conn);
+
         header('location: ../../../Vista/indexAdministrador.php');
     }
 
@@ -30,7 +29,8 @@ class controladorLotes
         header('location: ../../../Vista/indexAdministrador.php');
     }
 
-    public function rastrear($context){
+    public function rastrear($context)
+    {
         $ci = $context;
         $result = modeloUsuarios::muestra($ci, $this->conn);
         return $result;
@@ -72,7 +72,7 @@ class controladorLotes
         $calle = $context['post']['calle'];
         $localidad = $context['post']['localidad'];
         $departamento = $context['post']['departamento'];
-        
+
         modeloPaquetes::modificacion($numBulto, $gmailCliente, $fechaLlegada, $num, $calle, $localidad, $departamento, $this->conn);
         header('location: ../../../Vista/indexAdministrador.php');
     }

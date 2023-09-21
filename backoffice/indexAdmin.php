@@ -31,7 +31,7 @@ session_start();
     </header>
     <div>
         <br>
-        <h1 class="nav__text"> Bienvenido: 
+        <h1 class="nav__text"> Bienvenid@: 
             <?php
             $ci = $_SESSION['ci'];
             $queryName = "SELECT nombre FROM `usuarios` WHERE ci = ? LIMIT 1";
@@ -133,7 +133,7 @@ session_start();
         <div class="form">
             <h2>Eliminar paquete</h2>
             <form action="CRUD\paquetes\Bajas.php" method="post">
-                Numero de paquete<input class="form__input" type="text" name="numBulto"><br><br>
+                Numero de bulto <input class="form__input" type="text" name="numBulto"><br><br>
                 <button class="form__button" type="submit">Eliminar</button>
             </form>
         </div>

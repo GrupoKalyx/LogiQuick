@@ -9,7 +9,7 @@ class modeloPaquetes
             $idRastreo = "";
             for ($i = 0; $i < 16; $i++) { $idRastreo .= mt_rand(0, 9); }
         } while (self::existe($idRastreo, $conn));
-        $query = "INSERT INTO paquetes(gmailCliente, idRastreo, fechaLlegada, num, calle, localidad, departamento) VALUES (?, ?, ?, ?, ?, ?, ?, ?))";
+        $query = "INSERT INTO paquetes (gmailCliente, idRastreo, fechaLlegada, num, calle, localidad, departamento) VALUES (?, ?, ?, ?, ?, ?, ?)";
         $conn->execute_query($query, [$gmailCliente, $idRastreo, $fechaLlegada, $num, $calle, $localidad, $departamento]);
     }
 

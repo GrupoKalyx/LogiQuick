@@ -19,7 +19,9 @@ class controladorPaquetes
         $departamento = $context['post']['departamento'];
 
         modeloPaquetes::alta($gmailCliente, $fechaLlegada, $num, $calle, $localidad, $departamento, $this->conn);
-        header('location: ../../../Vista/indexAdministrador.php');
+
+        $url = $context['post']['url'];
+        header('location: https://' . $url);
     }
 
     public function eliminar($context)
@@ -29,7 +31,8 @@ class controladorPaquetes
         header('location: ../../../Vista/indexAdministrador.php');
     }
 
-    public function rastrear($context){
+    public function rastrear($context)
+    {
         $ci = $context;
         $result = modeloUsuarios::muestra($ci, $this->conn);
         return $result;
@@ -71,7 +74,7 @@ class controladorPaquetes
         $calle = $context['post']['calle'];
         $localidad = $context['post']['localidad'];
         $departamento = $context['post']['departamento'];
-        
+
         modeloPaquetes::modificacion($numBulto, $gmailCliente, $fechaLlegada, $num, $calle, $localidad, $departamento, $this->conn);
         header('location: ../../../Vista/indexAdministrador.php');
     }

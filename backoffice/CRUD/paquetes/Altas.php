@@ -1,7 +1,6 @@
 <?php
 require_once('../../sql/dbconection.php');
 
-$numBulto = $_POST['numBulto'];
 $gmailCliente = $_POST['gmailCliente'];
 $fechaLlegada = $_POST['fechaLlegada'] . " " . $_POST['horaLlegada'] . ":00";
 $num = $_POST['num'];
@@ -21,8 +20,8 @@ do {
     for ($i = 0; $i < 16; $i++) { $idRastreo .= mt_rand(0, 9); }
 } while (existe($idRastreo, $conn));
 
-$query = "INSERT INTO paquetes (numBulto, gmailCliente, idRastreo, fechaLlegada, num, calle, localidad, departamento) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-$exc = $conn->execute_query($query, [$numBulto, $gmailCliente, $idRastreo, $fechaLlegada, $num, $calle, $localidad, $departamento]);
+$query = "INSERT INTO paquetes (gmailCliente, idRastreo, fechaLlegada, num, calle, localidad, departamento) VALUES (?, ?, ?, ?, ?, ?, ?)";
+$exc = $conn->execute_query($query, [$gmailCliente, $idRastreo, $fechaLlegada, $num, $calle, $localidad, $departamento]);
 
 if ($exc) {
     echo "<script>alert('Paquete ingresado con éxito.');window.location='../../indexAdmin.php'</script>";
