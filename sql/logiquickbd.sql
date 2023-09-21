@@ -20,10 +20,9 @@ CREATE TABLE IF NOT EXISTS `logiquickbd`.`Pick_ups` (
   `disponibilidad` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`matricula`),
     FOREIGN KEY (`matricula`)
-    REFERENCES `logiquickbd`.`Vehiculos` (`matricula`)
+    REFERENCES `Vehiculos` (`matricula`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
-
 
 -- -----------------------------------------------------
 -- Table `Camiones`
@@ -33,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `logiquickbd`.`Camiones` (
   `disponibilidad` VARCHAR(45) NULL,
   PRIMARY KEY (`matricula`),
     FOREIGN KEY (`matricula`)
-    REFERENCES `logiquickbd`.`Vehiculos` (`matricula`)
+    REFERENCES `Vehiculos` (`matricula`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
@@ -48,15 +47,15 @@ CREATE TABLE IF NOT EXISTS `logiquickbd`.`Conductores` (
   PRIMARY KEY (`ci`));
 
 -- -----------------------------------------------------
--- Table `Deliverys`
+-- Table `Delivery`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `logiquickbd`.`Deliverys` (
+CREATE TABLE IF NOT EXISTS `logiquickbd`.`Delivery` (
   `ci` INT NOT NULL,
   `nombre` VARCHAR(45) NULL,
   `telefono` INT NULL,
   PRIMARY KEY (`ci`),
     FOREIGN KEY (`ci`)
-    REFERENCES `logiquickbd`.`Conductores` (`ci`)
+    REFERENCES `Conductores` (`ci`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
@@ -64,17 +63,17 @@ CREATE TABLE IF NOT EXISTS `logiquickbd`.`Deliverys` (
 -- Table `Manejan`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `logiquickbd`.`Manejan` (
-  `matricula` INT NOT NULL,
+  `matricula` VARCHAR(45) NOT NULL,
   `fecha_llegada` DATE NULL,
   `fecha_salida` DATE NULL,
   `ci` INT NOT NULL,
   PRIMARY KEY (`matricula`, `ci`),
     FOREIGN KEY (`matricula`)
-    REFERENCES `logiquickbd`.`Pick_ups` (`matricula`)
+    REFERENCES `Pick_ups` (`matricula`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
     FOREIGN KEY (`ci`)
-    REFERENCES `logiquickbd`.`Deliverys` (`ci`)
+    REFERENCES `Delivery` (`ci`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
@@ -87,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `logiquickbd`.`Camionero` (
   `telefono` INT NULL,
   PRIMARY KEY (`ci`),
     FOREIGN KEY (`ci`)
-    REFERENCES `logiquickbd`.`Conductores` (`ci`)
+    REFERENCES `Conductores` (`ci`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
@@ -95,17 +94,17 @@ CREATE TABLE IF NOT EXISTS `logiquickbd`.`Camionero` (
 -- Table `Conducen`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `logiquickbd`.`Conducen` (
-  `matricula` INT NOT NULL,
+  `matricula` VARCHAR(45) NOT NULL,
   `fecha_llegada` DATE NULL,
   `fecha_salida` DATE NULL,
   `ci` INT NOT NULL,
   PRIMARY KEY (`matricula`, `ci`),
     FOREIGN KEY (`ci`)
-    REFERENCES `logiquickbd`.`Camionero` (`ci`)
+    REFERENCES `Camionero` (`ci`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
     FOREIGN KEY (`matricula`)
-    REFERENCES `logiquickbd`.`Camiones` (`matricula`)
+    REFERENCES `Camiones` (`matricula`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
@@ -141,11 +140,11 @@ CREATE TABLE IF NOT EXISTS `logiquickbd`.`Entregan` (
   `id_Paquete` INT NOT NULL,
   PRIMARY KEY (`id_Paquete`, `matricula`),
     FOREIGN KEY (`id_Paquete`)
-    REFERENCES `logiquickbd`.`Paquetes` (`id_Paquete`)
+    REFERENCES `Paquetes` (`id_Paquete`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
     FOREIGN KEY (`matricula`)
-    REFERENCES `logiquickbd`.`Pick_ups` (`matricula`)
+    REFERENCES `Pick_ups` (`matricula`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
@@ -158,11 +157,11 @@ CREATE TABLE IF NOT EXISTS `logiquickbd`.`Lotean` (
   `id_Lote` INT NOT NULL,
   PRIMARY KEY (`id_Paquete`, `id_Lote`),
     FOREIGN KEY (`id_Paquete`)
-    REFERENCES `logiquickbd`.`Paquetes` (`id_Paquete`)
+    REFERENCES `Paquetes` (`id_Paquete`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
     FOREIGN KEY (`id_Lote`)
-    REFERENCES `logiquickbd`.`Lotes` (`id_Lote`)
+    REFERENCES `Lotes` (`id_Lote`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
@@ -177,15 +176,15 @@ CREATE TABLE IF NOT EXISTS `logiquickbd`.`llevan` (
   `fecha_llegada` DATE NULL,
   PRIMARY KEY (`matricula`, `id_Paquete`, `id_Lote`),
     FOREIGN KEY (`id_Paquete`)
-    REFERENCES `logiquickbd`.`Lotean` (`id_Paquete`)
+    REFERENCES `Lotean` (`id_Paquete`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
     FOREIGN KEY (`id_Lote`)
-    REFERENCES `logiquickbd`.`Lotean` (`id_Lote`)
+    REFERENCES `Lotean` (`id_Lote`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
     FOREIGN KEY (`matricula`)
-    REFERENCES `logiquickbd`.`Camiones` (`matricula`)
+    REFERENCES `Camiones` (`matricula`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
@@ -210,14 +209,14 @@ CREATE TABLE IF NOT EXISTS `logiquickbd`.`Van` (
   `num_Almacen` INT NOT NULL,
   PRIMARY KEY (`id_Lote`, `id_Paquete`, `num_Almacen`),
     FOREIGN KEY (`id_Lote`)
-    REFERENCES `logiquickbd`.`Lotean` (`id_Lote`)
+    REFERENCES `Lotean` (`id_Lote`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
     FOREIGN KEY (`id_Paquete`)
-    REFERENCES `logiquickbd`.`Lotean` (`id_Paquete`)
+    REFERENCES `Lotean` (`id_Paquete`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
     FOREIGN KEY (`num_Almacen`)
-    REFERENCES `logiquickbd`.`Almacenes` (`num_Almacen`)
+    REFERENCES `Almacenes` (`num_Almacen`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);

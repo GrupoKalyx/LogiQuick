@@ -49,7 +49,8 @@ session_start();
             <form action="CRUD/usuarios/Altas.php" method="post">
                 CI <input class="form__input" type="text" name="ci" required><br>
                 Nombre de Usuario <input class="form__input" type="text" name="nombre"><br>
-                Contraseña <input class="form__input" type="password" name="contrasenia"><br><br>
+                Contraseña <input class="form__input" type="password" name="contrasenia"><br>
+                Telefono <input class="form__input" type="text" name="telefono"><br><br>
                 Tipo de usuario <select class="form__input" name="tipo">
                     <option value="Admin">Admin</option>
                     <option value="Funcionario">Funcionario</option>
@@ -63,7 +64,7 @@ session_start();
         <div class="form">
             <h2>Dar de baja Usuario</h2>
             <form class="m" action="CRUD/usuarios/Bajas.php" method="post">
-                ID de usuario <input class="form__input" type="text" name="id"><br><br>
+                CI de usuario <input class="form__input" type="text" name="c"><br><br>
                 <button class="form__button" type="submit">Eliminar</button>
             </form>
         </div>
@@ -75,10 +76,11 @@ session_start();
         <div class="form">
             <h2>Modificar Usuario</h2>
             <form action="CRUD/usuarios/Modificaciones.php" method="post">
-                ID <input class="form__input" type="text" name="id"><br>
+                CI <input class="form__input" type="text" name="ci"><br>
                 <h2>Nuevos datos</h2>
                 Nuevo nombre de usuario <input class="form__input" type="text" name="nombre"><br>
                 Nueva contraseña <input class="form__input" type="password" name="contrasenia"><br><br>
+                Nueva telefono <input class="form__input" type="text" name="telefono"><br><br>
                 <button class="form__button" type="submit">Modificar</button>
             </form>
         </div>

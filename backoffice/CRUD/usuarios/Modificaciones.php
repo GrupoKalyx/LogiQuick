@@ -1,7 +1,7 @@
 <?php
 require_once('../../sql/dbconection.php');
 
-$ci = $_POST['id'];
+$ci = $_POST['ci'];
 $nuevoNombre = $_POST['nombre'];
 $nuevaContrasenia = $_POST['contrasenia'];
 $query = "UPDATE usuarios SET nombre = ? WHERE ci = ?";
