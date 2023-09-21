@@ -7,23 +7,26 @@ $exc = $conn->execute_query($query, [$ci]);
 $query2 = "DELETE FROM logins WHERE idLogin = ?";
 $exc2 = $conn->execute_query($query2, [$ci]);
 
-$queryTipo
-$tipo = $conn->execute_query($queryTipo, [$ci]);
+$queryTipo = "SELECT tipo FROM `usuarios` WHERE ci = ?";
+$exc = $conn->execute_query($queryTipo, [$ci]);
+$tipo = $exc->fetch_array(MYSQLI_ASSOC);
 
-if ($tipo == 'Camionero') {
-    $query3 = "INSERT INTO conductores VALUES (?, ?, ?)";
-    $exc3 = $conn->execute_query($query3, [$ci, $nombre, $telefono]);
-    $query4 = "INSERT INTO conductores VALUES (?, ?, ?)";
-    $exc4 = $conn->execute_query($query4, [$ci, $nombre, $telefono]);
+if ($tipo == 'Camionero' or $tipo == 'Delivery') {
+  if ($tipo == 'Camionero') {
+    $query3 = "DELETE FROM conductores VALUES (?)";
+    $exc3 = $conn->execute_query($query3, [$ci]);
+    $query4 = "DELETE FROM camioneros VALUES (?)";
+    $exc4 = $conn->execute_query($query4, [$ci]);
   } else if ($tipo == 'Delivery') {
-    $query3 = "INSERT INTO conductores VALUES (?, ?, ?)";
-    $exc3 = $conn->execute_query($query3, [$ci, $nombre, $telefono]);
-    $query4 = "INSERT INTO delivery VALUES (?, ?, ?)";
-    $exc4 = $conn->execute_query($query4, [$ci, $nombre, $telefono]);
+    $query3 = "DELETE FROM conductores VALUES (?)";
+    $exc3 = $conn->execute_query($query3, [$ci]);
+    $query4 = "DELETE FROM deliverys VALUES (?)";
+    $exc4 = $conn->execute_query($query4, [$ci]);
   }
+}
 
-if ($exc AND $exc2) {
-    echo "<script>alert('Usuario eliminado con éxito.');window.location='../../indexAdmin.php';</script>";
+if ($exc and $exc2) {
+  echo "<script>alert('Usuario eliminado con éxito.');window.location='../../indexAdmin.php';</script>";
 } else {
-    echo "<script>alert('Un error inesperado ocurrió.');window.location='../../indexAdmin.php';</script>";
+  echo "<script>alert('Un error inesperado ocurrió.');window.location='../../indexAdmin.php';</script>";
 }

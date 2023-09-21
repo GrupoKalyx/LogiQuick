@@ -47,9 +47,9 @@ CREATE TABLE IF NOT EXISTS `logiquickbd`.`Conductores` (
   PRIMARY KEY (`ci`));
 
 -- -----------------------------------------------------
--- Table `Delivery`
+-- Table `Deliverys`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `logiquickbd`.`Delivery` (
+CREATE TABLE IF NOT EXISTS `logiquickbd`.`Deliverys` (
   `ci` INT NOT NULL,
   `nombre` VARCHAR(45) NULL,
   `telefono` INT NULL,
@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `logiquickbd`.`Manejan` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
     FOREIGN KEY (`ci`)
-    REFERENCES `Delivery` (`ci`)
+    REFERENCES `Deliverys` (`ci`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 

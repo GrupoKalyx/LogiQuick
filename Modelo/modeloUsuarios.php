@@ -7,8 +7,8 @@ class modeloUsuarios
     {
         $query = "INSERT INTO usuarios VALUES (?, ?, ?)";
         $conn->execute_query($query, [$ci, $nombre, $tipo]);
-        $query = "INSERT INTO logins VALUES (?, ?)";
-        $conn->execute_query($query, [$ci, $contrasenia]);
+        $query2 = "INSERT INTO logins VALUES (?, ?)";
+        $conn->execute_query($query2, [$ci, $contrasenia]);
     }
 
     public static function baja($ci, $conn)

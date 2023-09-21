@@ -33,12 +33,16 @@ session_start();
         <br>
         <h1 class="nav__text"> Bienvenid@: 
             <?php
-            $ci = $_SESSION['ci'];
-            $queryName = "SELECT nombre FROM `usuarios` WHERE ci = ? LIMIT 1";
-            $resultName = $conn->execute_query($queryName, [$ci]);
-            $fName = $resultName->fetch_array(MYSQLI_ASSOC);
-            $name = $fName['nombre'];
-            echo ($name);
+            try {
+                $ci = $_SESSION['ci'];
+                $queryName = "SELECT nombre FROM `usuarios` WHERE ci = ? LIMIT 1";
+                $resultName = $conn->execute_query($queryName, [$ci]);
+                $fName = $resultName->fetch_array(MYSQLI_ASSOC);
+                $name = $fName['nombre'];
+                echo ($name);
+            } catch (\Throwable $th) {
+                echo "-";
+            }
             ?>
             <b></b>
         </h1>

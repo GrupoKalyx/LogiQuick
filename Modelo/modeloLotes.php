@@ -7,7 +7,7 @@ class modeloLotes
     {
         $query = "INSERT INTO lotes VALUES (); SELECT LAST_INSERT_ID();";
         $exc = $conn->execute_query($query);
-        var_dump($exc);
+        $result = $exc->fetch_array(MYSQLI_ASSOC);
         return $result;
     }
 
