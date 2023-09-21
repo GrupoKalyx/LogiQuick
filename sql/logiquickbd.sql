@@ -1,202 +1,248 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Servidor: 127.0.0.1
--- Tiempo de generación: 08-09-2023 a las 16:34:06
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.2.4
+-- -----------------------------------------------------
+-- Schema logiquickbd
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `logiquickbd` DEFAULT CHARACTER SET utf8 ;
+USE `logiquickbd` ;
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
+-- -----------------------------------------------------
+-- Table `logiquickbd`.`Vehiculos`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `logiquickbd`.`Vehiculos` (
+  `matricula` VARCHAR(45) NOT NULL,
+  `disponibilidad` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`matricula`))
+ENGINE = InnoDB;
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+-- -----------------------------------------------------
+-- Table `logiquickbd`.`Pick_ups`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `logiquickbd`.`Pick_ups` (
+  `matricula` VARCHAR(45) NOT NULL,
+  `disponibilidad` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`matricula`),
+    FOREIGN KEY (`matricula`)
+    REFERENCES `logiquickbd`.`Vehiculos` (`matricula`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
---
--- Base de datos: `logiquickbd`
---
 
--- --------------------------------------------------------
+-- -----------------------------------------------------
+-- Table `logiquickbd`.`Camiones`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `logiquickbd`.`Camiones` (
+  `matricula` VARCHAR(45) NOT NULL,
+  `disponibilidad` VARCHAR(45) NULL,
+  PRIMARY KEY (`matricula`),
+    FOREIGN KEY (`matricula`)
+    REFERENCES `logiquickbd`.`Vehiculos` (`matricula`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
---
--- Estructura de tabla para la tabla `almacenes`
---
 
-CREATE TABLE `almacenes` (
-  `idAlmacen` int(16) NOT NULL,
-  `ubicacion` varchar(64) NOT NULL,
-  `descUbi` varchar(127) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+-- -----------------------------------------------------
+-- Table `logiquickbd`.`Conductores`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `logiquickbd`.`Conductores` (
+  `ci` INT NOT NULL,
+  `nombre` VARCHAR(45) NULL,
+  `telefono` INT NULL,
+  PRIMARY KEY (`ci`))
+ENGINE = InnoDB;
 
---
--- Volcado de datos para la tabla `almacenes`
---
 
-INSERT INTO `almacenes` (`idAlmacen`, `ubicacion`, `descUbi`) VALUES
-(0, 'Montevideo', ''),
-(1, 'Paysandu', ''),
-(2, 'Pando', ''),
-(3, 'Shangrila', ''),
-(4, 'UIYHBIDUBQAWIUOBh', '23454235234264');
+-- -----------------------------------------------------
+-- Table `logiquickbd`.`Delivery`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `logiquickbd`.`Delivery` (
+  `ci` INT NOT NULL,
+  `nombre` VARCHAR(45) NULL,
+  `telefono` INT NULL,
+  PRIMARY KEY (`ci`),
+    FOREIGN KEY (`ci`)
+    REFERENCES `logiquickbd`.`Conductores` (`ci`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
--- --------------------------------------------------------
 
---
--- Estructura de tabla para la tabla `logins`
---
+-- -----------------------------------------------------
+-- Table `logiquickbd`.`Manejan`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `logiquickbd`.`Manejan` (
+  `matricula` INT NOT NULL,
+  `fecha_llegada` DATE NULL,
+  `fecha_salida` DATE NULL,
+  `ci` INT NOT NULL,
+  PRIMARY KEY (`matricula`, `ci`),
+    FOREIGN KEY (`matricula`)
+    REFERENCES `logiquickbd`.`Pick_ups` (`matricula`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+    FOREIGN KEY (`ci`)
+    REFERENCES `logiquickbd`.`Delivery` (`ci`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
-CREATE TABLE `logins` (
-  `idLogin` int(9) NOT NULL,
-  `contrasenia` varchar(32) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `logins`
---
+-- -----------------------------------------------------
+-- Table `logiquickbd`.`Camionero`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `logiquickbd`.`Camionero` (
+  `ci` INT NOT NULL,
+  `nombre` VARCHAR(45) NULL,
+  `telefono` INT NULL,
+  PRIMARY KEY (`ci`),
+    FOREIGN KEY (`ci`)
+    REFERENCES `logiquickbd`.`Conductores` (`ci`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
-INSERT INTO `logins` (`idLogin`, `contrasenia`) VALUES
-(1, '5623');
 
--- --------------------------------------------------------
+-- -----------------------------------------------------
+-- Table `logiquickbd`.`Conducen`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `logiquickbd`.`Conducen` (
+  `matricula` INT NOT NULL,
+  `fecha_llegada` DATE NULL,
+  `fecha_salida` DATE NULL,
+  `ci` INT NOT NULL,
+  PRIMARY KEY (`matricula`, `ci`),
+    FOREIGN KEY (`ci`)
+    REFERENCES `logiquickbd`.`Camionero` (`ci`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+    FOREIGN KEY (`matricula`)
+    REFERENCES `logiquickbd`.`Camiones` (`matricula`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
---
--- Estructura de tabla para la tabla `lotes`
---
 
-CREATE TABLE `lotes` (
-  `numLote` int(20) NOT NULL,
-  `estado` varchar(255) NOT NULL DEFAULT 'En Almacen'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+-- -----------------------------------------------------
+-- Table `logiquickbd`.`Paquetes`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `logiquickbd`.`Paquetes` (
+  `id_Paquete` INT NOT NULL AUTO_INCREMENT,
+  `fecha_entrega` DATE NULL,
+  `calle` VARCHAR(45) NULL,
+  `localidad` VARCHAR(45) NULL,
+  `departamento` VARCHAR(45) NULL,
+  `N_puerta` INT NULL,
+  `gmail_cliente` VARCHAR(45) NULL,
+  `id_Rastreo` INT NULL,
+  `fecha_llegada_QC` DATE NULL,
+  PRIMARY KEY (`id_Paquete`))
+ENGINE = InnoDB;
 
---
--- Volcado de datos para la tabla `lotes`
---
 
-INSERT INTO `lotes` (`numLote`, `estado`) VALUES
-(4, 'en calle'),
-(5, 'enDestino');
+-- -----------------------------------------------------
+-- Table `logiquickbd`.`Lotes`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `logiquickbd`.`Lotes` (
+  `id_Lote` INT NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id_Lote`))
+ENGINE = InnoDB;
 
--- --------------------------------------------------------
 
---
--- Estructura de tabla para la tabla `paquetes`
---
+-- -----------------------------------------------------
+-- Table `logiquickbd`.`Entregan`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `logiquickbd`.`Entregan` (
+  `fecha_llegada` DATE NOT NULL,
+  `fecha_salida` DATE NULL,
+  `matricula` VARCHAR(45) NOT NULL,
+  `id_Paquete` INT NOT NULL,
+  PRIMARY KEY (`id_Paquete`, `matricula`),
+    FOREIGN KEY (`id_Paquete`)
+    REFERENCES `logiquickbd`.`Paquetes` (`id_Paquete`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+    FOREIGN KEY ()
+    REFERENCES `logiquickbd`.`Pick_ups` ()
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
-CREATE TABLE `paquetes` (
-  `numBulto` int(10) NOT NULL,
-  `gmailCliente` varchar(64) NOT NULL,
-  `idRastreo` bigint(16) NOT NULL,
-  `fechaLlegada` datetime DEFAULT NULL,
-  `fechaEntrega` datetime DEFAULT NULL,
-  `num` int(4) NOT NULL,
-  `calle` int(64) NOT NULL,
-  `localidad` int(32) DEFAULT NULL,
-  `departamento` varchar(16) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `paquetes`
---
+-- -----------------------------------------------------
+-- Table `logiquickbd`.`Lotean`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `logiquickbd`.`Lotean` (
+  `id_Paquete` INT NOT NULL,
+  `id_Lote` INT NOT NULL,
+  PRIMARY KEY (`id_Paquete`, `id_Lote`),
+    FOREIGN KEY (`id_Paquete`)
+    REFERENCES `logiquickbd`.`Paquetes` (`id_Paquete`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+    FOREIGN KEY (`id_Lote`)
+    REFERENCES `logiquickbd`.`Lotes` (`id_Lote`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
-INSERT INTO `paquetes` (`numBulto`, `gmailCliente`, `idRastreo`, `fechaLlegada`, `fechaEntrega`, `num`, `calle`, `localidad`, `departamento`) VALUES
-(1, 'example@hotmail.com ', 8334095785, NULL, NULL, 0, 0, NULL, ''),
-(2, 'example@gmail.com', 8530122412, NULL, NULL, 0, 0, NULL, ''),
-(3, 'elpepetilin@gmail.com', 3381331158, NULL, NULL, 0, 0, NULL, ''),
-(7, 'elpepetilin@gmail.com', 8302816760, NULL, NULL, 0, 0, NULL, '');
 
--- --------------------------------------------------------
+-- -----------------------------------------------------
+-- Table `logiquickbd`.`llevan`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `logiquickbd`.`llevan` (
+  `matricula` VARCHAR(45) NOT NULL,
+  `id_Lote` INT NOT NULL,
+  `id_Paquete` INT NOT NULL,
+  `fecha_salida` DATE NULL,
+  `fecha_llegada` DATE NULL,
+  PRIMARY KEY (`matricula`, `id_Paquete`, `id_Lote`),
+    FOREIGN KEY (`id_Paquete`)
+    REFERENCES `logiquickbd`.`Lotean` (`id_Paquete`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+    FOREIGN KEY (`id_Lote`)
+    REFERENCES `logiquickbd`.`Lotean` (`id_Lote`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+    FOREIGN KEY (`matricula`)
+    REFERENCES `logiquickbd`.`Camiones` (`matricula`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
---
--- Estructura de tabla para la tabla `tokens`
---
 
-CREATE TABLE `tokens` (
-  `tokenUsuario` varchar(64) NOT NULL,
-  `idToken` int(8) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+-- -----------------------------------------------------
+-- Table `logiquickbd`.`Almacenes`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `logiquickbd`.`Almacenes` (
+  `num_Almacen` INT NOT NULL,
+  `calle` VARCHAR(45) NULL,
+  `departamento` VARCHAR(45) NULL,
+  `localidad` VARCHAR(45) NULL,
+  `N_puerta` INT NULL,
+  PRIMARY KEY (`num_Almacen`))
+ENGINE = InnoDB;
 
---
--- Volcado de datos para la tabla `tokens`
---
 
-INSERT INTO `tokens` (`tokenUsuario`, `idToken`) VALUES
-('a7732fc8f71c2bf9d644bf5eb0c7a25b90616aa2e678b18a43292b1290027959', 1),
-('96e74fbfd5bb57c4269c79e378c3d6053b99ed37d3a0cb1df21267f4126dc94d', 1),
-('3b0dca164621d811c37cd6ad9f7a497e34433bd32b3a82b377be776bcbb0752b', 1),
-('28dd6dcb764583d289da55bafa5df53c4395b42a8168cefa58f99ab063d416c4', 1),
-('7382059314b9eca307ee5259269ad2bbb37e88b440943062a812eb6f8e54716c', 1),
-('d2fac01c95845675d6e694cdfd34573d26c0ac6161a1e1cf9a7de34fe708c18e', 1),
-('418c088984489df55ac88e5d06f414dae8b73da6de7efcc8aae7c3fd9f472592', 7),
-('d471f9889622fae75ead1a6832b70cbec07d86bde467c24894d32d0294b525fd', 7),
-('7508bd528de85d34c0025007e863def7960f2f60199612e535b94360357b84a1', 7),
-('406f7bd2e89c7ee9d532eed620685c5a11b697488033528974bd85aec645792f', 7),
-('4872af195e574219ef2564bdbe6b4bb4d360ee06706b4e0a218f763e7125793b', 7),
-('ac4422a8b5370c00e496943121bf24ded19f46d6ff1039d60b84b6ef2c40cfad', 7);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `usuarios`
---
-
-CREATE TABLE `usuarios` (
-  `ci` int(8) NOT NULL,
-  `nombre` varchar(255) NOT NULL,
-  `tipo` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `usuarios`
---
-
-INSERT INTO `usuarios` (`ci`, `nombre`, `tipo`) VALUES
-(1, '7895', 'Admin');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `vehiculos`
---
-
-CREATE TABLE `vehiculos` (
-  `matricula` varchar(7) NOT NULL,
-  `disponibilidad` varchar(32) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `almacenes`
---
-ALTER TABLE `almacenes`
-  ADD PRIMARY KEY (`idAlmacen`);
-
---
--- Indices de la tabla `lotes`
---
-ALTER TABLE `lotes`
-  ADD PRIMARY KEY (`numLote`);
-
---
--- Indices de la tabla `paquetes`
---
-ALTER TABLE `paquetes`
-  ADD PRIMARY KEY (`numBulto`);
-
---
--- Indices de la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`ci`);
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+-- -----------------------------------------------------
+-- Table `logiquickbd`.`Van`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `logiquickbd`.`Van` (
+  `id_Lote` INT NOT NULL,
+  `id_Paquete` INT NOT NULL,
+  `num_Almacen` INT NOT NULL,
+  PRIMARY KEY (`id_Lote`, `id_Paquete`, `num_Almacen`),
+    FOREIGN KEY (`id_Lote`)
+    REFERENCES `logiquickbd`.`Lotean` (`id_Lote`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+    FOREIGN KEY (`id_Paquete`)
+    REFERENCES `logiquickbd`.`Lotean` (`id_Paquete`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+    FOREIGN KEY (`num_Almacen`)
+    REFERENCES `logiquickbd`.`Almacenes` (`num_Almacen`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
