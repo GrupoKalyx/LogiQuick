@@ -159,26 +159,11 @@ session_start();
         <div class="form">
             <h2>Ingresar lote</h2>
             <form action="CRUD\lotes\Altas.php" method="post">
-                Numero de lote<input class="form__input" type="text" name="numLote"><br><br>
-                Estado <input class="form__input" type="text" name="estado"><br><br>
+                <input class="form__input" type="text" name="estado"><br><br>
                 <button type="submit" class="form__button" name="actionbtn">Crear</button>
-            
-            <!-- <form action="CRUD\lotes\AltasPaquete.php" method="post">
-                Agregar paquete <br><input class="form__input" type="text" id="paquete" name="paquete"><br><br>
-                <button class="form__button" formaction="CRUD\lotes\MandarPaquetesLote.php" type="button" name="btn" id="btn">Agregar</button><br>
-                <script> 
-                    const button = document.getElementById("btn");
-                    function pushData() {
-                        const elem = document.getElementById("paquete");
-                        const cambio = document.getElementById("textoRecibido").innerHTML = elem.value;
-                    }
-                    button.addEventListener("click", pushData);
-                </script>
-                <span>
-                    Ultimo paquete ingresado (ID) : <span id="textoRecibido">#</span>
-                </span><br><br>
+                Paquete 1<br><input class="form__input" type="text" id="paquete" name="paquete"><br><br>
                 <button type="submit" class="form__button" name="actionbtn">Ingresar</button>
-                </form>--></form>
+            </form>
         </div>
         <div class="form">
             <h2>Eliminar Lote</h2>

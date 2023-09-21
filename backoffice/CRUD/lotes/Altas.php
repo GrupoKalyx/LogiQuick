@@ -1,15 +1,14 @@
 <?php
 require_once('../../sql/dbconection.php');
 
-$lote = $_POST['numLote'];
 $paquete1 = $_POST['paquete1'];
 $paquete2 = $_POST['paquete2'];
 $paquete3 = $_POST['paquete3'];
 $paquete4 = $_POST['paquete4'];
 $paquete5 = $_POST['paquete5'];
 
-$query = "INSERT INTO lotes VALUES (?)";
-$exc = $conn->execute_query($query, [$lote]);
+$query = "INSERT INTO lotes VALUES (); SELECT LAST_INSERT_ID();";
+$exc = $conn->execute_query($query);
 $query1 = "INSERT INTO lotean VALUES (?, ?)";
 $exc1 = $conn->execute_query($query1, [$lote, $paquete1]);
 $query2 = "INSERT INTO lotean VALUES (?, ?)";

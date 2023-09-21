@@ -12,7 +12,7 @@ class controladorLotes
     public function ingresar($context)
     {
         $paquete1 = $context['post']['paquete1'];
-        $paquete2 = $_POST['post']['paquete2'];
+        $paquete2 = $context['post']['paquete2'];
         $paquete3 = $context['post']['paquete3'];
         $paquete4 = $context['post']['paquete4'];
         $paquete5 = $context['post']['paquete5'];

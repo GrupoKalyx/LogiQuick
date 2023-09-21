@@ -5,8 +5,10 @@ class modeloLotes
 
     public static function alta($conn)
     {
-        $query = "INSERT INTO paquetes  VALUES ()";
-        $conn->execute_query($query);
+        $query = "INSERT INTO lotes VALUES (); SELECT LAST_INSERT_ID();";
+        $exc = $conn->execute_query($query);
+        var_dump($exc);
+        return $result;
     }
 
     public static function modificacion($numBulto, $gmailCliente, $fechaLlegada, $num, $calle, $localidad, $departamento, $conn)
