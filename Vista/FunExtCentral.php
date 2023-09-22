@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="estilos/style.css">
   <title>LogiQuick</title>
-  <script src="Traducir.js"></script>
+  <!-- <script src="Traducir.js"></script> -->
 </head>
 <body class="body">
 
@@ -18,7 +18,7 @@
         <li class="navbar__list__item"><a href="referencias/VerificarLlegadas.php">Verificar Llegadas</a></li>
         <li class="navbar__list__item"><a href="referencias/IngresarPaquete.php">Ingresar Paquetes</a></li>
       </ul>
-      <button class="form__button" id="traductor-btn">Traducir Pagina</button>
+      <!-- <button class="form__button" id="traductor-btn">Traducir Pagina</button> -->
       <div class="navbar__logout"> 
         <button class="navbar__logout__button"><a href="login.php">Cerrar Sesión</a></button>
       </div>

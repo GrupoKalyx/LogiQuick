@@ -37,7 +37,6 @@
                     <a href="#">Seguimiento</a>
                 </li>
                 <li class="navbar__logout">
-                <!-- <button class="form__button" id="traductor-btn">Traducir Pagina</button> -->
                     <button class="navbar__logout__button">
                         <a href="#">Cerrar Sesión</a>
                     </button>
