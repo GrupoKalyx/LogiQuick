@@ -125,8 +125,8 @@ session_start();
             <h2>Ingresar paquete</h2>
             <form action="CRUD\paquetes\Altas.php" method="post">
                 Correo del cliente <input class="form__input" type="text" name="gmailCliente"><br><br>
-                Fecha de llegada <input class="form__input" type="date" name="fechaLlegada"><br><br>
-                Horario de llegada <input class="form__input" type="time" name="horaLlegada"><br><br>
+                Fecha de llegada (a Quickcarry)<input class="form__input" type="date" name="fechaLlegadaQc"><br><br>
+                Horario de llegada <input class="form__input" type="time" name="horaLlegadaQc"><br><br>
                 Numero <input class="form__input" type="text" name="num"><br><br>
                 Calle <input class="form__input" type="text" name="calle"><br><br>
                 Localidad <input class="form__input" type="text" name="localidad"><br><br>

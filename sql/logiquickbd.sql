@@ -112,24 +112,24 @@ CREATE TABLE IF NOT EXISTS `logiquickbd`.`Conducen` (
 -- Table `Paquetes`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `logiquickbd`.`Paquetes` (
-  `id_Paquete` INT NOT NULL AUTO_INCREMENT,
-  `fecha_entrega` DATE NULL,
+  `numBulto` INT NOT NULL AUTO_INCREMENT,
+  `fechaEntrega` DATE NULL,
   `calle` VARCHAR(45) NULL,
   `localidad` VARCHAR(45) NULL,
   `departamento` VARCHAR(45) NULL,
-  `N_puerta` INT NULL,
-  `gmail_cliente` VARCHAR(45) NULL,
-  `id_Rastreo` INT NULL,
+  `num` INT NULL,
+  `gmailCliente` VARCHAR(45) NULL,
+  `idRastreo` INT NULL,
   `coordenadas` VARCHAR(32) NULL,
-  `fecha_llegada_QC` DATE NULL,
-  PRIMARY KEY (`id_Paquete`));
+  `fechaLLegadaQc` DATE NULL,
+  PRIMARY KEY (`numBulto`));
 
 -- -----------------------------------------------------
 -- Table `Lotes`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `logiquickbd`.`Lotes` (
-  `id_Lote` INT NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id_Lote`));
+  `idLote` INT NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`idLote`));
 
 -- -----------------------------------------------------
 -- Table `Entregan`
@@ -138,10 +138,10 @@ CREATE TABLE IF NOT EXISTS `logiquickbd`.`Entregan` (
   `fecha_llegada` DATE NOT NULL,
   `fecha_salida` DATE NULL,
   `matricula` VARCHAR(45) NOT NULL,
-  `id_Paquete` INT NOT NULL,
-  PRIMARY KEY (`id_Paquete`, `matricula`),
-    FOREIGN KEY (`id_Paquete`)
-    REFERENCES `Paquetes` (`id_Paquete`)
+  `numBulto` INT NOT NULL,
+  PRIMARY KEY (`numBulto`, `matricula`),
+    FOREIGN KEY (`numBulto`)
+    REFERENCES `Paquetes` (`numBulto`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
     FOREIGN KEY (`matricula`)
@@ -149,20 +149,19 @@ CREATE TABLE IF NOT EXISTS `logiquickbd`.`Entregan` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-
 -- -----------------------------------------------------
 -- Table `Lotean`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `logiquickbd`.`Lotean` (
-  `id_Paquete` INT NOT NULL,
-  `id_Lote` INT NOT NULL,
-  PRIMARY KEY (`id_Paquete`, `id_Lote`),
-    FOREIGN KEY (`id_Paquete`)
-    REFERENCES `Paquetes` (`id_Paquete`)
+  `numBulto` INT NOT NULL,
+  `idLote` INT NOT NULL,
+  PRIMARY KEY (`numBulto`, `idLote`),
+    FOREIGN KEY (`numBulto`)
+    REFERENCES `Paquetes` (`numBulto`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-    FOREIGN KEY (`id_Lote`)
-    REFERENCES `Lotes` (`id_Lote`)
+    FOREIGN KEY (`idLote`)
+    REFERENCES `Lotes` (`idLote`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
@@ -171,24 +170,23 @@ CREATE TABLE IF NOT EXISTS `logiquickbd`.`Lotean` (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `logiquickbd`.`llevan` (
   `matricula` VARCHAR(45) NOT NULL,
-  `id_Lote` INT NOT NULL,
-  `id_Paquete` INT NOT NULL,
+  `idLote` INT NOT NULL,
+  `numBulto` INT NOT NULL,
   `fecha_salida` DATE NULL,
   `fecha_llegada` DATE NULL,
-  PRIMARY KEY (`matricula`, `id_Paquete`, `id_Lote`),
-    FOREIGN KEY (`id_Paquete`)
-    REFERENCES `Lotean` (`id_Paquete`)
+  PRIMARY KEY (`matricula`, `numBulto`, `idLote`),
+    FOREIGN KEY (`numBulto`)
+    REFERENCES `Lotean` (`numBulto`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-    FOREIGN KEY (`id_Lote`)
-    REFERENCES `Lotean` (`id_Lote`)
+    FOREIGN KEY (`idLote`)
+    REFERENCES `Lotean` (`idLote`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
     FOREIGN KEY (`matricula`)
     REFERENCES `Camiones` (`matricula`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
-
 
 -- -----------------------------------------------------
 -- Table `Almacenes`
@@ -206,16 +204,16 @@ CREATE TABLE IF NOT EXISTS `logiquickbd`.`Almacenes` (
 -- Table `Van`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `logiquickbd`.`Van` (
-  `id_Lote` INT NOT NULL,
-  `id_Paquete` INT NOT NULL,
+  `idLote` INT NOT NULL,
+  `numBulto` INT NOT NULL,
   `num_Almacen` INT NOT NULL,
-  PRIMARY KEY (`id_Lote`, `id_Paquete`, `num_Almacen`),
-    FOREIGN KEY (`id_Lote`)
-    REFERENCES `Lotean` (`id_Lote`)
+  PRIMARY KEY (`idLote`, `numBulto`, `num_Almacen`),
+    FOREIGN KEY (`idLote`)
+    REFERENCES `Lotean` (`idLote`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-    FOREIGN KEY (`id_Paquete`)
-    REFERENCES `Lotean` (`id_Paquete`)
+    FOREIGN KEY (`numBulto`)
+    REFERENCES `Lotean` (`numBulto`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
     FOREIGN KEY (`num_Almacen`)
