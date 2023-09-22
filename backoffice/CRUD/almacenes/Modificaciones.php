@@ -1,11 +1,14 @@
 <?php
 require_once('../../sql/dbconection.php');
 
-$numAlmacen = $_POST['numAlmacen'];
-$ubi = $_POST['ubicacion'];
-$descUbi = $_POST['descUbi'];
-$query = "UPDATE almacenes SET ubicacion = ?, descUbi = ? WHERE numAlmacen = ?";
-$exc = $conn->execute_query($query, [$ubi, $descUbi, $numAlmacen]);
+$idAlmacen = $_POST['idAlmacen'];
+$ubiAlmacen = $_POST['ubiAlmacen'];
+$N_puerta = $_POST['N_puerta'];
+$calle = $_POST['calle'];
+$localidad = $_POST['localidad'];
+$departamento = $_POST['departamento'];
+$query = "UPDATE almacenes SET ubiAlmacen = ?, N_puerta = ?, calle = ?, localidad = ?,  departamento = ?  WHERE idAlmacen = ?";
+$exc = $conn->execute_query($query, [$idAlmacen, $ubiAlmacen, $N_puerta, $calle, $localidad, $departamento]);
 
 if ($exc) {
   echo "<script>alert('Almacen modificado con éxito.');window.location='../../indexAdmin.php'</script>";

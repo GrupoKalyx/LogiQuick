@@ -1,13 +1,13 @@
 <?php
 require_once('../../sql/dbconection.php');
 
-$numAlmacen = $_POST['numAlmacen'];
-$query = "DELETE FROM almacenes WHERE numAlmacen = ?";
-$exc = $conn->execute_query($query, [$numAlmacen]);
+$idAlmacen = $_POST['idAlmacen'];
+$query = "DELETE FROM almacenes WHERE idAlmacen = ?";
+$exc = $conn->execute_query($query, [$idAlmacen]);
 
-if ($exc == true) {
+if ($exc) {
   echo "<script>alert('Almacen eliminado con éxito.');window.location='../../indexAdmin.php' </script>";
 } else {
-  echo "<script>alert('error, usuario no encotrado u otro error !');window.location='indexAdmin.php' </script>";
+  echo "<script>alert('Ha ocurrido un error inesperado.');window.location='../../indexAdmin.php' </script>";
 }
 ?>

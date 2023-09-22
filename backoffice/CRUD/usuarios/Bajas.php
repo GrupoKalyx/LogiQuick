@@ -8,8 +8,8 @@ $query2 = "DELETE FROM logins WHERE idLogin = ?";
 $exc2 = $conn->execute_query($query2, [$ci]);
 
 $queryTipo = "SELECT tipo FROM `usuarios` WHERE ci = ?";
-$exc = $conn->execute_query($queryTipo, [$ci]);
-$tipo = $exc->fetch_array(MYSQLI_ASSOC);
+$excTipo = $conn->execute_query($queryTipo, [$ci]);
+$tipo = $excTipo->fetch_array(MYSQLI_ASSOC);
 
 if ($tipo == 'Camionero' or $tipo == 'Delivery') {
   if ($tipo == 'Camionero') {

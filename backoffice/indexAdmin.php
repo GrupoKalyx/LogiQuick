@@ -2,7 +2,6 @@
 if (isset($_POST['btncerrar'])) {
     header("location: loginAdmin.php");
 }
-
 require_once('sql/dbconection.php');
 session_start();
 ?>
@@ -66,13 +65,13 @@ session_start();
         <div class="form">
             <h2>Dar de baja Usuario</h2>
             <form class="m" action="CRUD/usuarios/Bajas.php" method="post">
-                CI de usuario <input class="form__input" type="text" name="c"><br><br>
+                CI de usuario <input class="form__input" type="text" name="ci"><br><br>
                 <button class="form__button" type="submit">Eliminar</button>
             </form>
         </div>
-        <div class="form">
+        <div class="form" id="list">
             <h2>Usuarios registrados</h2><br>
-            <iframe src="CRUD/usuarios/Consultas.php" style="height: 400px;  border-radius: 5px ;border: #ffc870 3px solid;">
+            <iframe  src="CRUD/usuarios/Consultas.php">
             </iframe>
         </div>
         <div class="form">
@@ -81,8 +80,8 @@ session_start();
                 CI <input class="form__input" type="text" name="ci"><br>
                 <h2>Nuevos datos</h2>
                 Nuevo nombre de usuario <input class="form__input" type="text" name="nombre"><br>
-                Nueva contraseña <input class="form__input" type="password" name="contrasenia"><br><br>
-                Nueva telefono <input class="form__input" type="text" name="telefono"><br><br>
+                Nueva contraseña <input class="form__input" type="password" name="contrasenia"><br>
+                Nuevo telefono <input class="form__input" type="text" name="telefono"><br><br>
                 <button class="form__button" type="submit">Modificar</button>
             </form>
         </div>
@@ -91,31 +90,36 @@ session_start();
         <div class="form">
             <h2> Ingresar datos de Almacen</h2>
             <form action="CRUD/almacenes/Altas.php" method="post">
-                Numero de almacen <input type="text" class="form__input" name="numAlmacen">
-                Ubicacion de almacen<input class="form__input" type="text" name="ubicacion">
-                Desc. de ubicación del almacen<input class="form__input" type="text" name="descUbi"><br><br>
+                Id de almacen <input type="text" class="form__input" name="idAlmacen"><br>
+                N_puerta <input class="form__input" type="text" name="N_puerta"><br>
+                Calle <input class="form__input" type="text" name="calle"><br>
+                Localidad <input class="form__input" type="text" name="localidad"><br>
+                Departamento <input class="form__input" type="text" name="departamento"><br><br>
                 <button class="form__button" type="submit">Ingresar</button>
             </form>
         </div>
         <div class="form">
             <h2>Eliminar un almacen</h2>
             <form action="CRUD/almacenes/Bajas.php" method="post">
-                Numero de almacen<input class="form__input" type="text" name="numAlmacen"><br><br>
+                Id de almacen<input class="form__input" type="text" name="idAlmacen"><br><br>
                 <button class="form__button" type="submit">Eliminar</button>
             </form>
         </div>
-        <div class="form">
+        <div class="form" id="list">
             <h2>Almacenes registrados</h2><br>
-            <iframe src="CRUD/almacenes/Consultas.php" style="height: 400px;  border-radius: 5px ;border: #ffc870 3px solid;">
+            <iframe src="CRUD/almacenes/Consultas.php" >
             </iframe>
         </div>
         <div class="form">
             <h2> Ingresar datos de Almacen a modificar</h2>
             <form action="CRUD/almacenes/Modificaciones.php" method="post">
-                Numero de almacen <input class="form__input" type="text" name="numAlmacen">
+                Id de almacen <input class="form__input" type="text" name="idAlmacen">
                 <h2>Nuevos datos</h2>
-                Ubicacion de almacen <input class="form__input" type="text" name="ubicacion">
-                Descripcion de ubicacion <input class="form__input" type="text" name="descUbi"><br><br>
+                Ubicacion de almacen <input class="form__input" type="text" name="ubiAlmacen">
+                N_puerta <input class="form__input" type="text" name="N_puerta"><br>
+                Calle <input class="form__input" type="text" name="calle"><br>
+                Localidad <input class="form__input" type="text" name="localidad"><br>
+                Departamento <input class="form__input" type="text" name="departamento"><br><br>
                 <button class="form__button" type="submit">Modificar</button>
             </form>
         </div>
@@ -134,16 +138,16 @@ session_start();
                 <button type="submit" class="form__button" name="actionbtn">Ingresar</button>
             </form>
         </div>
-        <div class="form">
+        <div class="form" id="list">
             <h2>Eliminar paquete</h2>
             <form action="CRUD\paquetes\Bajas.php" method="post">
                 Numero de bulto <input class="form__input" type="text" name="numBulto"><br><br>
                 <button class="form__button" type="submit">Eliminar</button>
             </form>
         </div>
-        <div class="form">
+        <div class="form" id="list">
             <h2>Lista de paquetes</h2><br>
-            <iframe src="CRUD/paquetes/Consultas.php" style="height: 700px;  border-radius: 5px ;border: #ffc870 3px solid;">>
+            <iframe src="CRUD/paquetes/Consultas.php" >
             </iframe>
         </div>
         <div class="form">
@@ -178,9 +182,9 @@ session_start();
                 <button class="form__button" type="submit">Eliminar</button>
             </form>
         </div>
-        <div class="form">
+        <div class="form" id="list">
             <h2>Lista de lotes</h2><br>
-            <iframe src="CRUD/lotes/Consultas.php" style="height: 400px;  border-radius: 5px ;border: #ffc870 3px solid;">>
+            <iframe src="CRUD/lotes/Consultas.php">>
             </iframe>
         </div>
         <div class="form">

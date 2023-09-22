@@ -121,7 +121,7 @@ CREATE TABLE IF NOT EXISTS `logiquickbd`.`Paquetes` (
   `gmailCliente` VARCHAR(45) NULL,
   `idRastreo` INT NULL,
   `coordenadas` VARCHAR(32) NULL,
-  `fechaLLegadaQc` DATE NULL,
+  `fechaLlegadaQc` DATE NULL,
   PRIMARY KEY (`numBulto`));
 
 -- -----------------------------------------------------
@@ -192,13 +192,13 @@ CREATE TABLE IF NOT EXISTS `logiquickbd`.`llevan` (
 -- Table `Almacenes`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `logiquickbd`.`Almacenes` (
-  `num_Almacen` INT NOT NULL,
+  `idAlmacen` INT NOT NULL,
   `calle` VARCHAR(45) NULL,
   `departamento` VARCHAR(45) NULL,
   `localidad` VARCHAR(45) NULL,
   `N_puerta` INT NULL,
-  `coordenadas` VARCHAR(32) NULL,
-  PRIMARY KEY (`num_Almacen`));
+  `ubiAlmacen` VARCHAR(32) NULL,
+  PRIMARY KEY (`idAlmacen`));
 
 -- -----------------------------------------------------
 -- Table `Van`
@@ -206,8 +206,8 @@ CREATE TABLE IF NOT EXISTS `logiquickbd`.`Almacenes` (
 CREATE TABLE IF NOT EXISTS `logiquickbd`.`Van` (
   `idLote` INT NOT NULL,
   `numBulto` INT NOT NULL,
-  `num_Almacen` INT NOT NULL,
-  PRIMARY KEY (`idLote`, `numBulto`, `num_Almacen`),
+  `idAlmacen` INT NOT NULL,
+  PRIMARY KEY (`idLote`, `numBulto`, `idAlmacen`),
     FOREIGN KEY (`idLote`)
     REFERENCES `Lotean` (`idLote`)
     ON DELETE NO ACTION
@@ -216,8 +216,8 @@ CREATE TABLE IF NOT EXISTS `logiquickbd`.`Van` (
     REFERENCES `Lotean` (`numBulto`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-    FOREIGN KEY (`num_Almacen`)
-    REFERENCES `Almacenes` (`num_Almacen`)
+    FOREIGN KEY (`idAlmacen`)
+    REFERENCES `Almacenes` (`idAlmacen`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 

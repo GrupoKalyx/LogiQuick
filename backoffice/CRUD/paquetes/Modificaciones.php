@@ -8,8 +8,10 @@ $calle = $_POST['calle'];
 $localidad = $_POST['localidad'];
 $departamento = $_POST['departamento'];
 
-$query = "UPDATE paquetes SET gmailCliente = ? , num = ?, calle = ?, localidad = ?, departamento = ? WHERE numBulto = ?";
-$exc = $conn->execute_query($query, [$gmailCliente, $num, $calle, $localidad, $departamento, $numBulto]);
+$ubiAlmacen = "";
+
+$query = "UPDATE paquetes SET gmailCliente = ?, num = ?, calle = ?, localidad = ?, departamento = ?, ubiAlmacen = ? WHERE numBulto = ?";
+$exc = $conn->execute_query($query, [$gmailCliente, $num, $calle, $localidad, $departamento, $ubiAlmacen, $numBulto]);
 
 if ($exc) {
   echo "<script>alert('Paquete actualizado con éxito.');window.location='../../indexAdmin.php'</script>";

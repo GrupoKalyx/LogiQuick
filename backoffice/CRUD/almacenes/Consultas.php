@@ -6,10 +6,13 @@ $result = mysqli_query($conn, $query);
 $arrayConsulta = array();
 
 foreach ($result->fetch_all(MYSQLI_ASSOC) as $row) {
-    $numAlmacen = $row['numAlmacen'];
-    $ubi = $row['ubicacion'];
-    $descUbi = $row['descUbi'];
-    array_push($arrayConsulta, ['Número: ' => $numAlmacen, '<br> Ubicación: ' => $ubi, '<br> Descripción de ubicación: ' => $descUbi . '<br><br>']);
+    $idAlmacen = $row['idAlmacen'];
+    $ubiAlmacen = $row['ubiAlmacen'];
+    $N_puerta = $row['N_puerta'];
+    $calle = $row['calle'];
+    $localidad = $row['localidad'];
+    $departamento = $row['departamento'];
+    array_push($arrayConsulta, ['Id de almacen: ' => $idAlmacen, '<br> Ubicación: ' => $ubiAlmacen, '<br> N_puerta: ' => $N_puerta, '<br> Calle: ' => $calle, '<br> Localidad: ' => $localidad, '<br> Departamento: ' => $departamento . '<br><br>']);
 }
 
 foreach ($arrayConsulta as $value) {
