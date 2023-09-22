@@ -13,7 +13,7 @@ foreach ($result->fetch_all(MYSQLI_ASSOC) as $row) {
     $tipo = $row['tipo'];
     if ($tipo == 'Camionero' or $tipo == 'Delivery') {
         $queryTelefono = "SELECT telefono FROM Conductores WHERE ci = ?";
-        $exc = $conn->execute_query($query, [$ci]);
+        $exc = $conn->execute_query($queryTelefono, [$ci]);
         $telefono = $exc->fetch_array(MYSQLI_ASSOC);
     } else {
         $telefono = "-";

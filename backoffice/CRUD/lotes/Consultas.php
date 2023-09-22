@@ -18,7 +18,7 @@ foreach ($result->fetch_all(MYSQLI_ASSOC) as $row) {
     $queryLotean = "SELECT * FROM lotean WHERE id_Lote = ?";
     $excLotean = $conn->execute_query($queryLotean, [$num]);
     foreach ($excLotean->fetch_all(MYSQLI_ASSOC) as $row) {
-        $num = $row['id_Lote'];
+        $num = $row['id_Paquete'];
         array_push($arrayConsulta, [' Paquete : ' => $paquete. '<br>']);
     }
 }

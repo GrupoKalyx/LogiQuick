@@ -1,9 +1,9 @@
 <?php
 require_once('sql/dbconection.php');
 
-$query = 'SELECT * FROM usuarios WHERE ci = "0" LIMIT 1';
-$result = mysqli_execute_query($conn, $query);
-$num = mysqli_num_rows($result);
+$query = 'SELECT * FROM usuarios WHERE ci = ? LIMIT 1';
+$exc = $conn->execute_query($query, [0]);
+$num = mysqli_num_rows($exc);
 
 if($num == false){
     $query = "INSERT INTO usuarios VALUES (0, 'root', 'Admin')";
