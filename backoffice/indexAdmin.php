@@ -15,6 +15,23 @@ session_start();
     <link rel="stylesheet" href="estilos/backofficeStyle.css">
     <link rel="icon" type="image/x-icon" href="assets/logo.png">
     <title>LogiQuick</title>
+    <!-- <script>
+        var num = "";
+        var calle = "";
+        var locaidad = "";
+        var departamento = "";
+        const address = $num + " " + $calle + ", " + $localidad + ", Departamento de " + $departamento + ", Uruguay";
+        fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyC-Urqx_Ojb7fna6y25jNl9XeEuHCALwQo`)
+        .then((response) => {
+            document.getElementById('coordPaquetes').value = response.json();
+        }).then(jsonData => {
+            console.log(jsonData.results[0].geometry.location); // {lat: 45.425152, lng: -75.6998028}
+        })
+        .catch(error => {
+            console.log(error);
+        })
+coordenadas
+    </script> -->
 </head>
 
 <body>
@@ -135,6 +152,7 @@ session_start();
                 Calle <input class="form__input" type="text" name="calle"><br><br>
                 Localidad <input class="form__input" type="text" name="localidad"><br><br>
                 Departamento <input class="form__input" type="text" name="departamento"><br><br>
+                <!-- <input type="hidden" name="coordenadas" id="coordPaquetes"> -->
                 <button type="submit" class="form__button" name="actionbtn">Ingresar</button>
             </form>
         </div>

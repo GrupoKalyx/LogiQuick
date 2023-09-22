@@ -14,12 +14,12 @@ $arrayConsulta = array();
 
 foreach ($result->fetch_all(MYSQLI_ASSOC) as $row) {
     $num = $row['idLote'];
-    array_push($arrayConsulta, ['Lote actual  : ' => $num . '<br>']);
+    array_push($arrayConsulta, ['Id de lote : ' => $num . '<br>']);
     $queryLotean = "SELECT * FROM lotean WHERE idLote = ?";
     $excLotean = $conn->execute_query($queryLotean, [$num]);
     foreach ($excLotean->fetch_all(MYSQLI_ASSOC) as $row) {
-        $num = $row['numBulto'];
-        array_push($arrayConsulta, [' Paquete : ' => $paquete. '<br>']);
+        $paquete = $row['numBulto'];
+        array_push($arrayConsulta, ['--> Numero de bulto : ' => $paquete. '<br>']);
     }
 }
 
