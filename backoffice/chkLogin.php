@@ -14,10 +14,19 @@ if ($existe) {
     $contrasenia = mysqli_num_rows($resultPasswd);
     if ($contrasenia) {
         $_SESSION['ci'] = $ci;
-        $token = bin2hex(random_bytes(32));
-        $_SESSION['token'] = $token;
-        $queryToken = "INSERT INTO tokens VALUES (?, ?)";
-        $conn->execute_query($queryToken, [$token, $ci]);
+        $queryChkToken = "SELECT * FROM `tokens` WHERE ci = ? LIMIT 1";
+        $excChkToken = $conn->execute_query($queryChkToken, [$ci]);
+        $tokenExists = mysqli_num_rows($excChkToken);
+        if ($tokenExists == false) {
+            $token = bin2hex(random_bytes(32));
+            $_SESSION['token'] = $token;
+            $queryToken = "INSERT INTO tokens VALUES (?, ?)";
+            $conn->execute_query($queryToken, [$token, $ci]);
+        } else {
+            $fToken = $excChkToken->fetch_array(MYSQLI_ASSOC);
+            $token = $fToken['token'];
+            $_SESSION['token'] = $token;
+        }
         $queryType = "SELECT tipo FROM `usuarios` WHERE ci = ? LIMIT 1";
         $resultType = $conn->execute_query($queryType, [$ci]);
         $fResult =  $resultType->fetch_array(MYSQLI_ASSOC);

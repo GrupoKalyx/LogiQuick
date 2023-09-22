@@ -88,7 +88,7 @@ coordenadas
         </div>
         <div class="form" id="list">
             <h2>Usuarios registrados</h2><br>
-            <iframe  src="CRUD/usuarios/Consultas.php">
+            <iframe src="CRUD/usuarios/Consultas.php">
             </iframe>
         </div>
         <div class="form">
@@ -124,7 +124,7 @@ coordenadas
         </div>
         <div class="form" id="list">
             <h2>Almacenes registrados</h2><br>
-            <iframe src="CRUD/almacenes/Consultas.php" >
+            <iframe src="CRUD/almacenes/Consultas.php">
             </iframe>
         </div>
         <div class="form">
@@ -165,7 +165,7 @@ coordenadas
         </div>
         <div class="form" id="list">
             <h2>Lista de paquetes</h2><br>
-            <iframe src="CRUD/paquetes/Consultas.php" >
+            <iframe src="CRUD/paquetes/Consultas.php">
             </iframe>
         </div>
         <div class="form">
@@ -209,8 +209,9 @@ coordenadas
             <h2>Modificar datos del Lote</h2>
             <form action="CRUD\lotes\Modificaciones.php" method="post">
                 Numero de lote <input class="form__input" type="text" name="numeroLote"><br>
-                <h2>Nuevos datos</h2>
-                Estado actual <input class="form__input" type="text" name="estadoAct"><br><br>
+                Numero de bulto <input class="form__input" type="text" name="numeroLote"><br><br>
+                <h2>Nuevo paquete</h2><br>
+                Numero de bulto <input class="form__input" type="text" name="numNuevoPaquete"><br><br>
                 <button type="submit" class="form__button">Modificar</button>
             </form>
         </div>
