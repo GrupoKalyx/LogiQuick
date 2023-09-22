@@ -208,11 +208,11 @@ coordenadas
         <div class="form">
             <h2>Modificar datos del Lote</h2>
             <form action="CRUD\lotes\Modificaciones.php" method="post">
-                Numero de lote <input class="form__input" type="text" name="numeroLote"><br>
-                Numero de bulto <input class="form__input" type="text" name="numeroLote"><br><br>
-                <h2>Nuevo paquete</h2><br>
-                Numero de bulto <input class="form__input" type="text" name="numNuevoPaquete"><br><br>
-                <button type="submit" class="form__button">Modificar</button>
+                <h2>Modificar datos del Lote</h2>
+                Numero de lote <input class="form__input" text="text" name="numLote"><br>
+                Numero de bulto <input class="form__input" text="text" name="numBulto"><br>
+                <h2>Nuevo paquete</h2>
+                Numero de bulto <input class="form__input" text="text" name="numNuevoPaquete">
             </form>
         </div>
     </div>
