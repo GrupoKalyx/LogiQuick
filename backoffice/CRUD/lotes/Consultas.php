@@ -9,13 +9,18 @@ if ($conn->connect_error) {
 mysqli_set_charset($conn, "utf8");
 
 $query = "SELECT * FROM lotes";
-$result = mysqli_query($conn, $query);
+$result = $conn->execute_query($query);
 $arrayConsulta = array();
 
 foreach ($result->fetch_all(MYSQLI_ASSOC) as $row) {
-    $num = $row['numLote'];
-    $estado = $row['estado'];
-    array_push($arrayConsulta, ['Lote actual  : ' => $num, '<br> Estado: ' => $estado . '<br><br>']);
+    $num = $row['id_Lote'];
+    array_push($arrayConsulta, ['Lote actual  : ' => $num . '<br>']);
+    $queryLotean = "SELECT * FROM lotean WHERE id_Lote = ?";
+    $excLotean = $conn->execute_query($queryLotean, [$num]);
+    foreach ($result->fetch_all(MYSQLI_ASSOC) as $row) {
+        $num = $row['id_Lote'];
+        array_push($arrayConsulta, [' Paquete : ' => $paquete. '<br>']);
+    }
 }
 
 foreach ($arrayConsulta as $value) {

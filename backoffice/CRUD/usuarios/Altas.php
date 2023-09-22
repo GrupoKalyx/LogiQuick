@@ -15,7 +15,7 @@ if ($tipo == 'Camionero' or $tipo == 'Delivery') {
   if ($tipo == 'Camionero') {
     $query3 = "INSERT INTO conductores VALUES (?, ?, ?)";
     $exc3 = $conn->execute_query($query3, [$ci, $nombre, $telefono]);
-    $query4 = "INSERT INTO conductores VALUES (?, ?, ?)";
+    $query4 = "INSERT INTO camiones VALUES (?, ?, ?)";
     $exc4 = $conn->execute_query($query4, [$ci, $nombre, $telefono]);
   } else if ($tipo == 'Delivery') {
     $query3 = "INSERT INTO conductores VALUES (?, ?, ?)";
@@ -24,8 +24,6 @@ if ($tipo == 'Camionero' or $tipo == 'Delivery') {
     $exc4 = $conn->execute_query($query4, [$ci, $nombre, $telefono]);
   }
 }
-
-
 
 if ($exc and $exc2) {
   echo "<script>alert('Usuario ingresado con éxito.');window.location='../../indexAdmin.php'</script>";

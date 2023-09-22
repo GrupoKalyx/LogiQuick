@@ -3,12 +3,14 @@ require_once('../../sql/dbconection.php');
 
 $eliminar = $_POST['eliminacion'];
 
-$sql = "DELETE FROM lotes WHERE numLote  = $eliminar";
+$query = "DELETE FROM lotes WHERE idLote = ?";
+$exc = $conn->execute_query($query, [$eliminar]);
+$query2 = "DELETE FROM lotean WHERE idLote = ?";
+$exc2 = $conn->execute_query($query2, [$eliminar]);
 
-if ($conn->query($sql) === TRUE) {
-  echo '<p>Cliente actualizado con éxito</p>';
-  header("location:http://localhost/LogiQuick/backoffice/IndexAdministrator.php");
+if ($exc AND $exc2) {
+  echo "<script>alert('Lote eliminado con éxito.');window.location='../../indexAdmin.php'</script>";
 } else {
-  echo "<script>alert('error !');window.location='indexAdministrator.php' </script>";
+  echo "<script>alert('Ha ocurrido un error inesperado.');window.location='../../indexAdmin.php'</script>";
 }
 ?>

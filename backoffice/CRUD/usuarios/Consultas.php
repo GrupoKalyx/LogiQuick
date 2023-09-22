@@ -11,7 +11,14 @@ foreach ($result->fetch_all(MYSQLI_ASSOC) as $row) {
     $nombre = $row['nombre'];
     $contrasenia = $row['contrasenia'];
     $tipo = $row['tipo'];
-    array_push($arrayConsulta, ['ID: ' => $ci, '<br> Nombre: ' => $nombre, '<br> Contraseña: ' => $contrasenia, '<br> Tipo: ' => $tipo . '<br><br>']);
+    if ($tipo == 'Camionero' or $tipo == 'Delivery') {
+        $queryTelefono = "SELECT telefono FROM Conductores WHERE ci = ?";
+        $exc = $conn->execute_query($query, [$ci]);
+        $telefono = $exc->fetch_array(MYSQLI_ASSOC);
+    } else {
+        $telefono = "-";
+    }
+    array_push($arrayConsulta, ['CI: ' => $ci, '<br> Nombre: ' => $nombre, '<br> Contraseña: ' => $contrasenia, '<br> Tipo: ' => $tipo, '<br> Telefono: ' => $telefono . '<br><br>']);
 }
 
 foreach ($arrayConsulta as $value) {

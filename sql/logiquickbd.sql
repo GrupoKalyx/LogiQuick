@@ -220,3 +220,21 @@ CREATE TABLE IF NOT EXISTS `logiquickbd`.`Van` (
     REFERENCES `Almacenes` (`num_Almacen`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
+
+-- -----------------------------------------------------
+-- Table `Usuarios`
+-- -----------------------------------------------------
+ CREATE TABLE IF NOT EXISTS `logiquickbd`.`Usuarios` (
+  `ci` INT NOT NULL,
+  `nombre` VARCHAR(45) NULL,
+  `contrasenia` VARCHAR(45) NULL,
+  `tipo` VARCHAR(45) NULL,
+  PRIMARY KEY (`ci`));
+
+-- -----------------------------------------------------
+-- Table `Logins`
+-- -----------------------------------------------------
+ CREATE TABLE IF NOT EXISTS `logiquickbd`.`Logins` (
+  `idLogin` INT NOT NULL,
+  `contrasenia` VARCHAR(45) NULL,
+  PRIMARY KEY (`idLogin`));    

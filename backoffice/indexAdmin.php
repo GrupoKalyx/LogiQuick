@@ -1,5 +1,7 @@
 <?php
-if (isset($_POST['btncerrar'])) { header("location: loginAdmin.php"); }
+if (isset($_POST['btncerrar'])) {
+    header("location: loginAdmin.php");
+}
 
 require_once('sql/dbconection.php');
 session_start();
@@ -31,18 +33,14 @@ session_start();
     </header>
     <div>
         <br>
-        <h1 class="nav__text"> Bienvenid@: 
+        <h1 class="nav__text"> Bienvenid@:
             <?php
-            try {
-                $ci = $_SESSION['ci'];
-                $queryName = "SELECT nombre FROM `usuarios` WHERE ci = ? LIMIT 1";
-                $resultName = $conn->execute_query($queryName, [$ci]);
-                $fName = $resultName->fetch_array(MYSQLI_ASSOC);
-                $name = $fName['nombre'];
-                echo ($name);
-            } catch (\Throwable $th) {
-                echo "-";
-            }
+            $ci = $_SESSION['ci'];
+            $queryName = "SELECT nombre FROM `usuarios` WHERE ci = ? LIMIT 1";
+            $resultName = $conn->execute_query($queryName, [$ci]);
+            $fName = $resultName->fetch_array(MYSQLI_ASSOC);
+            $name = $fName['nombre'];
+            echo ($name);
             ?>
             <b></b>
         </h1>
@@ -165,16 +163,18 @@ session_start();
         <div class="form">
             <h2>Ingresar lote</h2>
             <form action="CRUD\lotes\Altas.php" method="post">
-                <input class="form__input" type="text" name="estado"><br><br>
-                <button type="submit" class="form__button" name="actionbtn">Crear</button>
-                Paquete 1<br><input class="form__input" type="text" id="paquete" name="paquete"><br><br>
+                Paquete 1 <br><input class="form__input" type="text" id="paquete1" name="paquete1"><br><br>
+                Paquete 2 <br><input class="form__input" type="text" id="paquete2" name="paquete2"><br><br>
+                Paquete 3 <br><input class="form__input" type="text" id="paquete3" name="paquete3"><br><br>
+                Paquete 4 <br><input class="form__input" type="text" id="paquete4" name="paquete4"><br><br>
+                Paquete 5 <br><input class="form__input" type="text" id="paquete5" name="paquete5"><br><br>
                 <button type="submit" class="form__button" name="actionbtn">Ingresar</button>
             </form>
         </div>
         <div class="form">
             <h2>Eliminar Lote</h2>
             <form action="CRUD\lotes\Bajas.php" method="post">
-                Numero de Lote<input class="form__input" type="text" name="eliminacion"><br><br>
+                ID de Lote<input class="form__input" type="text" name="eliminacion"><br><br>
                 <button class="form__button" type="submit">Eliminar</button>
             </form>
         </div>
