@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="estilos/style.css">
     <link rel="icon" type="image/x-icon" href="assets/logo.png">
     <title>LogiQuick</title>
+    <!-- <script src="Traducir.js"></script> -->
 </head>
 
 <body class="body">
@@ -39,14 +40,14 @@
                 <li class="navbar__logout">
                 <!-- <button class="form__button" id="traductor-btn">Traducir Pagina</button> -->
                     <button class="navbar__logout__button">
-                        <a href="#">Cerrar Sesión</a>
+                        <a href="login.php">Cerrar Sesión</a>
                     </button>
                 </li>
             </ul>
             <!-- <button class="form__button" id="traductor-btn">Traducir Pagina </button> -->
         </nav>
     </header>
-    <script src="Traducir.js"></script>
+    <div class="espacio__blanco"></div>
     <footer>
         <div class="footer">
             <ul class="footer_list">

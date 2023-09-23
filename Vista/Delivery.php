@@ -28,7 +28,7 @@
 
     </nav>
   </header>
-
+  <div class="espacio__blanco"></div>
   <footer>
     <div class="footer">
 

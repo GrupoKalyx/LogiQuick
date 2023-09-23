@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="estilos/style.css">
     <link rel="icon" type="image/x-icon" href="assets/logo.png">
     <title>LogiQuick</title>
+    <!-- <script src="Traducir.js"></script> -->
 </head>
 
 <body class="body">
@@ -45,7 +46,7 @@
             <!-- <button class="form__button" id="traductor-btn">Traducir Pagina </button> -->
         </nav>
     </header>
-    <script src="Traducir.js"></script>
+    <div class="espacio__blanco"></div>
     <footer>
         <div class="footer">
             <ul class="footer_list">
