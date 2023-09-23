@@ -10,14 +10,22 @@ class modeloTokens
 
     public static function setToken($ci, $token, $conn)
     {
-        $query = "INSERT INTO tokens (ci, token) VALUES (?, ?)";
+        $query = "INSERT INTO tokens (ci, idToken) VALUES (?, ?)";
         $result = $conn->execute_query($query, [$ci, $token]);
     }
 
     public static function chkToken($token, $conn)
     {
-        $query = "SELECT * FROM tokens WHERE token = ? LIMIT 1";
+        $query = "SELECT * FROM tokens WHERE idToken = ? LIMIT 1";
         $result = $conn->execute_query($query, $token);
+        $num = mysqli_num_rows($result);
+        return $num;
+    }
+
+    public static function chkUser($ci, $conn)
+    {
+        $query = "SELECT * FROM tokens WHERE ci = ? LIMIT 1";
+        $result = $conn->execute_query($query, [$ci]);
         $num = mysqli_num_rows($result);
         return $num;
     }

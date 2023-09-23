@@ -22,7 +22,8 @@ class controladorLogins
             if (modeloLogins::contrasenia($ci, $contrasenia, $this->conn)) {
                 $t = new controladorTokens($this->conn);
                 $_SESSION['ci'] = $ci;
-                $_SESSION['token'] = $t->createToken($ci);
+                $tokenExists = $t->exists($ci);
+                if ($tokenExists == false) { $_SESSION['token'] = $t->createToken($ci); }
                 $objTipo = json_decode(modeloLogins::tipo($ci, $this->conn), true);
                 $tipo = $objTipo['tipo'];
                 switch ($tipo) {
@@ -36,10 +37,10 @@ class controladorLogins
                         header("location: ../../../Vista/FunSecundario.php");
                         break;
                     case 'Camionero':
-                        header("location: ../../../Vista/Camionero.html");
+                        header("location: ../../../Vista/Camionero.php");
                         break;
                     case 'Delivery':
-                        header("location: ../../../Vista/Delivery.html");
+                        header("location: ../../../Vista/Delivery.php");
                         break;
                     default:
                         echo "<script>alert('Tipo de usuario desconocido, re intente por favor!');window.location='../../../Vista/login.php</script>";

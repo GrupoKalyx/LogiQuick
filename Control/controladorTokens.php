@@ -24,4 +24,10 @@ class controladorTokens
             echo "<script>alert('Hubo un error en la sesión, intente volverse a ingresar.');window.location='../../../Vista/login.php'</script>";
         }
     }
+
+    public function exists($context){
+        $ci = $context;
+        $existence = modeloTokens::chkUser($ci, $this->conn);
+        return $existence;
+    }
 }

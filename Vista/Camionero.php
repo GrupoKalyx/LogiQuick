@@ -12,14 +12,14 @@
     <nav class="navbar">
 
       <div class="navbar__logo">
-        <img src="/assets/logo.png" alt="logo">
+        <img src="assets/logo.png" alt="logo">
       </div>
 
       <ul class="navbar__list">
         <li class="navbar__list__item"><a href="#">Verificar Entrada</a></li>
         <li class="navbar__list__item"><a href="#">Camiones Asignados</a></li>
       </ul>
-      <!-- <button class="form__button" id="traductor-btn">Traducir Pagina </button> -->
+      <!-- <button class="form__button" id="traductor-btn">Traducir Pagina</button> -->
       <div class="navbar__logout"> 
         <button class="navbar__logout__button"><a href="#">Cerrar Sesión</a></button>
       </div>

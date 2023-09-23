@@ -16,5 +16,5 @@ $num3 = mysqli_num_rows($exc3);
 
 if($num3 == false){
     $query4 = "INSERT INTO logins VALUES (0, 'root')";
-    $conn->execute_query($quer4);
+    $conn->execute_query($query4);
 }
