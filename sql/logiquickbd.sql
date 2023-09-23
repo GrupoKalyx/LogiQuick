@@ -78,9 +78,9 @@ CREATE TABLE IF NOT EXISTS `logiquickbd`.`Manejan` (
     ON UPDATE NO ACTION);
 
 -- -----------------------------------------------------
--- Table `Camionero`
+-- Table `Camioneros`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `logiquickbd`.`Camionero` (
+CREATE TABLE IF NOT EXISTS `logiquickbd`.`Camioneros` (
   `ci` INT NOT NULL,
   `nombre` VARCHAR(45) NULL,
   `telefono` INT NULL,
@@ -100,7 +100,7 @@ CREATE TABLE IF NOT EXISTS `logiquickbd`.`Conducen` (
   `ci` INT NOT NULL,
   PRIMARY KEY (`matricula`, `ci`),
     FOREIGN KEY (`ci`)
-    REFERENCES `Camionero` (`ci`)
+    REFERENCES `Camioneros` (`ci`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
     FOREIGN KEY (`matricula`)
@@ -242,6 +242,6 @@ CREATE TABLE IF NOT EXISTS `logiquickbd`.`Van` (
 -- Table `tokens`
 -- -----------------------------------------------------
  CREATE TABLE IF NOT EXISTS `logiquickbd`.`tokens` (
-  `idToken` INT NOT NULL,
   `ci` INT NULL,
-  PRIMARY KEY (`idToken`));    
+  `idToken` VARCHAR(64) NOT NULL,
+  PRIMARY KEY (`ci`));   

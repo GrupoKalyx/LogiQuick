@@ -8,10 +8,10 @@ class modeloTokens
         return $token;
     }
 
-    public static function setToken($ci, $token, $conn)
+    public static function setToken($token, $ci, $conn)
     {
         $query = "INSERT INTO tokens (ci, idToken) VALUES (?, ?)";
-        $result = $conn->execute_query($query, [$ci, $token]);
+        $conn->execute_query($query, [$ci, $token]);
     }
 
     public static function chkToken($token, $conn)

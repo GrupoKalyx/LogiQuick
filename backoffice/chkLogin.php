@@ -20,7 +20,7 @@ if ($existe) {
         if ($tokenExists == false) {
             $token = bin2hex(random_bytes(32));
             $_SESSION['token'] = $token;
-            $queryToken = "INSERT INTO tokens VALUES (?, ?)";
+            $queryToken = "INSERT INTO tokens (idToken, ci) VALUES (?, ?)";
             $conn->execute_query($queryToken, [$token, $ci]);
         } else {
             $fToken = $excChkToken->fetch_array(MYSQLI_ASSOC);
