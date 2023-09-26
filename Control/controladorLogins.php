@@ -27,7 +27,7 @@ class controladorLogins
                 $objTipo = json_decode(modeloLogins::tipo($ci, $this->conn), true);
                 $tipo = $objTipo['tipo'];
                 switch ($tipo) {
-                    case 'Almacen':
+                    case 'Funcionario':
                         header("location: ../../../Vista/FunCentral.php");
                         break;
                     case 'Externo':

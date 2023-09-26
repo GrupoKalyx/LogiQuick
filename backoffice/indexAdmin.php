@@ -133,7 +133,6 @@ coordenadas
             <form action="CRUD/almacenes/Modificaciones.php" method="post">
                 Id de almacen <input class="form__input" type="text" name="idAlmacen">
                 <h2>Nuevos datos</h2>
-                Ubicacion de almacen <input class="form__input" type="text" name="ubiAlmacen">
                 N_puerta <input class="form__input" type="text" name="N_puerta"><br>
                 Calle <input class="form__input" type="text" name="calle"><br>
                 Localidad <input class="form__input" type="text" name="localidad"><br>
