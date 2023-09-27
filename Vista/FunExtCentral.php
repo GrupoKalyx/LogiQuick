@@ -17,7 +17,7 @@
         <img src="assets/logo.png" alt="logo">
       </div>
       <ul class="navbar__list">
-        <li class="navbar__list__item"><a href="referencias/VerificarLlegadas.php">Verificar Llegadas</a></li>
+        <li class="navbar__list__item"><a href=".referencias/VerificarLlegadas.php">Verificar Llegadas</a></li>
         <li class="navbar__list__item"><a href="referencias/IngresarPaquete.php">Ingresar Paquetes</a></li>
       </ul>
       <!-- <button class="form__button" id="traductor-btn">Traducir Pagina</button> -->

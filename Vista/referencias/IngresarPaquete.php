@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +11,8 @@
   <script src="../Traducir.js"></script>
 </head>
 <body class="body">
+
+
 
   <header>
     <nav class="navbar">
