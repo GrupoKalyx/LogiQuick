@@ -1,3 +1,21 @@
+<?php
+$ch = curl_init();
+$url = 'https:://localhost/LogiQuick/Controladores/superControlador.php/Paquetes/listar';
+curl_setopt($ch, CURLOPT_URL, $url);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+$response = curl_exec($ch);
+
+if (curl_errno($ch)) { 
+  echo 'Error: ' . curl_error($ch); 
+} else { 
+  $data = json_decode($response, true);
+  curl_close($ch);
+  if ($result->num_rows > 0) {
+    $numBultos = array();
+    while ($row = $result->fetch_assoc()) { $numBultos[] = $row["numBulto"]; }
+  }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,15 +30,15 @@
   <header>
     <nav class="navbar">
       <div class="navbar__logo">
-        <img src="assets/logo.png" alt="logo">
+        <img src="../assets/logo.png" alt="logo">
       </div>
       <ul class="navbar__list">
         <li class="navbar__list__item"><a href="#">Verificar Entrada</a></li>
         <li class="navbar__list__item"><a href="#">Asignación</a>
           <ul class="navbar__submenu">
-            <li class="navbar__submenu__item"><a href="referencias/PaqueteALote.php">Paquete a Lote</a></li>
-            <li class="navbar__submenu__item"><a href="referencias/LoteACamion.php">Lote a Camión</a></li>
-            <li class="navbar__submenu__item"><a href="referencias/CamioneroACamion.php">Camionero a Camión</a></li>
+            <li class="navbar__submenu__item"><a href="PaqueteALote.php">Paquete a Lote</a></li>
+            <li class="navbar__submenu__item"><a href="LoteACamion.php">Lote a Camión</a></li>
+            <li class="navbar__submenu__item"><a href="CamioneroACamion.php">Camionero a Camión</a></li>
           </ul>
         </li>
         <li class="navbar__list__item"><a href="#">Seguimiento</a></li>
@@ -40,56 +58,42 @@
   
       <div class="form__group">
         <label class="form__label" for="Paquete">Paquete:</label>
-        <select class="form__select" id="Paquete" name="Paquete" required>
+        <select class="form__select" id="bulto" name="bulto" required>
           <option value="">Seleccionar paquete</option>
-          <option value="lote1">Paquete 1</option>
-          <option value="lote2">Paquete 2</option>
-          <option value="lote3">Paquete 3</option>
+            <?php foreach ($numBultos as $numBulto) { echo "<option value='$numBulto'>$numBulto</option>"; } ?>
         </select>
       </div>
       <div class="form__group">
         <label class="form__label" for="Paquete">Paquete:</label>
-        <select class="form__select" id="Paquete" name="Paquete" required>
+        <select class="form__select" id="bulto" name="bulto" required>
           <option value="">Seleccionar paquete</option>
-          <option value="lote1">Paquete 1</option>
-          <option value="lote2">Paquete 2</option>
-          <option value="lote3">Paquete 3</option>
+            <?php foreach ($numBultos as $numBulto) { echo "<option value='$numBulto'>$numBulto</option>"; } ?>
         </select>
       </div>
       <div class="form__group">
         <label class="form__label" for="Paquete">Paquete:</label>
-        <select class="form__select" id="Paquete" name="Paquete" required>
+        <select class="form__select" id="bulto" name="bulto" required>
           <option value="">Seleccionar paquete</option>
-          <option value="lote1">Paquete 1</option>
-          <option value="lote2">Paquete 2</option>
-          <option value="lote3">Paquete 3</option>
+            <?php foreach ($numBultos as $numBulto) { echo "<option value='$numBulto'>$numBulto</option>"; } ?>
         </select>
       </div>
       <div class="form__group">
         <label class="form__label" for="Paquete">Paquete:</label>
-        <select class="form__select" id="Paquete" name="Paquete" required>
+        <select class="form__select" id="bulto" name="bulto" required>
           <option value="">Seleccionar paquete</option>
-          <option value="lote1">Paquete 1</option>
-          <option value="lote2">Paquete 2</option>
-          <option value="lote3">Paquete 3</option>
+            <?php foreach ($numBultos as $numBulto) { echo "<option value='$numBulto'>$numBulto</option>"; } ?>
         </select>
       </div>
       <div class="form__group">
         <label class="form__label" for="Paquete">Paquete:</label>
-        <select class="form__select" id="Paquete" name="Paquete" required>
+        <select class="form__select" id="bulto" name="bulto" required>
           <option value="">Seleccionar paquete</option>
-          <option value="lote1">Paquete 1</option>
-          <option value="lote2">Paquete 2</option>
-          <option value="lote3">Paquete 3</option>
+            <?php foreach ($numBultos as $numBulto) { echo "<option value='$numBulto' n>"; } ?>
         </select>
-      </div>
-      
       <button class="form__button" type="submit">Generar</button>
     </form>
       </div>
-
-      <script src="Traducir.js"></script>
-
+      <!-- <script src="Traducir.js"></script> -->
   <footer>
     <div class="footer">
 

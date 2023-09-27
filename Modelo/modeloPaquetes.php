@@ -32,6 +32,14 @@ class modeloPaquetes
         $result = $result->fetch_all(MYSQLI_ASSOC);
         return json_encode($result);
     }
+    
+    public static function muestra($conn, $numBulto)
+    {
+        $query = "SELECT * FROM almacenes WHERE numBulto = ?";
+        $result = $conn->execute_query($query, [$numBulto]);
+        $result = $result->fetch_array(MYSQLI_ASSOC);
+        return json_encode($result);
+    }
 
     public static function existe($numBulto, $conn){
         $query = "SELECT * FROM paquetes WHERE numBulto = ?";

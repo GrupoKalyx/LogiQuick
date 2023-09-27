@@ -31,38 +31,17 @@ class controladorPaquetes
         header('location: ../../../Vista/indexAdministrador.php');
     }
 
-    public function rastrear($context)
+    public function mostrar($context)
     {
-        $ci = $context;
-        $result = modeloUsuarios::muestra($ci, $this->conn);
+        $numBulto = $context['post']['numBulto'];
+        $result = modeloUsuarios::muestra($this->conn, $numBulto);
         return $result;
     }
 
     public function listar($context)
     {
-        $json = json_decode(modeloPaquetes::listado($this->conn));
-        $result = $json;
-
-        $arrayConsulta = array();
-
-        foreach ($result as $row) {
-            $numBulto = $row->numBulto;
-            $gmailCliente = $row->gmailCliente;
-            $idRastreo = $row->idRastreo;
-            $fechaLlegada = $row->fechaLlegada;
-            $fechaEntrega = $row->fechaEntrega;
-            $num = $row->num;
-            $calle = $row->calle;
-            $localidad = $row->localidad;
-            $departamento = $row->departamento;
-            array_push($arrayConsulta, ['Número de bulto: ' => $numBulto, '<br> Gmail del cliente: ' => $gmailCliente, '<br> ID de rastreo: ' => $idRastreo, '<br> Fecha de llegada: ' => $fechaLlegada, '<br> Fecha de entrega: ' => $fechaEntrega, '<br> Num: ' => $num, '<br> Calle: ' => $calle, '<br> Localidad: ' => $localidad, '<br> Departamento: ' => $departamento . '<br><br>']);
-        }
-
-        foreach ($arrayConsulta as $value) {
-            foreach ($value as $key => $v) {
-                echo "<a class='form__viewContent'> " . $key . " " . $v . "</a>";
-            }
-        }
+        $json = modeloPaquetes::listado($this->conn);
+        echo $json;
     }
 
     public function modificar($context)
