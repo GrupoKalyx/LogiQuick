@@ -40,8 +40,10 @@ class controladorPaquetes
 
     public function listar($context)
     {
-        $json = modeloPaquetes::listado($this->conn);
+        $opcion = $context['post']['opcion'];
+        $json = modeloPaquetes::listado($this->conn, $opcion);
         echo $json;
+        header('https')
     }
 
     public function modificar($context)

@@ -25,9 +25,9 @@ class modeloPaquetes
         $conn->execute_query($query, [$ci]);
     }
 
-    public static function listado($conn)
+    public static function listado($conn, $option)
     {
-        $query = "SELECT * FROM almacenes";
+        $query = "SELECT * FROM paquetes" . $option;
         $result = $conn->execute_query($query);
         $result = $result->fetch_all(MYSQLI_ASSOC);
         return json_encode($result);

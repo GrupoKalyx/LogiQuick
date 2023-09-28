@@ -1,25 +1,23 @@
 <?php
-$sql = "SELECT numBulto FROM Paquetes";
-$result = $conn->query($sql);
+// $sql = "SELECT numBulto FROM Paquetes";
+// $result = $conn->query($sql);
+require '../../Controladores/superControlador.php';
+superControlador();
 
-// Verificar si se obtuvieron resultados
-if ($result->num_rows > 0) {
-    $numBultos = array();
-    while ($row = $result->fetch_assoc()) {
-        $numBultos[] = $row["numBulto"];
-    }
+$json = curl_exec($init);
+$datos = json_decode($json, true);
+if ($datos != null) {
+  $numBultos = array();
+  while ($row = $datos) {
+    $numBultos[] = $row["numBulto"];
+  }
 } else {
-    echo "No se encontraron datos en la tabla Paquetes.";
+  $numBultos[] = NULL;
 }
-
-// Cerrar la conexión a la base de datos
-$conn->close();
 ?>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,6 +25,7 @@ $conn->close();
   <link rel="stylesheet" href="../estilos/FormStyle.css">
   <title>LogiQuick</title>
 </head>
+
 <body class="body">
 
   <header>
@@ -38,87 +37,90 @@ $conn->close();
         <li class="navbar__list__item"><a href="#">Verificar Entrada</a></li>
         <li class="navbar__list__item"><a href="#">Asignación</a>
           <ul class="navbar__submenu">
-          <li class="navbar__submenu__item"><a href="../referencias/AsignacionLotes.php">Paquete a Lote</a></li>
-            <li class="navbar__submenu__item"><a href="../referencias/AsignacionCamion.php">Lote a Camión</a></li>
-            <li class="navbar__submenu__item"><a href="../referencias/AsignacionCamionero.php">Camionero a Camión</a></li>
+            <li class="navbar__submenu__item"><a href="../referencias/AsignacionPaquetesLotes.php">Paquete
+                a Lote</a></li>
+            <li class="navbar__submenu__item"><a href="../referencias/AsignacionLotesCamiones.php">Lote a
+                Camión</a></li>
+            <li class="navbar__submenu__item"><a href="../referencias/AsignacionCamionesCamioneros.php">Camionero
+                a Camión</a></li>
           </ul>
         </li>
         <li class="navbar__list__item"><a href="#">Seguimiento</a></li>
       </ul>
       <!-- <button class="form__button" id="traductor-btn">Traducir Pagina </button> -->
-      <div class="navbar__logout"> 
+      <div class="navbar__logout">
         <button class="navbar__logout__button"><a href="../login.php">Cerrar Sesión</a></button>
       </div>
-      
+
     </nav>
   </header>
 
   <div class="form__container">
     <form class="form" method="POST">
-  
+
       <h2 class="form__text">Genere un lote</h2>
-  
+
       <div class="form__group">
         <label class="form__label" for="Paquete">Paquete:</label>
         <select class="form__select" id="bulto" name="bulto" required>
           <option value="">Seleccionar paquete</option>
-            <?php
-            foreach ($numBultos as $numBulto) {
-                echo "<option value='$numBulto'>$numBulto</option>";
-            }
-            ?>
+          <?php
+          foreach ($numBultos as $numBulto) {
+            echo "<option value='$numBulto'>$numBulto</option>";
+          }
+          ?>
         </select>
       </div>
       <div class="form__group">
         <label class="form__label" for="Paquete">Paquete:</label>
         <select class="form__select" id="bulto" name="bulto" required>
           <option value="">Seleccionar paquete</option>
-            <?php
-            foreach ($numBultos as $numBulto) {
-                echo "<option value='$numBulto'>$numBulto</option>";
-            }
-            ?>
+          <?php
+          foreach ($numBultos as $numBulto) {
+            echo "<option value='$numBulto'>$numBulto</option>";
+          }
+          ?>
         </select>
       </div>
       <div class="form__group">
         <label class="form__label" for="Paquete">Paquete:</label>
         <select class="form__select" id="bulto" name="bulto" required>
           <option value="">Seleccionar paquete</option>
-            <?php
-            foreach ($numBultos as $numBulto) {
-                echo "<option value='$numBulto'>$numBulto</option>";
-            }
-            ?>
+          <?php
+          foreach ($numBultos as $numBulto) {
+            echo "<option value='$numBulto'>$numBulto</option>";
+          }
+          ?>
         </select>
       </div>
       <div class="form__group">
         <label class="form__label" for="Paquete">Paquete:</label>
         <select class="form__select" id="bulto" name="bulto" required>
           <option value="">Seleccionar paquete</option>
-            <?php
-            foreach ($numBultos as $numBulto) {
-                echo "<option value='$numBulto'>$numBulto</option>";
-            }
-            ?>
+          <?php
+          foreach ($numBultos as $numBulto) {
+            echo "<option value='$numBulto'>$numBulto</option>";
+          }
+          ?>
         </select>
       </div>
       <div class="form__group">
         <label class="form__label" for="Paquete">Paquete:</label>
         <select class="form__select" id="bulto" name="bulto" required>
           <option value="">Seleccionar paquete</option>
-            <?php
-            foreach ($numBultos as $numBulto) {
-                echo "<option value='$numBulto'>$numBulto</option>";
-            }
-            ?>
+          <?php
+          foreach ($numBultos as $numBulto) {
+            echo "<option value='$numBulto'>$numBulto</option>";
+          }
+          ?>
         </select>
-      </div>
-      
-      <button class="form__button" type="submit">Generar</button>
-    </form>
       </div>
 
-      <script src="Traducir.js"></script>
+      <button class="form__button" type="submit">Generar</button>
+    </form>
+  </div>
+
+  <script src="Traducir.js"></script>
 
   <footer>
     <div class="footer">
@@ -134,4 +136,5 @@ $conn->close();
     </div>
   </footer>
 </body>
+
 </html>

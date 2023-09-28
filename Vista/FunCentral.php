@@ -24,13 +24,13 @@
                     <a href="#">Asignación</a>
                     <ul class="navbar__submenu">
                         <li class="navbar__submenu__item">
-                            <a href="referencias/AsignacionLotes.php">Paquete a Lote</a>
+                            <a href="referencias/AsignacionPaquetesLotes.php">Paquete a Lote</a>
                         </li>
                         <li class="navbar__submenu__item">
-                            <a href="referencias/AsignacionCamion.php">Lote a Camión</a>
+                            <a href="referencias/AsignacionLotesCamiones.php">Lote a Camión</a>
                         </li>
                         <li class="navbar__submenu__item">
-                            <a href="referencias/AsignacionCamionero.php">Camionero a Camión</a>
+                            <a href="referencias/AsignacionCamionesCamioneros.php">Camionero a Camión</a>
                         </li>
                     </ul>
                 </li>
