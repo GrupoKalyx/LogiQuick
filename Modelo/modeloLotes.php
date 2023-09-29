@@ -1,13 +1,17 @@
 <?php
 
+require_once('modeloBd.php');
+
 class modeloLotes
 {
 
-    public static function alta($conn)
+    public static function alta()
     {
+        $conn = modeloBd::conexion();
         $query = "INSERT INTO lotes VALUES (); SELECT LAST_INSERT_ID();";
         $exc = $conn->execute_query($query);
         $result = $exc->fetch_array(MYSQLI_ASSOC);
+        $conn->close();
         return $result;
     }
 
@@ -31,7 +35,8 @@ class modeloLotes
         return json_encode($result);
     }
 
-    public static function existe($numBulto, $conn){
+    public static function existe($numBulto, $conn)
+    {
         $query = "SELECT * FROM paquetes WHERE numBulto = ?";
         $result = $conn->execute_query($query, [$numBulto]);
         $num = mysqli_num_rows($result);

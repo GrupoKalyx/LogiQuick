@@ -2,68 +2,57 @@
 require '../Modelo/modeloLotes.php';
 class controladorLotes
 {
-    private $conn;
 
-    function __construct($conn)
+    public static function ingresar()
     {
-        $this->conn = $conn;
-    }
-
-    public function ingresar($context)
-    {
-        $paquete1 = $context['post']['paquete1'];
-        $paquete2 = $context['post']['paquete2'];
-        $paquete3 = $context['post']['paquete3'];
-        $paquete4 = $context['post']['paquete4'];
-        $paquete5 = $context['post']['paquete5'];
-
-        modeloLotes::alta($this->conn);
+        $paquetes = $_POST['paquetes'];
+        modeloLotes::alta($paquetes);
 
         header('location: ../../../Vista/indexAdministrador.php');
     }
 
-    public function eliminar($context)
+    public static function eliminar($context)
     {
         $numBulto = $context['post']['numBulto'];
-        modeloPaquetes::baja($numBulto, $this->conn);
+        modeloPaquetes::baja($numBulto);
         header('location: ../../../Vista/indexAdministrador.php');
     }
 
-    public function rastrear($context)
+    public static function rastrear()
     {
-        $ci = $context;
-        $result = modeloUsuarios::muestra($ci, $this->conn);
+        $ci = $_GET['ci'];
+        $result = modeloUsuarios::muestra($ci);
         return $result;
     }
 
-    public function listar($context)
+    public static function listar()
     {
-        $json = json_decode(modeloPaquetes::listado($this->conn));
-        $result = $json;
+        $result = modeloPaquetes::listado();
 
-        $arrayConsulta = array();
+        // $arrayConsulta = array();
 
-        foreach ($result as $row) {
-            $numBulto = $row->numBulto;
-            $gmailCliente = $row->gmailCliente;
-            $idRastreo = $row->idRastreo;
-            $fechaLlegada = $row->fechaLlegada;
-            $fechaEntrega = $row->fechaEntrega;
-            $num = $row->num;
-            $calle = $row->calle;
-            $localidad = $row->localidad;
-            $departamento = $row->departamento;
-            array_push($arrayConsulta, ['Número de bulto: ' => $numBulto, '<br> Gmail del cliente: ' => $gmailCliente, '<br> ID de rastreo: ' => $idRastreo, '<br> Fecha de llegada: ' => $fechaLlegada, '<br> Fecha de entrega: ' => $fechaEntrega, '<br> Num: ' => $num, '<br> Calle: ' => $calle, '<br> Localidad: ' => $localidad, '<br> Departamento: ' => $departamento . '<br><br>']);
-        }
+        // foreach ($result as $row) {
+        //     $numBulto = $row->numBulto;
+        //     $gmailCliente = $row->gmailCliente;
+        //     $idRastreo = $row->idRastreo;
+        //     $fechaLlegada = $row->fechaLlegada;
+        //     $fechaEntrega = $row->fechaEntrega;
+        //     $num = $row->num;
+        //     $calle = $row->calle;
+        //     $localidad = $row->localidad;
+        //     $departamento = $row->departamento;
+        //     array_push($arrayConsulta, ['Número de bulto: ' => $numBulto, '<br> Gmail del cliente: ' => $gmailCliente, '<br> ID de rastreo: ' => $idRastreo, '<br> Fecha de llegada: ' => $fechaLlegada, '<br> Fecha de entrega: ' => $fechaEntrega, '<br> Num: ' => $num, '<br> Calle: ' => $calle, '<br> Localidad: ' => $localidad, '<br> Departamento: ' => $departamento . '<br><br>']);
+        // }
 
-        foreach ($arrayConsulta as $value) {
-            foreach ($value as $key => $v) {
-                echo "<a class='form__viewContent'> " . $key . " " . $v . "</a>";
-            }
-        }
+        // foreach ($arrayConsulta as $value) {
+        //     foreach ($value as $key => $v) {
+        //         echo "<a class='form__viewContent'> " . $key . " " . $v . "</a>";
+        //     }
+        // }
+        return $result;
     }
 
-    public function modificar($context)
+    public static function modificar($context)
     {
         $numBulto = $context['post']['numBulto'];
         $gmailCliente = $context['post']['gmailCliente'];
@@ -73,7 +62,7 @@ class controladorLotes
         $localidad = $context['post']['localidad'];
         $departamento = $context['post']['departamento'];
 
-        modeloPaquetes::modificacion($numBulto, $gmailCliente, $fechaLlegada, $num, $calle, $localidad, $departamento, $this->conn);
+        modeloPaquetes::modificacion($numBulto, $gmailCliente, $fechaLlegada, $num, $calle, $localidad, $departamento, $conn);
         header('location: ../../../Vista/indexAdministrador.php');
     }
 }

@@ -1,35 +1,13 @@
 <?php
-$sql = "SELECT matricula FROM camiones";
-$result = $conn->query($sql);
+require '../../Control/superControlador.php';
 
-// Verificar si se obtuvieron resultados
-if ($result->num_rows > 0) {
-    $matriculas = array();
-    while ($row = $result->fetch_assoc()) {
-        $matriculas[] = $row["matricula"];
-    }
-} else {
-    echo "No se encontraron datos en la tabla matricula.";
-}
-?>
+$url = 'http://localhost/LogiQuick/Control/controladorCamiones.php?method=listar';
+$json = superControlador($url, 'GET', NULL);
+$camiones = json_decode($json, true);
 
-<?php
-// ... código de conexión a la base de datos ...
-
-$sql2 = "SELECT idLote FROM lotes";
-$result2 = $conn->query($sql2);
-
-// Verificar si se obtuvieron resultados
-if ($result2->num_rows > 0) {
-    $lotes = array();
-    while ($row = $result2->fetch_assoc()) {
-        $lotes[] = $row["idLote"];
-    }
-} else {
-    echo "No se encontraron datos en la tabla lote.";
-}
-
-$conn->close();
+$url2 = 'http://localhost/LogiQuick/Control/controladorLotes.php?method=listar';
+$json2 = superControlador($url2, 'GET', NULL);
+$lotes = json_decode($json2, true);
 ?>
 
 
