@@ -1,16 +1,28 @@
 <?php
-function superControlador($metodo, $parameters)
+function superControlador($url, $metodo, $parameters)
 {
-        $comeback = $_SERVER['REQUEST_URI'];
-        require '../Modelo/modeloBd.php';
-
-        $tipo = $uri[sizeof($uri) - 2];
-        $metodo = $uri[sizeof($uri) - 1];
-
-        $controlador = "controlador" . $tipo;
-        require $controlador . ".php";
-        $c = new $controlador(modeloBd::conexion());
-        $context = ['post' => $_POST, 'get' => $_GET];
-
-        $c->$metodo($context);
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        switch ($metodo) {
+                case 'GET':
+                        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                        break;
+                case 'POST':
+                        curl_setopt($ch, CURLOPT_POST, 1);
+                        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                        curl_setopt($ch, CURLOPT_POSTFIELDS, $parameters);
+                        break;
+                case 'PUT':
+                        curl_setopt($ch, CURLOPT_PUT, 1);
+                        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                        curl_setopt($ch, CURLOPT_POSTFIELDS, $parameters);
+                        break;
+                case 'DELETE':
+                        // curl_setopt($ch, CURLOPT_DELETE, 1);
+                        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                        curl_setopt($ch, CURLOPT_POSTFIELDS, $parameters);
+                        break;
+        }
+        $result = curl_exec($ch);
+        return $result;
 }

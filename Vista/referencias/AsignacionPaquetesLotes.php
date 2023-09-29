@@ -1,19 +1,9 @@
 <?php
-// $sql = "SELECT numBulto FROM Paquetes";
-// $result = $conn->query($sql);
-require '../../Controladores/superControlador.php';
-superControlador();
+require '../../Control/superControlador.php';
 
-$json = curl_exec($init);
-$datos = json_decode($json, true);
-if ($datos != null) {
-  $numBultos = array();
-  while ($row = $datos) {
-    $numBultos[] = $row["numBulto"];
-  }
-} else {
-  $numBultos[] = NULL;
-}
+$url = 'http://localhost/LogiQuick/Control/controladorPaquetes.php?method=listarSinLote';
+$json = superControlador($url, 'GET', NULL);
+$paquetes = json_decode($json, true);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,7 +21,7 @@ if ($datos != null) {
   <header>
     <nav class="navbar">
       <div class="navbar__logo">
-        <img src="assets/logo.png" alt="logo">
+        <img src="../assets/logo.png" alt="logo">
       </div>
       <ul class="navbar__list">
         <li class="navbar__list__item"><a href="#">Verificar Entrada</a></li>
@@ -57,16 +47,14 @@ if ($datos != null) {
 
   <div class="form__container">
     <form class="form" method="POST">
-
       <h2 class="form__text">Genere un lote</h2>
-
       <div class="form__group">
         <label class="form__label" for="Paquete">Paquete:</label>
         <select class="form__select" id="bulto" name="bulto" required>
           <option value="">Seleccionar paquete</option>
           <?php
-          foreach ($numBultos as $numBulto) {
-            echo "<option value='$numBulto'>$numBulto</option>";
+          foreach ($paquetes as $paquete) {
+            echo "<option value='" . $paquete['numBulto'] . "'>" . $paquete['numBulto'] . "</option>";
           }
           ?>
         </select>
@@ -76,8 +64,8 @@ if ($datos != null) {
         <select class="form__select" id="bulto" name="bulto" required>
           <option value="">Seleccionar paquete</option>
           <?php
-          foreach ($numBultos as $numBulto) {
-            echo "<option value='$numBulto'>$numBulto</option>";
+          foreach ($paquetes as $paquete) {
+            echo "<option value='" . $paquete['numBulto'] . "'>" . $paquete['numBulto'] . "</option>";
           }
           ?>
         </select>
@@ -87,8 +75,8 @@ if ($datos != null) {
         <select class="form__select" id="bulto" name="bulto" required>
           <option value="">Seleccionar paquete</option>
           <?php
-          foreach ($numBultos as $numBulto) {
-            echo "<option value='$numBulto'>$numBulto</option>";
+          foreach ($paquetes as $paquete) {
+            echo "<option value='" . $paquete['numBulto'] . "'>" . $paquete['numBulto'] . "</option>";
           }
           ?>
         </select>
@@ -98,25 +86,18 @@ if ($datos != null) {
         <select class="form__select" id="bulto" name="bulto" required>
           <option value="">Seleccionar paquete</option>
           <?php
-          foreach ($numBultos as $numBulto) {
-            echo "<option value='$numBulto'>$numBulto</option>";
+          foreach ($paquetes as $paquete) {
+            echo "<option value='" . $paquete['numBulto'] . "'>" . $paquete['numBulto'] . "</option>";
           }
           ?>
         </select>
       </div>
       <div class="form__group">
-        <label class="form__label" for="Paquete">Paquete:</label>
-        <select class="form__select" id="bulto" name="bulto" required>
-          <option value="">Seleccionar paquete</option>
-          <?php
-          foreach ($numBultos as $numBulto) {
-            echo "<option value='$numBulto'>$numBulto</option>";
-          }
-          ?>
-        </select>
+        <button> //agregar codiguito javascript para crear otra opcion de paquete
       </div>
 
       <button class="form__button" type="submit">Generar</button>
+          //agregar codigo para restringir el ingreso de paquetes cuando se repitan valores de numero de bulto
     </form>
   </div>
 

@@ -1,15 +1,27 @@
 <?php
 require '../Modelo/modeloPaquetes.php';
+
+$requestMethod = $_SERVER['REQUEST_METHOD'];
+
+switch ($requestMethod) {
+    case 'GET':
+        $method = $_GET['method'];
+        break;
+    case 'POST':
+        $method = $_POST['method'];
+        break;
+    case 'PUT':
+        $method = $_PUT['method'];
+        break;
+    case 'DELETE':
+        $method = $_DELETE['method'];
+        break;
+}
+controladorPaquetes::$method();
+
 class controladorPaquetes
 {
-    private $conn;
-
-    function __construct($conn)
-    {
-        $this->conn = $conn;
-    }
-
-    public function ingresar($context)
+    public static function ingresar($context)
     {
         $gmailCliente = $context['post']['gmailCliente'];
         $fechaLlegada = $context['post']['fechaLlegada'];
@@ -18,35 +30,40 @@ class controladorPaquetes
         $localidad = $context['post']['localidad'];
         $departamento = $context['post']['departamento'];
 
-        modeloPaquetes::alta($gmailCliente, $fechaLlegada, $num, $calle, $localidad, $departamento, $this->conn);
+        modeloPaquetes::alta($gmailCliente, $fechaLlegada, $num, $calle, $localidad, $departamento);
 
         $url = $context['post']['url'];
         header('location: https://' . $url);
     }
 
-    public function eliminar($context)
+    public static function eliminar($context)
     {
         $numBulto = $context['post']['numBulto'];
-        modeloPaquetes::baja($numBulto, $this->conn);
+        modeloPaquetes::baja($numBulto);
         header('location: ../../../Vista/indexAdministrador.php');
     }
 
-    public function mostrar($context)
+    public static function mostrar($context)
     {
-        $numBulto = $context['post']['numBulto'];
-        $result = modeloUsuarios::muestra($this->conn, $numBulto);
+        $numBulto = $context['get']['numBulto'];
+        $result = modeloPaquetes::muestra($numBulto);
         return $result;
     }
 
-    public function listar($context)
+    public static function listar()
     {
-        $opcion = $context['post']['opcion'];
-        $json = modeloPaquetes::listado($this->conn, $opcion);
+        $json = modeloPaquetes::listado();
         echo $json;
-        header('https')
+        header('https');
     }
 
-    public function modificar($context)
+    public static function listarSinLote()
+    {
+        $json = modeloPaquetes::listadoSinLote();
+        echo $json;
+    }
+
+    public static function modificar($context)
     {
         $numBulto = $context['post']['numBulto'];
         $gmailCliente = $context['post']['gmailCliente'];
@@ -56,7 +73,7 @@ class controladorPaquetes
         $localidad = $context['post']['localidad'];
         $departamento = $context['post']['departamento'];
 
-        modeloPaquetes::modificacion($numBulto, $gmailCliente, $fechaLlegada, $num, $calle, $localidad, $departamento, $this->conn);
+        modeloPaquetes::modificacion($numBulto, $gmailCliente, $fechaLlegada, $num, $calle, $localidad, $departamento);
         header('location: ../../../Vista/indexAdministrador.php');
     }
 }
