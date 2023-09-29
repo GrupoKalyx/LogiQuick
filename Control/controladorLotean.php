@@ -3,9 +3,11 @@ require '../Modelo/modeloLotes.php';
 
 $requestMethod = $_SERVER['REQUEST_METHOD'];
 
-$parameters = json_decode(file_get_contents('file:'));
+$parameters = json_decode(file_get_contents("php://input"));
 
-controladorLotean::$method();
+$function = $parameters->function;
+
+controladorLotean::$function();
 
 class controladorLotean
 {

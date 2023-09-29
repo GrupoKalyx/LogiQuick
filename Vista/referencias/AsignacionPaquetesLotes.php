@@ -1,19 +1,16 @@
 <?php
 require '../../Control/superControlador.php';
 
-$url = 'http://localhost/LogiQuick/Control/controladorPaquetes.php?method=listarSinLote';
+$url = 'http://localhost/LogiQuick/Control/controladorPaquetes.php?' . http_build_query(array('function' => 'listarSinLotes'));
 $json = superControlador($url, 'GET', NULL);
 $paquetes = json_decode($json, true);
+var_dump($paquetes);
 
 if (isset($_POST['generar'])) {
   $url = 'http://localhost/LogiQuick/Control/controladorLotes.php';
-  superControlador($url, 'POST', array(
-    ['method'] => 'ingresar'
-  ));
+  superControlador($url, 'POST', array('function' => 'ingresar'));
   $url = 'http://localhost/LogiQuick/Control/controladorLotean.php';
-  superControlador($url, 'POST', array(
-    ['method'] => 'ingresar'
-  ));
+  superControlador($url, 'POST', array('function' => 'ingresar'));
 }
 ?>
 <!DOCTYPE html>
@@ -112,7 +109,7 @@ if (isset($_POST['generar'])) {
     </form>
   </div>
 
-  <script src="Traducir.js"></script>
+  <!-- <script src="Traducir.js"></script> -->
 
   <footer>
     <div class="footer">

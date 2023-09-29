@@ -5,7 +5,6 @@ function superControlador($url, $metodo, $parameters)
         curl_setopt($ch, CURLOPT_URL, $url);
         switch ($metodo) {
                 case 'GET': 
-                        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
                         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
                         break;
                 case 'POST':

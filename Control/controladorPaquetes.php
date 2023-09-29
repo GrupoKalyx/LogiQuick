@@ -1,23 +1,18 @@
 <?php
 require '../Modelo/modeloPaquetes.php';
+// $requestMethod = $_SERVER['REQUEST_METHOD'];
 
-$requestMethod = $_SERVER['REQUEST_METHOD'];
+var_dump(file_get_contents("php://input"));
 
-switch ($requestMethod) {
-    case 'GET':
-        $method = $_GET['method'];
-        break;
-    case 'POST':
-        $method = $_POST['method'];
-        break;
-    case 'PUT':
-        $method = $_PUT['method'];
-        break;
-    case 'DELETE':
-        $method = $_DELETE['method'];
-        break;
-}
-controladorPaquetes::$method();
+$parameters = json_decode(file_get_contents("php://input"), true);
+
+var_dump($parameters);
+
+$function = $parameters->function;
+
+var_dump($function);
+
+controladorPaquetes::$function();
 
 class controladorPaquetes
 {
@@ -54,7 +49,6 @@ class controladorPaquetes
     {
         $json = modeloPaquetes::listado();
         echo $json;
-        header('https');
     }
 
     public static function listarSinLote()
