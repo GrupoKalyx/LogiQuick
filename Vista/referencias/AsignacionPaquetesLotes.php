@@ -4,6 +4,17 @@ require '../../Control/superControlador.php';
 $url = 'http://localhost/LogiQuick/Control/controladorPaquetes.php?method=listarSinLote';
 $json = superControlador($url, 'GET', NULL);
 $paquetes = json_decode($json, true);
+
+if (isset($_POST['generar'])) {
+  $url = 'http://localhost/LogiQuick/Control/controladorLotes.php';
+  superControlador($url, 'POST', array(
+    ['method'] => 'ingresar'
+  ));
+  $url = 'http://localhost/LogiQuick/Control/controladorLotean.php';
+  superControlador($url, 'POST', array(
+    ['method'] => 'ingresar'
+  ));
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -96,7 +107,7 @@ $paquetes = json_decode($json, true);
         <button> //agregar codiguito javascript para crear otra opcion de paquete
       </div>
 
-      <button class="form__button" type="submit">Generar</button>
+      <button class="form__button" type="submit" name="generar">Generar</button>
           //agregar codigo para restringir el ingreso de paquetes cuando se repitan valores de numero de bulto
     </form>
   </div>

@@ -1,15 +1,23 @@
 <?php
 require '../Modelo/modeloLotes.php';
-class controladorLotes
+
+$requestMethod = $_SERVER['REQUEST_METHOD'];
+
+$parameters = json_decode(file_get_contents('file:'));
+
+controladorLotean::$method();
+
+class controladorLotean
 {
 
     public static function ingresar()
     {
+        $idLote = $_POST['idLote'];
         $paquetes = $_POST['paquetes'];
-        modeloLotes::alta($paquetes);
+        modeloLotean::alta($idLote, $paquetes);
     }
 
-    public static function eliminar($context)
+    public static function eliminar()
     {
         $numBulto = $_POST['numBulto'];
         modeloPaquetes::baja($numBulto);
@@ -42,7 +50,7 @@ class controladorLotes
         return $result;
     }
 
-    public static function modificar($context)
+    public static function modificar()
     {
         $numBulto = $_POST['numBulto'];
         $gmailCliente = $_POST['gmailCliente'];

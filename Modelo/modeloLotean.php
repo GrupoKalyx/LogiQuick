@@ -5,22 +5,25 @@ require_once('modeloBd.php');
 class modeloLotean
 {
 
-        public static function alta($paquetes)
+        public static function alta($idLote, $paquetes)
         {
                 $conn = modeloBd::conexion();
                 $bindString = array();
-                $query = "INSERT INTO lotean (numBulto, idLote) VALUES";
+                $values = array();
                 foreach ($paquetes as $paquete) {
-                        $bindString .= $paquete;
-                        $query .= " (?, ?)";
+                        $bindString .= $paquete . " ," . $idLote;
+                        $values .= "(?, ?)";
                 }
-                $exc = $conn->execute_query($query, $bindString);
+                $impValues = implode(" ", $values);
+                $impString = implode(", ", $bindString);
+                $query = "INSERT INTO lotean (numBulto, idLote) VALUES " . $impValues;
+                $exc = $conn->execute_query($query, [$impString]);
                 $result = $exc->fetch_array(MYSQLI_ASSOC);
                 $conn->close();
                 return $result;
         }
 
-        public static function modificacion($numBulto, $gmailCliente, $fechaLlegada, $num, $calle, $localidad, $departamento, $conn)
+        public static function modificacion($idLote, $numBulto)
         {
                 $query = "UPDATE paquetes SET gmailCliente = ? AND fechaLlegada = ? AND num = ? AND calle = ? AND localidad = ? AND departamento = ? WHERE numBulto = ?";
                 $conn->execute_query($query, [$gmailCliente, $fechaLlegada, $num, $calle, $localidad, $departamento, $numBulto]);

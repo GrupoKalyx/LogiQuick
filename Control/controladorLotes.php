@@ -1,19 +1,38 @@
 <?php
 require '../Modelo/modeloLotes.php';
+
+$requestMethod = $_SERVER['REQUEST_METHOD'];
+
+switch ($requestMethod) {
+    case 'GET':-
+        $function = $_GET['function'];
+        break;
+    case 'POST':
+        $function = $_POST['function'];
+        break;
+    case 'PUT':
+        $function = $_PUT['function'];
+        break;
+    case 'DELETE':
+        $function = $_DELETE['function'];
+        break;
+}
+
+controladorLotes::$function();
+
 class controladorLotes
 {
 
     public static function ingresar()
     {
-        $paquetes = $_POST['paquetes'];
-        $idLote = modeloLotes::alta($paquetes);
+        $idLote = modeloLotes::alta();
         echo $idLote;
     }
 
     public static function eliminar($context)
     {
-        $numBulto = $_PUT['numBulto'];
-        modeloPaquetes::baja($numBulto);
+        $numBulto = $_DELETE['numBulto'];
+        modeloLotes::baja($numBulto);
     }
 
     // public static function rastrear()

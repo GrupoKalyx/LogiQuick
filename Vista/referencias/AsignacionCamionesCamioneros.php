@@ -62,15 +62,15 @@ $conn->close();
   <header>
     <nav class="navbar">
       <div class="navbar__logo">
-        <img src="/assets/logo.png" alt="logo">
+        <img src="../assets/logo.png" alt="logo">
       </div>
       <ul class="navbar__list">
         <li class="navbar__list__item"><a href="#">Verificar Entrada</a></li>
         <li class="navbar__list__item"><a href="#">Asignación</a>
           <ul class="navbar__submenu">
-          <li class="navbar__submenu__item"><a href="../referencias/AsignacionLotes.php">Paquete a Lote</a></li>
-            <li class="navbar__submenu__item"><a href="../referencias/AsignacionCamion.php">Lote a Camión</a></li>
-            <li class="navbar__submenu__item"><a href="../referencias/AsignacionCamionero.php">Camionero a Camión</a></li>
+          <li class="navbar__submenu__item"><a href="../referencias/AsignacionPaquetesLotes.php">Paquete a Lote</a></li>
+            <li class="navbar__submenu__item"><a href="../referencias/AsignacionLotesCamiones.php">Lote a Camión</a></li>
+            <li class="navbar__submenu__item"><a href="../referencias/AsignacionCamionesCamioneros.php">Camionero a Camión</a></li>
           </ul>
         </li>
         <li class="navbar__list__item"><a href="#">Seguimiento</a></li>
@@ -83,7 +83,7 @@ $conn->close();
   </header>
 
   <div class="form__container">
-    <form class="form" method="POST">
+    <form class="form" method="POST" action="testcamionero.php">
   
       <h2 class="form__text">Ingresar Lote a Camión</h2>
   
