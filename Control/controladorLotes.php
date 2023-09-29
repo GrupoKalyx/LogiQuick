@@ -6,24 +6,22 @@ class controladorLotes
     public static function ingresar()
     {
         $paquetes = $_POST['paquetes'];
-        modeloLotes::alta($paquetes);
-
-        header('location: ../../../Vista/indexAdministrador.php');
+        $idLote = modeloLotes::alta($paquetes);
+        echo $idLote;
     }
 
     public static function eliminar($context)
     {
-        $numBulto = $context['post']['numBulto'];
+        $numBulto = $_PUT['numBulto'];
         modeloPaquetes::baja($numBulto);
-        header('location: ../../../Vista/indexAdministrador.php');
     }
 
-    public static function rastrear()
-    {
-        $ci = $_GET['ci'];
-        $result = modeloUsuarios::muestra($ci);
-        return $result;
-    }
+    // public static function rastrear()
+    // {
+    //     $ci = $_GET['ci'];
+    //     $result = modeloUsuarios::muestra($ci);
+    //     return $result;
+    // }
 
     public static function listar()
     {
@@ -52,17 +50,16 @@ class controladorLotes
         return $result;
     }
 
-    public static function modificar($context)
+    public static function modificar()
     {
-        $numBulto = $context['post']['numBulto'];
-        $gmailCliente = $context['post']['gmailCliente'];
-        $fechaLlegada = $context['post']['fechaLlegada'];
-        $num = $context['post']['num'];
-        $calle = $context['post']['calle'];
-        $localidad = $context['post']['localidad'];
-        $departamento = $context['post']['departamento'];
+        $numBulto = $_PUT['numBulto'];
+        $gmailCliente = $_PUT['gmailCliente'];
+        $fechaLlegada = $_PUT['fechaLlegada'];
+        $num = $_PUT['num'];
+        $calle = $_PUT['calle'];
+        $localidad = $_PUT['localidad'];
+        $departamento = $_PUT['departamento'];
 
-        modeloPaquetes::modificacion($numBulto, $gmailCliente, $fechaLlegada, $num, $calle, $localidad, $departamento, $conn);
-        header('location: ../../../Vista/indexAdministrador.php');
+        modeloPaquetes::modificacion($numBulto, $gmailCliente, $fechaLlegada, $num, $calle, $localidad, $departamento);
     }
 }
