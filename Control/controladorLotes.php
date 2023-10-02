@@ -1,7 +1,10 @@
 <?php
 require '../Modelo/modeloLotes.php';
 
-$requestMethod = $_SERVER['REQUEST_METHOD'];
+$requestMethod = '_' . $_SERVER['REQUEST_METHOD'];
+$context = $$requestMethod; //va con doble $var_dump($)
+$function = $context['function'];
+controladorPaquetes::$function($context);
 
 switch ($requestMethod) {
     case 'GET':-
@@ -23,7 +26,7 @@ controladorLotes::$function();
 class controladorLotes
 {
 
-    public static function ingresar()
+    public static function ingresar($context)
     {
         $idLote = modeloLotes::alta();
         echo $idLote;
@@ -31,16 +34,9 @@ class controladorLotes
 
     public static function eliminar($context)
     {
-        $numBulto = $_DELETE['numBulto'];
+        $numBulto = $context['numBulto'];
         modeloLotes::baja($numBulto);
     }
-
-    // public static function rastrear()
-    // {
-    //     $ci = $_GET['ci'];
-    //     $result = modeloUsuarios::muestra($ci);
-    //     return $result;
-    // }
 
     public static function listar()
     {
@@ -67,18 +63,5 @@ class controladorLotes
         //     }
         // }
         return $result;
-    }
-
-    public static function modificar()
-    {
-        $numBulto = $_PUT['numBulto'];
-        $gmailCliente = $_PUT['gmailCliente'];
-        $fechaLlegada = $_PUT['fechaLlegada'];
-        $num = $_PUT['num'];
-        $calle = $_PUT['calle'];
-        $localidad = $_PUT['localidad'];
-        $departamento = $_PUT['departamento'];
-
-        modeloPaquetes::modificacion($numBulto, $gmailCliente, $fechaLlegada, $num, $calle, $localidad, $departamento);
     }
 }

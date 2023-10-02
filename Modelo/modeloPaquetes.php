@@ -37,7 +37,7 @@ class modeloPaquetes
     public static function listado()
     {
         $conn = modeloBd::conexion();
-        $query = "SELECT * FROM paquetes" . $option;
+        $query = "SELECT * FROM paquetes";
         $result = $conn->execute_query($query);
         $result = $result->fetch_all(MYSQLI_ASSOC);
         $conn->close();
@@ -47,7 +47,7 @@ class modeloPaquetes
     public static function listadoSinLote()
     {
         $conn = modeloBd::conexion();
-        $query = "SELECT numBulto FROM paquetes";
+        $query = "SELECT numBulto FROM paquetes"; // deberia ser un left join
         $result = $conn->execute_query($query);
         $result = $result->fetch_all(MYSQLI_ASSOC);
         $conn->close();

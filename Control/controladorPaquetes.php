@@ -1,46 +1,38 @@
 <?php
 require '../Modelo/modeloPaquetes.php';
-// $requestMethod = $_SERVER['REQUEST_METHOD'];
 
-var_dump(file_get_contents("php://input"));
-
-$parameters = json_decode(file_get_contents("php://input"), true);
-
-var_dump($parameters);
-
-$function = $parameters->function;
-
-var_dump($function);
-
-controladorPaquetes::$function();
+$requestMethod = '_' . $_SERVER['REQUEST_METHOD'];
+$context = $$requestMethod; //va con doble $var_dump($)
+$function = $context['function'];
+controladorPaquetes::$function($context);
 
 class controladorPaquetes
 {
     public static function ingresar($context)
     {
-        $gmailCliente = $context['post']['gmailCliente'];
-        $fechaLlegada = $context['post']['fechaLlegada'];
-        $num = $context['post']['num'];
-        $calle = $context['post']['calle'];
-        $localidad = $context['post']['localidad'];
-        $departamento = $context['post']['departamento'];
+        $gmailCliente = $context['gmailCliente'];
+        $fechaLlegada = $context['fechaLlegada'];
+        $num = $context['num'];
+        $calle = $context['calle'];
+        $localidad = $context['localidad'];
+        $departamento = $context['departamento'];
 
         modeloPaquetes::alta($gmailCliente, $fechaLlegada, $num, $calle, $localidad, $departamento);
 
-        $url = $context['post']['url'];
+        $url = $context['url'];
         header('location: https://' . $url);
     }
 
     public static function eliminar($context)
     {
-        $numBulto = $context['post']['numBulto'];
+        $numBulto = $context['numBulto'];
         modeloPaquetes::baja($numBulto);
         header('location: ../../../Vista/indexAdministrador.php');
     }
 
     public static function mostrar($context)
     {
-        $numBulto = $context['get']['numBulto'];
+        $numBulto = $context['numBulto'];
         $result = modeloPaquetes::muestra($numBulto);
         return $result;
     }
@@ -49,6 +41,7 @@ class controladorPaquetes
     {
         $json = modeloPaquetes::listado();
         echo $json;
+        header('https');
     }
 
     public static function listarSinLote()
@@ -59,13 +52,13 @@ class controladorPaquetes
 
     public static function modificar($context)
     {
-        $numBulto = $context['post']['numBulto'];
-        $gmailCliente = $context['post']['gmailCliente'];
-        $fechaLlegada = $context['post']['fechaLlegada'];
-        $num = $context['post']['num'];
-        $calle = $context['post']['calle'];
-        $localidad = $context['post']['localidad'];
-        $departamento = $context['post']['departamento'];
+        $numBulto = $context['numBulto'];
+        $gmailCliente = $context['gmailCliente'];
+        $fechaLlegada = $context['fechaLlegada'];
+        $num = $context['num'];
+        $calle = $context['calle'];
+        $localidad = $context['localidad'];
+        $departamento = $context['departamento'];
 
         modeloPaquetes::modificacion($numBulto, $gmailCliente, $fechaLlegada, $num, $calle, $localidad, $departamento);
         header('location: ../../../Vista/indexAdministrador.php');

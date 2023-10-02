@@ -1,13 +1,10 @@
 <?php
 require '../Modelo/modeloLotes.php';
 
-$requestMethod = $_SERVER['REQUEST_METHOD'];
-
-$parameters = json_decode(file_get_contents("php://input"));
-
-$function = $parameters->function;
-
-controladorLotean::$function();
+$requestMethod = '_' . $_SERVER['REQUEST_METHOD'];
+$context = $$requestMethod; //va con doble $var_dump($)
+$function = $context['function'];
+controladorPaquetes::$function($context);
 
 class controladorLotean
 {
@@ -28,7 +25,6 @@ class controladorLotean
     public static function listar()
     {
         $result = modeloPaquetes::listado();
-
         // $arrayConsulta = array();
 
         // foreach ($result as $row) {
@@ -49,19 +45,13 @@ class controladorLotean
         //         echo "<a class='form__viewContent'> " . $key . " " . $v . "</a>";
         //     }
         // }
-        return $result;
+        echo $result;
     }
 
-    public static function modificar()
+    public static function modificar($context)
     {
-        $numBulto = $_POST['numBulto'];
-        $gmailCliente = $_POST['gmailCliente'];
-        $fechaLlegada = $_POST['fechaLlegada'];
-        $num = $_POST['num'];
-        $calle = $_POST['calle'];
-        $localidad = $_POST['localidad'];
-        $departamento = $_POST['departamento'];
-
-        modeloPaquetes::modificacion($numBulto, $gmailCliente, $fechaLlegada, $num, $calle, $localidad, $departamento, $conn);
+        $numBulto = $context['numBulto'];
+        $idLote = $context['idLote'];
+        modeloLotean::modificacion($numBulto, $idLote);
     }
 }

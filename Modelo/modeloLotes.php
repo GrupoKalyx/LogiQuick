@@ -14,15 +14,7 @@ class modeloLotes
         return json_encode($result);
     }
 
-    public static function modificacion($numBulto, $gmailCliente, $fechaLlegada, $num, $calle, $localidad, $departamento, $conn)
-    {
-        $conn = modeloBd::conexion();
-        $query = "UPDATE paquetes SET gmailCliente = ? AND fechaLlegada = ? AND num = ? AND calle = ? AND localidad = ? AND departamento = ? WHERE numBulto = ?";
-        $conn->execute_query($query, [$gmailCliente, $fechaLlegada, $num, $calle, $localidad, $departamento, $numBulto]);
-        $conn->close();
-    }
-
-    public static function baja($ci, $conn)
+    public static function baja($ci)
     {
         $conn = modeloBd::conexion();
         $query = "DELETE FROM usuarios WHERE ci = ?";
@@ -30,7 +22,7 @@ class modeloLotes
         $conn->close();
     }
 
-    public static function listado($conn)
+    public static function listado()
     {
         $conn = modeloBd::conexion();
         $query = "SELECT * FROM almacenes";
@@ -40,7 +32,7 @@ class modeloLotes
         return json_encode($result);
     }
 
-    public static function existe($numBulto, $conn)
+    public static function existe($numBulto)
     {
         $conn = modeloBd::conexion();
         $query = "SELECT * FROM paquetes WHERE numBulto = ?";

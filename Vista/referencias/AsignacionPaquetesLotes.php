@@ -1,10 +1,9 @@
 <?php
 require '../../Control/superControlador.php';
 
-$url = 'http://localhost/LogiQuick/Control/controladorPaquetes.php?' . http_build_query(array('function' => 'listarSinLotes'));
+$url = 'http://localhost/LogiQuick/Control/controladorPaquetes.php?function=listarSinLote';
 $json = superControlador($url, 'GET', NULL);
 $paquetes = json_decode($json, true);
-var_dump($paquetes);
 
 if (isset($_POST['generar'])) {
   $url = 'http://localhost/LogiQuick/Control/controladorLotes.php';
