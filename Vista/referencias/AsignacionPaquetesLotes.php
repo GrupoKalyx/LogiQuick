@@ -53,32 +53,36 @@ if (isset($_POST['generar'])) {
   </header>
 
   <div class="form__container">
-
     <form class="form" method="POST">
-      <h2 class="form__text">Genere un lote</h2>
-
-      <div class="form__group">
-        <label class="form__label" for="Paquete">Paquete:</label>
+        <h2 class="form__text">Genere un lote</h2>
+        <div class="form__group">
+        <label class="form__label" for="bulto">Paquete:</label>
         <select class="form__select" id="bulto" name="bulto[]">
-          <option value="">Seleccionar paquete</option>
-        <?php
-            foreach ($paquetes as $paquete) {
-              echo "<option value='" . $paquete['numBulto'] . "'>" . $paquete['numBulto'] . "</option>";
-            }
-        ?>
+
+                <option value="">Seleccionar paquete</option>
+                <?php
+                foreach ($paquetes as $paquete) {
+                    echo "<option value='" . $paquete['numBulto'] . "'>" . $paquete['numBulto'] . "</option>";
+                }
+                ?>
+
         </select>
-      </div>
-
-      
-      <button class="form__button" id="agregarCampo" name="agregarCampo">Agregar</button>
-
-      <button class="form__button" type="submit" name="generar">Generar</button>
-
+        </div>
+        <div class="form__group" id="paquetesContainer">
+            <!-- Nuevos campos de paquete se agregarán aquí dinámicamente -->
+        </div>
+        <div class="form__group">
+            <button type="button" class="form__button" id="agregarCampo">Agregar Campo</button>
+        </div>
+        <div class="form__group">
+        <button class="form__button" type="submit" name="generar">Generar</button>
+        </div>
     </form>
-  </div>
+</div>
+
 
   <!-- <script src="Traducir.js"></script> -->
-  <script src="agregarCampo.js"></script>
+  <script src="../"></script>
 
   <footer>
     <div class="footer">
