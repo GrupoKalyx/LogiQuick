@@ -1,57 +1,51 @@
 <?php
-require '../Modelo/modeloLotes.php';
+require '../Modelo/modeloLotean.php';
 
-$requestMethod = '_' . $_SERVER['REQUEST_METHOD'];
-$context = $$requestMethod; //va con doble $
+switch ($_SERVER['REQUEST_METHOD']) {
+    case 'GET':
+        $context = $_GET;
+        break;
+    case 'POST':
+        $context = $_POST;
+        break;
+    case 'PUT':
+        $context = $_PUT;
+        break;
+    case 'DELETE':
+        $context = $_DELETE;
+        break;
+}
+
 $function = $context['function'];
-controladorPaquetes::$function($context);
+controladorLotean::$function($context);
 
 class controladorLotean
 {
 
     public static function ingresar($context)
     {
-        $idLote = $_POST['idLote'];
-        $paquetes = $_POST['paquetes'];
+        $idLote = $context['idLote'];
+        $paquetes = $context['paquetes'];
         modeloLotean::alta($idLote, $paquetes);
     }
 
     public static function eliminar($context)
     {
-        $numBulto = $_POST['numBulto'];
-        modeloPaquetes::baja($numBulto);
+        $idLote = $context['numBulto'];
+        modeloPaquetes::baja($idLote);
     }
 
     public static function listar($context)
     {
-        $result = modeloPaquetes::listado();
-        // $arrayConsulta = array();
-
-        // foreach ($result as $row) {
-        //     $numBulto = $row->numBulto;
-        //     $gmailCliente = $row->gmailCliente;
-        //     $idRastreo = $row->idRastreo;
-        //     $fechaLlegada = $row->fechaLlegada;
-        //     $fechaEntrega = $row->fechaEntrega;
-        //     $num = $row->num;
-        //     $calle = $row->calle;
-        //     $localidad = $row->localidad;
-        //     $departamento = $row->departamento;
-        //     array_push($arrayConsulta, ['Número de bulto: ' => $numBulto, '<br> Gmail del cliente: ' => $gmailCliente, '<br> ID de rastreo: ' => $idRastreo, '<br> Fecha de llegada: ' => $fechaLlegada, '<br> Fecha de entrega: ' => $fechaEntrega, '<br> Num: ' => $num, '<br> Calle: ' => $calle, '<br> Localidad: ' => $localidad, '<br> Departamento: ' => $departamento . '<br><br>']);
-        // }
-
-        // foreach ($arrayConsulta as $value) {
-        //     foreach ($value as $key => $v) {
-        //         echo "<a class='form__viewContent'> " . $key . " " . $v . "</a>";
-        //     }
-        // }
+        $result = modeloLotean::listado();
         echo $result;
     }
 
     public static function modificar($context)
     {
-        $numBulto = $context['numBulto'];
         $idLote = $context['idLote'];
-        modeloLotean::modificacion($numBulto, $idLote);
+        $numBulto = $context['numBulto'];
+        $nuevoNumBulto = $context['nuevoNumBulto'];
+        modeloLotean::modificacion($idLote, $numBulto, $nuevoNumBulto);
     }
 }

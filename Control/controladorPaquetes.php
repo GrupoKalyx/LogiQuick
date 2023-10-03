@@ -1,22 +1,12 @@
 <?php
 require '../Modelo/modeloPaquetes.php';
 
-$requestMethod = $_SERVER['REQUEST_METHOD'];
-
-switch ($requestMethod) {
-    case 'GET':
-        $context = $_GET;
-        break;
-    case 'POST':
-        $context = $_POST;
-        break;
-    case 'PUT':
-        $context = $_PUT;
-        break;
-    case 'DELETE':
-        $context = $_DELETE;
-        break;
-}
+$context = match ($_SERVER['REQUEST_METHOD']) {
+  'GET' => $_GET,
+  'POST' => $_POST,
+  'PUT' => $_PUT,
+  'DELETE' => $_DELETE,
+};
 
 $function = $context['function'];
 controladorPaquetes::$function($context);
@@ -40,7 +30,6 @@ class controladorPaquetes
     {
         $numBulto = $context['numBulto'];
         modeloPaquetes::baja($numBulto);
-        header('location: ../../../Vista/indexAdministrador.php');
     }
 
     public static function mostrar($context)
@@ -54,7 +43,6 @@ class controladorPaquetes
     {
         $json = modeloPaquetes::listado();
         echo $json;
-        header('https');
     }
 
     public static function listarSinLote()
@@ -74,6 +62,5 @@ class controladorPaquetes
         $departamento = $context['departamento'];
 
         modeloPaquetes::modificacion($numBulto, $gmailCliente, $fechaLlegada, $num, $calle, $localidad, $departamento);
-        header('location: ../../../Vista/indexAdministrador.php');
     }
 }

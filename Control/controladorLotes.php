@@ -1,8 +1,13 @@
 <?php
 require '../Modelo/modeloLotes.php';
 
-$requestMethod = '_' . $_SERVER['REQUEST_METHOD'];
-$context = $$requestMethod; //va con doble $
+$context = match ($_SERVER['REQUEST_METHOD']) {
+  'GET' => $_GET,
+  'POST' => $_POST,
+  'PUT' => $_PUT,
+  'DELETE' => $_DELETE,
+};
+
 $function = $context['function'];
 controladorLotes::$function($context);
 
@@ -17,11 +22,11 @@ class controladorLotes
 
     public static function eliminar($context)
     {
-        $numBulto = $context['numBulto'];
-        modeloLotes::baja($numBulto);
+        $idLote = $context['idLote'];
+        modeloLotes::baja($idLote);
     }
 
-    public static function listar()
+    public static function listar($context)
     {
         $result = modeloPaquetes::listado();
 
@@ -46,5 +51,10 @@ class controladorLotes
         //     }
         // }
         return $result;
+    }
+
+    public static function existe($context){
+        $idLote = $context['idLote'];
+        return modeloLotes::existe($idLote);
     }
 }

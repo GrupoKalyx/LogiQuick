@@ -1,15 +1,14 @@
 <?php
 require '../../Control/superControlador.php';
 
-$url = 'http://localhost/LogiQuick/Control/controladorPaquetes.php?function=listarSinLote';
-$json = superControlador($url, 'GET', NULL);
-$paquetes = json_decode($json, true);
+$url = 'http://localhost/LogiQuick/Control/controladorPaquetes.php';
+$paquetes = json_decode(superControlador($url, 'GET', array('function' => 'listarSinLote')), true);
 
 if (isset($_POST['generar'])) {
   $url = 'http://localhost/LogiQuick/Control/controladorLotes.php';
-  superControlador($url, 'POST', array('function' => 'ingresar'));
+  $idLote = json_decode(superControlador($url, 'POST', array('function' => 'ingresar')), 1);
   $url = 'http://localhost/LogiQuick/Control/controladorLotean.php';
-  superControlador($url, 'POST', array('function' => 'ingresar'));
+  superControlador($url, 'POST', array('function' => 'ingresar', 'idLote' => $idLote, 'paquetes' => $_POST['bulto']));
 }
 ?>
 <!DOCTYPE html>
@@ -57,7 +56,7 @@ if (isset($_POST['generar'])) {
       <h2 class="form__text">Genere un lote</h2>
       <div class="form__group">
         <label class="form__label" for="Paquete">Paquete:</label>
-        <select class="form__select" id="bulto" name="bulto" required>
+        <select class="form__select" id="bulto" name="bulto[]" required>
           <option value="">Seleccionar paquete</option>
           <?php
           foreach ($paquetes as $paquete) {
@@ -68,7 +67,7 @@ if (isset($_POST['generar'])) {
       </div>
       <div class="form__group">
         <label class="form__label" for="Paquete">Paquete:</label>
-        <select class="form__select" id="bulto" name="bulto" required>
+        <select class="form__select" id="bulto" name="bulto[]" required>
           <option value="">Seleccionar paquete</option>
           <?php
           foreach ($paquetes as $paquete) {
@@ -79,7 +78,7 @@ if (isset($_POST['generar'])) {
       </div>
       <div class="form__group">
         <label class="form__label" for="Paquete">Paquete:</label>
-        <select class="form__select" id="bulto" name="bulto" required>
+        <select class="form__select" id="bulto" name="bulto[]" required>
           <option value="">Seleccionar paquete</option>
           <?php
           foreach ($paquetes as $paquete) {
@@ -90,7 +89,7 @@ if (isset($_POST['generar'])) {
       </div>
       <div class="form__group">
         <label class="form__label" for="Paquete">Paquete:</label>
-        <select class="form__select" id="bulto" name="bulto" required>
+        <select class="form__select" id="bulto" name="bulto[]" required>
           <option value="">Seleccionar paquete</option>
           <?php
           foreach ($paquetes as $paquete) {

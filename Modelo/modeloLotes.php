@@ -7,18 +7,21 @@ class modeloLotes
     public static function alta()
     {
         $conn = modeloBd::conexion();
-        $query = "INSERT INTO lotes VALUES (); SELECT LAST_INSERT_ID();";
-        $exc = $conn->execute_query($query);
-        $result = $exc->fetch_array(MYSQLI_ASSOC);
+        $query = "INSERT INTO lotes VALUES ();"; 
+        $conn->execute_query($query);
+        $queryLastId = "SELECT LAST_INSERT_ID();";
+        $excLastId = $conn->execute_query($queryLastId);
+        $fetch = $excLastId->fetch_array(MYSQLI_ASSOC);
+        $result = $fetch['LAST_INSERT_ID()'];
         $conn->close();
         return json_encode($result);
     } 
 
-    public static function baja($ci)
+    public static function baja($idLote)
     {
         $conn = modeloBd::conexion();
-        $query = "DELETE FROM usuarios WHERE ci = ?";
-        $conn->execute_query($query, [$ci]);
+        $query = "DELETE FROM lotes WHERE idLote = ?";
+        $conn->execute_query($query, [$idLote]);
         $conn->close();
     }
 
@@ -32,11 +35,11 @@ class modeloLotes
         return json_encode($result);
     }
 
-    public static function existe($numBulto)
+    public static function existe($idLote)
     {
         $conn = modeloBd::conexion();
-        $query = "SELECT * FROM paquetes WHERE numBulto = ?";
-        $result = $conn->execute_query($query, [$numBulto]);
+        $query = "SELECT * FROM lotes WHERE idLote = ?";
+        $result = $conn->execute_query($query, [$idLote]);
         $num = mysqli_num_rows($result);
         $conn->close();
         return $num;
