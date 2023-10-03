@@ -69,20 +69,20 @@ if (isset($_POST['generar'])) {
         </select>
         </div>
         <div class="form__group" id="paquetesContainer">
-            <!-- Nuevos campos de paquete se agregarán aquí dinámicamente -->
+          <!-- aca van paquetes nuevos-->
         </div>
-        <div class="form__group">
-            <button type="button" class="form__button" id="agregarCampo">Agregar Campo</button>
-        </div>
-        <div class="form__group">
-        <button class="form__button" type="submit" name="generar">Generar</button>
-        </div>
+        
+        <button type="button" class="form__button" id="agregarCampo">Agregar Campo</button>
+        
+        
+        <button class="form__button" type="submit" name="generar">Generar Lote</button>
+        
     </form>
 </div>
 
 
   <!-- <script src="Traducir.js"></script> -->
-  <script src="../"></script>
+  <script src="../agregarCampo.js"></script>
 
   <footer>
     <div class="footer">

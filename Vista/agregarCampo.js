@@ -9,22 +9,22 @@ document.addEventListener("DOMContentLoaded", function() {
         nuevoLabel.className = "form__label";
         nuevoLabel.textContent = "Paquete:";
 
-        // Crea un nuevo campo de selección
+        // Crea un nuevo campo de select
         var nuevoSelect = document.createElement("select");
         nuevoSelect.className = "form__select";
         nuevoSelect.name = "bulto[]";
 
-        // Crea una opción por defecto
+        // Crea una opción vacia
         var opcionDefault = document.createElement("option");
         opcionDefault.value = "";
         opcionDefault.textContent = "Seleccionar paquete";
         nuevoSelect.appendChild(opcionDefault);
 
-        // Agrega el nuevo label y campo de selección al nuevo div
+        // Agrega el nuevo label y select
         nuevoDiv.appendChild(nuevoLabel);
         nuevoDiv.appendChild(nuevoSelect);
 
-        // Obtiene el contenedor de paquetes y agrega el nuevo div al final
+        // agrega el nuevo div al final
         var paquetesContainer = document.getElementById("paquetesContainer");
         paquetesContainer.appendChild(nuevoDiv);
     });
