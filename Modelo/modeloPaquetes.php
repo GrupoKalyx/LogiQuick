@@ -4,8 +4,9 @@ require_once('modeloBd.php');
 
 class modeloPaquetes
 {
-    public static function alta($gmailCliente, $fechaLlegada, $num, $calle, $localidad, $departamento)
+    public static function alta($gmailCliente, $fechaLlegada, $horaLlegada, $num, $calle, $localidad, $departamento)
     {
+        $fechaLlegada = $fechaLlegada . " " . $horaLlegada;
         $conn = modeloBd::conexion();
         do {
             $idRastreo = "";

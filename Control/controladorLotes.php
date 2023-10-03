@@ -2,29 +2,12 @@
 require '../Modelo/modeloLotes.php';
 
 $requestMethod = '_' . $_SERVER['REQUEST_METHOD'];
-$context = $$requestMethod; //va con doble $var_dump($)
+$context = $$requestMethod; //va con doble $
 $function = $context['function'];
-controladorPaquetes::$function($context);
-
-switch ($requestMethod) {
-    case 'GET':-
-        $function = $_GET['function'];
-        break;
-    case 'POST':
-        $function = $_POST['function'];
-        break;
-    case 'PUT':
-        $function = $_PUT['function'];
-        break;
-    case 'DELETE':
-        $function = $_DELETE['function'];
-        break;
-}
-
-controladorLotes::$function();
+controladorLotes::$function($context);
 
 class controladorLotes
-{
+{ 
 
     public static function ingresar($context)
     {

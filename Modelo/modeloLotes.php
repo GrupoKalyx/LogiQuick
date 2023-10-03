@@ -12,7 +12,7 @@ class modeloLotes
         $result = $exc->fetch_array(MYSQLI_ASSOC);
         $conn->close();
         return json_encode($result);
-    }
+    } 
 
     public static function baja($ci)
     {

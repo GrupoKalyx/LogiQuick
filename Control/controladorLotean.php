@@ -2,27 +2,27 @@
 require '../Modelo/modeloLotes.php';
 
 $requestMethod = '_' . $_SERVER['REQUEST_METHOD'];
-$context = $$requestMethod; //va con doble $var_dump($)
+$context = $$requestMethod; //va con doble $
 $function = $context['function'];
 controladorPaquetes::$function($context);
 
 class controladorLotean
 {
 
-    public static function ingresar()
+    public static function ingresar($context)
     {
         $idLote = $_POST['idLote'];
         $paquetes = $_POST['paquetes'];
         modeloLotean::alta($idLote, $paquetes);
     }
 
-    public static function eliminar()
+    public static function eliminar($context)
     {
         $numBulto = $_POST['numBulto'];
         modeloPaquetes::baja($numBulto);
     }
 
-    public static function listar()
+    public static function listar($context)
     {
         $result = modeloPaquetes::listado();
         // $arrayConsulta = array();

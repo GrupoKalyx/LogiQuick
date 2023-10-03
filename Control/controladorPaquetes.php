@@ -1,8 +1,23 @@
 <?php
 require '../Modelo/modeloPaquetes.php';
 
-$requestMethod = '_' . $_SERVER['REQUEST_METHOD'];
-$context = $$requestMethod; //va con doble $var_dump($)
+$requestMethod = $_SERVER['REQUEST_METHOD'];
+
+switch ($requestMethod) {
+    case 'GET':
+        $context = $_GET;
+        break;
+    case 'POST':
+        $context = $_POST;
+        break;
+    case 'PUT':
+        $context = $_PUT;
+        break;
+    case 'DELETE':
+        $context = $_DELETE;
+        break;
+}
+
 $function = $context['function'];
 controladorPaquetes::$function($context);
 
@@ -12,15 +27,13 @@ class controladorPaquetes
     {
         $gmailCliente = $context['gmailCliente'];
         $fechaLlegada = $context['fechaLlegada'];
+        $horaLlegada = $context['horaLlegada'];
         $num = $context['num'];
         $calle = $context['calle'];
         $localidad = $context['localidad'];
         $departamento = $context['departamento'];
 
-        modeloPaquetes::alta($gmailCliente, $fechaLlegada, $num, $calle, $localidad, $departamento);
-
-        $url = $context['url'];
-        header('location: https://' . $url);
+        modeloPaquetes::alta($gmailCliente, $fechaLlegada, $horaLlegada, $num, $calle, $localidad, $departamento);
     }
 
     public static function eliminar($context)
