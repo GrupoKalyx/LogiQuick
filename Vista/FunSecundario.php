@@ -24,25 +24,23 @@
                     <a href="#">Asignación</a>
                     <ul class="navbar__submenu">
                         <li class="navbar__submenu__item">
-                            <a href="referencias/AsignacionLotes.php">Paquete a Lote</a>
-                        </li>
-                        <li class="navbar__submenu__item">
                             <a href="referencias/AsignacionCamion.php">Lote a Camión</a>
                         </li>
                         <li class="navbar__submenu__item">
-                            <a href="referencias/AsignacionCamionero.php">Camionero a Camión</a>
+                            <a href="referencias/AsignacionCamionesCamioneros.php">Camionero a Camión</a>
                         </li>
                     </ul>
                 </li>
                 <li class="navbar__list__item">
                     <a href="#">Seguimiento</a>
                 </li>
-                <li class="navbar__logout">
+            </ul>
+                <div class="navbar__logout"> 
                     <button class="navbar__logout__button">
                         <a href="#">Cerrar Sesión</a>
                     </button>
-                </li>
-            </ul>
+                    </div>
+            
             <!-- <button class="form__button" id="traductor-btn">Traducir Pagina </button> -->
         </nav>
     </header>
