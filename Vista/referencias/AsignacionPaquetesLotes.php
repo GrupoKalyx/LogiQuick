@@ -53,62 +53,32 @@ if (isset($_POST['generar'])) {
   </header>
 
   <div class="form__container">
+
     <form class="form" method="POST">
       <h2 class="form__text">Genere un lote</h2>
+
       <div class="form__group">
         <label class="form__label" for="Paquete">Paquete:</label>
-        <select class="form__select" id="bulto" name="bulto[]" required>
+        <select class="form__select" id="bulto" name="bulto[]">
           <option value="">Seleccionar paquete</option>
-          <?php
-          foreach ($paquetes as $paquete) {
-            echo "<option value='" . $paquete['numBulto'] . "'>" . $paquete['numBulto'] . "</option>";
-          }
-          ?>
+        <?php
+            foreach ($paquetes as $paquete) {
+              echo "<option value='" . $paquete['numBulto'] . "'>" . $paquete['numBulto'] . "</option>";
+            }
+        ?>
         </select>
-      </div>
-      <div class="form__group">
-        <label class="form__label" for="Paquete">Paquete:</label>
-        <select class="form__select" id="bulto" name="bulto[]" required>
-          <option value="">Seleccionar paquete</option>
-          <?php
-          foreach ($paquetes as $paquete) {
-            echo "<option value='" . $paquete['numBulto'] . "'>" . $paquete['numBulto'] . "</option>";
-          }
-          ?>
-        </select>
-      </div>
-      <div class="form__group">
-        <label class="form__label" for="Paquete">Paquete:</label>
-        <select class="form__select" id="bulto" name="bulto[]" required>
-          <option value="">Seleccionar paquete</option>
-          <?php
-          foreach ($paquetes as $paquete) {
-            echo "<option value='" . $paquete['numBulto'] . "'>" . $paquete['numBulto'] . "</option>";
-          }
-          ?>
-        </select>
-      </div>
-      <div class="form__group">
-        <label class="form__label" for="Paquete">Paquete:</label>
-        <select class="form__select" id="bulto" name="bulto[]" required>
-          <option value="">Seleccionar paquete</option>
-          <?php
-          foreach ($paquetes as $paquete) {
-            echo "<option value='" . $paquete['numBulto'] . "'>" . $paquete['numBulto'] . "</option>";
-          }
-          ?>
-        </select>
-      </div>
-      <div class="form__group">
-        <!-- <button> agregar codiguito javascript para crear otra opcion de paquete -->
       </div>
 
+      
+      <button class="form__button" id="agregarCampo" name="agregarCampo">Agregar</button>
+
       <button class="form__button" type="submit" name="generar">Generar</button>
-          <!-- agregar codigo para restringir el ingreso de paquetes cuando se repitan valores de numero de bulto -->
+
     </form>
   </div>
 
   <!-- <script src="Traducir.js"></script> -->
+  <script src="agregarCampo.js"></script>
 
   <footer>
     <div class="footer">
