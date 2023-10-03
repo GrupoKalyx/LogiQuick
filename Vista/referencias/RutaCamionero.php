@@ -7,6 +7,12 @@
   <link rel="stylesheet" href="estilos/style.css">
   <title>LogiQuick</title>
   <script src="Traducir.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" integrity="sha384-PVQP/uH6ZCkI3Z95Y1f3F9JQ3jKuFOTkDrZZl6RlEWE8A6Z6pEc2hCrPzjWl2fGg" crossorigin=""/>
+  <style>
+    #map {
+      height: 400px;
+    }
+  </style>
 </head>
 
 <body class="body">
@@ -19,7 +25,7 @@
       </div>
 
       <ul class="navbar__list">
-        <li class="navbar__list__item"><a href="referencias/RutaCamionero.php">Visualizar Ruta</a></li>
+        <li class="navbar__list__item"><a href="#">Visualizar Ruta</a></li>
         <li class="navbar__list__item"><a href="#">Verificar Entrada</a></li>
         <li class="navbar__list__item"><a href="referencias/CamionesAsignados.php">Camiones Asignados</a></li>
       </ul>
@@ -30,7 +36,9 @@
 
     </nav>
   </header>
-  <div class="espacio__blanco"></div>
+
+  <div id="map"></div>
+
   <footer>
     <div class="footer">
 
@@ -44,16 +52,30 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    // Crear un mapa en el contenedor con id 'map'
+    var map = L.map('map').setView([51.505, -0.09], 13);
+
+    // Agregar una capa de mapa de OpenStreetMap
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Crear puntos A y B (latitud, longitud)
+    var puntoA = new L.LatLng(51.505, -0.09);
+    var puntoB = new L.LatLng(51.51, -0.1);
+
+    // Crear una capa de marcadores y agregar los puntos A y B al mapa
+    var marcadores = L.layerGroup([L.marker(puntoA), L.marker(puntoB)]).addTo(map);
+
+    // Crear una capa de línea entre los puntos A y B
+    var ruta = L.polyline([puntoA, puntoB]).addTo(map);
+
+    // Ajustar el mapa para que se ajuste a los marcadores
+    map.fitBounds(marcadores.getBounds());
+  </script>
+
 </body>
 
 </html>
-
-<!-- Puede verificar la asignación de los camiones que le correspondan, iniciando así el viaje.
-Puede ver que lotes están asignados a su camión, así como sus paquetes.
-Puede verificar su llegada a un almacén.
-Puede ver la ruta que le fue asignada (desde el almacén origen hasta el almacén destino pasando tal vez por otros almacenes).
-Delivery:
-Puede verificar la asignación de los pickups que se le asignen.
-Puede visualizar los paquetes de su pickup asignada.
-Puede verificar su llegada a un destino, registrando la entrega de paquete correspondiente y enviando una notificación al mail del cliente dueño del paquete.
-Puede ver la ruta que le fue asignada (desde el almacén de origen pasando por todos los destinos de los paquetes que lleva). -->
