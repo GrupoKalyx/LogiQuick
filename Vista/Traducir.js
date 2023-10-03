@@ -1,6 +1,4 @@
 const traductorBtn = document.getElementById('traductor-btn');
-
-
 traductorBtn.addEventListener('click', () => {
     // Obtén el nombre del archivo actual (por ejemplo, "index.html")
     const currentFileName = window.location.pathname.split('/').pop();

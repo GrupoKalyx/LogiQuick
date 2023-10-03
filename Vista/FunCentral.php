@@ -37,13 +37,13 @@
                 <li class="navbar__list__item">
                     <a href="#">Seguimiento</a>
                 </li>
-                <li class="navbar__logout">
-                <!-- <button class="form__button" id="traductor-btn">Traducir Pagina</button> -->
+                </ul>
+                <div class="navbar__logout"> 
                     <button class="navbar__logout__button">
-                        <a href="login.php">Cerrar Sesión</a>
+                        <a href="#">Cerrar Sesión</a>
                     </button>
-                </li>
-            </ul>
+                    </div>
+           
             <!-- <button class="form__button" id="traductor-btn">Traducir Pagina </button> -->
         </nav>
     </header>
