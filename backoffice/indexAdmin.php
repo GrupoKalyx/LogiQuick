@@ -3,7 +3,6 @@ if (isset($_POST['btncerrar'])) {
     header("location: loginAdmin.php");
 }
 require_once('sql/dbconection.php');
-session_start();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -38,7 +37,7 @@ coordenadas
     <header>
         <nav class="navbar">
             <div class="navbar__logo">
-                <img src="../Vista/assets/logo.png">
+                <img src="assets/logo.png">
             </div>
             <div class="navbar__logout">
                 <form method="post">

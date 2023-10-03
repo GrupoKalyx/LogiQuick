@@ -1,4 +1,17 @@
 <?php
+require '../../Control/superControlador.php';
+
+$url = 'http://localhost/LogiQuick/Control/controladorCamiones.php';
+$matriculas = json_decode(superControlador($url, 'GET', array('function' => 'listar')), true);
+
+$url = 'http://localhost/LogiQuick/Control/controladorLotes.php';
+$idLotes = json_decode(superControlador($url, 'GET', array('function' => 'listar')), true);
+
+if (isset($_POST['asignar'])) {
+  $url = 'http://localhost/LogiQuick/Control/controladorLlevan.php';
+  $json = superControlador($url, 'PUT', array('function' => 'ingresar', 'idLote' => $idLote, 'matricula' => $matricula));
+}
+
 $server = "127.0.0.1";
 $user = "root";
 $password = "";
@@ -55,6 +68,7 @@ $conn->close();
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../estilos/style.css">
   <link rel="stylesheet" href="../estilos/FormStyle.css">
+    <link rel="icon" type="image/x-icon" href="../assets/logo.png">
   <title>LogiQuick</title>
 </head>
 <body class="body">
