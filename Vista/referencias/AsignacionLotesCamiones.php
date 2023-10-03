@@ -10,8 +10,6 @@ $json2 = superControlador($url2, 'GET', NULL);
 $lotes = json_decode($json2, true);
 ?>
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

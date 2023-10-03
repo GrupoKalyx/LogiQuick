@@ -21,7 +21,6 @@ function superControlador($url, $metodo, $parameters)
                         break;
         }
         $result = curl_exec($ch);
-        var_dump($result);
         curl_close($ch);
         return $result;
 }

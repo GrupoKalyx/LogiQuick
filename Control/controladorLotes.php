@@ -3,7 +3,7 @@ require '../Modelo/modeloLotes.php';
 
 $context = match ($_SERVER['REQUEST_METHOD']) {
   'GET' => $_GET,
-  'POST' => $_POST,
+  'POST' => $_POST,    
   'PUT' => $_PUT,
   'DELETE' => $_DELETE,
 };

@@ -99,11 +99,11 @@ if (isset($_POST['generar'])) {
         </select>
       </div>
       <div class="form__group">
-        <button> //agregar codiguito javascript para crear otra opcion de paquete
+        <!-- <button> agregar codiguito javascript para crear otra opcion de paquete -->
       </div>
 
       <button class="form__button" type="submit" name="generar">Generar</button>
-          //agregar codigo para restringir el ingreso de paquetes cuando se repitan valores de numero de bulto
+          <!-- agregar codigo para restringir el ingreso de paquetes cuando se repitan valores de numero de bulto -->
     </form>
   </div>
 
