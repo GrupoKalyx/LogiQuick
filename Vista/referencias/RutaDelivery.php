@@ -10,6 +10,29 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script>
+    // Crear un mapa en el contenedor con id 'map'
+   
+    var map = L.map('map').setView([-34.9036, -56.1916], 15); // Latitud y longitud de Plaza Independencia
+
+    // Agregar una capa de mapa de OpenStreetMap
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    // // Crear puntos A y B (latitud, longitud)
+    // var puntoA = new L.LatLng(51.505, -0.09);
+    // var puntoB = new L.LatLng(51.51, -0.1);
+
+    // // Crear una capa de marcadores y agregar los puntos A y B al mapa
+    // var marcadores = L.layerGroup([L.marker(puntoA), L.marker(puntoB)]).addTo(map);
+
+    // // Crear una capa de línea entre los puntos A y B
+    // var ruta = L.polyline([puntoA, puntoB]).addTo(map);
+
+    // // Ajustar el mapa para que se ajuste a los marcadores
+    // map.fitBounds(marcadores.getBounds());
+  </script>
+
     32.97985,-55.78518 // Latitud y Longitud de Uruguay
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
