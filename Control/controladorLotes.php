@@ -28,7 +28,7 @@ class controladorLotes
 
     public static function listar($context)
     {
-        $result = modeloPaquetes::listado();
+        $result = modeloLotes::listado();
 
         // $arrayConsulta = array();
 

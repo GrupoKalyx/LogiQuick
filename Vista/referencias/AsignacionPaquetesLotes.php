@@ -19,7 +19,7 @@ if (isset($_POST['generar'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../estilos/style.css">
   <link rel="stylesheet" href="../estilos/FormStyle.css">
-    <link rel="icon" type="image/x-icon" href="../assets/logo.png">
+  <link rel="icon" type="image/x-icon" href="../assets/logo.png">
   <title>LogiQuick</title>
 </head>
 
@@ -54,35 +54,34 @@ if (isset($_POST['generar'])) {
 
   <div class="form__container">
     <form class="form" method="POST">
-        <h2 class="form__text">Genere un lote</h2>
-        <div class="form__group">
+      <h2 class="form__text">Genere un lote</h2>
+      <div class="form__group">
         <label class="form__label" for="bulto">Paquete:</label>
         <select class="form__select" id="bulto" name="bulto[]">
 
-                <option value="">Seleccionar paquete</option>
-                <?php
-                foreach ($paquetes as $paquete) {
-                    echo "<option value='" . $paquete['numBulto'] . "'>" . $paquete['numBulto'] . "</option>";
-                }
-                ?>
+          <option value="">Seleccionar paquete</option>
+          <?php
+          foreach ($paquetes as $paquete) {
+            echo "<option value='" . $paquete['numBulto'] . "'>" . $paquete['numBulto'] . "</option>";
+          }
+          ?>
 
         </select>
-        </div>
-        <div class="form__group" id="paquetesContainer">
-          <!-- aca van paquetes nuevos-->
-        </div>
-        
-        <button type="button" class="form__button" id="agregarCampo">Agregar Campo</button>
-        
-        
-        <button class="form__button" type="submit" name="generar">Generar Lote</button>
-        
-    </form>
-</div>
+      </div>
+      <div class="form__group" id="paquetesContainer">
+        <!-- aca van paquetes nuevos-->
+      </div>
 
+      <button type="button" class="form__button" id="agregarCampo">Agregar Campo</button>
+
+
+      <button class="form__button" type="submit" name="generar">Generar Lote</button>
+
+    </form>
+  </div>
 
   <!-- <script src="Traducir.js"></script> -->
-  <script src="../agregarCampo.js"></script>
+  <script src="agregarCampo.js"></script>
 
   <footer>
     <div class="footer">

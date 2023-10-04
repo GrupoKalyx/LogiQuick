@@ -1,3 +1,16 @@
+<?php
+require '../../Control/superControlador.php';
+
+$url = 'http://localhost/LogiQuick/Control/controladorLlevan.php';
+$idLotes = json_decode(superControlador($url, 'GET', array('function' => 'listarConCamion', 'matricula' => $_)), true);
+
+if (isset($_POST['generar'])) {
+  $url = 'http://localhost/LogiQuick/Control/controladorLotes.php';
+  $idLote = json_decode(superControlador($url, 'POST', array('function' => 'ingresar')), 1);
+  $url = 'http://localhost/LogiQuick/Control/controladorLotean.php';
+  superControlador($url, 'POST', array('function' => 'ingresar', 'idLote' => $idLote, 'paquetes' => $_POST['bulto']));
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,6 +24,8 @@
   <script src="Traducir.js"></script>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="RoutingMachine/dist/leaflet-routing-machine.js"></script>
+  <link rel="stylesheet" href="RoutingMachine/dist/leaflet-routing-machine.css">
 </head>
 
 <body class="body">
@@ -89,66 +104,7 @@
     </div>
   </footer>
 
-  <script>
-    var map = L.map('map').setView([-32.8755548,-56.0201525], 7); // Latitud y Longitud de Uruguay
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '© OpenStreetMap contributors'
-    }).addTo(map);
-
-    // var AlmacenOrigen = new L.LatLng(51.505, -0.09);
-    // var AlmacenDestino = new L.LatLng(51.51, -0.1);
-    // var marcadores = L.layerGroup([L.marker(AlmacenOrigen), L.marker(AlmacenDestino)]).addTo(map);
-
-    // var ruta = L.polyline([AlmacenOrigen, AlmacenDestino]).addTo(map);
-    // map.fitBounds(marcadores.getBounds());
-  </script>
-  <script>
-    //     document.getElementByClass('form').addEventListener('submit', function(event) {
-    //     event.preventDefault();
-
-    //     var puntoA = document.getElementById('AlmacenSalida').value;
-    //     var puntoB = document.getElementById('AlmacenLlegada').value;
-
-    //     // Obtener coordenadas para punto A
-    //     fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${puntoA}`)
-    //         .then(response => response.json())
-    //         .then(data => {
-    //             var latitudA = parseFloat(data[0].lat);
-    //             var longitudA = parseFloat(data[0].lon);
-
-    //             // Obtener coordenadas para punto B
-    //             fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${puntoB}`)
-    //                 .then(response => response.json())
-    //                 .then(data => {
-    //                     var latitudB = parseFloat(data[0].lat);
-    //                     var longitudB = parseFloat(data[0].lon);
-
-    //                     // Crear mapa y trazar el trayecto usando Leaflet
-    //                     var map = L.map('map').setView([latitudA, longitudA], 12);
-    //                     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    //                         attribution: '© OpenStreetMap contributors'
-    //                     }).addTo(map);
-
-    //                     // Marcadores para los puntos A y B
-    //                     var markerA = L.marker([latitudA, longitudA]).addTo(map);
-    //                     var markerB = L.marker([latitudB, longitudB]).addTo(map);
-
-    //                     // Línea de trayecto
-    //                     var polyline = L.polyline([[latitudA, longitudA], [latitudB, longitudB]], {color: 'blue'}).addTo(map);
-
-    //                     // Asegurarse de que ambos marcadores sean visibles
-    //                     map.fitBounds(polyline.getBounds());
-    //                 })
-    //                 .catch(error => {
-    //                     console.error('Error al obtener las coordenadas del punto B:', error);
-    //                 });
-    //         })
-    //         .catch(error => {
-    //             console.error('Error al obtener las coordenadas del punto A:', error);
-    //         });
-    // });
-  </script>
+  <script src="mapa.js"></script>
 </body>
 
 </html>

@@ -20,6 +20,8 @@ document.addEventListener("DOMContentLoaded", function() {
         opcionDefault.textContent = "Seleccionar paquete";
         nuevoSelect.appendChild(opcionDefault);
 
+        
+
         // Agrega el nuevo label y select
         nuevoDiv.appendChild(nuevoLabel);
         nuevoDiv.appendChild(nuevoSelect);

@@ -20,7 +20,7 @@
       </div>
 
       <ul class="navbar__list">
-        <li class="navbar__list__item"><a href="RutasCamionero.php">Vizualizar rutas</a></li>
+        <li class="navbar__list__item"><a href="RutaCamionero.php">Vizualizar rutas</a></li>
         <li class="navbar__list__item"><a href="CamionAsignado.php">Camion asignado</a></li>
       </ul>
       <!-- <button class="form__button" id="traductor-btn">Traducir Pagina</button> -->
@@ -70,6 +70,8 @@
 
   $conn->close();
   ?>
+
+  <div class="espacio__blanco"></div>
   
   <footer>
     <div class="footer">
