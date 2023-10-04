@@ -10,7 +10,6 @@ class modeloLotean
                 $conn = modeloBd::conexion();
                 $bindArray = array();
                 $values = array();
-                var_dump($paquetes);
                 foreach ($paquetes as $paquete) {
                         array_push($bindArray, $paquete);
                         array_push($bindArray, $idLote);
@@ -18,7 +17,7 @@ class modeloLotean
                 }
                 $impValues = implode(", ", $values);
                 $query = "INSERT INTO lotean (numBulto, idLote) VALUES " . $impValues;
-                $exc = $conn->execute_query($query, $bindArray);
+                $conn->execute_query($query, $bindArray);
                 $conn->close();
         }
 

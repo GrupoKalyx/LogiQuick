@@ -45,21 +45,10 @@ class modeloPaquetes
         return json_encode($result);
     }
 
-    public static function actualmenteEnLote()
-    {
-        $conn = modeloBd::conexion();
-        $query = "SELECT numBulto FROM llevan WHERE fecha_llegada = NULL";
-        $result = $conn->execute_query($query);
-        $result = $result->fetch_all(MYSQLI_ASSOC);
-        $conn->close();
-        return json_encode($result);
-        
-    }
-
     public static function listadoSinLote()
     {
         $conn = modeloBd::conexion();
-        $query = "SELECT numBulto FROM paquetes";
+        $query = "SELECT numBulto FROM paquetes WHERE numBulto NOT IN (SELECT numBulto FROM lotean);";
         $result = $conn->execute_query($query);
         $result = $result->fetch_all(MYSQLI_ASSOC);
         $conn->close();
