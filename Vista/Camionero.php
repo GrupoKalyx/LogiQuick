@@ -19,8 +19,7 @@
       </div>
 
       <ul class="navbar__list">
-        <li class="navbar__list__item"><a href="#">Visualizar Ruta</a></li>
-        <li class="navbar__list__item"><a href="#">Verificar Entrada</a></li>
+        <li class="navbar__list__item"><a href="referencias/RutaCamionero.php">Visualizar Ruta</a></li>
         <li class="navbar__list__item"><a href="referencias/CamionesAsignados.php">Camiones Asignados</a></li>
       </ul>
       <!-- <button class="form__button" id="traductor-btn">Traducir Pagina</button> -->

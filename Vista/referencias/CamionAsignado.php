@@ -20,8 +20,8 @@
       </div>
 
       <ul class="navbar__list">
-        <li class="navbar__list__item"><a href="#">Verificar entregas</a></li>
-        <li class="navbar__list__item"><a href="#">Camiones asignados</a></li>
+        <li class="navbar__list__item"><a href="RutasCamionero.php">Vizualizar rutas</a></li>
+        <li class="navbar__list__item"><a href="CamionAsignado.php">Camion asignado</a></li>
       </ul>
       <!-- <button class="form__button" id="traductor-btn">Traducir Pagina</button> -->
       <div class="navbar__logout">
@@ -32,7 +32,7 @@
   </header>
 
 
-  <h1>Lista de Camioneros y sus Camiones Asignados</h1>
+  <h1>Lista de Camioneros y sus Camiones Asignado32435467890</h1>
 
   <?php
   $server = "127.0.0.1";
@@ -70,9 +70,7 @@
 
   $conn->close();
   ?>
-
-  <div class="espacio__blanco"></div>
-
+  
   <footer>
     <div class="footer">
 
