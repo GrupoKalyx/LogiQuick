@@ -18,10 +18,10 @@
       </div>
 
       <ul class="navbar__list">
-        <li class="navbar__list__item"><a href="#">Verificar entregas</a></li>
-        <li class="navbar__list__item"><a href="#">Pickup asignado</a></li>
+        <li class="navbar__list__item"><a href="referencias/RutaDelivery.php">Visualizar Ruta</a></li>
+        <li class="navbar__list__item"><a href="referencias/PickupAsignado.php">Pickup asignado</a></li>
       </ul>
-      <button class="form__button" id="traductor-btn">Traducir Pagina</button>
+      <!-- <button class="form__button" id="traductor-btn">Traducir Pagina</button> -->
       <div class="navbar__logout"> 
         <button class="navbar__logout__button"><a href="#">Cerrar Sesión</a></button>
       </div>
