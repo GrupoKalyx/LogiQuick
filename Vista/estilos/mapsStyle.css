@@ -1,0 +1,13 @@
+#map {
+        height: 99%;
+        width: 100%;
+        margin: 5px;
+        border-radius: 10px;
+}
+
+.container {
+        display: grid;
+        grid-template-columns: 70% 1fr;
+        /* Crea dos columnas de igual ancho */
+        height: 100%;
+}

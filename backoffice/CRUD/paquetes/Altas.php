@@ -7,7 +7,8 @@ $num = $_POST['num'];
 $calle = $_POST['calle'];
 $localidad = $_POST['localidad'];
 $departamento = $_POST['departamento'];
-$coordenadas = " ";
+$json = json_decode($_POST['coordIngPaquete'], true);
+$coordenadas = $json[0]['lat'] . ", " . $json[0]['long'];
 
 function existe($idRastreo, $conn){
     $query = "SELECT * FROM paquetes WHERE idRastreo = ? LIMIT 1";
@@ -28,7 +29,7 @@ $query2 = "INSERT INTO paquetes (gmailCliente, idRastreo, fechaLlegadaQc, num, c
 $exc2 = $conn->execute_query($query2, [$gmailCliente, $idRastreo, $fechaLlegadaQc, $num, $calle, $localidad, $departamento, $coordenadas]);
 
 if ($exc2) {
-    echo "<script>alert('Paquete ingresado con éxito.');window.location='../../indexAdmin.php'</script>";
+    echo "<script>alert('Paquete ingresado con éxito. Coords:" . $json . "');window.location='../../indexAdmin.php'</script>";
 } else {
     echo "<script>alert('Ha ocurrido un error inesperado.');";
 }

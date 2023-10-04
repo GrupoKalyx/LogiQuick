@@ -7,7 +7,7 @@ $calle = $_POST['calle'];
 $localidad = $_POST['localidad'];
 $departamento = $_POST['departamento'];
 
-$ubiAlmacen = "";
+$ubiAlmacen = $_POST['coordModAlmacen'];
 
 $query = "UPDATE almacenes SET ubiAlmacen = ?, N_puerta = ?, calle = ?, localidad = ?,  departamento = ?  WHERE idAlmacen = ?";
 $exc = $conn->execute_query($query, [$ubiAlmacen, $N_puerta, $calle, $localidad, $departamento, $idAlmacen]);

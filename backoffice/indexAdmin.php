@@ -1,8 +1,10 @@
 <?php
 if (isset($_POST['btncerrar'])) {
+    $_SESSION = NULL;
     header("location: loginAdmin.php");
 }
 require_once('sql/dbconection.php');
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -14,23 +16,60 @@ require_once('sql/dbconection.php');
     <link rel="stylesheet" href="estilos/backofficeStyle.css">
     <link rel="icon" type="image/x-icon" href="assets/logo.png">
     <title>LogiQuick</title>
-    <!-- <script>
-        var num = "";
-        var calle = "";
-        var locaidad = "";
-        var departamento = "";
-        const address = $num + " " + $calle + ", " + $localidad + ", Departamento de " + $departamento + ", Uruguay";
-        fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyC-Urqx_Ojb7fna6y25jNl9XeEuHCALwQo`)
-        .then((response) => {
-            document.getElementById('coordPaquetes').value = response.json();
-        }).then(jsonData => {
-            console.log(jsonData.results[0].geometry.location); // {lat: 45.425152, lng: -75.6998028}
-        })
-        .catch(error => {
-            console.log(error);
-        })
-coordenadas
-    </script> -->
+    <script>
+        <?php
+        $ingPaquete = isset($_POST['ingPaquete']);
+        $modPaquete = isset($_POST['modPaquete']);
+        $ingAlmacen = isset($_POST['ingAlmacen']);
+        $modAlmacen = isset($_POST['modAlmacen']);
+
+        if ($ingPaquete) {
+        ?>
+            var num = document.getElementById('ingPaqueteNum').value;
+            var calle = document.getElementById('ingPaqueteCalle').value;
+            var localidad = document.getElementById('ingPaqueteLocalidad').value;
+            var departamento = document.getElementById('ingPaqueteDepartamento').value;
+            var type = 'ingPaquete';
+        <?php
+        } else if ($modPaquete) {
+        ?>
+        var num = document.getElementById('modPaqueteNum').value;
+            var calle = document.getElementById('modPaqueteCalle').value;
+            var localidad = document.getElementById('modPaqueteLocalidad').value;
+            var departamento = document.getElementById('modPaqueteDepartamento').value;
+            var type = 'modPaquete';
+        <?php
+        } else if ($ingAlmacen) {
+        ?>
+            var num = document.getElementById('ingAlmacenNum').value;
+            var calle = document.getElementById('ingAlmacenCalle').value;
+            var localidad = document.getElementById('ingAlmacenLocalidad').value;
+            var departamento = document.getElementById('ingAlmacenDepartamento').value;
+            var type = 'ingAlmacen';
+        <?php
+        } else if ($modAlmacen) {
+        ?>
+            var num = document.getElementById('modAlmacenNum').value;
+            var calle = document.getElementById('modAlmacenCalle').value;
+            var localidad = document.getElementById('modAlmacenLocalidad').value;
+            var departamento = document.getElementById('modAlmacenDepartamento').value;
+            var type = 'modAlmacen';
+        <?php
+        }
+
+        if ($ingPaquete or $modPaquete or $ingAlmacen or $modAlmacen) {
+        ?>
+            const address = `${num}, ${calle}, ${localidad}, ${departamento}, Uruguay`;
+            fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${address}`)
+                .then((response) => {
+                    document.getElementById(`${type}`).value = response.json();
+                }).catch(error => {
+                    console.log(error);
+                });
+        <?php
+        }
+        ?>
+    </script>
 </head>
 
 <body>
@@ -108,11 +147,12 @@ coordenadas
             <h2> Ingresar datos de Almacen</h2>
             <form action="CRUD/almacenes/Altas.php" method="post">
                 Id de almacen <input type="text" class="form__input" name="idAlmacen"><br>
-                N_puerta <input class="form__input" type="text" name="N_puerta"><br>
-                Calle <input class="form__input" type="text" name="calle"><br>
-                Localidad <input class="form__input" type="text" name="localidad"><br>
-                Departamento <input class="form__input" type="text" name="departamento"><br><br>
-                <button class="form__button" type="submit">Ingresar</button>
+                N_puerta <input class="form__input" type="text" id="ingAlmaceNum" name="N_puerta"><br>
+                Calle <input class="form__input" type="text" id="ingAlmacenCalle" name="calle"><br>
+                Localidad <input class="form__input" type="text" id="ingAlmacenLocalidad" name="localidad"><br>
+                Departamento <input class="form__input" type="text" id="ingAlmacenDepartamento" name="departamento"><br><br>
+                <input type="hidden" name="coordenadas" id="coordIngAlmacen">
+                <button class="form__button" id="ingAlmacen" type="submit">Ingresar</button>
             </form>
         </div>
         <div class="form">
@@ -132,11 +172,12 @@ coordenadas
             <form action="CRUD/almacenes/Modificaciones.php" method="post">
                 Id de almacen <input class="form__input" type="text" name="idAlmacen">
                 <h2>Nuevos datos</h2>
-                N_puerta <input class="form__input" type="text" name="N_puerta"><br>
-                Calle <input class="form__input" type="text" name="calle"><br>
-                Localidad <input class="form__input" type="text" name="localidad"><br>
-                Departamento <input class="form__input" type="text" name="departamento"><br><br>
-                <button class="form__button" type="submit">Modificar</button>
+                N_puerta <input class="form__input" type="text" id="modAlmacenNum" name="N_puerta"><br>
+                Calle <input class="form__input" type="text" id="modAlmacenCalle" name="calle"><br>
+                Localidad <input class="form__input" type="text" id="modAlmacenLocalidad" name="localidad"><br>
+                Departamento <input class="form__input" type="text" id="modAlmacenDepartamento" name="departamento"><br><br>
+                <input type="hidden" name="coordenadas" id="coordModAlmacen">
+                <button class="form__button" id="modAlmacen" type="submit">Modificar</button>
             </form>
         </div>
     </div>
@@ -147,12 +188,12 @@ coordenadas
                 Correo del cliente <input class="form__input" type="text" name="gmailCliente"><br><br>
                 Fecha de llegada (a Quickcarry)<input class="form__input" type="date" name="fechaLlegadaQc"><br><br>
                 Horario de llegada <input class="form__input" type="time" name="horaLlegadaQc"><br><br>
-                Numero <input class="form__input" type="text" name="num"><br><br>
-                Calle <input class="form__input" type="text" name="calle"><br><br>
-                Localidad <input class="form__input" type="text" name="localidad"><br><br>
-                Departamento <input class="form__input" type="text" name="departamento"><br><br>
-                <!-- <input type="hidden" name="coordenadas" id="coordPaquetes"> -->
-                <button type="submit" class="form__button" name="actionbtn">Ingresar</button>
+                Numero <input class="form__input" type="text" id="ingPaqueteNum" name="num"><br><br>
+                Calle <input class="form__input" type="text" id="ingPaqueteCalle" name="calle"><br><br>
+                Localidad <input class="form__input" type="text" id="ingPaqueteLocalidad" name="localidad"><br><br>
+                Departamento <input class="form__input" type="text" id="ingPaqueteDepartamento" name="departamento"><br><br>
+                <input type="hidden" name="coordenadas" id="coordIngPaquete">
+                <button type="submit" class="form__button" id="ingPaquete" name="actionbtn">Ingresar</button>
             </form>
         </div>
         <div class="form" id="list">
@@ -172,11 +213,12 @@ coordenadas
             <form action="CRUD\paquetes\Modificaciones.php" method="post">
                 Numero de bulto <input class="form__input" type="text" name="numBulto" required><br><br>
                 Correo del cliente <input class="form__input" type="text" name="gmailCliente"><br><br>
-                Numero <input class="form__input" type="text" name="num"><br><br>
-                Calle <input class="form__input" type="text" name="calle"><br><br>
-                Localidad <input class="form__input" type="text" name="localidad"><br><br>
-                Departamento <input class="form__input" type="text" name="departamento"><br><br>
-                <button class="form__button" type="submit">Modificar</button>
+                Numero <input class="form__input" type="text" id="modPaqueteNum" name="num"><br><br>
+                Calle <input class="form__input" type="text" id="modPaqueteCalle" name="calle"><br><br>
+                Localidad <input class="form__input" type="text" id="modPaqueteLocalidad" name="localidad"><br><br>
+                Departamento <input class="form__input" type="text" id="modPaqueteDepartamento" name="departamento"><br><br>
+                <input type="hidden" name="coordenadas" id="coordModPaquete">
+                <button class="form__button" id="modPaquete" type="submit">Modificar</button>
             </form>
         </div>
     </div>

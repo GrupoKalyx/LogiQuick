@@ -26,7 +26,9 @@
   <link rel="stylesheet" href="../estilos/mapsStyle.css">
   <script src="Traducir.js"></script>
 </head>
+
 <body class="body">
+
   <header>
     <nav class="navbar">
 
@@ -45,6 +47,7 @@
 
     </nav>
   </header>
+
   <div class="container">
 
   <div id="map"></div>
@@ -85,6 +88,8 @@
       </div>
 
   </div>
+  
+
   <footer>
     <div class="footer">
 
@@ -98,6 +103,8 @@
       </div>
     </div>
   </footer>
+
+
   <!-- <script>
     document.getElementByClass('form').addEventListener('submit', function(event) {
     event.preventDefault();
@@ -149,3 +156,4 @@
 </body>
 
 </html>
+// var map = L.map('map').setView([-34.9036, -56.1916], 15); // Latitud y longitud de Plaza Independencia
