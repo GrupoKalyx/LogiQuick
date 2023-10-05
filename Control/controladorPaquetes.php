@@ -26,31 +26,6 @@ class controladorPaquetes
         modeloPaquetes::alta($gmailCliente, $fechaLlegada, $horaLlegada, $num, $calle, $localidad, $departamento);
     }
 
-    public static function eliminar($context)
-    {
-        $numBulto = $context['numBulto'];
-        modeloPaquetes::baja($numBulto);
-    }
-
-    public static function mostrar($context)
-    {
-        $numBulto = $context['numBulto'];
-        $result = modeloPaquetes::muestra($numBulto);
-        return $result;
-    }
-
-    public static function listar()
-    {
-        $json = modeloPaquetes::listado();
-        echo $json;
-    }
-
-    public static function listarSinLote()
-    {
-        $json = modeloPaquetes::listadoSinLote();
-        echo $json;
-    }
-
     public static function modificar($context)
     {
         $numBulto = $context['numBulto'];
@@ -62,5 +37,41 @@ class controladorPaquetes
         $departamento = $context['departamento'];
 
         modeloPaquetes::modificacion($numBulto, $gmailCliente, $fechaLlegada, $num, $calle, $localidad, $departamento);
+    }
+    public static function eliminar($context)
+    {
+        $numBulto = $context['numBulto'];
+        modeloPaquetes::baja($numBulto);
+    }
+    public static function listar($context)
+    {
+        $json = modeloPaquetes::listado();
+        echo $json;
+    }
+
+    public static function listarSinLote($context)
+    {
+        $json = modeloPaquetes::listadoSinLote();
+        echo $json;
+    }
+
+    public static function listarEnQC($context)
+    {
+        $json = modeloPaquetes::listadoEnQC();
+        echo $json;
+    }
+
+    public static function mostrar($context)
+    {
+        $numBulto = $context['numBulto'];
+        $result = modeloPaquetes::muestra($numBulto);
+        echo $result;
+    }
+
+    public static function rastrear($context)
+    {
+        $idRastreo = $context['idRastreo'];
+        $result = modeloPaquetes::rastreo($idRastreo);
+        echo $result;
     }
 }
