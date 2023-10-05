@@ -9,18 +9,18 @@ document.addEventListener("DOMContentLoaded", function() {
         nuevoLabel.className = "form__label";
         nuevoLabel.textContent = "Paquete:";
 
-        // Crea un nuevo campo de select
+        // Crea un nuevo select
         var nuevoSelect = document.createElement("select");
         nuevoSelect.className = "form__select";
         nuevoSelect.name = "bulto[]";
 
-        // Crea una opción vacia
+        // crea una opción vacia
         var opcionDefault = document.createElement("option");
         opcionDefault.value = "";
         opcionDefault.textContent = "Seleccionar paquete";
         nuevoSelect.appendChild(opcionDefault);
 
-        // Realizar una solicitud AJAX utilizando la API Fetch
+        // ajax
         fetch("http://localhost/logiquick/Control/controladorPaquetes.php?function=listarSinLote")
             .then(response => response.json()) // Parsear la respuesta como JSON
             .then(paquetes => {
