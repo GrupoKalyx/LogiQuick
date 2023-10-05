@@ -20,7 +20,21 @@ document.addEventListener("DOMContentLoaded", function() {
         opcionDefault.textContent = "Seleccionar paquete";
         nuevoSelect.appendChild(opcionDefault);
 
-        
+        // Realizar una solicitud AJAX utilizando la API Fetch
+        fetch("http://localhost/logiquick/Control/controladorPaquetes.php?function=listarSinLote")
+            .then(response => response.json()) // Parsear la respuesta como JSON
+            .then(paquetes => {
+                // Agregar las opciones al select
+                paquetes.forEach(function(paquete) {
+                    var nuevaOpcion = document.createElement("option");
+                    nuevaOpcion.value = paquete.numBulto;
+                    nuevaOpcion.textContent = paquete.numBulto;
+                    nuevoSelect.appendChild(nuevaOpcion);
+                });
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
 
         // Agrega el nuevo label y select
         nuevoDiv.appendChild(nuevoLabel);
