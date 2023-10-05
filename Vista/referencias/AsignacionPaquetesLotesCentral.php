@@ -2,7 +2,7 @@
 require '../../Control/superControlador.php';
 
 $url = 'http://localhost/LogiQuick/Control/controladorPaquetes.php';
-$paquetes = json_decode(superControlador($url, 'GET', array('function' => 'listarEnQC')), true);
+$paquetes = json_decode(superControlador($url, 'GET', array('function' => 'listarSinLote')), true);
 
 if (isset($_POST['generar'])) {
   $url = 'http://localhost/LogiQuick/Control/controladorLotes.php';
