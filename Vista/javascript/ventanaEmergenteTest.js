@@ -1,3 +1,5 @@
+
+
 async function obtenerDatosDelPaquete(idRastreo) {
         try {
             const response = await fetch('http://localhost/logiquick/Control/controladorPaquetes.php?function=rastrear&idRastreo=' + idRastreo);
@@ -8,6 +10,8 @@ async function obtenerDatosDelPaquete(idRastreo) {
             throw error; // Lanza el error para que pueda ser manejado por el código que llama a esta función
         }
     }
+
+    
 
     document.getElementById('tracking__form').addEventListener('submit', async function (event) {
         event.preventDefault();
@@ -21,6 +25,7 @@ async function obtenerDatosDelPaquete(idRastreo) {
         var idRastreo = document.getElementById('idRastreo').value;
 
     try {
+        
         // Hacer la solicitud para obtener los datos del paquete
         const response = await fetch('http://localhost/logiquick/Control/controladorPaquetes.php?function=rastrear&idRastreo=' + idRastreo);
         const resultado = await response.json();
@@ -34,12 +39,15 @@ async function obtenerDatosDelPaquete(idRastreo) {
             resultadoDiv.textContent = "Dirección de entrega: " + direccion;
 
             // Hacer la solicitud para geocodificar la dirección
-            const geocodingResponse = await fetch('https://nominatim.openstreetmap.org/search?format=json&q=' + direccion);
-            const data = await geocodingResponse.json();
+            const apiKey = '3111bb8dce164ee18ff3bfcf4a4bfc24'; // Reemplaza con tu clave de API de OpenCage Data
+            const apiUrl = `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(direccion)}&key=${apiKey}`;
+            const geocodingResponse = await fetch(apiUrl);
+            const geocodingData = await geocodingResponse.json();
 
-            if (data && data.length > 0) {
-                var latitudDestino = parseFloat(data[0].lat);
-                var longitudDestino = parseFloat(data[0].lon);
+            if (geocodingData.results && geocodingData.results.length > 0) {
+                const location = geocodingData.results[0].geometry;
+                var latitudDestino = location.lat;
+                var longitudDestino = location.lng;
                
                 // Coordenadas de la Plaza Independencia en Montevideo, Uruguay
                 var latitudPlazaIndependencia = -34.903555;
@@ -58,8 +66,7 @@ async function obtenerDatosDelPaquete(idRastreo) {
                         L.latLng(latitudDestino, longitudDestino)
                     ],
                     routeWhileDragging: true,
-                    geocoder: L.Control.Geocoder.nominatim(),
-                  
+                   
                 }).addTo(map);
                 
             } else {
