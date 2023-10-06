@@ -74,7 +74,7 @@
     </form>
   </div>
   
-  <script src="Traducir.js"></script>
+  <script src="../javascript/Traducir.js"></script>
   
   <footer>
     <div class="footer">

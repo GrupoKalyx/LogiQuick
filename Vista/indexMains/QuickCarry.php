@@ -1,5 +1,5 @@
 <?php
-require_once "../Control/superControlador.php";
+require_once "../LogiQuick/Control/superControlador.php";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -9,8 +9,8 @@ require_once "../Control/superControlador.php";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QuickCarry</title>
-    <link rel="stylesheet" href="estilos/QuickCarryStyle.css">
-    <link rel="stylesheet" href="estilos/VentanaEmergenteStyle.css">
+    <link rel="stylesheet" href="../estilos/QuickCarryStyle.css">
+    <link rel="stylesheet" href="../estilos/VentanaEmergenteStyle.css">
     <meta name="title" content="QuickCarry">
     <!-- Incluye Leaflet CSS y JS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />

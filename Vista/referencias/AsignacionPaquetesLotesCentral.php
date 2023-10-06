@@ -81,7 +81,7 @@ if (isset($_POST['generar'])) {
   </div>
 
   <!-- <script src="Traducir.js"></script> -->
-  <script src="agregarCampo.js"></script>
+  <script src="../javascript/agregarCampo.js"></script>
 
   <footer>
     <div class="footer">

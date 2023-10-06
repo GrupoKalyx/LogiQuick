@@ -104,7 +104,7 @@ if (isset($_POST['generar'])) {
     </div>
   </footer>
 
-  <script src="mapa.js"></script>
+  <script src="../javascript/mapa.js"></script>
 </body>
 
 </html>
