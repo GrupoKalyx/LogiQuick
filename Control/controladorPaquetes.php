@@ -74,4 +74,16 @@ class controladorPaquetes
         $result = modeloPaquetes::rastreo($idRastreo);
         echo $result;
     }
+
+    public static function verificar($context)
+    {
+        $tipoId = $context['tipoId'];
+        if($tipoId == 'idRastreo'){
+            $id = $context['idRastreo'];
+        } else if ($tipoId == 'numBulto'){
+            $id = $context['numBulto']; 
+        }
+        $result = modeloPaquetes::existe($tipoId, $id);
+        echo $result;
+    }
 }

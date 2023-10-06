@@ -84,4 +84,13 @@ class modeloPaquetes
         $conn->close();
         return json_encode($result);
     }
+
+    public static function existe($tipoId, $id){
+        $conn = modeloBd::conexion();
+        $query = "SELECT $tipoId FROM paquetes WHERE $tipoId = ?";
+        $exc = $conn->execute_query($query, [$id]);
+        $num = mysqli_num_rows($exc);
+        $conn->close();
+        return json_encode($num);
+    }
 }

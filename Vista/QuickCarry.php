@@ -53,14 +53,11 @@ require_once "../Control/superControlador.php";
             </form>
 
             <div class="ventana__emergente" id="ventanaEmergente">
-        <div class="ventana__content">
-            <span class="ventana__cerrar" onclick="cerrarVentanaEmergente()">&times;</span>
-            <p id="resultado">Texto sobre el paquete</p>
-        </div>
-    </div>
-
-    
-
+                <div class="ventana__content">
+                    <span class="ventana__cerrar" onclick="cerrarVentanaEmergente()">&times;</span>
+                    <p id="resultado">Texto sobre el paquete</p>
+                </div>
+            </div>
         </section>
     </header>
 
@@ -95,7 +92,7 @@ require_once "../Control/superControlador.php";
             <h3 class="footer__copyright">Derechos reservados QuickCarry</h3>
         </section>
     </footer>
-    <script src="../VentanaEmergente.js"></script>
+    <script src="VentanaEmergente.js"></script>
     <!-- <script src="../Menu.js"></script> -->
 </body>
 
