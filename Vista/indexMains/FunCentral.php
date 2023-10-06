@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="estilos/style.css">
+    <link rel="stylesheet" href="../estilos/style.css">
     <link rel="icon" type="image/x-icon" href="assets/logo.png">
     <title>LogiQuick</title>
     <!-- <script src="Traducir.js"></script> -->
@@ -24,23 +24,26 @@
                     <a href="#">Asignación</a>
                     <ul class="navbar__submenu">
                         <li class="navbar__submenu__item">
-                            <a href="referencias/AsignacionCamion.php">Lote a Camión</a>
+                            <a href="../referencias/AsignacionPaquetesLotesCentral.php">Paquete a Lote</a>
                         </li>
                         <li class="navbar__submenu__item">
-                            <a href="referencias/AsignacionCamionesCamioneros.php">Camionero a Camión</a>
+                            <a href="../referencias/AsignacionLotesCamiones.php">Lote a Camión</a>
+                        </li>
+                        <li class="navbar__submenu__item">
+                            <a href="../referencias/AsignacionCamionesCamioneros.php">Camionero a Camión</a>
                         </li>
                     </ul>
                 </li>
                 <li class="navbar__list__item">
                     <a href="#">Seguimiento</a>
                 </li>
-            </ul>
+                </ul>
                 <div class="navbar__logout"> 
                     <button class="navbar__logout__button">
                         <a href="#">Cerrar Sesión</a>
                     </button>
                     </div>
-            
+           
             <!-- <button class="form__button" id="traductor-btn">Traducir Pagina </button> -->
         </nav>
     </header>

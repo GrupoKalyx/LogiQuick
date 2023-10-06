@@ -82,7 +82,7 @@ $conn->close();
         <li class="navbar__list__item"><a href="#">Verificar Entrada</a></li>
         <li class="navbar__list__item"><a href="#">Asignación</a>
           <ul class="navbar__submenu">
-          <li class="navbar__submenu__item"><a href="../referencias/AsignacionPaquetesLotes.php">Paquete a Lote</a></li>
+          <li class="navbar__submenu__item"><a href="../referencias/AsignacionPaquetesLotesCentral.php">Paquete a Lote</a></li>
             <li class="navbar__submenu__item"><a href="../referencias/AsignacionLotesCamiones.php">Lote a Camión</a></li>
             <li class="navbar__submenu__item"><a href="../referencias/AsignacionCamionesCamioneros.php">Camionero a Camión</a></li>
           </ul>

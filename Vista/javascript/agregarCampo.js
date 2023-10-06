@@ -22,9 +22,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // ajax
         fetch("http://localhost/logiquick/Control/controladorPaquetes.php?function=listarSinLote")
-            .then(response => response.json()) // Parsear la respuesta como JSON
+            .then(response => response.json()) // Parsea la respuesta  JSON
             .then(paquetes => {
-                // Agregar las opciones al select
+                
                 paquetes.forEach(function(paquete) {
                     var nuevaOpcion = document.createElement("option");
                     nuevaOpcion.value = paquete.numBulto;
