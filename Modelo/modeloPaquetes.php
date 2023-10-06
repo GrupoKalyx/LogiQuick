@@ -109,7 +109,7 @@ class modeloPaquetes
         if (mysqli_num_rows($excExt)) {
             $estado = 'Aun no ha llegado a nuestra central';
         } else {
-            $queryQc = 
+            $queryQc = "";
         }
         $conn->close();
         return json_encode($estado);
