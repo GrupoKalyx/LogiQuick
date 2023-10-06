@@ -64,7 +64,7 @@ class modeloPaquetes
         $conn->close();
         return json_encode($result);
     }
-    
+
     public static function muestra($numBulto)
     {
         $conn = modeloBd::conexion();
@@ -85,26 +85,32 @@ class modeloPaquetes
         return json_encode($result);
     }
 
-    public static function existe($tipoId, $id){
+    public static function existe($tipoId, $id)
+    {
         $conn = modeloBd::conexion();
-        $query = "SELECT $tipoId FROM paquetes WHERE $tipoId = ?";
+        $query = "SELECT numBulto FROM paquetes WHERE $tipoId = ?";
         $exc = $conn->execute_query($query, [$id]);
         $num = mysqli_num_rows($exc);
         $conn->close();
         return json_encode($num);
     }
 
-    public static function muestraEstado($tipoId, $id){
+    public static function muestraEstado($tipoId, $id)
+    {
         $conn = modeloBd::conexion();
-        if($tipoId == 'idRastreo'){
+        if ($tipoId == 'idRastreo') {
             $queryId = "SELECT numBulto FROM paquetes WHERE $tipoId = ?";
             $excId = $conn->execute_query($queryId, [$id]);
             $fetch = $excId->fetch_array(MYSQLI_ASSOC);
-            $id = $fetch['0']['numBulto'];
+            $id = $fetch['numBulto'];
         }
         $queryExt = "SELECT * FROM paquetes WHERE numBulto NOT IN (SELECT numBulto FROM lotean) AND numBulto = ? LIMIT 1;";
         $excExt = $conn->execute_query($queryExt, [$id]);
-        if(mysqli_num_rows($excExt)) ;
+        if (mysqli_num_rows($excExt)) {
+            $estado = 'Aun no ha llegado a nuestra central';
+        } else {
+            $queryQc = 
+        }
         $conn->close();
         return json_encode($estado);
     }

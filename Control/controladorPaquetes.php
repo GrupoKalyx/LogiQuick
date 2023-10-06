@@ -2,10 +2,10 @@
 require '../Modelo/modeloPaquetes.php';
 
 $context = match ($_SERVER['REQUEST_METHOD']) {
-  'GET' => $_GET,
-  'POST' => $_POST,
-  'PUT' => $_PUT,
-  'DELETE' => $_DELETE,
+    'GET' => $_GET,
+    'POST' => $_POST,
+    'PUT' => $_PUT,
+    'DELETE' => $_DELETE,
 };
 
 $function = $context['function'];
@@ -78,12 +78,16 @@ class controladorPaquetes
     public static function verificar($context)
     {
         $tipoId = $context['tipoId'];
-        if($tipoId == 'idRastreo'){
-            $id = $context['idRastreo'];
-        } else if ($tipoId == 'numBulto'){
-            $id = $context['numBulto']; 
-        }
+        $id = $context[$tipoId];
         $result = modeloPaquetes::existe($tipoId, $id);
+        echo $result;
+    }
+
+    public static function mostrarEstado($context)
+    {
+        $tipoId = $context['tipoId'];
+        $id = $context[$tipoId];
+        $result = modeloPaquetes::muestraEstado($tipoId, $id);
         echo $result;
     }
 }
