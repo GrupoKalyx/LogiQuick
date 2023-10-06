@@ -7,7 +7,6 @@ document.getElementById('tracking__form').addEventListener('submit', function (e
         document.getElementById('ventanaEmergente').style.display = 'none';
     });
 
-    //Pornooooooooooooooooooooooooooooooooooooooooooooo gay (Diego)
 
     var idRastreo = document.getElementById('idRastreo').value;
 
