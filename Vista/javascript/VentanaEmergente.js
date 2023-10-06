@@ -62,7 +62,7 @@ document.getElementById('tracking__form').addEventListener('submit', function (e
 //                     ],
 //                     routeWhileDragging: true,
 //                     geocoder: L.Control.Geocoder.nominatim(),
-//                     // Puedes personalizar el estilo de la ruta aquí
+//                     
 //                 }).addTo(map);
 //             } else {
 //                 console.error('No se encontraron coordenadas para la dirección proporcionada.');
