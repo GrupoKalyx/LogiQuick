@@ -12,6 +12,25 @@ require_once "../Control/superControlador.php";
     <link rel="stylesheet" href="estilos/QuickCarryStyle.css">
     <link rel="stylesheet" href="estilos/VentanaEmergenteStyle.css">
     <meta name="title" content="QuickCarry">
+    <!-- Incluye Leaflet CSS y JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <!-- Incluye Leaflet Routing Machine CSS y JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
+    <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+
+    <!-- Incluye Leaflet Control Geocoder CSS y JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <style>
+        #map {
+        height: 99%;
+        width: 100%;
+        margin: 5px;
+        border-radius: 10px;
+}
+    </style>
 </head>
 
 <body>
@@ -60,25 +79,21 @@ require_once "../Control/superControlador.php";
             </div>
         </section>
     </header>
+
+    <div class="ventana__emergente" id="ventanaEmergente">
+                <div class="ventana__content">
+                    <span class="ventana__cerrar" onclick="cerrarVentanaEmergente()">&times;</span>
+                    <div id="map"></div>
+                </div>
+            </div>
+
+     
+
     <footer class="footer">
+
         <section class="footer__container container">
             <nav class="nav footer__nav">
                 <h2 class="footer__title">QuickCarry</h2>
-
-                <!-- <ul class="nav__links nav__links--footer">
-                    <li class="nav__item">
-                        <a href="#" class="nav__item__link">AA</a>
-                    </li>
-                    <li class="nav__items">
-                        <a href="#" class="nav__item__link">AA</a>
-                    </li>
-                    <li class="nav__items">
-                        <a href="#" class="nav__item__link">AA</a>
-                    </li>
-                    <li class="nav__items">
-                        <a href="#" class="nav__item__link">AA</a>
-                    </li>
-                </ul> -->
             </nav>
 
             <form class="footer__form" action="aa" method="POST">
@@ -90,8 +105,9 @@ require_once "../Control/superControlador.php";
             </form>
             <h3 class="footer__copyright">Derechos reservados QuickCarry</h3>
         </section>
+
     </footer>
-    <script src="VentanaEmergente.js"></script>
+    <script src="../ventanaEmergenteTest.js"></script>
     <!-- <script src="../Menu.js"></script> -->
 </body>
 

@@ -1,9 +1,9 @@
 const traductorBtn = document.getElementById('traductor-btn');
 traductorBtn.addEventListener('click', () => {
-    // Obtén el nombre del archivo actual (por ejemplo, "index.html")
+    // el nombre del archivo actual
     const currentFileName = window.location.pathname.split('/').pop();
 
-    // Verifica el nombre del archivo actual usando el if
+    // Verifica el nombre del archivo  usando el if
     switch (currentFileName) {
         case 'login.php':
             window.location.href = 'indexEng/LoginEng.html';
