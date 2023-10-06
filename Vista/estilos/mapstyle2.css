@@ -1,0 +1,8 @@
+#map{
+        width: 50%;
+        height: 400px;
+        margin: 0 auto; /* Centra el mapa horizontalmente */
+        border-radius: 10px; /* Bordes redondeados */
+        overflow: hidden; /* Asegura que los bordes redondeados sean aplicados correctamente */
+        margin-bottom: 5%;
+        }

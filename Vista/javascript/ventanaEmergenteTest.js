@@ -1,8 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                 attribution: '© OpenStreetMap contributors'
-                }).addTo(map);
-});
+    
+
 
 async function obtenerDatosDelPaquete(idRastreo) {
         try {
@@ -19,13 +17,23 @@ async function obtenerDatosDelPaquete(idRastreo) {
 
     document.getElementById('tracking__form').addEventListener('submit', async function (event) {
         event.preventDefault();
+
+        var mapDiv = document.createElement('div');
+        mapDiv.id = 'map';
+        var generadorDiv = document.querySelector('#map__generador');
+        generadorDiv.appendChild(mapDiv);
     
         document.getElementById('ventanaEmergente').style.display = 'block';
-    
+
         document.querySelector('.ventana__cerrar').addEventListener('click', function () {
+
             document.getElementById('ventanaEmergente').style.display = 'none';
-            document.getElementById('map').style.display = 'none';
+             document.getElementById('map').style.display = 'none';
+
         });
+     
+
+        
     
         var idRastreo = document.getElementById('idRastreo').value;
 
@@ -48,6 +56,8 @@ async function obtenerDatosDelPaquete(idRastreo) {
             const apiUrl = `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(direccion)}&key=${apiKey}`;
             const geocodingResponse = await fetch(apiUrl);
             const geocodingData = await geocodingResponse.json();
+
+          
 
             if (geocodingData.results && geocodingData.results.length > 0) {
                 const location = geocodingData.results[0].geometry;
@@ -77,6 +87,11 @@ async function obtenerDatosDelPaquete(idRastreo) {
                     routeWhileDragging: true,
                     language: "es"
                 }).addTo(map);
+
+                // Crear un nuevo div con la id "map"
+              
+
+                
             } else {
                 console.error('No se encontraron coordenadas para la dirección proporcionada.');
             }
@@ -84,5 +99,6 @@ async function obtenerDatosDelPaquete(idRastreo) {
     } catch (error) {
         console.error('Error en la solicitud:', error);
     }
+});
 });
     

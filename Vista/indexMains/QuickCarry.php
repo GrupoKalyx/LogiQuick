@@ -11,6 +11,7 @@ require_once "../../Control/superControlador.php";
     <title>QuickCarry</title>
     <link rel="stylesheet" href="../estilos/QuickCarryStyle.css">
     <link rel="stylesheet" href="../estilos/VentanaEmergenteStyle.css">
+    <link rel="stylesheet" href="../estilos/mapstyle2.css">
     <meta name="title" content="QuickCarry">
     <!-- Incluye Leaflet CSS y JS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
@@ -25,16 +26,6 @@ require_once "../../Control/superControlador.php";
     <!-- Incluye Leaflet Control Geocoder CSS y JS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
     <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
-    <style>
-        #map{
-        width: 50%;
-        height: 400px;
-        margin: 0 auto; /* Centra el mapa horizontalmente */
-        border-radius: 10px; /* Bordes redondeados */
-        overflow: hidden; /* Asegura que los bordes redondeados sean aplicados correctamente */
-        margin-bottom: 5%;
-        }
-    </style>
 </head>
 
 <body>
@@ -85,7 +76,9 @@ require_once "../../Control/superControlador.php";
     </header>
 
     
-         <div id="map"></div>
+         <div id="map__generador">
+            
+         </div>
   
             
 
