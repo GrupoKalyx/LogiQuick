@@ -1,4 +1,3 @@
-
 var map = L.map('map').setView([-32.8755548, -56.0201525], 7); // Latitud y Longitud de Uruguay
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

@@ -21,7 +21,7 @@ if (isset($_POST['asignar'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../estilos/style.css">
   <link rel="stylesheet" href="../estilos/FormStyle.css">
-    <link rel="icon" type="image/x-icon" href="../assets/logo.png">
+  <link rel="icon" type="image/x-icon" href="../assets/logo.png">
   <title>LogiQuick</title>
 </head>
 

@@ -1,5 +1,5 @@
-document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById("agregarCampo").addEventListener("click", function() {
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("agregarCampo").addEventListener("click", function () {
         // Crea un nuevo div para el nuevo campo de selección y label
         var nuevoDiv = document.createElement("div");
         nuevoDiv.className = "form__group";
@@ -24,8 +24,8 @@ document.addEventListener("DOMContentLoaded", function() {
         fetch("http://localhost/logiquick/Control/controladorPaquetes.php?function=listarSinLote")
             .then(response => response.json()) // Parsea la respuesta  JSON
             .then(paquetes => {
-                
-                paquetes.forEach(function(paquete) {
+
+                paquetes.forEach(function (paquete) {
                     var nuevaOpcion = document.createElement("option");
                     nuevaOpcion.value = paquete.numBulto;
                     nuevaOpcion.textContent = paquete.numBulto;

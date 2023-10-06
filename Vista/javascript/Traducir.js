@@ -11,13 +11,13 @@ traductorBtn.addEventListener('click', () => {
 
         case 'FunExtCentral.php':
             window.location.href = 'indexEng/FunExtCentralEng.html';
-        break;
+            break;
 
         default:
             break;
     }
-    
-    
+
+
     if (currentFileName === 'FuncionarioCentral.html') {
         window.location.href = '/indexEng/FuncionarioCentralEng.html';
     } else if (currentFileName === 'Camionero.html') {

@@ -76,14 +76,14 @@ require_once "../../Control/superControlador.php";
         </section>
     </header>
 
-    
-         <div id="map__generador">
 
-         </div>
-  
-            
+    <div id="map__generador">
 
-     
+    </div>
+
+
+
+
 
     <footer class="footer">
 

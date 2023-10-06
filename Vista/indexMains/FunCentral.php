@@ -37,13 +37,13 @@
                 <li class="navbar__list__item">
                     <a href="#">Seguimiento</a>
                 </li>
-                </ul>
-                <div class="navbar__logout"> 
-                    <button class="navbar__logout__button">
-                        <a href="#">Cerrar Sesión</a>
-                    </button>
-                    </div>
-           
+            </ul>
+            <div class="navbar__logout">
+                <button class="navbar__logout__button">
+                    <a href="#">Cerrar Sesión</a>
+                </button>
+            </div>
+
             <!-- <button class="form__button" id="traductor-btn">Traducir Pagina </button> -->
         </nav>
     </header>

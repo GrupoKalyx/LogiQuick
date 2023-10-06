@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <script src="Traducir.js"></script>
   <meta charset="UTF-8">
@@ -8,6 +9,7 @@
   <link rel="icon" type="image/x-icon" href="assets/logo.png">
   <title>LogiQuick</title>
 </head>
+
 <body class="body">
 
   <header>
@@ -22,7 +24,7 @@
         <li class="navbar__list__item"><a href="../referencias/PickupAsignado.php">Pickup asignado</a></li>
       </ul>
       <!-- <button class="form__button" id="traductor-btn">Traducir Pagina</button> -->
-      <div class="navbar__logout"> 
+      <div class="navbar__logout">
         <button class="navbar__logout__button"><a href="#">Cerrar Sesión</a></button>
       </div>
 
@@ -43,4 +45,5 @@
     </div>
   </footer>
 </body>
+
 </html>

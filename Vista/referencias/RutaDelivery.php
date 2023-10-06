@@ -90,7 +90,7 @@
   </footer>
 
   <script>
-    var map = L.map('map').setView([-34.85,-56.2], 12); // Latitud y Longitud de Montevideo
+    var map = L.map('map').setView([-34.85, -56.2], 12); // Latitud y Longitud de Montevideo
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '© OpenStreetMap contributors'
