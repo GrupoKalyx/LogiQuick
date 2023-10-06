@@ -1,5 +1,5 @@
 <?php
-require_once "../LogiQuick/Control/superControlador.php";
+require_once "../../Control/superControlador.php";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -26,12 +26,14 @@ require_once "../LogiQuick/Control/superControlador.php";
     <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
     <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
     <style>
-        #map {
-        height: 99%;
-        width: 100%;
-        margin: 5px;
-        border-radius: 10px;
-}
+        #map{
+        width: 50%;
+        height: 400px;
+        margin: 0 auto; /* Centra el mapa horizontalmente */
+        border-radius: 10px; /* Bordes redondeados */
+        overflow: hidden; /* Asegura que los bordes redondeados sean aplicados correctamente */
+        margin-bottom: 5%;
+        }
     </style>
 </head>
 
@@ -57,11 +59,11 @@ require_once "../LogiQuick/Control/superControlador.php";
                     <a href="#" class="nav__item__link">AA</a>
                 </li>
 
-                <img src="assets/close.svg" class="nav__close">
+                <img src="../assets/close.svg" class="nav__close">
             </ul>
 
             <div class="nav__menu">
-                <img src="assets/menu.svg" class="nav__img">
+                <img src="../assets/menu.svg" class="nav__img">
             </div>
         </nav>
 
@@ -82,12 +84,10 @@ require_once "../LogiQuick/Control/superControlador.php";
         </section>
     </header>
 
-    <div class="ventana__emergente" id="ventanaEmergente">
-                <div class="ventana__content">
-                    <span class="ventana__cerrar" onclick="cerrarVentanaEmergente()">&times;</span>
-                    <div id="map"></div>
-                </div>
-            </div>
+    
+         <div id="map"></div>
+  
+            
 
      
 
@@ -109,8 +109,8 @@ require_once "../LogiQuick/Control/superControlador.php";
         </section>
 
     </footer>
-    <script src="../ventanaEmergenteTest.js"></script>
-    <!-- <script src="../Menu.js"></script> -->
+    <script src="../javascript/ventanaEmergenteTest.js"></script>
+    <script src="../javascript/Menu.js"></script>
 </body>
 
 </html>

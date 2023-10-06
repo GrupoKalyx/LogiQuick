@@ -1,4 +1,8 @@
-
+document.addEventListener('DOMContentLoaded', function() {
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                 attribution: '© OpenStreetMap contributors'
+                }).addTo(map);
+});
 
 async function obtenerDatosDelPaquete(idRastreo) {
         try {
@@ -7,7 +11,7 @@ async function obtenerDatosDelPaquete(idRastreo) {
             return resultado;
         } catch (error) {
             console.error('Error en la solicitud:', error);
-            throw error; // Lanza el error para que pueda ser manejado por el código que llama a esta función
+            throw error; 
         }
     }
 
@@ -20,6 +24,7 @@ async function obtenerDatosDelPaquete(idRastreo) {
     
         document.querySelector('.ventana__cerrar').addEventListener('click', function () {
             document.getElementById('ventanaEmergente').style.display = 'none';
+            document.getElementById('map').style.display = 'none';
         });
     
         var idRastreo = document.getElementById('idRastreo').value;
@@ -34,12 +39,12 @@ async function obtenerDatosDelPaquete(idRastreo) {
         if (!resultado) {
             resultadoDiv.textContent = "El paquete no existe o no está registrado aún.";
         } else {
-            // Asignar los valores a la variable direccion
+            // Crear la dirección
             var direccion = resultado.num + ' ' + resultado.calle + ', ' + resultado.departamento + ', Uruguay';
             resultadoDiv.textContent = "Dirección de entrega: " + direccion;
 
-            // Hacer la solicitud para geocodificar la dirección
-            const apiKey = '3111bb8dce164ee18ff3bfcf4a4bfc24'; // Reemplaza con tu clave de API de OpenCage Data
+            // Geocodificar 
+            const apiKey = '3111bb8dce164ee18ff3bfcf4a4bfc24'; 
             const apiUrl = `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(direccion)}&key=${apiKey}`;
             const geocodingResponse = await fetch(apiUrl);
             const geocodingData = await geocodingResponse.json();
@@ -48,27 +53,30 @@ async function obtenerDatosDelPaquete(idRastreo) {
                 const location = geocodingData.results[0].geometry;
                 var latitudDestino = location.lat;
                 var longitudDestino = location.lng;
-               
-                // Coordenadas de la Plaza Independencia en Montevideo, Uruguay
+
+                
                 var latitudPlazaIndependencia = -34.903555;
                 var longitudPlazaIndependencia = -56.188554;
 
-                // Crea el mapa y muestra la ruta desde la Plaza Independencia hasta la dirección del paquete
-                var map = L.map('map').setView([latitudDestino, longitudDestino], 13); // Coordenadas de la dirección del paquete y nivel de zoom iniciales
+                // Crear el mapa y mostrar la ruta  hasta la dirección del paquete
+                var map = L.map('map').setView([latitudDestino, longitudDestino], 13); 
 
-                // Crea el marcador para la dirección del paquete
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                 attribution: '© OpenStreetMap contributors'
+                }).addTo(map);
+
+                
                 var destinoMarker = L.marker([latitudDestino, longitudDestino]).addTo(map);
 
-                // Crea el control de enrutamiento con la Plaza Independencia como origen
+               
                 L.Routing.control({
                     waypoints: [
                         L.latLng(latitudPlazaIndependencia, longitudPlazaIndependencia),
                         L.latLng(latitudDestino, longitudDestino)
                     ],
                     routeWhileDragging: true,
-                   
+                    language: "es"
                 }).addTo(map);
-                
             } else {
                 console.error('No se encontraron coordenadas para la dirección proporcionada.');
             }
