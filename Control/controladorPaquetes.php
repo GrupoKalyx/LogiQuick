@@ -72,6 +72,7 @@ class controladorPaquetes
     {
         $idRastreo = $context['idRastreo'];
         $result = modeloPaquetes::rastreo($idRastreo);
-        echo $result;
+        header('Content-Type: application/json');
+        echo json_encode($result);  
     }
 }
