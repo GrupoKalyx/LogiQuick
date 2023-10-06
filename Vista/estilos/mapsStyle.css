@@ -7,6 +7,18 @@
 
 .container {
         display: grid;
-        grid-template-columns: 70% 1fr;
+        grid-template-columns: 1fr 1fr;
         height: 100%;
+}
+#paquetesTableContainer {
+padding: 10px;
+box-sizing: border-box;
+overflow-y: auto;
+}
+
+#paquetesTableContainer .TableContainer {
+width: 100%;
+}
+h2{
+        text-align: center;
 }

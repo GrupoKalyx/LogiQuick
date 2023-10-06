@@ -5,7 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../estilos/style.css">
+    <link rel="stylesheet" href="../estilos/mapsStyle.css">
     <link rel="icon" type="image/x-icon" href="assets/logo.png">
+    <!-- Incluye Leaflet CSS y JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <!-- Incluye Leaflet Routing Machine CSS y JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
+    <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <!-- Incluye Leaflet Control Geocoder CSS y JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
     <title>LogiQuick</title>
     <!-- <script src="Traducir.js"></script> -->
 </head>
@@ -35,7 +49,7 @@
                     </ul>
                 </li>
                 <li class="navbar__list__item">
-                    <a href="../referencias/Seguimiento.php">Seguimiento</a>
+                    <a href="#">Seguimiento</a>
                 </li>
             </ul>
             <div class="navbar__logout">
@@ -47,7 +61,24 @@
             <!-- <button class="form__button" id="traductor-btn">Traducir Pagina </button> -->
         </nav>
     </header>
-    <div class="espacio__blanco"></div>
+    
+    <div class="container">
+        <div id="map"></div>
+    <div id="paquetesTableContainer">
+      <table id="paquetesTable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Dirección</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+
     <footer>
         <div class="footer">
             <ul class="footer_list">
@@ -63,6 +94,8 @@
             </div>
         </div>
     </footer>
+
+    <script src="../javascript/Seguimiento.js"></script>
 </body>
 
 </html>
