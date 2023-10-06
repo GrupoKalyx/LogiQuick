@@ -93,4 +93,19 @@ class modeloPaquetes
         $conn->close();
         return json_encode($num);
     }
+
+    public static function muestraEstado($tipoId, $id){
+        $conn = modeloBd::conexion();
+        if($tipoId == 'idRastreo'){
+            $queryId = "SELECT numBulto FROM paquetes WHERE $tipoId = ?";
+            $excId = $conn->execute_query($queryId, [$id]);
+            $fetch = $excId->fetch_array(MYSQLI_ASSOC);
+            $id = $fetch['0']['numBulto'];
+        }
+        $queryExt = "SELECT * FROM paquetes WHERE numBulto NOT IN (SELECT numBulto FROM lotean) AND numBulto = ? LIMIT 1;";
+        $excExt = $conn->execute_query($queryExt, [$id]);
+        if(mysqli_num_rows($excExt)) ;
+        $conn->close();
+        return json_encode($estado);
+    }
 }
