@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     var latitudPlazaIndependencia = -34.903555;
                     var longitudPlazaIndependencia = -56.188554;
 
-                    // Crear el mapa y mostrar la ruta  hasta la dirección del paquete
+
                     var map = L.map('map').setView([latitudDestino, longitudDestino], 13);
 
                     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
