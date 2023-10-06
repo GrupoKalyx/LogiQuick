@@ -1,10 +1,10 @@
 <?php
-if (isset($_POST['btncerrar'])) {
-    $_SESSION = NULL;
-    header("location: loginAdmin.php");
-}
 require_once('sql/dbconection.php');
 session_start();
+if (isset($_POST['btncerrar'])) {
+    $_SESSION['ci'] = null;
+    header("location: loginAdmin.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -89,12 +89,14 @@ session_start();
         <br>
         <h1 class="nav__text"> Bienvenid@:
             <?php
+            if(isset($_SESSION['ci'])){
             $ci = $_SESSION['ci'];
             $queryName = "SELECT nombre FROM `usuarios` WHERE ci = ? LIMIT 1";
             $resultName = $conn->execute_query($queryName, [$ci]);
             $fName = $resultName->fetch_array(MYSQLI_ASSOC);
             $name = $fName['nombre'];
             echo ($name);
+            }
             ?>
             <b></b>
         </h1>
