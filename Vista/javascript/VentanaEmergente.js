@@ -1,80 +1,112 @@
-document.getElementById('tracking__form').addEventListener('submit', function (event) {
-    event.preventDefault();
-
-    document.getElementById('ventanaEmergente').style.display = 'block';
-
-    document.querySelector('.ventana__cerrar').addEventListener('click', function () {
-        document.getElementById('ventanaEmergente').style.display = 'none';
-    });
-
-
-
-    var idRastreo = document.getElementById('idRastreo').value;
-
+document.addEventListener('DOMContentLoaded', function() {
     
-    fetch('http://localhost/logiquick/Control/controladorPaquetes.php?function=rastrear&idRastreo=' + idRastreo)
-        .then(function(response) {
-            return response.json(); // parsea la respuesta JSON
-        })
-        .then(function(resultado) {
-            var resultadoDiv = document.getElementById('resultado');
-            if (resultado == undefined || resultado == null) {
-                resultadoDiv.textContent = "El paquete no existe o no está registrado aún.";
-            } else {
-                resultadoDiv.textContent = "Dirección de entrega: " + resultado.calle + " " + resultado.num + ", en " + resultado.localidad + ", " + resultado.departamento;
-                
+
+
+    async function obtenerDatosDelPaquete(idRastreo) {
+            try {
+                const response = await fetch('http://localhost/logiquick/Control/controladorPaquetes.php?function=rastrear&idRastreo=' + idRastreo);
+                const resultado = await response.json();
+                return resultado;
+            } catch (error) {
+                console.error('Error en la solicitud:', error);
+                throw error; 
             }
-        })
-        .catch(function(error) {
+        }
+    
+        
+    
+        document.getElementById('tracking__form').addEventListener('submit', async function (event) {
+            event.preventDefault();
+    
+            var mapDiv = document.createElement('div');
+            mapDiv.id = 'map';
+            var generadorDiv = document.querySelector('#map__generador');
+            generadorDiv.appendChild(mapDiv);
+        
+            document.getElementById('ventanaEmergente').style.display = 'block';
+    
+            document.querySelector('.ventana__cerrar').addEventListener('click', function () {
+    
+                document.getElementById('ventanaEmergente').style.display = 'none';
+                 document.getElementById('map').style.display = 'none';
+    
+            });
+         
+    
+            
+        
+            var idRastreo = document.getElementById('idRastreo').value;
+    
+            try {
+                const response = await fetch('http://localhost/logiquick/Control/controladorPaquetes.php?function=rastrear&idRastreo=' + idRastreo);
+                const resultado = await response.json();
+                
+            const numBulto = resultado.numBulto;
+            const response2 = await fetch(`http://localhost/logiquick/Control/controladorPaquetes.php?function=mostrarEstado&tipoId=idRastreo&idRastreo=${idRastreo}`);
+            const resultado2 = await response2.json(); 
+                console.log (resultado2)
+                var resultadoDiv = document.getElementById('resultado');
+                var resultado2Div = document.getElementById('resultado2');
+            
+                if (!resultado) {
+                    resultadoDiv.textContent = "El paquete no existe o no está registrado aún.";
+                } else {
+                    var direccion = resultado.num + ' ' + resultado.calle + ', ' + resultado.departamento + ', Uruguay';
+            
+                    resultadoDiv.textContent = "Dirección de entrega: " + direccion;
+                    resultado2Div.textContent = "Estado del Paquete: " + resultado2;
+                
+    
+                // Geocodificar 
+                const apiKey = '3111bb8dce164ee18ff3bfcf4a4bfc24'; 
+                const apiUrl = `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(direccion)}&key=${apiKey}`;
+                const geocodingResponse = await fetch(apiUrl);
+                const geocodingData = await geocodingResponse.json();
+    
+              
+    
+                if (geocodingData.results && geocodingData.results.length > 0) {
+                    const location = geocodingData.results[0].geometry;
+                    var latitudDestino = location.lat;
+                    var longitudDestino = location.lng;
+    
+                    
+                    var latitudPlazaIndependencia = -34.903555;
+                    var longitudPlazaIndependencia = -56.188554;
+    
+                    // Crear el mapa y mostrar la ruta  hasta la dirección del paquete
+                    var map = L.map('map').setView([latitudDestino, longitudDestino], 13); 
+    
+                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                     attribution: '© OpenStreetMap contributors'
+                    }).addTo(map);
+    
+                    
+                    var destinoMarker = L.marker([latitudDestino, longitudDestino]).addTo(map);
+    
+                   
+                    L.Routing.control({
+                        waypoints: [
+                            L.latLng(latitudPlazaIndependencia, longitudPlazaIndependencia),
+                            L.latLng(latitudDestino, longitudDestino)
+                        ],
+                        routeWhileDragging: true,
+                        language: "es"
+                    }).addTo(map);
+    
+                    // Crear un nuevo div con la id "map"
+                  
+    
+                    
+                } else {
+                    console.error('No se encontraron coordenadas para la dirección proporcionada.');
+                }
+            }
+        } catch (error) {
             console.error('Error en la solicitud:', error);
-        });
+        }
     });
-
-
-// var direccion = resultado.num + ' ' + resultado.calle + ', ' + resultado.departamento + ', Uruguay';
-
-//     // Realiza la geocodificación utilizando Nominatim para obtener las coordenadas de la dirección del paquete
-//     fetch('https://nominatim.openstreetmap.org/search?format=json&q=' + direccion)
-//         .then(function(response) {
-//             return response.json(); // parsea la respuesta JSON
-//         })
-//         .then(function(data) {
-//             if (data && data.length > 0) {
-//                 // Obtiene las coordenadas de la dirección del paquete
-//                 var latitudDestino = parseFloat(data[0].lat);
-//                 var longitudDestino = parseFloat(data[0].lon);
-
-//                 // Coordenadas de la Plaza Independencia en Montevideo, Uruguay
-//                 var latitudPlazaIndependencia = -34.903555;
-//                 var longitudPlazaIndependencia = -56.188554;
-
-//                 // Crea el mapa y muestra la ruta desde la Plaza Independencia hasta la dirección del paquete
-//                 var map = L.map('map').setView([latitudDestino, longitudDestino], 13); // Coordenadas de la dirección del paquete y nivel de zoom iniciales
-
-//                 // Crea el marcador para la dirección del paquete
-//                 var destinoMarker = L.marker([latitudDestino, longitudDestino]).addTo(map);
-
-//                 // Crea el control de enrutamiento con la Plaza Independencia como origen
-//                 L.Routing.control({
-//                     waypoints: [
-//                         L.latLng(latitudPlazaIndependencia, longitudPlazaIndependencia),
-//                         L.latLng(latitudDestino, longitudDestino)
-//                     ],
-//                     routeWhileDragging: true,
-//                     geocoder: L.Control.Geocoder.nominatim(),
-//                     
-//                 }).addTo(map);
-//             } else {
-//                 console.error('No se encontraron coordenadas para la dirección proporcionada.');
-//             }
-//         })
-//         .catch(function(error) {
-//             console.error('Error en la solicitud:', error);
-//         });
-//     });
-
-
-
-
+    });
+        
     
         

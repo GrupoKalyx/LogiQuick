@@ -70,6 +70,7 @@ require_once "../../Control/superControlador.php";
                 <div class="ventana__content">
                     <span class="ventana__cerrar" onclick="cerrarVentanaEmergente()">&times;</span>
                     <p id="resultado">-</p>
+                    <p id="resultado2">-</p>
                 </div>
             </div>
         </section>
@@ -77,7 +78,7 @@ require_once "../../Control/superControlador.php";
 
     
          <div id="map__generador">
-            
+
          </div>
   
             
@@ -102,7 +103,7 @@ require_once "../../Control/superControlador.php";
         </section>
 
     </footer>
-    <script src="../javascript/ventanaEmergenteTest.js"></script>
+    <script src="../javascript/VentanaEmergente.js"></script>
     <script src="../javascript/Menu.js"></script>
 </body>
 

@@ -107,9 +107,9 @@ class modeloPaquetes
         $queryExt = "SELECT * FROM paquetes WHERE numBulto NOT IN (SELECT numBulto FROM lotean) AND numBulto = ? LIMIT 1;";
         $excExt = $conn->execute_query($queryExt, [$id]);
         if (mysqli_num_rows($excExt)) {
-            $estado = 'Aun no ha llegado a nuestra central';
+            $estado= 'Aun no ha llegado a nuestra central';
         } else {
-            $queryQc = "";
+            $query = "";
         }
         $conn->close();
         return json_encode($estado);

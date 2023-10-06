@@ -88,6 +88,6 @@ class controladorPaquetes
         $tipoId = $context['tipoId'];
         $id = $context[$tipoId];
         $result = modeloPaquetes::muestraEstado($tipoId, $id);
-        echo $result;
+        echo ($result);
     }
 }
