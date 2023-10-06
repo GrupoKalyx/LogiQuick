@@ -1,35 +1,30 @@
-
-
-// Agregar un evento submit al formulario
-document.getElementById('tracking__form').addEventListener('submit', function(event) {
-    // Evitar que el formulario se envíe normalmente
+document.getElementById('tracking__form').addEventListener('submit', function (event) {
     event.preventDefault();
 
     document.getElementById('ventanaEmergente').style.display = 'block';
 
-    document.querySelector('.ventana__cerrar').addEventListener('click', function() {
+    document.querySelector('.ventana__cerrar').addEventListener('click', function () {
         document.getElementById('ventanaEmergente').style.display = 'none';
     });
 
+    var idRastreo = document.getElementById('idRastreo').value;
 
-    // Hacer una solicitud AJAX para obtener el resultado de la función verificar en controladorPaquetes
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'http://localhost/logiquick/Control/controladorPaquetes.php?function=existe&tipoId=', true);
-
-    // Hacer una solicitud AJAX para obtener el resultado de la función rastrear en controladorPaquetes
-    var xhr2 = new XMLHttpRequest();
-    xhr2.open('GET', 'http://localhost/logiquick/Control/controladorPaquetes.php?function=rastrear', true);
-    xhr2.onreadystatechange = function () {
-        if (xhr2.readyState == 4 && xhr2.status == 200) {
-            // Parsear el JSON recibido
-            var resultado = xhr2.responseText;
-
-            // Mostrar el resultado en el modal
+    // Hacer una solicitud AJAX usando fetch
+    fetch('http://localhost/logiquick/Control/controladorPaquetes.php?function=rastrear&idRastreo=' + idRastreo)
+        .then(function(response) {
+            return response.json(); // Parsea la respuesta JSON
+        })
+        .then(function(resultado) {
             var resultadoDiv = document.getElementById('resultado');
-            resultadoDiv.textContent = "Estado del paquete: " + resultado; 
-        }
-    };
-    xhr.send();
+            if (resultado == undefined || resultado == null) {
+                resultadoDiv.textContent = "El paquete no existe o no está registrado aún.";
+            } else {
+                resultadoDiv.textContent = "Dirección de entrega: " + resultado.calle + " " + resultado.num + ", en " + resultado.localidad + ", " + resultado.departamento;
+            }
+        })
+        .catch(function(error) {
+            console.error('Error en la solicitud:', error);
+        });
 });
 
 

@@ -46,21 +46,20 @@ require_once "../Control/superControlador.php";
 
         <section class="header__container container">
             <h1 class="header__title">Rastrea tu paquete</h1>
-            <form id="tracking__form" action="QuickCarry.php" method="GET">
+            <form id="tracking__form">
                 <label class="tracking__id" for="idRastreo">ID de Rastreo:</label>
-                <input class="tracking__text" type="text" id="idRastreo" name="idRastreo" placeholder="Ingrese su ID de Rastreo" required>
+                <input class="tracking__text" type="text" id="idRastreo" placeholder="Ingrese su ID de Rastreo" required>
                 <button class="tracking__submit" type="submit">Seguir Paquete</button>
             </form>
 
             <div class="ventana__emergente" id="ventanaEmergente">
                 <div class="ventana__content">
                     <span class="ventana__cerrar" onclick="cerrarVentanaEmergente()">&times;</span>
-                    <p id="resultado">Texto sobre el paquete</p>
+                    <p id="resultado">-</p>
                 </div>
             </div>
         </section>
     </header>
-
     <footer class="footer">
         <section class="footer__container container">
             <nav class="nav footer__nav">
