@@ -63,7 +63,6 @@
     </header>
     
     <div class="container">
-        <div id="map"></div>
     <div id="paquetesTableContainer">
       <table id="paquetesTable">
         <thead>
@@ -77,6 +76,7 @@
         </tbody>
       </table>
     </div>
+     <div id="map"></div>
   </div>
 
     <footer>
