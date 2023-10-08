@@ -40,7 +40,7 @@ class modeloAlmacenes
 
     public static function muestraActual($idRastreo){
         $conn = modeloBd::conexion();
-        $query = "SELECT a.idAlmacen FROM almacenes a JOIN van v JOIN Paquetes p JOIN llevan l WHERE p.idRastreo = 274531109 AND l.fecha_llegada != NULL";
+        $query = "SELECT a.idAlmacen FROM almacenes a JOIN van v JOIN Paquetes p JOIN llevan ll WHERE p.idRastreo = 274531109 AND ll.fecha_llegada IS NOT NULL";
         $result = $conn->execute_query($query, [$idRastreo]);
         $conn->close();
         return json_encode($result);
