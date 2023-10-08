@@ -9,13 +9,12 @@
         $numBulto = $row['numBulto'];
         $gmailCliente = $row['gmailCliente'];
         $idRastreo = $row['idRastreo'];
-        $fechaLlegadaQc = $row['fechaLlegadaQc'];
         $fechaEntrega = $row['fechaEntrega'];
         $num = $row['num'];
         $calle = $row['calle'];
         $localidad = $row['localidad'];
         $departamento = $row['departamento'];
-        array_push($arrayConsulta, ['Número de bulto: ' => $numBulto, '<br> Gmail del cliente: ' => $gmailCliente, '<br> ID de rastreo: ' => $idRastreo, '<br> Fecha de llegada: ' => $fechaLlegadaQc, '<br> Fecha de entrega: ' => $fechaEntrega, '<br> Num: ' => $num, '<br> Calle: ' => $calle, '<br> Localidad: ' => $localidad, '<br> Departamento: ' => $departamento . '<br><br>']);
+        array_push($arrayConsulta, ['Número de bulto: ' => $numBulto, '<br> Gmail del cliente: ' => $gmailCliente, '<br> ID de rastreo: ' => $idRastreo, '<br> Fecha de entrega: ' => $fechaEntrega, '<br> Num: ' => $num, '<br> Calle: ' => $calle, '<br> Localidad: ' => $localidad, '<br> Departamento: ' => $departamento . '<br><br>']);
     }
 
     foreach ($arrayConsulta as $value) {

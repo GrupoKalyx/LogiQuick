@@ -2,13 +2,11 @@
 require_once('../../sql/dbconection.php');
 
 $gmailCliente = $_POST['gmailCliente'];
-$fechaLlegadaQc = $_POST['fechaLlegadaQc'] . " " . $_POST['horaLlegadaQc'] . ":00";
 $num = $_POST['num'];
 $calle = $_POST['calle'];
 $localidad = $_POST['localidad'];
 $departamento = $_POST['departamento'];
-$json = json_decode($_POST['coordIngPaquete'], true);
-$coordenadas = $json[0]['lat'] . ", " . $json[0]['long'];
+$coordenadas = "";
 
 function existe($idRastreo, $conn){
     $query = "SELECT * FROM paquetes WHERE idRastreo = ? LIMIT 1";
@@ -25,11 +23,11 @@ do {
 } while (existe($idRastreo, $conn));
 
 
-$query2 = "INSERT INTO paquetes (gmailCliente, idRastreo, fechaLlegadaQc, num, calle, localidad, departamento, coordenadas) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-$exc2 = $conn->execute_query($query2, [$gmailCliente, $idRastreo, $fechaLlegadaQc, $num, $calle, $localidad, $departamento, $coordenadas]);
+$query2 = "INSERT INTO paquetes (gmailCliente, idRastreo, num, calle, localidad, departamento, coordenadas) VALUES (?, ?, ?, ?, ?, ?, ?)";
+$exc2 = $conn->execute_query($query2, [$gmailCliente, $idRastreo, $num, $calle, $localidad, $departamento, $coordenadas]);
 
 if ($exc2) {
-    echo "<script>alert('Paquete ingresado con éxito. Coords:" . $json . "');window.location='../../indexAdmin.php'</script>";
+    echo "<script>alert('Paquete ingresado con éxito.');window.location='../../indexAdmin.php'</script>";
 } else {
     echo "<script>alert('Ha ocurrido un error inesperado.');";
 }
