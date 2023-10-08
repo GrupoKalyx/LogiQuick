@@ -50,6 +50,7 @@ class controladorAlmacenes
     public static function mostrarUltimo($context){
         $idRastreo = $context['idRastreo'];
         $result = modeloAlmacenes::muestraUltimo($idRastreo);
+        var_dump($result);
         echo $result;
     }
 }

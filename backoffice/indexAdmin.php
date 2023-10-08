@@ -15,6 +15,7 @@ if (isset($_POST['btncerrar'])) {
     <link rel="stylesheet" href="estilos/FormStyleBackoffice2.css">
     <link rel="stylesheet" href="estilos/backofficeStyle.css">
     <link rel="icon" type="image/x-icon" href="assets/logo.png">
+    <script src="../backoffice/getCoords.js"></script>
     <title>LogiQuick</title>
     <script>
         <?php
@@ -149,7 +150,7 @@ if (isset($_POST['btncerrar'])) {
             <h2> Ingresar datos de Almacen</h2>
             <form action="CRUD/almacenes/Altas.php" method="post">
                 Id de almacen <input type="text" class="form__input" name="idAlmacen"><br>
-                N_puerta <input class="form__input" type="text" id="ingAlmaceNum" name="N_puerta"><br>
+                N_puerta <input class="form__input" type="text" id="ingAlmacenNum" name="N_puerta"><br>
                 Calle <input class="form__input" type="text" id="ingAlmacenCalle" name="calle"><br>
                 Localidad <input class="form__input" type="text" id="ingAlmacenLocalidad" name="localidad"><br>
                 Departamento <input class="form__input" type="text" id="ingAlmacenDepartamento" name="departamento"><br><br>
@@ -268,6 +269,8 @@ if (isset($_POST['btncerrar'])) {
             </div>
         </div>
     </footer>
+
+    
 </body>
 
 </html>
