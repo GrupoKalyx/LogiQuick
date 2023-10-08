@@ -224,7 +224,7 @@ CREATE TABLE IF NOT EXISTS `logiquickbd`.`Van` (
 -- -----------------------------------------------------
 -- Table `Usuarios`
 -- -----------------------------------------------------
- CREATE TABLE IF NOT EXISTS `logiquickbd`.`Usuarios` (
+CREATE TABLE IF NOT EXISTS `logiquickbd`.`Usuarios` (
   `ci` INT NOT NULL,
   `nombre` VARCHAR(45) NULL,
   `tipo` VARCHAR(45) NULL,
@@ -233,7 +233,7 @@ CREATE TABLE IF NOT EXISTS `logiquickbd`.`Van` (
 -- -----------------------------------------------------
 -- Table `Logins`
 -- -----------------------------------------------------
- CREATE TABLE IF NOT EXISTS `logiquickbd`.`Logins` (
+CREATE TABLE IF NOT EXISTS `logiquickbd`.`Logins` (
   `idLogin` INT NOT NULL,
   `contrasenia` VARCHAR(45) NULL,
   PRIMARY KEY (`idLogin`));    
@@ -241,7 +241,7 @@ CREATE TABLE IF NOT EXISTS `logiquickbd`.`Van` (
 -- -----------------------------------------------------
 -- Table `tokens`
 -- -----------------------------------------------------
- CREATE TABLE IF NOT EXISTS `logiquickbd`.`tokens` (
+CREATE TABLE IF NOT EXISTS `logiquickbd`.`tokens` (
   `ci` INT NULL,
   `idToken` VARCHAR(64) NOT NULL,
   PRIMARY KEY (`ci`));   

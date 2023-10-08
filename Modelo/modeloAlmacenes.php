@@ -1,31 +1,48 @@
 <?php
+require_once 'modeloBd.php';
 
 class modeloAlmacenes
 {
 
-    public static function alta($id, $ubicacion, $desc, $conn)
+    public static function alta($idAlmacen, $ubiAlmacen, $calle, $departamento, $localidad, $N_puerta)
     {
-        $query = "INSERT INTO almacenes VALUES (?, ?, ?)";
-        $conn->execute_query($query, [$id, $ubicacion, $desc]);
+        $conn = modeloBd::conexion();
+        $query = "INSERT INTO almacenes VALUES (?, ?, ?, ?, ?, ?)";
+        $conn->execute_query($query, [$idAlmacen, $ubiAlmacen, $calle, $departamento, $localidad, $N_puerta]);
+        $conn->close();
     }
 
-    public static function modificacion($id, $ubicacion, $desc, $conn)
+    public static function modificacion($idAlmacen, $ubiAlmacen, $calle, $departamento, $localidad, $N_puerta)
     {
-        $query = "UPDATE usuarios SET ubicacion = '$ubicacion' AND descUbi = '$desc' WHERE id = '$id'";
-        $conn->execute_query($query, [$id, $ubicacion, $desc]);
+        $conn = modeloBd::conexion();
+        $query = "UPDATE usuarios SET ubiAlmacen = ? AND calle = ? AND departamento = ? AND localidad = ? AND N_puerta = ? WHERE id = ?";
+        $conn->execute_query($query, [$ubiAlmacen, $calle, $departamento, $localidad, $N_puerta, $idAlmacen]);
+        $conn->close();
     }
 
-    public static function baja($ci, $conn)
+    public static function baja($idAlmacen)
     {
-        $query = "DELETE FROM usuarios WHERE ci = ?";
-        $conn->execute_query($query, [$ci]);
+        $conn = modeloBd::conexion();
+        $query = "DELETE FROM almacenes WHERE idAlmacen = ?";
+        $conn->execute_query($query, [$idAlmacen]);
+        $conn->close();
     }
 
-    public static function listado($conn)
+    public static function listado()
     {
+        $conn = modeloBd::conexion();
         $query = "SELECT * FROM almacenes";
-        $result = $conn->execute_query($query);
-        $result = $result->fetch_all(MYSQLI_ASSOC);
+        $exc = $conn->execute_query($query);
+        $result = $exc->fetch_all(MYSQLI_ASSOC);
+        $conn->close();
+        return json_encode($result);
+    }
+
+    public static function muestraActual($idRastreo){
+        $conn = modeloBd::conexion();
+        $query = "SELECT a.idAlmacen FROM almacenes a JOIN van v JOIN Paquetes p JOIN llevan l WHERE p.idRastreo = 274531109 AND l.fecha_llegada != NULL";
+        $result = $conn->execute_query($query, [$idRastreo]);
+        $conn->close();
         return json_encode($result);
     }
 }

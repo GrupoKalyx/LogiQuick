@@ -1,57 +1,55 @@
 <?php
 require '../Modelo/modeloAlmacenes.php';
+
+$context = match ($_SERVER['REQUEST_METHOD']) {
+    'GET' => $_GET,
+    'POST' => $_POST,
+    'PUT' => $_PUT,
+    'DELETE' => $_DELETE,
+};
+
+$function = $context['function'];
+controladorPaquetes::$function($context);
+
 class controladorAlmacenes
 {
-    private $conn;
-
-    function __construct($conn)
-    {
-        $this->conn = $conn;
-    }
-
     public function ingresar($context)
     {
-        $id = $context['post']['id'];
-        $ubicaidon = $context['post']['ubicaidon'];
-        $descUbi = $context['post']['descUbi'];
-        modeloAlmacenes::alta($id, $ubicaidon, $descUbi, $this->conn);
-        header('location: ../../../Vista/indexAdministrador.php');
+        $idAlmacen = $context['idAlmacen'];
+        $ubiAlmacen = $context['ubiAlmacen'];
+        $calle = $context['calle'];
+        $departamento = $context['departamento'];
+        $localidad = $context['localidad'];
+        $N_puerta = $context['N_puerta'];
+        modeloAlmacenes::alta($idAlmacen, $ubiAlmacen, $calle, $departamento, $localidad, $N_puerta);
     }
 
     public function eliminar($context)
     {
-        $id = $context['post']['id'];
-        modeloAlmacenes::baja($id, $this->conn);
-        header('location: ../../../Vista/indexAdministrador.php');
+        $idAlmacen = $context['idAlmacen'];
+        modeloAlmacenes::baja($idAlmacen);
     }
 
     public function mostrar($context)
     {
-        $json = json_decode(modeloAlmacenes::listado($this->conn));
-        $result = $json;
-
-        $arrayConsulta = array();
-
-        foreach ($result as $row) {
-            $idAlmacen = $row->idAlmacen;
-            $ubicacion = $row->ubicacion;
-            $descUbi = $row->descUbi;
-            array_push($arrayConsulta, ['ID: ' => $idAlmacen, '<br> Ubicación: ' => $ubicacion, '<br> Descripidón de ubicaidón: ' => $descUbi . '<br><br>']);
-        }
-
-        foreach ($arrayConsulta as $value) {
-            foreach ($value as $key => $v) {
-                echo "<a class='form__viewContent'> " . $key . " " . $v . "</a>";
-            }
-        }
+        $result = modeloAlmacenes::listado();
+        echo $result;
     }
 
     public function modificar($context)
     {
-        $id = $context['post']['id'];
-        $ubicacion = $context['post']['ubicacion'];
-        $descUbi = $context['post']['descUbi'];
-        modeloAlmacenes::modificacion($id, $ubicacion, $descUbi, $this->conn);
-        header('location: ../../../Vista/indexAdministrador.php');
+        $idAlmacen = $context['idAlmacen'];
+        $ubiAlmacen = $context['ubiAlmacen'];
+        $calle = $context['calle'];
+        $departamento = $context['departamento'];
+        $localidad = $context['localidad'];
+        $N_puerta = $context['N_puerta'];
+        modeloAlmacenes::modificacion($idAlmacen, $ubiAlmacen, $calle, $departamento, $localidad, $N_puerta);
+    }
+
+    public function mostrarActual($context){
+        $idRastreo = $context['idRastreo'];
+        $result = modeloAlmacenes::muestraActual($idRastreo);
+        echo $result;
     }
 }
