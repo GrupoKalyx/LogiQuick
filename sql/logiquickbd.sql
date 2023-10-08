@@ -120,7 +120,8 @@ CREATE TABLE IF NOT EXISTS `logiquickbd`.`Paquetes` (
   `num` INT NULL,
   `gmailCliente` VARCHAR(45) NULL,
   `idRastreo` INT NULL,
-  `coordenadas` VARCHAR(32) NULL,
+  `lat` VARCHAR(16) NULL,
+  `lng` VARCHAR(16) NULL,
   PRIMARY KEY (`numBulto`));
 
 -- -----------------------------------------------------
@@ -196,7 +197,8 @@ CREATE TABLE IF NOT EXISTS `logiquickbd`.`Almacenes` (
   `departamento` VARCHAR(45) NULL,
   `localidad` VARCHAR(45) NULL,
   `num` INT NULL,
-  `ubiAlmacen` VARCHAR(32) NULL,
+  `lat` VARCHAR(16) NULL,
+  `lng` VARCHAR(16) NULL,
   PRIMARY KEY (`idAlmacen`));
 
 -- -----------------------------------------------------

@@ -93,19 +93,17 @@ if (isset($_POST['btncerrar'])) {
     <div class="form__container__backoffice"> <!-- CRUD de Almacenes -->
         <div class="form">
             <h2> Ingresar datos de Almacen</h2>
-<<<<<<< HEAD
             <form action="CRUD/almacenes/Altas.php" method="post" id="ingAlmacenForm">
-=======
-            <form id="almacenForm" action="CRUD/almacenes/Altas.php" method="POST">
->>>>>>> 475ddf9696e2aa7083b269babedd2bc5263da7f8
-                Id de almacen <input type="text" class="form__input" name="idAlmacen"><br>
-                Num <input class="form__input" type="text" id="ingAlmacenNum" name="num"><br>
-                Calle <input class="form__input" type="text" id="ingAlmacenCalle" name="calle" required><br>
-                Localidad <input class="form__input" type="text" id="ingAlmacenLocalidad" name="localidad"><br>
-                Departamento <input class="form__input" type="text" id="ingAlmacenDepartamento" name="departamento" required><br><br>
-                <input type="hidden" name="ubiAlmacen" id="ingAlmacenCoords">
-                <button class="form__button" id="ingAlmacen" type="button" onclick="myFunction()">Ingresar</button>
-            </form>
+                <form id="almacenForm" action="CRUD/almacenes/Altas.php" method="POST">
+                    Id de almacen <input type="text" class="form__input" name="idAlmacen"><br>
+                    Num <input class="form__input" type="text" id="ingAlmacenNum" name="num"><br>
+                    Calle <input class="form__input" type="text" id="ingAlmacenCalle" name="calle" required><br>
+                    Localidad <input class="form__input" type="text" id="ingAlmacenLocalidad" name="localidad"><br>
+                    Departamento <input class="form__input" type="text" id="ingAlmacenDepartamento" name="departamento" required><br><br>
+                    <input type="hidden" name="ubiAlmacenLat" id="ingAlmacenLat">
+                    <input type="hidden" name="ubiAlmacenLng" id="ingAlmacenLng">
+                    <button class="form__button" id="ingAlmacen" type="button" onclick="var type = ingAlmacen; myFunction();">Ingresar</button>
+                </form>
         </div>
         <div class="form">
             <h2>Eliminar un almacen</h2>
@@ -129,7 +127,7 @@ if (isset($_POST['btncerrar'])) {
                 Localidad <input class="form__input" type="text" id="modAlmacenLocalidad" name="localidad"><br>
                 Departamento <input class="form__input" type="text" id="modAlmacenDepartamento" name="departamento" required><br><br>
                 <input type="hidden" name="ubiAlmacen" id="modAlmacenCoords">
-                <button class="form__button" id="modAlmacen">Modificar</button>
+                <button class="form__button" id="modAlmacen" type="button" onclick="var type = modAlmacen; myFunction();">Modificar</button>
             </form>
         </div>
     </div>
@@ -143,7 +141,7 @@ if (isset($_POST['btncerrar'])) {
                 Localidad <input class="form__input" type="text" id="ingPaqueteLocalidad" name="localidad"><br><br>
                 Departamento <input class="form__input" type="text" id="ingPaqueteDepartamento" name="departamento"><br><br>
                 <input type="hidden" name="coordenadas" id=ingPaqueteCoords">
-                <button type="submit" class="form__button" id="ingPaquete" name="actionbtn">Ingresar</button>
+                <button class="form__button" id="ingPaquete" type="button" onclick="var type = ingPaquete; myFunction();">Ingresar</button>
             </form>
         </div>
         <div class="form" id="list">
@@ -168,7 +166,7 @@ if (isset($_POST['btncerrar'])) {
                 Localidad <input class="form__input" type="text" id="modPaqueteLocalidad" name="localidad"><br><br>
                 Departamento <input class="form__input" type="text" id="modPaqueteDepartamento" name="departamento"><br><br>
                 <input type="hidden" name="coordenadas" id="modPaqueteCoords">
-                <button class="form__button" id="modPaquete" type="submit">Modificar</button>
+                <button class="form__button" id="modPaquete" type="button" onclick="var type = modPaquete; myFunction();">Modificar</button>
             </form>
         </div>
     </div>
@@ -218,108 +216,42 @@ if (isset($_POST['btncerrar'])) {
             </div>
         </div>
     </footer>
-<<<<<<< HEAD
     <script>
         function myFunction() {
-            const num = document.getElementById('ingAlmacenNum').value;
-            const calle = document.getElementById('ingAlmacenCalle').value;
-            const localidad = document.getElementById('ingAlmacenLocalidad').value;
-            const departamento = document.getElementById('ingAlmacenDepartamento').value;
-            const type = 'ingAlmacen';
+            if (type = 'ingAlmacen') {
+                var num = document.getElementById('ingAlmacenNum').value;
+                var calle = document.getElementById('ingAlmacenCalle').value;
+                var localidad = document.getElementById('ingAlmacenLocalidad').value;
+                var departamento = document.getElementById('ingAlmacenDepartamento').value;
+            } else if (type = 'modAlmacen') {
+                var num = document.getElementById('modAlmacenNum').value;
+                var calle = document.getElementById('modAlmacenCalle').value;
+                var localidad = document.getElementById('modAlmacenLocalidad').value;
+                var departamento = document.getElementById('modAlmacenDepartamento').value;
+            } else if (type = 'ingPaquete') {
+                var num = document.getElementById('ingPaqueteNum').value;
+                var calle = document.getElementById('ingPaqueteCalle').value;
+                var localidad = document.getElementById('ingPaqueteLocalidad').value;
+                var departamento = document.getElementById('ingPaqueteDepartamento').value;
+            } else if (type = 'ingPaquete') {
+                var num = document.getElementById('modPaqueteNum').value;
+                var calle = document.getElementById('modPaqueteCalle').value;
+                var localidad = document.getElementById('modPaqueteLocalidad').value;
+                var departamento = document.getElementById('modPaqueteDepartamento').value;
+            }
+
             const direccion = encodeURI(`${num}, ${calle}, ${localidad}, ${departamento}, Uruguay`);
             const apiKey = '3111bb8dce164ee18ff3bfcf4a4bfc24';
             const url = `https://api.opencagedata.com/geocode/v1/json?q=${direccion}&key=${apiKey}`;
-            alert(`${url}`);
-
             fetch(url)
                 .then(response => response.json())
                 .then(data => {
-                    const coordinates = data.results[0].geometry; // Obtener las coordenadas de la respuesta de la API
-                    const lat = coordinates.lat;
-                    const lng = coordinates.lng;
+                    var coordinates = data.results[0].geometry; // Obtener las coordenadas de la respuesta de la API
+                    var lat = coordinates.lat;
+                    var lng = coordinates.lng;
 
-                    document.getElementById(`${type}Coords`).value = `${lat}, ${lng}`;
-                    document.getElementById(`${type}Form`).submit();
-                })
-                .catch(error => {
-                    console.error('Error al obtener las coordenadas:', error);
-                });
-            alert('echo');
-        }
-=======
-
-    <!-- <script>
-    document.getElementById('ingAlmacen').addEventListener('click', function() {
-    var N_puerta = document.getElementById('ingAlmacenNum').value;
-    var calle = document.getElementById('ingAlmacenCalle').value;
-    var departamento = document.getElementById('ingAlmacenDepartamento').value;
-    var pais = "Uruguay"
-
-    // Hacer una solicitud a la API de OpenCage Data para obtener las coordenadas
-    var apiKey = '3111bb8dce164ee18ff3bfcf4a4bfc24'; // Reemplaza 'TU_API_KEY' con tu clave de API de OpenCage Data
-    var url = `https://api.opencagedata.com/geocode/v1/json?q=${N_puerta}+${calle}+${departamento}+${pais}&key=${apiKey}`;
-
-
-    fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            var coordenadas = data.results[0].geometry; // Obtener las coordenadas de la respuesta de la API
-            var lat = coordenadas.lat;
-            var lng = coordenadas.lng;
-
-            console.log(`Coordenadas: ${lat}, ${lng}`);
->>>>>>> 475ddf9696e2aa7083b269babedd2bc5263da7f8
-
-        function modAlmacen() {
-            const num = document.getElementById('modAlmacenNum').value;
-            const calle = document.getElementById('modAlmacenCalle').value;
-            const localidad = document.getElementById('modAlmacenLocalidad').value;
-            const departamento = document.getElementById('modAlmacenDepartamento').value;
-            const type = 'modAlmacen';
-        };
-
-<<<<<<< HEAD
-        function ingPaquete() {
-            const num = document.getElementById('ingPaqueteNum').value;
-            const calle = document.getElementById('ingPaqueteCalle').value;
-            const localidad = document.getElementById('ingPaqueteLocalidad').value;
-            const departamento = document.getElementById('ingPaqueteDepartamento').value;
-            const type = 'ingPaquete';
-            coords();
-        };
-=======
-            // Enviar el formulario
-            document.getElementById('almacenForm').submit();
-        })
-        .catch(error => {
-            console.error('Error al obtener las coordenadas:', error);
-        });
-});
-</script> -->
->>>>>>> 475ddf9696e2aa7083b269babedd2bc5263da7f8
-
-        function modPaquete() {
-            const num = document.getElementById('modPaqueteNum').value;
-            const calle = document.getElementById('modPaqueteCalle').value;
-            const localidad = document.getElementById('modPaqueteLocalidad').value;
-            const departamento = document.getElementById('modPaqueteDepartamento').value;
-            const type = 'modPaquete';
-        };
-
-        function coords() {
-            const direccion = encodeURI(`${num}, ${calle}, ${localidad}, ${departamento}, Uruguay`);
-            const apiKey = '3111bb8dce164ee18ff3bfcf4a4bfc24';
-            const url = `https://api.opencagedata.com/geocode/v1/json?q=${direccion}&key=${apiKey}`;
-            alert(`${url}`);
-
-            fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    const coordinates = data.results[0].geometry; // Obtener las coordenadas de la respuesta de la API
-                    const lat = coordinates.lat;
-                    const lng = coordinates.lng;
-
-                    document.getElementById(`${type}Coords`).value = `${lat}, ${lng}`;
+                    document.getElementById(`${type}Lat`).value = `${lat}`;
+                    document.getElementById(`${type}Lng`).value = `${lng}`;
                     document.getElementById(`${type}Form`).submit();
                 })
                 .catch(error => {

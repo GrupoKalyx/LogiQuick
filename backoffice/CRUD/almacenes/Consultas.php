@@ -7,12 +7,13 @@ $arrayConsulta = array();
 
 foreach ($result->fetch_all(MYSQLI_ASSOC) as $row) {
     $idAlmacen = $row['idAlmacen'];
-    $ubiAlmacen = $row['ubiAlmacen'];
+    $lat = $row['lat'];
+    $lng = $row['lng'];
     $N_puerta = $row['num'];
     $calle = $row['calle'];
     $localidad = $row['localidad'];
     $departamento = $row['departamento'];
-    array_push($arrayConsulta, ['Id de almacen: ' => $idAlmacen, '<br> Ubicación: ' => $ubiAlmacen, '<br> N_puerta: ' => $N_puerta, '<br> Calle: ' => $calle, '<br> Localidad: ' => $localidad, '<br> Departamento: ' => $departamento . '<br><br>']);
+    array_push($arrayConsulta, ['Id de almacen: ' => $idAlmacen, '<br> Ubicación: ' => $lat . ', ' . $lng, '<br> N_puerta: ' => $N_puerta, '<br> Calle: ' => $calle, '<br> Localidad: ' => $localidad, '<br> Departamento: ' => $departamento . '<br><br>']);
 }
 
 foreach ($arrayConsulta as $value) {

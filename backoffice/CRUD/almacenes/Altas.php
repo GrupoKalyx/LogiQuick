@@ -6,14 +6,14 @@ $num = $_POST['num'];
 $calle = $_POST['calle'];
 $localidad = $_POST['localidad'];
 $departamento = $_POST['departamento'];
-$ubiAlmacen = $_POST['ubiAlmacen'];
-echo '<script>alert(' . $ubiAlmacen . ');</script>';
+$lat = $_POST['ubiAlmacenLat'];
+$lng = $_POST['ubiAlmacenLng'];
 
-$query = "INSERT INTO almacenes (idAlmacen, N_puerta, calle, localidad, departamento, ubiAlmacen) VALUES (?, ?, ?, ?, ?, ?, ?)";
-$exc = $conn->execute_query($query, [$idAlmacen, $num, $calle, $localidad, $departamento, $ubiAlmacen]);
+$query = "INSERT INTO almacenes (idAlmacen, num, calle, localidad, departamento, lat, lng) VALUES (?, ?, ?, ?, ?, ?, ?)";
+$exc = $conn->execute_query($query, [$idAlmacen, $num, $calle, $localidad, $departamento, $lat, $lng]);
 
 if ($exc) {
-  echo "<script>alert('Almacen ingresado con éxito.');window.location='../../indexAdmin.php'</script>";
+  echo "<script>alert('Almacen ingresado con éxito.');window.location='../../indexAdmin.php'</scriptalert>";
 } else {
   echo "<script>alert('Ha ocurrido un error inesperado.');window.location='../../indexAdmin.php'</script>";
 }
