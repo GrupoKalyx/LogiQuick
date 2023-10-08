@@ -55,10 +55,19 @@ class modeloPaquetes
         return json_encode($result);
     }
 
-    public static function listadoEnQC()
+    public static function listadoYendoQc()
     {
         $conn = modeloBd::conexion();
-        $query = "SELECT numBulto FROM paquetes WHERE fechaLlegadaQc NOT NULL"; //agregar condicion de no asignacion a otro lote
+        $query = "SELECT numBulto FROM lotean JOIN llevan WHERE "; //agregar condicion de no asignacion a otro lote
+        $result = $conn->execute_query($query);
+        $result = $result->fetch_all(MYSQLI_ASSOC);
+        $conn->close();
+        return json_encode($result);
+    }
+    public static function listadoEnQc()
+    {
+        $conn = modeloBd::conexion();
+        $query = "SELECT numBulto FROM () WHERE )"; //agregar condicion de no asignacion a otro lote
         $result = $conn->execute_query($query);
         $result = $result->fetch_all(MYSQLI_ASSOC);
         $conn->close();
@@ -107,7 +116,7 @@ class modeloPaquetes
         $queryExt = "SELECT * FROM paquetes WHERE numBulto NOT IN (SELECT numBulto FROM lotean) AND numBulto = ? LIMIT 1;";
         $excExt = $conn->execute_query($queryExt, [$id]);
         if (mysqli_num_rows($excExt)) {
-            $estado=    'Aun no ha llegado a nuestra central';
+            $estado = 'Aun no ha llegado a nuestra central';
         } else {
             $query = "";
         }

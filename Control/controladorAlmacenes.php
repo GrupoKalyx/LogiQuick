@@ -47,9 +47,9 @@ class controladorAlmacenes
         modeloAlmacenes::modificacion($idAlmacen, $ubiAlmacen, $calle, $departamento, $localidad, $N_puerta);
     }
 
-    public static function mostrarActual($context){
+    public static function mostrarUltimo($context){
         $idRastreo = $context['idRastreo'];
-        $result = modeloAlmacenes::muestraActual($idRastreo);
+        $result = modeloAlmacenes::muestraUltimo($idRastreo);
         echo $result;
     }
 }

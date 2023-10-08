@@ -38,9 +38,9 @@ class modeloAlmacenes
         return json_encode($result);
     }
 
-    public static function muestraActual($idRastreo){
+    public static function muestraUltimo($idRastreo){
         $conn = modeloBd::conexion();
-        $query = "SELECT a.* FROM almacenes a JOIN van v JOIN Paquetes p JOIN llevan ll WHERE p.idRastreo = ? AND ll.fecha_llegada IS NOT NULL LIMIT 1";
+        $query = "SELECT * FROM almacenes JOIN (SELECT idAlmacen FROM (SELECT * FROM llevan JOIN (SELECT * FROM van JOIN lotean WHERE numBulto = 206624722) WHERE fecha_llegada IS NOT null)";
         $exc = $conn->execute_query($query, [$idRastreo]);
         $result = $exc->fetch_array(MYSQLI_ASSOC);
         $conn->close();

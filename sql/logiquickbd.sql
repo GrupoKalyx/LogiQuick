@@ -121,7 +121,6 @@ CREATE TABLE IF NOT EXISTS `logiquickbd`.`Paquetes` (
   `gmailCliente` VARCHAR(45) NULL,
   `idRastreo` INT NULL,
   `coordenadas` VARCHAR(32) NULL,
-  `fechaLlegadaQc` DATE NULL,
   PRIMARY KEY (`numBulto`));
 
 -- -----------------------------------------------------
@@ -205,15 +204,10 @@ CREATE TABLE IF NOT EXISTS `logiquickbd`.`Almacenes` (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `logiquickbd`.`Van` (
   `idLote` INT NOT NULL,
-  `numBulto` INT NOT NULL,
   `idAlmacen` INT NOT NULL,
-  PRIMARY KEY (`idLote`, `numBulto`, `idAlmacen`),
+  PRIMARY KEY (`idLote`, `idAlmacen`),
     FOREIGN KEY (`idLote`)
     REFERENCES `Lotean` (`idLote`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-    FOREIGN KEY (`numBulto`)
-    REFERENCES `Lotean` (`numBulto`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
     FOREIGN KEY (`idAlmacen`)
