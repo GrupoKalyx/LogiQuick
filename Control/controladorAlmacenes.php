@@ -9,7 +9,7 @@ $context = match ($_SERVER['REQUEST_METHOD']) {
 };
 
 $function = $context['function'];
-controladorPaquetes::$function($context);
+controladorAlmacenes::$function($context);
 
 class controladorAlmacenes
 {
