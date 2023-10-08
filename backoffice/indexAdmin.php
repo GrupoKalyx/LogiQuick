@@ -149,7 +149,7 @@ if (isset($_POST['btncerrar'])) {
     <div class="form__container__backoffice"> <!-- CRUD de Almacenes -->
         <div class="form">
             <h2> Ingresar datos de Almacen</h2>
-            <form action="CRUD/almacenes/Altas.php" method="post">
+            <form id="almacenForm" action="CRUD/almacenes/Altas.php" method="POST">
                 Id de almacen <input type="text" class="form__input" name="idAlmacen"><br>
                 N_puerta <input class="form__input" type="text" id="ingAlmacenNum" name="N_puerta"><br>
                 Calle <input class="form__input" type="text" id="ingAlmacenCalle" name="calle"><br>
@@ -271,22 +271,26 @@ if (isset($_POST['btncerrar'])) {
         </div>
     </footer>
 
-    <script>
+    <!-- <script>
     document.getElementById('ingAlmacen').addEventListener('click', function() {
     var N_puerta = document.getElementById('ingAlmacenNum').value;
     var calle = document.getElementById('ingAlmacenCalle').value;
     var departamento = document.getElementById('ingAlmacenDepartamento').value;
+    var pais = "Uruguay"
 
     // Hacer una solicitud a la API de OpenCage Data para obtener las coordenadas
     var apiKey = '3111bb8dce164ee18ff3bfcf4a4bfc24'; // Reemplaza 'TU_API_KEY' con tu clave de API de OpenCage Data
-    var url = `https://api.opencagedata.com/geocode/v1/json?q=${N_puerta}+${calle}+${departamento}&key=3111bb8dce164ee18ff3bfcf4a4bfc24`;
+    var url = `https://api.opencagedata.com/geocode/v1/json?q=${N_puerta}+${calle}+${departamento}+${pais}&key=${apiKey}`;
+
 
     fetch(url)
         .then(response => response.json())
         .then(data => {
-            var coordinates = data.results[0].geometry; // Obtener las coordenadas de la respuesta de la API
-            var lat = coordinates.lat;
-            var lng = coordinates.lng;
+            var coordenadas = data.results[0].geometry; // Obtener las coordenadas de la respuesta de la API
+            var lat = coordenadas.lat;
+            var lng = coordenadas.lng;
+
+            console.log(`Coordenadas: ${lat}, ${lng}`);
 
             // Asignar las coordenadas al campo oculto del formulario
             document.getElementById('coordIngAlmacen').value = `${lat} , ${lng}`;
@@ -298,7 +302,7 @@ if (isset($_POST['btncerrar'])) {
             console.error('Error al obtener las coordenadas:', error);
         });
 });
-</script>
+</script> -->
 
     
 </body>
