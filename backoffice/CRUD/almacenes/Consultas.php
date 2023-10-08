@@ -8,7 +8,7 @@ $arrayConsulta = array();
 foreach ($result->fetch_all(MYSQLI_ASSOC) as $row) {
     $idAlmacen = $row['idAlmacen'];
     $ubiAlmacen = $row['ubiAlmacen'];
-    $N_puerta = $row['N_puerta'];
+    $N_puerta = $row['num'];
     $calle = $row['calle'];
     $localidad = $row['localidad'];
     $departamento = $row['departamento'];

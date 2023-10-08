@@ -6,7 +6,7 @@ $num = $_POST['num'];
 $calle = $_POST['calle'];
 $localidad = $_POST['localidad'];
 $departamento = $_POST['departamento'];
-$coordenadas = "";
+$coordenadas = $_POST['coordenadas'];
 
 function existe($idRastreo, $conn){
     $query = "SELECT * FROM paquetes WHERE idRastreo = ? LIMIT 1";

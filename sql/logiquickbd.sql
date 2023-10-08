@@ -195,7 +195,7 @@ CREATE TABLE IF NOT EXISTS `logiquickbd`.`Almacenes` (
   `calle` VARCHAR(45) NULL,
   `departamento` VARCHAR(45) NULL,
   `localidad` VARCHAR(45) NULL,
-  `N_puerta` INT NULL,
+  `num` INT NULL,
   `ubiAlmacen` VARCHAR(32) NULL,
   PRIMARY KEY (`idAlmacen`));
 

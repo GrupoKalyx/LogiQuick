@@ -7,8 +7,7 @@ $num = $_POST['num'];
 $calle = $_POST['calle'];
 $localidad = $_POST['localidad'];
 $departamento = $_POST['departamento'];
-
-$coordenadas = $_POST['coordModPaquete'];
+$coordenadas = $_POST['coordenadas'];
 
 $query = "UPDATE paquetes SET gmailCliente = ?, num = ?, calle = ?, localidad = ?, departamento = ?, coordenadas = ? WHERE numBulto = ?";
 $exc = $conn->execute_query($query, [$gmailCliente, $num, $calle, $localidad, $departamento, $coordenadas, $numBulto]);
