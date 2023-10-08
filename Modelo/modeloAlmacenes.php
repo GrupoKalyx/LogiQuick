@@ -40,7 +40,7 @@ class modeloAlmacenes
 
     public static function muestraUltimo($idRastreo){
         $conn = modeloBd::conexion();
-        $query = "SELECT * FROM almacenes JOIN (SELECT idAlmacen FROM (SELECT * FROM llevan JOIN (SELECT * FROM van JOIN lotean WHERE numBulto = 206624722) WHERE fecha_llegada IS NOT null)";
+        $query = "SELECT * FROM almacenes WHERE idAlmacen = (SELECT idAlmacen FROM llevan ll JOIN (SELECT v.idLote, l.numBulto, v.idAlmacen FROM van v JOIN lotean l WHERE l.numBulto = ?) as vl WHERE fecha_llegada IS NOT null);";
         $exc = $conn->execute_query($query, [$idRastreo]);
         $result = $exc->fetch_array(MYSQLI_ASSOC);
         $conn->close();
