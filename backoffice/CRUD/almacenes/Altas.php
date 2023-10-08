@@ -7,6 +7,7 @@ $calle = $_POST['calle'];
 $localidad = $_POST['localidad'];
 $departamento = $_POST['departamento'];
 $ubiAlmacen = $_POST['ubiAlmacen'];
+echo '<script>alert(' . $ubiAlmacen . ');</script>';
 
 $query = "INSERT INTO almacenes (idAlmacen, N_puerta, calle, localidad, departamento, ubiAlmacen) VALUES (?, ?, ?, ?, ?, ?, ?)";
 $exc = $conn->execute_query($query, [$idAlmacen, $num, $calle, $localidad, $departamento, $ubiAlmacen]);
