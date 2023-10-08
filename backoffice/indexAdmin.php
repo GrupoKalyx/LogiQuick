@@ -93,7 +93,11 @@ if (isset($_POST['btncerrar'])) {
     <div class="form__container__backoffice"> <!-- CRUD de Almacenes -->
         <div class="form">
             <h2> Ingresar datos de Almacen</h2>
+<<<<<<< HEAD
             <form action="CRUD/almacenes/Altas.php" method="post" id="ingAlmacenForm">
+=======
+            <form id="almacenForm" action="CRUD/almacenes/Altas.php" method="POST">
+>>>>>>> 475ddf9696e2aa7083b269babedd2bc5263da7f8
                 Id de almacen <input type="text" class="form__input" name="idAlmacen"><br>
                 Num <input class="form__input" type="text" id="ingAlmacenNum" name="num"><br>
                 Calle <input class="form__input" type="text" id="ingAlmacenCalle" name="calle" required><br>
@@ -214,6 +218,7 @@ if (isset($_POST['btncerrar'])) {
             </div>
         </div>
     </footer>
+<<<<<<< HEAD
     <script>
         function myFunction() {
             const num = document.getElementById('ingAlmacenNum').value;
@@ -241,6 +246,29 @@ if (isset($_POST['btncerrar'])) {
                 });
             alert('echo');
         }
+=======
+
+    <!-- <script>
+    document.getElementById('ingAlmacen').addEventListener('click', function() {
+    var N_puerta = document.getElementById('ingAlmacenNum').value;
+    var calle = document.getElementById('ingAlmacenCalle').value;
+    var departamento = document.getElementById('ingAlmacenDepartamento').value;
+    var pais = "Uruguay"
+
+    // Hacer una solicitud a la API de OpenCage Data para obtener las coordenadas
+    var apiKey = '3111bb8dce164ee18ff3bfcf4a4bfc24'; // Reemplaza 'TU_API_KEY' con tu clave de API de OpenCage Data
+    var url = `https://api.opencagedata.com/geocode/v1/json?q=${N_puerta}+${calle}+${departamento}+${pais}&key=${apiKey}`;
+
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            var coordenadas = data.results[0].geometry; // Obtener las coordenadas de la respuesta de la API
+            var lat = coordenadas.lat;
+            var lng = coordenadas.lng;
+
+            console.log(`Coordenadas: ${lat}, ${lng}`);
+>>>>>>> 475ddf9696e2aa7083b269babedd2bc5263da7f8
 
         function modAlmacen() {
             const num = document.getElementById('modAlmacenNum').value;
@@ -250,6 +278,7 @@ if (isset($_POST['btncerrar'])) {
             const type = 'modAlmacen';
         };
 
+<<<<<<< HEAD
         function ingPaquete() {
             const num = document.getElementById('ingPaqueteNum').value;
             const calle = document.getElementById('ingPaqueteCalle').value;
@@ -258,6 +287,16 @@ if (isset($_POST['btncerrar'])) {
             const type = 'ingPaquete';
             coords();
         };
+=======
+            // Enviar el formulario
+            document.getElementById('almacenForm').submit();
+        })
+        .catch(error => {
+            console.error('Error al obtener las coordenadas:', error);
+        });
+});
+</script> -->
+>>>>>>> 475ddf9696e2aa7083b269babedd2bc5263da7f8
 
         function modPaquete() {
             const num = document.getElementById('modPaqueteNum').value;
