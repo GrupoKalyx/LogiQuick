@@ -14,7 +14,9 @@
         $calle = $row['calle'];
         $localidad = $row['localidad'];
         $departamento = $row['departamento'];
-        array_push($arrayConsulta, ['Número de bulto: ' => $numBulto, '<br> Gmail del cliente: ' => $gmailCliente, '<br> ID de rastreo: ' => $idRastreo, '<br> Fecha de entrega: ' => $fechaEntrega, '<br> Num: ' => $num, '<br> Calle: ' => $calle, '<br> Localidad: ' => $localidad, '<br> Departamento: ' => $departamento . '<br><br>']);
+        $lat = $row['lat'];
+        $lng = $row['lng'];
+        array_push($arrayConsulta, ['Número de bulto: ' => $numBulto, '<br> Gmail del cliente: ' => $gmailCliente, '<br> ID de rastreo: ' => $idRastreo, '<br> Fecha de entrega: ' => $fechaEntrega, '<br> Num: ' => $num, '<br> Calle: ' => $calle, '<br> Localidad: ' => $localidad, '<br> Departamento: ' => $departamento, '<br> Destino: ' => $lat . ", ". $lng . '<br><br>']);
     }
 
     foreach ($arrayConsulta as $value) {

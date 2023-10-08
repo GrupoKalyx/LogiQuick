@@ -7,10 +7,11 @@ $num = $_POST['num'];
 $calle = $_POST['calle'];
 $localidad = $_POST['localidad'];
 $departamento = $_POST['departamento'];
-$coordenadas = $_POST['coordenadas'];
+$lat = $_POST['coordenadasLat'];
+$lng = $_POST['coordenadasLng'];
 
-$query = "UPDATE paquetes SET gmailCliente = ?, num = ?, calle = ?, localidad = ?, departamento = ?, coordenadas = ? WHERE numBulto = ?";
-$exc = $conn->execute_query($query, [$gmailCliente, $num, $calle, $localidad, $departamento, $coordenadas, $numBulto]);
+$query = "UPDATE paquetes SET gmailCliente = ?, num = ?, calle = ?, localidad = ?, departamento = ?, lat = ?, lng = ? WHERE numBulto = ?";
+$exc = $conn->execute_query($query, [$gmailCliente, $num, $calle, $localidad, $departamento, $lat, $lng, $numBulto]);
 
 if ($exc) {
   echo "<script>alert('Paquete actualizado con éxito.');window.location='../../indexAdmin.php'</script>";

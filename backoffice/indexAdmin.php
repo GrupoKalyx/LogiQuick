@@ -126,7 +126,8 @@ if (isset($_POST['btncerrar'])) {
                 Calle / Ruta<input class="form__input" type="text" id="modAlmacenCalle" name="calle" required><br>
                 Localidad <input class="form__input" type="text" id="modAlmacenLocalidad" name="localidad"><br>
                 Departamento <input class="form__input" type="text" id="modAlmacenDepartamento" name="departamento" required><br><br>
-                <input type="hidden" name="ubiAlmacen" id="modAlmacenCoords">
+                    <input type="hidden" name="ubiAlmacenLat" id="modAlmacenLat">
+                    <input type="hidden" name="ubiAlmacenLng" id="modAlmacenLng">
                 <button class="form__button" id="modAlmacen" type="button" onclick="var type = modAlmacen; myFunction();">Modificar</button>
             </form>
         </div>
@@ -140,7 +141,8 @@ if (isset($_POST['btncerrar'])) {
                 Calle <input class="form__input" type="text" id="ingPaqueteCalle" name="calle"><br><br>
                 Localidad <input class="form__input" type="text" id="ingPaqueteLocalidad" name="localidad"><br><br>
                 Departamento <input class="form__input" type="text" id="ingPaqueteDepartamento" name="departamento"><br><br>
-                <input type="hidden" name="coordenadas" id=ingPaqueteCoords">
+                    <input type="hidden" name="coordenadasLat" id="ingPaqueteLat">
+                    <input type="hidden" name="coordenadasLng" id="ingPaqueteLng">
                 <button class="form__button" id="ingPaquete" type="button" onclick="var type = ingPaquete; myFunction();">Ingresar</button>
             </form>
         </div>
@@ -165,7 +167,8 @@ if (isset($_POST['btncerrar'])) {
                 Calle <input class="form__input" type="text" id="modPaqueteCalle" name="calle"><br><br>
                 Localidad <input class="form__input" type="text" id="modPaqueteLocalidad" name="localidad"><br><br>
                 Departamento <input class="form__input" type="text" id="modPaqueteDepartamento" name="departamento"><br><br>
-                <input type="hidden" name="coordenadas" id="modPaqueteCoords">
+                    <input type="hidden" name="coordenadasLat" id="modPaqueteLat">
+                    <input type="hidden" name="coordenadasLng" id="modPaqueteLng">
                 <button class="form__button" id="modPaquete" type="button" onclick="var type = modPaquete; myFunction();">Modificar</button>
             </form>
         </div>

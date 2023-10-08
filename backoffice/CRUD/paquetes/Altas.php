@@ -6,7 +6,8 @@ $num = $_POST['num'];
 $calle = $_POST['calle'];
 $localidad = $_POST['localidad'];
 $departamento = $_POST['departamento'];
-$coordenadas = $_POST['coordenadas'];
+$lat = $_POST['coordenadasLat'];
+$lng = $_POST['coordenadasLng'];
 
 function existe($idRastreo, $conn){
     $query = "SELECT * FROM paquetes WHERE idRastreo = ? LIMIT 1";
@@ -23,8 +24,8 @@ do {
 } while (existe($idRastreo, $conn));
 
 
-$query2 = "INSERT INTO paquetes (gmailCliente, idRastreo, num, calle, localidad, departamento, coordenadas) VALUES (?, ?, ?, ?, ?, ?, ?)";
-$exc2 = $conn->execute_query($query2, [$gmailCliente, $idRastreo, $num, $calle, $localidad, $departamento, $coordenadas]);
+$query2 = "INSERT INTO paquetes (gmailCliente, idRastreo, num, calle, localidad, departamento, lat, lng) VALUES (?, ?, ?, ?, ?, ?, ?)";
+$exc2 = $conn->execute_query($query2, [$gmailCliente, $idRastreo, $num, $calle, $localidad, $departamento, $lat, $lng]);
 
 if ($exc2) {
     echo "<script>alert('Paquete ingresado con éxito.');window.location='../../indexAdmin.php'</script>";
