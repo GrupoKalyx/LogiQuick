@@ -13,7 +13,7 @@ controladorAlmacenes::$function($context);
 
 class controladorAlmacenes
 {
-    public function ingresar($context)
+    public static function ingresar($context)
     {
         $idAlmacen = $context['idAlmacen'];
         $ubiAlmacen = $context['ubiAlmacen'];
@@ -24,19 +24,19 @@ class controladorAlmacenes
         modeloAlmacenes::alta($idAlmacen, $ubiAlmacen, $calle, $departamento, $localidad, $N_puerta);
     }
 
-    public function eliminar($context)
+    public static function eliminar($context)
     {
         $idAlmacen = $context['idAlmacen'];
         modeloAlmacenes::baja($idAlmacen);
     }
 
-    public function mostrar($context)
+    public static function mostrar($context)
     {
         $result = modeloAlmacenes::listado();
         echo $result;
     }
 
-    public function modificar($context)
+    public static function modificar($context)
     {
         $idAlmacen = $context['idAlmacen'];
         $ubiAlmacen = $context['ubiAlmacen'];
@@ -47,7 +47,7 @@ class controladorAlmacenes
         modeloAlmacenes::modificacion($idAlmacen, $ubiAlmacen, $calle, $departamento, $localidad, $N_puerta);
     }
 
-    public function mostrarActual($context){
+    public static function mostrarActual($context){
         $idRastreo = $context['idRastreo'];
         $result = modeloAlmacenes::muestraActual($idRastreo);
         echo $result;
