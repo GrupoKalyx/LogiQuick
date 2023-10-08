@@ -57,15 +57,16 @@ document.addEventListener('DOMContentLoaded', function () {
         
                     const response3 = await fetch(`http://localhost/logiquick/Control/controladorAlmacenes.php?function=mostrarActual&idRastreo=${idRastreo}`)
                     const resultado3 = await response3.json();
-        
+                    
                     var resultadoDiv = document.getElementById('resultado');
                     var resultado2Div = document.getElementById('resultado2');
         
                     if (!resultado) {
                         resultadoDiv.textContent = "El paquete no existe o no está registrado aún.";
-                    } else {
+                    } else  {
                         var direccion = resultado.num + ' ' + resultado.calle + ', ' + resultado.departamento + ', Uruguay';
-                        var direccionAlmacen = resultado3.N_puerta + ' ' + resultado.calle + ', ' + resultado.departamento + ', Uruguay';
+                        var direccionAlmacen = resultado3.N_puerta + ' ' + resultado3.calle + ', ' + resultado3.departamento + ', Uruguay';
+                        console.log(resultado3)
         
                         resultadoDiv.textContent = "Dirección de entrega: " + direccion;
                         resultado2Div.textContent = "Estado del Paquete: " + resultado2;
@@ -100,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                 attribution: '© OpenStreetMap contributors'
                             }).addTo(map);
         
-                            var destinoMarker = L.marker([latitudDestino, longitudDestino]).addTo(map);
+                             L.marker([latitudDestino, longitudDestino]).addTo(map);
         
                             L.Routing.control({
                                 waypoints: [
