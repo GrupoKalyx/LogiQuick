@@ -94,16 +94,15 @@ if (isset($_POST['btncerrar'])) {
         <div class="form">
             <h2> Ingresar datos de Almacen</h2>
             <form action="CRUD/almacenes/Altas.php" method="post" id="ingAlmacenForm">
-                <form id="almacenForm" action="CRUD/almacenes/Altas.php" method="POST">
-                    Id de almacen <input type="text" class="form__input" name="idAlmacen"><br>
-                    Num <input class="form__input" type="text" id="ingAlmacenNum" name="num"><br>
-                    Calle <input class="form__input" type="text" id="ingAlmacenCalle" name="calle" required><br>
-                    Localidad <input class="form__input" type="text" id="ingAlmacenLocalidad" name="localidad"><br>
-                    Departamento <input class="form__input" type="text" id="ingAlmacenDepartamento" name="departamento" required><br><br>
-                    <input type="hidden" name="ubiAlmacenLat" id="ingAlmacenLat">
-                    <input type="hidden" name="ubiAlmacenLng" id="ingAlmacenLng">
-                    <button class="form__button" id="ingAlmacen" type="button" onclick="var type = ingAlmacen; myFunction();">Ingresar</button>
-                </form>
+                Id de almacen <input type="text" class="form__input" name="idAlmacen"><br>
+                Num <input class="form__input" type="text" id="ingAlmacenNum" name="num"><br>
+                Calle <input class="form__input" type="text" id="ingAlmacenCalle" name="calle" required><br>
+                Localidad <input class="form__input" type="text" id="ingAlmacenLocalidad" name="localidad"><br>
+                Departamento <input class="form__input" type="text" id="ingAlmacenDepartamento" name="departamento" required><br><br>
+                <input type="hidden" name="ubiAlmacenLat" id="ingAlmacenLat">
+                <input type="hidden" name="ubiAlmacenLng" id="ingAlmacenLng">
+                <button class="form__button" id="ingAlmacen" type="button" onclick="var type = ingAlmacen; myFunction();">Ingresar</button>
+            </form>
         </div>
         <div class="form">
             <h2>Eliminar un almacen</h2>
@@ -119,15 +118,15 @@ if (isset($_POST['btncerrar'])) {
         </div>
         <div class="form">
             <h2> Ingresar datos de Almacen a modificar</h2>
-            <form action="CRUD/almacenes/Modificaciones.php" method="post">
+            <form action="CRUD/almacenes/Modificaciones.php" method="post" id="modAlmacenForm">
                 Id de almacen <input class="form__input" type="text" name="idAlmacen">
                 <h2>Nuevos datos</h2>
                 Num <input class="form__input" type="text" id="modAlmacenNum" name="num"><br>
                 Calle / Ruta<input class="form__input" type="text" id="modAlmacenCalle" name="calle" required><br>
                 Localidad <input class="form__input" type="text" id="modAlmacenLocalidad" name="localidad"><br>
                 Departamento <input class="form__input" type="text" id="modAlmacenDepartamento" name="departamento" required><br><br>
-                    <input type="hidden" name="ubiAlmacenLat" id="modAlmacenLat">
-                    <input type="hidden" name="ubiAlmacenLng" id="modAlmacenLng">
+                <input type="hidden" name="ubiAlmacenLat" id="modAlmacenLat">
+                <input type="hidden" name="ubiAlmacenLng" id="modAlmacenLng">
                 <button class="form__button" id="modAlmacen" type="button" onclick="var type = modAlmacen; myFunction();">Modificar</button>
             </form>
         </div>
@@ -135,14 +134,14 @@ if (isset($_POST['btncerrar'])) {
     <div class="form__container__backoffice"> <!-- CRUD de Paquetes-->
         <div class="form">
             <h2>Ingresar paquete</h2>
-            <form action="CRUD\paquetes\Altas.php" method="post">
+            <form action="CRUD\paquetes\Altas.php" method="post" id="ingPaqueteForm">
                 Correo del cliente <input class="form__input" type="text" name="gmailCliente"><br><br>
                 Numero <input class="form__input" type="text" id="ingPaqueteNum" name="num"><br><br>
                 Calle <input class="form__input" type="text" id="ingPaqueteCalle" name="calle"><br><br>
                 Localidad <input class="form__input" type="text" id="ingPaqueteLocalidad" name="localidad"><br><br>
                 Departamento <input class="form__input" type="text" id="ingPaqueteDepartamento" name="departamento"><br><br>
-                    <input type="hidden" name="coordenadasLat" id="ingPaqueteLat">
-                    <input type="hidden" name="coordenadasLng" id="ingPaqueteLng">
+                <input type="hidden" name="coordenadasLat" id="ingPaqueteLat">
+                <input type="hidden" name="coordenadasLng" id="ingPaqueteLng">
                 <button class="form__button" id="ingPaquete" type="button" onclick="var type = ingPaquete; myFunction();">Ingresar</button>
             </form>
         </div>
@@ -160,15 +159,15 @@ if (isset($_POST['btncerrar'])) {
         </div>
         <div class="form">
             <h2>Modificar datos de paquete</h2>
-            <form action="CRUD\paquetes\Modificaciones.php" method="post">
+            <form action="CRUD\paquetes\Modificaciones.php" method="post" id="modPaqueteForm">
                 Numero de bulto <input class="form__input" type="text" name="numBulto" required><br><br>
                 Correo del cliente <input class="form__input" type="text" name="gmailCliente"><br><br>
                 Numero <input class="form__input" type="text" id="modPaqueteNum" name="num"><br><br>
                 Calle <input class="form__input" type="text" id="modPaqueteCalle" name="calle"><br><br>
                 Localidad <input class="form__input" type="text" id="modPaqueteLocalidad" name="localidad"><br><br>
                 Departamento <input class="form__input" type="text" id="modPaqueteDepartamento" name="departamento"><br><br>
-                    <input type="hidden" name="coordenadasLat" id="modPaqueteLat">
-                    <input type="hidden" name="coordenadasLng" id="modPaqueteLng">
+                <input type="hidden" name="coordenadasLat" id="modPaqueteLat">
+                <input type="hidden" name="coordenadasLng" id="modPaqueteLng">
                 <button class="form__button" id="modPaquete" type="button" onclick="var type = modPaquete; myFunction();">Modificar</button>
             </form>
         </div>
@@ -221,22 +220,22 @@ if (isset($_POST['btncerrar'])) {
     </footer>
     <script>
         function myFunction() {
-            if (type = 'ingAlmacen') {
+            if (`${type}` == 'ingAlmacen') {
                 var num = document.getElementById('ingAlmacenNum').value;
                 var calle = document.getElementById('ingAlmacenCalle').value;
                 var localidad = document.getElementById('ingAlmacenLocalidad').value;
                 var departamento = document.getElementById('ingAlmacenDepartamento').value;
-            } else if (type = 'modAlmacen') {
+            } else if (t(`${type}`ype == 'modAlmacen') {
                 var num = document.getElementById('modAlmacenNum').value;
                 var calle = document.getElementById('modAlmacenCalle').value;
                 var localidad = document.getElementById('modAlmacenLocalidad').value;
                 var departamento = document.getElementById('modAlmacenDepartamento').value;
-            } else if (type = 'ingPaquete') {
+            } else if ((`${type}` == 'ingPaquete') {
                 var num = document.getElementById('ingPaqueteNum').value;
                 var calle = document.getElementById('ingPaqueteCalle').value;
                 var localidad = document.getElementById('ingPaqueteLocalidad').value;
                 var departamento = document.getElementById('ingPaqueteDepartamento').value;
-            } else if (type = 'ingPaquete') {
+            } else if ((`${type}` == 'ingPaquete') {
                 var num = document.getElementById('modPaqueteNum').value;
                 var calle = document.getElementById('modPaqueteCalle').value;
                 var localidad = document.getElementById('modPaqueteLocalidad').value;
