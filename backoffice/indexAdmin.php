@@ -47,6 +47,7 @@ if (isset($_POST['btncerrar'])) {
             <b></b>
         </h1>
     </div>
+    
     <div class="form__container__backoffice"> <!-- CRUD de Usuarios -->
         <div class="form">
             <h2>Ingresar Usuarios Nuevos</h2>
@@ -90,6 +91,7 @@ if (isset($_POST['btncerrar'])) {
             </form>
         </div>
     </div>
+
     <div class="form__container__backoffice"> <!-- CRUD de Almacenes -->
         <div class="form">
             <h2> Ingresar datos de Almacen</h2>
@@ -131,6 +133,7 @@ if (isset($_POST['btncerrar'])) {
             </form>
         </div>
     </div>
+
     <div class="form__container__backoffice"> <!-- CRUD de Paquetes-->
         <div class="form">
             <h2>Ingresar paquete</h2>
@@ -172,6 +175,7 @@ if (isset($_POST['btncerrar'])) {
             </form>
         </div>
     </div>
+
     <div class="form__container__backoffice"> <!-- CRUD de Lotes -->
         <div class="form">
             <h2>Ingresar lote</h2>
@@ -207,6 +211,7 @@ if (isset($_POST['btncerrar'])) {
             </form>
         </div>
     </div>
+
     <footer>
         <div class="footer">
             <ul class="footer_list">
