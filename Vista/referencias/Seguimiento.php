@@ -28,7 +28,7 @@
     <header>
         <nav class="navbar">
             <div class="navbar__logo">
-                <img src="assets/logo.png" alt="logo">
+                <img src="../assets/logo.png" alt="logo">
             </div>
             <ul class="navbar__list">
                 <li class="navbar__list__item">
