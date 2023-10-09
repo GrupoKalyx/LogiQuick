@@ -225,17 +225,17 @@ if (isset($_POST['btncerrar'])) {
                 var calle = document.getElementById('ingAlmacenCalle').value;
                 var localidad = document.getElementById('ingAlmacenLocalidad').value;
                 var departamento = document.getElementById('ingAlmacenDepartamento').value;
-            } else if (t(`${type}`ype == 'modAlmacen') {
+            } else if (`${type}` == 'modAlmacen') {
                 var num = document.getElementById('modAlmacenNum').value;
                 var calle = document.getElementById('modAlmacenCalle').value;
                 var localidad = document.getElementById('modAlmacenLocalidad').value;
                 var departamento = document.getElementById('modAlmacenDepartamento').value;
-            } else if ((`${type}` == 'ingPaquete') {
+            } else if (`${type}` == 'ingPaquete') {
                 var num = document.getElementById('ingPaqueteNum').value;
                 var calle = document.getElementById('ingPaqueteCalle').value;
                 var localidad = document.getElementById('ingPaqueteLocalidad').value;
                 var departamento = document.getElementById('ingPaqueteDepartamento').value;
-            } else if ((`${type}` == 'ingPaquete') {
+            } else if (`${type}` == 'ingPaquete') {
                 var num = document.getElementById('modPaqueteNum').value;
                 var calle = document.getElementById('modPaqueteCalle').value;
                 var localidad = document.getElementById('modPaqueteLocalidad').value;
