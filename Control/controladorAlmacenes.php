@@ -1,5 +1,6 @@
 <?php
 require '../Modelo/modeloAlmacenes.php';
+require '../Modelo/modeloPaquetes.php.php';
 
 $context = match ($_SERVER['REQUEST_METHOD']) {
     'GET' => $_GET,
