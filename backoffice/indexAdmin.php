@@ -101,7 +101,7 @@ if (isset($_POST['btncerrar'])) {
                 Departamento <input class="form__input" type="text" id="ingAlmacenDepartamento" name="departamento" required><br><br>
                 <input type="hidden" name="ubiAlmacenLat" id="ingAlmacenLat">
                 <input type="hidden" name="ubiAlmacenLng" id="ingAlmacenLng">
-                <button class="form__button" id="ingAlmacen" type="button" onclick="var type = ingAlmacen; myFunction();">Ingresar</button>
+                <button class="form__button" id="ingAlmacen" type="button" onclick="myFunction(ingAlmacen);">Ingresar</button>
             </form>
         </div>
         <div class="form">
@@ -127,7 +127,7 @@ if (isset($_POST['btncerrar'])) {
                 Departamento <input class="form__input" type="text" id="modAlmacenDepartamento" name="departamento" required><br><br>
                 <input type="hidden" name="ubiAlmacenLat" id="modAlmacenLat">
                 <input type="hidden" name="ubiAlmacenLng" id="modAlmacenLng">
-                <button class="form__button" id="modAlmacen" type="button" onclick="var type = modAlmacen; myFunction();">Modificar</button>
+                <button class="form__button" id="modAlmacen" type="button" onclick="myFunction(modAlmacen);">Modificar</button>
             </form>
         </div>
     </div>
@@ -142,7 +142,7 @@ if (isset($_POST['btncerrar'])) {
                 Departamento <input class="form__input" type="text" id="ingPaqueteDepartamento" name="departamento"><br><br>
                 <input type="hidden" name="coordenadasLat" id="ingPaqueteLat">
                 <input type="hidden" name="coordenadasLng" id="ingPaqueteLng">
-                <button class="form__button" id="ingPaquete" type="button" onclick="var type = ingPaquete; myFunction();">Ingresar</button>
+                <button class="form__button" id="ingPaquete" type="button" onclick="myFunction(ingPaquete);">Ingresar</button>
             </form>
         </div>
         <div class="form" id="list">
@@ -168,7 +168,7 @@ if (isset($_POST['btncerrar'])) {
                 Departamento <input class="form__input" type="text" id="modPaqueteDepartamento" name="departamento"><br><br>
                 <input type="hidden" name="coordenadasLat" id="modPaqueteLat">
                 <input type="hidden" name="coordenadasLng" id="modPaqueteLng">
-                <button class="form__button" id="modPaquete" type="button" onclick="var type = modPaquete; myFunction();">Modificar</button>
+                <button class="form__button" id="modPaquete" type="button" onclick="myFunction(modPaquete);">Modificar</button>
             </form>
         </div>
     </div>
@@ -219,7 +219,7 @@ if (isset($_POST['btncerrar'])) {
         </div>
     </footer>
     <script>
-        function myFunction() {
+        function myFunction(type) {
             if (`${type}` == 'ingAlmacen') {
                 var num = document.getElementById('ingAlmacenNum').value;
                 var calle = document.getElementById('ingAlmacenCalle').value;
@@ -235,7 +235,7 @@ if (isset($_POST['btncerrar'])) {
                 var calle = document.getElementById('ingPaqueteCalle').value;
                 var localidad = document.getElementById('ingPaqueteLocalidad').value;
                 var departamento = document.getElementById('ingPaqueteDepartamento').value;
-            } else if (`${type}` == 'ingPaquete') {
+            } else if (`${type}` == 'modPaquete') {
                 var num = document.getElementById('modPaqueteNum').value;
                 var calle = document.getElementById('modPaqueteCalle').value;
                 var localidad = document.getElementById('modPaqueteLocalidad').value;
