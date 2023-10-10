@@ -255,7 +255,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
                 try {
                     // Hacer el fetch del almacén asociado al paquete clickeado
-                    const response = await fetch(`http://localhost/LogiQuick/Control/controladorAlmacenes.php?function=mostrarUltimo&idRastreo=${idRastreo}`, {
+                    const response = await fetch(`http://localhost/LogiQuick/Control/controladorAlmacenes.php?function=mostrarUltimo&idRastreo=123`, {
                         headers: {
                             'Cache-Control': 'no-cache'
                         }
