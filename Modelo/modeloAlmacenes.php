@@ -46,10 +46,10 @@ class modeloAlmacenes
                   FROM van v JOIN lotean l 
                   WHERE l.numBulto IN 
                       (SELECT numBulto FROM paquetes WHERE idRastreo = ?)) as vl 
-                  WHERE fecha_llegada IS NOT null);";
+                  WHERE fecha_llegada IS NOT null) ;";
     
-        $exc = $conn->execute_query($query, [$idRastreo]);
-        $result = $exc->fetch_all(MYSQLI_ASSOC);
+        $exc = $conn->execute_query($query, [$idRastreo]);  
+        $result = $exc->fetch_array(MYSQLI_ASSOC);
         $conn->close();
         return json_encode($result);
     }
