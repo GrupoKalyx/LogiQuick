@@ -38,12 +38,20 @@ class modeloAlmacenes
         return json_encode($result);
     }
 
-    public static function muestraUltimo($idRastreo){
+    public static function muestraUltimo($idRastreo) {
         $conn = modeloBd::conexion();
-        $query = "SELECT * FROM almacenes WHERE idAlmacen = (SELECT idAlmacen FROM llevan ll JOIN (SELECT v.idLote, l.numBulto, v.idAlmacen FROM van v JOIN lotean l WHERE l.numBulto = (SELECT numBulto FROM paquetes WHERE idRastreo = ?)) as vl WHERE fecha_llegada IS NOT null);";
+        $query = "SELECT * FROM almacenes WHERE idAlmacen IN 
+                  (SELECT idAlmacen FROM llevan ll 
+                  JOIN (SELECT v.idLote, l.numBulto, v.idAlmacen 
+                  FROM van v JOIN lotean l 
+                  WHERE l.numBulto IN 
+                      (SELECT numBulto FROM paquetes WHERE idRastreo = ?)) as vl 
+                  WHERE fecha_llegada IS NOT null);";
+    
         $exc = $conn->execute_query($query, [$idRastreo]);
-        $result = $exc->fetch_array(MYSQLI_ASSOC);
+        $result = $exc->fetch_all(MYSQLI_ASSOC);
         $conn->close();
         return json_encode($result);
     }
+        
 }
