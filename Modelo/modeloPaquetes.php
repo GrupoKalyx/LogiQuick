@@ -118,6 +118,7 @@ class modeloPaquetes
         if (mysqli_num_rows($excExt)) {
             $estado = 'Aun no ha llegado a nuestra central';
         } else {
+            $estado = 'ha llegado a nuestra central';
             $query = "";
         }
         $conn->close();

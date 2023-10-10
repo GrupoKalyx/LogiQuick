@@ -1,6 +1,8 @@
 <?php
 require '../Modelo/modeloAlmacenes.php';
 
+    
+
 $context = match ($_SERVER['REQUEST_METHOD']) {
     'GET' => $_GET,
     'POST' => $_POST,
@@ -50,7 +52,6 @@ class controladorAlmacenes
     public static function mostrarUltimo($context){
         $idRastreo = $context['idRastreo'];
         $result = modeloAlmacenes::muestraUltimo($idRastreo);
-        var_dump($result);
         echo $result;
     }
 }
