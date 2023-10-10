@@ -151,67 +151,146 @@
 // }
 // });
 
-document.addEventListener('DOMContentLoaded', async function () {
-    try {
-        const response = await fetch('http://localhost/logiquick/Control/controladorPaquetes.php?function=listar');
-        const paquetes = await response.json();
-        const tabla = document.getElementById('paquetesTable').getElementsByTagName('tbody')[0];
+    // document.addEventListener('DOMContentLoaded', async function () {
+    //     try {
+    //         const response = await fetch('http://localhost/logiquick/Control/controladorPaquetes.php?function=listar');
+    //         const paquetes = await response.json();
+    //         const tabla = document.getElementById('paquetesTable').getElementsByTagName('tbody')[0];
 
-        paquetes.forEach(async paquete => {
-            const fila = tabla.insertRow();
-            const celdaId = fila.insertCell();
-            const celdaDireccion = fila.insertCell();
+    //         paquetes.forEach(async paquete => {
+    //             const fila = tabla.insertRow();
+    //             const celdaId = fila.insertCell();
+    //             const celdaDireccion = fila.insertCell();
 
-            celdaId.textContent = paquete.numBulto;
-            celdaDireccion.textContent = paquete.num + ' ' + paquete.calle + ', ' + paquete.departamento;
+    //             celdaId.textContent = paquete.numBulto;
+    //             celdaDireccion.textContent = paquete.num + ' ' + paquete.calle + ', ' + paquete.departamento;
 
-            fila.setAttribute('data-id', paquete.id);
+    //             fila.setAttribute('data-id', paquete.id);
 
-            fila.addEventListener('click', async function () {
-                eliminarMapa();
+    //             fila.addEventListener('click', async function () {
+    //                 eliminarMapa();
+    //                 const almacenes = await obtenerDatosAlmacen(paquete.idRastreo);
+    //                 console.log(almacenes);
+    //                 if (almacenes && almacenes.lat && almacenes.lng) {
+    //                     marcarRutaEnMapa(paquete.lat, paquete.lng, almacenes.lat, almacenes.lng);
+    //                 } else {
+    //                     console.error('No se encontraron coordenadas para el almacén o el paquete.');
+    //                 }
+    //             });
+    //         });
+    //     } catch (error) {
+    //         console.error('Error en la solicitud:', error);
+    //     }
+
+    //     let map = null;
+
+    //     async function eliminarMapa() {
+    //         if (map) {
+    //             map.remove();
+    //             map = null;
+    //         }
+    //     }
+
+    //     async function marcarRutaEnMapa(latitudDestino, longitudDestino, latitudAlmacen, longitudAlmacen) {
+    //         map = L.map('map').setView([latitudDestino, longitudDestino], 13);
+
+    //         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    //             attribution: '© OpenStreetMap contributors'
+    //         }).addTo(map);
+
+    //         const destinoMarker = L.marker([latitudDestino, longitudDestino]).addTo(map);
+
+    //         L.Routing.control({
+    //             waypoints: [
+    //                 L.latLng(latitudAlmacen, longitudAlmacen),
+    //                 L.latLng(latitudDestino, longitudDestino)
+    //             ],
+    //             routeWhileDragging: true,
+    //             show: true,
+    //             language: 'es'
+    //         }).addTo(map);
+    //     }
+
+    //     async function obtenerDatosAlmacen(idRastreo) {
+    //         const response = await fetch(`http://localhost/LogiQuick/Control/controladorAlmacenes.php?function=mostrarUltimo&idRastreo=${idRastreo}`);
+    //         return response.json();
+    //     }
+    // });
+
+
+    document.addEventListener('DOMContentLoaded', async function () {
+        try {
+            const response = await fetch('http://localhost/logiquick/Control/controladorPaquetes.php?function=listar');
+            const paquetes = await response.json();
+            const tabla = document.getElementById('paquetesTable').getElementsByTagName('tbody')[0];
+    
+            const resultados = await Promise.all(paquetes.map(async paquete => {
                 const almacenes = await obtenerDatosAlmacen(paquete.idRastreo);
-                if (almacenes && almacenes.lat && almacenes.lng) {
-                    marcarRutaEnMapa(paquete.lat, paquete.lng, almacenes.lat, almacenes.lng);
-                } else {
-                    console.error('No se encontraron coordenadas para el almacén o el paquete.');
-                }
-            });
-        });
-    } catch (error) {
-        console.error('Error en la solicitud:', error);
-    }
-
-    let map = null;
-
-    async function eliminarMapa() {
-        if (map) {
-            map.remove();
-            map = null;
+                return { paquete, almacenes };
+            }));
+    
+            for (const { paquete, almacenes } of resultados) {
+                const fila = tabla.insertRow();
+                const celdaId = fila.insertCell();
+                const celdaDireccion = fila.insertCell();
+    
+                celdaId.textContent = paquete.numBulto;
+                celdaDireccion.textContent = paquete.num + ' ' + paquete.calle + ', ' + paquete.departamento;
+    
+                fila.setAttribute('data-id', paquete.numBulto); // Utilizando numBulto como identificador en la fila
+    
+                fila.addEventListener('click', async function () {
+                    eliminarMapa();
+                    console.log(almacenes)
+                    if (almacenes && almacenes.lat && almacenes.lng) {
+                        marcarRutaEnMapa(paquete.lat, paquete.lng, almacenes.lat, almacenes.lng);
+                    } else {
+                        console.error('Datos de latitud y longitud inválidos para el almacén o el paquete.');
+                    }
+                });
+            }
+        } catch (error) {
+            console.error('Error en la solicitud:', error);
         }
-    }
-
-    async function marcarRutaEnMapa(latitudDestino, longitudDestino, latitudAlmacen, longitudAlmacen) {
-        map = L.map('map').setView([latitudDestino, longitudDestino], 13);
-
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap contributors'
-        }).addTo(map);
-
-        const destinoMarker = L.marker([latitudDestino, longitudDestino]).addTo(map);
-
-        L.Routing.control({
-            waypoints: [
-                L.latLng(latitudAlmacen, longitudAlmacen),
-                L.latLng(latitudDestino, longitudDestino)
-            ],
-            routeWhileDragging: true,
-            show: true,
-            language: 'es'
-        }).addTo(map);
-    }
-
-    async function obtenerDatosAlmacen(idRastreo) {
-        const response = await fetch(`http://localhost/LogiQuick/Control/controladorAlmacenes.php?function=mostrarUltimo&idRastreo=${idRastreo}`);
-        return response.json();
-    }
-});
+    
+        let map = null;
+    
+        async function eliminarMapa() {
+            if (map) {
+                map.remove();
+                map = null;
+            }
+        }
+    
+        async function marcarRutaEnMapa(latitudDestino, longitudDestino, latitudAlmacen, longitudAlmacen) {
+            map = L.map('map').setView([latitudDestino, longitudDestino], 13);
+    
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+    
+            const destinoMarker = L.marker([latitudDestino, longitudDestino]).addTo(map);
+    
+            L.Routing.control({
+                waypoints: [
+                    L.latLng(latitudAlmacen, longitudAlmacen),
+                    L.latLng(latitudDestino, longitudDestino)
+                ],
+                routeWhileDragging: true,
+                show: true,
+                language: 'es'
+            }).addTo(map);
+        }
+    
+        async function obtenerDatosAlmacen(idRastreo) {
+            try {
+                const response = await fetch(`http://localhost/LogiQuick/Control/controladorAlmacenes.php?function=mostrarUltimo&idRastreo=${idRastreo}`);
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error('Error al obtener datos del almacén:', error);
+                return null;
+            }
+        }
+    });
+    
