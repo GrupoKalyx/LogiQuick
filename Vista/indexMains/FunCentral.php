@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../estilos/style.css">
-    <link rel="icon" type="image/x-icon" href="assets/logo.png">
+    <link rel="icon" type="image/x-icon" href="../assets/logo.png">
     <title>LogiQuick</title>
     <!-- <script src="Traducir.js"></script> -->
 </head>
@@ -14,12 +14,9 @@
     <header>
         <nav class="navbar">
             <div class="navbar__logo">
-                <img src="assets/logo.png" alt="logo">
+                <img src="../assets/logo.png" alt="logo">
             </div>
             <ul class="navbar__list">
-                <li class="navbar__list__item">
-                    <a href="#">Verificar Entrada</a>
-                </li>
                 <li class="navbar__list__item">
                     <a href="#">Asignación</a>
                     <ul class="navbar__submenu">
@@ -43,11 +40,12 @@
                     <a href="#">Cerrar Sesión</a>
                 </button>
             </div>
-
             <!-- <button class="form__button" id="traductor-btn">Traducir Pagina </button> -->
         </nav>
     </header>
+
     <div class="espacio__blanco"></div>
+
     <footer>
         <div class="footer">
             <ul class="footer_list">
