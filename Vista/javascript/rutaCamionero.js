@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', async function () {
     try {
-        const response = await fetch('http://localhost/logiquick/Control/controladorLotes.php?function=LotesyAlmacen', {
+        const response = await fetch('http://localhost/LogiQuick/Control/controladorVan.php?function=listar', {
             headers: {
                 'Cache-Control': 'no-cache'
             }
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                 console.log(idLote);
 
                 try {
-                    const response = await fetch(`http://localhost/LogiQuick/Control/controladorLotes.php?function=mostrarAlmacenAsociado&idLote=${idLote}`, {
+                    const response = await fetch(`http://localhost/LogiQuick/Control/controladorVan.php?function=mostrarAlmacenDeLote&idLote=${idLote}`, {
                         headers: {
                             'Cache-Control': 'no-cache'
                         }

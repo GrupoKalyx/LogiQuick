@@ -7,7 +7,7 @@ class modeloLotes
     public static function alta()
     {
         $conn = modeloBd::conexion();
-        $query = "INSERT INTO lotes VALUES ();"; 
+        $query = "INSERT INTO lotes VALUES ();";
         $conn->execute_query($query);
         $queryLastId = "SELECT LAST_INSERT_ID();";
         $excLastId = $conn->execute_query($queryLastId);
@@ -15,7 +15,7 @@ class modeloLotes
         $result = $fetch['LAST_INSERT_ID()'];
         $conn->close();
         return json_encode($result);
-    } 
+    }
 
     public static function baja($idLote)
     {
@@ -44,6 +44,7 @@ class modeloLotes
         $conn->close();
         return $num;
     }
+
     public static function paquetesAsociados($idLote)
     {
         $conn = modeloBd::conexion();
@@ -51,34 +52,8 @@ class modeloLotes
         FROM Paquetes
         JOIN Lotean ON Paquetes.numBulto = Lotean.numBulto
         WHERE Lotean.idLote = ?;";
-        
         $exc = $conn->execute_query($query, [$idLote]);
         $result = $exc->fetch_array(MYSQLI_ASSOC);
-        $conn->close();
-        return json_encode($result);
-    }
-    public static function muestraAsociado($idLote)
-    {
-        $conn = modeloBd::conexion();
-        $query = "SELECT a.*
-        FROM Almacenes a
-        JOIN Van v ON a.idAlmacen = v.idAlmacen
-        JOIN Lotean l ON v.idLote = l.idLote
-        WHERE l.idLote = ?";
-
-        $exc = $conn->execute_query($query, [$idLote]);
-        $result = $exc->fetch_array(MYSQLI_ASSOC);
-        $conn->close();
-        return json_encode($result);
-    }
-
-
-    public static function LotesyAlmacen()
-    {
-        $conn = modeloBd::conexion();
-        $query = "SELECT * FROM van";
-        $exc = $conn->execute_query($query);
-        $result = $exc->fetch_all(MYSQLI_ASSOC);
         $conn->close();
         return json_encode($result);
     }
