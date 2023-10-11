@@ -16,8 +16,9 @@ class controladorCamiones
 
         public static function ingresar($context)
         {
-                $matricula = modeloCamiones::alta();
-                echo $matricula;
+                $matricula = $context['matricula'];
+                $disponibilidad = $context['disponibilidad'];
+                modeloCamiones::alta($matricula, $disponibilidad);
         }
 
         public static function eliminar($context)

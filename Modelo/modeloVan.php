@@ -15,8 +15,8 @@ class modeloVan
         public static function baja($idLote, $idAlmacen)
         {
                 $conn = modeloBd::conexion();
-                $query = "DELETE FROM lotes WHERE idLote = ?";
-                $conn->execute_query($query, [$idLote]);
+                $query = "DELETE FROM van WHERE idLote = ? AND idAlmacen ?";
+                $conn->execute_query($query, [$idLote, $idAlmacen]);
                 $conn->close();
         }
 

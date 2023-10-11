@@ -1,6 +1,6 @@
 <?php
 function superControlador($url, $metodo, $parameters)
-{ 
+{
         $ch = curl_init();
         $parameters = http_build_query($parameters);
         curl_setopt($ch, CURLOPT_URL, $url);
