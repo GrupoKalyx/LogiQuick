@@ -113,6 +113,7 @@ CREATE TABLE IF NOT EXISTS `logiquickbd`.`Conducen` (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `logiquickbd`.`Paquetes` (
   `numBulto` INT NOT NULL AUTO_INCREMENT,
+  `fechaLlegadaQc`DATE NULL,
   `fechaEntrega` DATE NULL,
   `calle` VARCHAR(45) NULL,
   `localidad` VARCHAR(45) NULL,

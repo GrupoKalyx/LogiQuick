@@ -225,27 +225,22 @@ if (isset($_POST['btncerrar'])) {
     </footer>
     <script>
         function myFunction(type) {
-            alert(type);
             if (`${type}` == 'ingAlmacen') {
-                alert('a');
                 var num = document.getElementById('ingAlmacenNum').value;
                 var calle = document.getElementById('ingAlmacenCalle').value;
                 var localidad = document.getElementById('ingAlmacenLocalidad').value;
                 var departamento = document.getElementById('ingAlmacenDepartamento').value;
             } else if (`${type}` == 'modAlmacen') {
-                alert('b');
                 var num = document.getElementById('modAlmacenNum').value;
                 var calle = document.getElementById('modAlmacenCalle').value;
                 var localidad = document.getElementById('modAlmacenLocalidad').value;
                 var departamento = document.getElementById('modAlmacenDepartamento').value;
             } else if (`${type}` == 'ingPaquete') {
-                alert('c');
                 var num = document.getElementById('ingPaqueteNum').value;
                 var calle = document.getElementById('ingPaqueteCalle').value;
                 var localidad = document.getElementById('ingPaqueteLocalidad').value;
                 var departamento = document.getElementById('ingPaqueteDepartamento').value;
             } else if (`${type}` == 'modPaquete') {
-                alert('d');
                 var num = document.getElementById('modPaqueteNum').value;
                 var calle = document.getElementById('modPaqueteCalle').value;
                 var localidad = document.getElementById('modPaqueteLocalidad').value;
