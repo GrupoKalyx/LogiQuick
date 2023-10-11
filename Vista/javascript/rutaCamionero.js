@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                         }
                     });
                     const almacen = await response.json();
-                    celdaDireccionAlmacen.textContent = almacen.num + ' ' + almacen.calle + ', ' + almacen.localidad;
+                    celdaDireccionAlmacen.textContent = almacen.num + ' ' + almacen.calle + ', ' + almacen.localidad + ', ' + almacen.departamento;
                     console.log(almacen);
 
                     if (almacen && almacen.lat && almacen.lng) {
