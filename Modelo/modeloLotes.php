@@ -44,6 +44,19 @@ class modeloLotes
         $conn->close();
         return $num;
     }
+    public static function paquetesAsociados($idLote)
+    {
+        $conn = modeloBd::conexion();
+        $query = "SELECT *
+        FROM Paquetes
+        JOIN Lotean ON Paquetes.numBulto = Lotean.numBulto
+        WHERE Lotean.idLote = ?;";
+        
+        $exc = $conn->execute_query($query, [$idLote]);
+        $result = $exc->fetch_array(MYSQLI_ASSOC);
+        $conn->close();
+        return json_encode($result);
+    }
     public static function muestraAsociado($idLote)
     {
         $conn = modeloBd::conexion();
@@ -59,16 +72,13 @@ class modeloLotes
         return json_encode($result);
     }
 
-    public static function paquetesAsociados($idLote)
+
+    public static function LotesyAlmacen()
     {
         $conn = modeloBd::conexion();
-        $query = "SELECT *
-        FROM Paquetes
-        JOIN Lotean ON Paquetes.numBulto = Lotean.numBulto
-        WHERE Lotean.idLote = ?;";
-        
-        $exc = $conn->execute_query($query, [$idLote]);
-        $result = $exc->fetch_array(MYSQLI_ASSOC);
+        $query = "SELECT * FROM van";
+        $exc = $conn->execute_query($query);
+        $result = $exc->fetch_all(MYSQLI_ASSOC);
         $conn->close();
         return json_encode($result);
     }

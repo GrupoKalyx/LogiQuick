@@ -63,8 +63,8 @@
     </header>
     
     <div class="container">
-    <div id="paquetesTableContainer">
-      <table id="paquetesTable">
+    <div id="TableContainer">
+      <table id="Table">
         <thead>
           <tr>
             <th>ID</th>

@@ -52,11 +52,12 @@
   <div class="container">
 
     <div id="TableContainer">
-      <table id="lotesTable">
+      <table id="Table">
         <thead>
           <tr>
             <th>Num Lote</th>
             <th>Almacen Destino</th>
+            <th>Dirección Almacen</th>
           </tr>
         </thead>
         <tbody>

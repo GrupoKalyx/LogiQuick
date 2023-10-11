@@ -11,7 +11,13 @@
         gap: 10px;
         height: 100%;
 }
-#paquetesTableContainer table {
+#TableContainer {
+        width: 30%;
+        padding: 10px;
+        box-sizing: border-box;
+        overflow-y: auto;
+    }
+#TableContainer table {
 padding: 10px;
 box-sizing: border-box;
 overflow-y: auto;

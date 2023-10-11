@@ -232,7 +232,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             }
         });
         const paquetes = await response.json();
-        const tabla = document.getElementById('paquetesTable').getElementsByTagName('tbody')[0];
+        const tabla = document.getElementById('Table').getElementsByTagName('tbody')[0];
 
         paquetes.forEach(async paquete => {
 
@@ -288,7 +288,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
 
     function marcarRutaEnMapa(latitudDestino, longitudDestino, latitudAlmacen, longitudAlmacen) {
-        map = L.map('map').setView([latitudDestino, longitudDestino], 13);
+        map = L.map('map').setView([latitudAlmacen, longitudAlmacen], 13);
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '© OpenStreetMap contributors'

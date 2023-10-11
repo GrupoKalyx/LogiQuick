@@ -57,16 +57,23 @@ class controladorLotes
         $idLote = $context['idLote'];
         return modeloLotes::existe($idLote);
     }
-     public static function mostrarAsociado($context){
-        $idLote = $context['idLote'];
-        $result = modeloLotes::muestraAsociado($idLote);
-        echo $result;
-    }
     public static function muestraPaquetesAsociados($context){
         $idLote = $context['idLote'];
         $result = modeloLotes::paquetesAsociados($idLote);
         echo $result;
     }
+    
+     public static function mostrarAlmacenAsociado($context){
+        $idLote = $context['idLote'];
+        $result = modeloLotes::muestraAsociado($idLote);
+        echo $result;
+    }
+    
+    public static function LotesyAlmacen(){
+        $result = modeloLotes::LotesyAlmacen();
+        echo $result;
+    }
+    
 }
 
 
