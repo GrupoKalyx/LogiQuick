@@ -50,11 +50,23 @@ class controladorLotes
         //         echo "<a class='form__viewContent'> " . $key . " " . $v . "</a>";
         //     }
         // }
-        return $result;
+        echo $result;
     }
 
     public static function existe($context){
         $idLote = $context['idLote'];
         return modeloLotes::existe($idLote);
     }
+     public static function mostrarAsociado($context){
+        $idLote = $context['idLote'];
+        $result = modeloLotes::muestraAsociado($idLote);
+        echo $result;
+    }
+    public static function muestraPaquetesAsociados($context){
+        $idLote = $context['idLote'];
+        $result = modeloLotes::paquetesAsociados($idLote);
+        echo $result;
+    }
 }
+
+

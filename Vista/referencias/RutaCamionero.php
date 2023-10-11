@@ -1,16 +1,4 @@
-<?php
-require '../../Control/superControlador.php';
 
-$url = 'http://localhost/LogiQuick/Control/controladorLlevan.php';
-$idLotes = json_decode(superControlador($url, 'GET', array('function' => 'listarConCamion', 'matricula' => $_)), true);
-
-if (isset($_POST['generar'])) {
-  $url = 'http://localhost/LogiQuick/Control/controladorLotes.php';
-  $idLote = json_decode(superControlador($url, 'POST', array('function' => 'ingresar')), 1);
-  $url = 'http://localhost/LogiQuick/Control/controladorLotean.php';
-  superControlador($url, 'POST', array('function' => 'ingresar', 'idLote' => $idLote, 'paquetes' => $_POST['bulto']));
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,10 +10,22 @@ if (isset($_POST['generar'])) {
   <link rel="stylesheet" href="../estilos/mapsStyle.css">
   <title>LogiQuick</title>
   <script src="Traducir.js"></script>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-  <script src="RoutingMachine/dist/leaflet-routing-machine.js"></script>
+  <!-- Incluye Leaflet CSS y JS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+  <!-- Incluye Leaflet Routing Machine CSS y JS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
+  <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <!-- Incluye Leaflet Control Geocoder CSS y JS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+  <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
   <link rel="stylesheet" href="RoutingMachine/dist/leaflet-routing-machine.css">
+
+  <script src="../javascript/rutaCamionero.js"></script>
 </head>
 
 <body class="body">
@@ -51,42 +51,20 @@ if (isset($_POST['generar'])) {
 
   <div class="container">
 
-    <div id="map"></div>
+    <div id="TableContainer">
+      <table id="lotesTable">
+        <thead>
+          <tr>
+            <th>Num Lote</th>
+            <th>Almacen Destino</th>
+          </tr>
+        </thead>
+        <tbody>
 
-    <div class="form__container">
-      <form class="form" method="POST" action="">
-
-        <h2 class="form__text">Almacen de Salida</h2>
-
-        <div class="form__group">
-          <label class="form__label" for="Almacen">Almacen:</label>
-          <select class="form__select" id="AlmacenSalida" name="AlmacenSalida" required>
-            <option value="">Seleccionar almacen</option>
-            <?php
-            foreach ($almacenes as $almacen) {
-              echo "<option value='$almacen'>$almacen</option>";
-            }
-            ?>
-          </select>
-        </div>
-
-        <h2 class="form__text">Almacen de Llegada</h2>
-
-        <div class="form__group">
-          <label class="form__label" for="Almacen">Almacen:</label>
-          <select class="form__select" id="AlmacenSalida" name="AlmacenSalida" required>
-            <option value="">Seleccionar almacen</option>
-            <?php
-            foreach ($almacenes as $almacen) {
-              echo "<option value='$almacen'>$almacen</option>";
-            }
-            ?>
-          </select>
-        </div>
-
-        <button class="form__button" type="submit">Mostrar Ruta</button>
-      </form>
+        </tbody>
+      </table>
     </div>
+    <div id="map"></div>
 
   </div>
 
@@ -104,7 +82,7 @@ if (isset($_POST['generar'])) {
     </div>
   </footer>
 
-  <script src="../javascript/mapa.js"></script>
+  
 </body>
 
 </html>

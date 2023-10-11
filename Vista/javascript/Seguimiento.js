@@ -239,9 +239,9 @@ document.addEventListener('DOMContentLoaded', async function () {
             const fila = tabla.insertRow();
             const celdaId = fila.insertCell();
             const celdaDireccion = fila.insertCell();
-            const celdaRastreo = fila.insertCell();
+            // const celdaRastreo = fila.insertCell();
 
-            celdaRastreo.textContent = paquete.idRastreo
+            // celdaRastreo.textContent = paquete.idRastreo
             celdaId.textContent = paquete.numBulto;
             celdaDireccion.textContent = paquete.num + ' ' + paquete.calle + ', ' + paquete.departamento;
 
@@ -250,12 +250,12 @@ document.addEventListener('DOMContentLoaded', async function () {
             // Usar un closure para mantener el valor específico de paquete.idRastreo en el contexto del addEventListener
             fila.addEventListener('click', async function () {
                 eliminarMapa();
-                const idRastreo = this.querySelector('td:nth-child(3)').textContent;
+                const idRastreo = paquete.idRastreo
                 console.log(idRastreo);
 
                 try {
                     // Hacer el fetch del almacén asociado al paquete clickeado
-                    const response = await fetch(`http://localhost/LogiQuick/Control/controladorAlmacenes.php?function=mostrarUltimo&idRastreo=123`, {
+                    const response = await fetch(`http://localhost/LogiQuick/Control/controladorAlmacenes.php?function=mostrarUltimo&idRastreo=${idRastreo}`, {
                         headers: {
                             'Cache-Control': 'no-cache'
                         }

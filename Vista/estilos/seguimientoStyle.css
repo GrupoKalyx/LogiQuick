@@ -3,7 +3,7 @@
         flex-wrap: wrap;
     }
     
-    #paquetesTableContainer {
+    #TableContainer {
         width: 30%;
         padding: 10px;
         box-sizing: border-box;
@@ -23,7 +23,7 @@
             flex-direction: column;
         }
     
-        #paquetesTableContainer, #map {
+        #TableContainer, #map {
             width: 100%;
         }
     }
