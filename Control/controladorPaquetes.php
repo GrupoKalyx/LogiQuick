@@ -38,11 +38,13 @@ class controladorPaquetes
 
         modeloPaquetes::modificacion($numBulto, $gmailCliente, $fechaLlegada, $num, $calle, $localidad, $departamento);
     }
+    
     public static function eliminar($context)
     {
         $numBulto = $context['numBulto'];
         modeloPaquetes::baja($numBulto);
     }
+
     public static function listar($context)
     {
         $json = modeloPaquetes::listado();
@@ -60,7 +62,6 @@ class controladorPaquetes
         $json = modeloPaquetes::listadoYendoQc();
         echo $json;
     }
-
 
     public static function listarEnQc($context)
     {

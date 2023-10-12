@@ -3,28 +3,32 @@ require '../Modelo/modeloLogins.php';
 require 'controladorTokens.php';
 require 'controladorUsuarios.php';
 
-session_start();
+$context = match ($_SERVER['REQUEST_METHOD']) {
+    'GET' => $_GET,
+    'POST' => $_POST,
+    'PUT' => $_PUT,
+    'DELETE' => $_DELETE,
+};
+
+$function = $context['function'];
+controladorLogins::$function($context);
 
 class controladorLogins
 {
-    private $conn;
 
-    function __construct($conn)
-    {
-        $this->conn = $conn;
-    }
-
-    public function chequear($content)
+    public static function chequear($content)
     {
         $ci = $content['post']['ci'];
         $contrasenia = $content['post']['contrasenia'];
-        if (modeloLogins::existe($ci, $this->conn)) {
-            if (modeloLogins::contrasenia($ci, $contrasenia, $this->conn)) {
-                $t = new controladorTokens($this->conn);
+        if (modeloLogins::existe($ci)) {
+            if (modeloLogins::contrasenia($ci, $contrasenia)) {
+                $t = new controladorTokens();
                 $_SESSION['ci'] = $ci;
                 $tokenExists = $t->exists($ci);
-                if ($tokenExists == false) { $_SESSION['token'] = $t->createToken($ci); }
-                $objTipo = json_decode(modeloLogins::tipo($ci, $this->conn), true);
+                if ($tokenExists == false) {
+                    $_SESSION['token'] = $t->createToken($ci);
+                }
+                $objTipo = json_decode(modeloLogins::tipo($ci), true);
                 $tipo = $objTipo['tipo'];
                 switch ($tipo) {
                     case 'Funcionario':
