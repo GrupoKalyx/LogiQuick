@@ -22,12 +22,13 @@ class controladorLogins
         $contrasenia = $content['post']['contrasenia'];
         if (modeloLogins::existe($ci)) {
             if (modeloLogins::contrasenia($ci, $contrasenia)) {
-                $t = new controladorTokens();
+
                 $_SESSION['ci'] = $ci;
-                $tokenExists = $t->exists($ci);
+                $tokenExists = controladorTokens::exists($ci);
                 if ($tokenExists == false) {
                     $_SESSION['token'] = $t->createToken($ci);
                 }
+
                 $objTipo = json_decode(modeloLogins::tipo($ci), true);
                 $tipo = $objTipo['tipo'];
                 switch ($tipo) {

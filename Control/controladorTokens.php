@@ -4,7 +4,7 @@ require '../Modelo/modeloTokens.php';
 class controladorTokens
 {
 
-    public function createToken($context)
+    public static function createToken($context)
     {
         $ci = $context;
         $token = modeloTokens::generateToken();
@@ -12,7 +12,7 @@ class controladorTokens
         return $token;
     }
 
-    public function verify($context)
+    public static function verify($context)
     {
         $token = $context['post']['chkToken'];
         if (modeloTokens::chkToken($token) == 0) {
@@ -20,7 +20,7 @@ class controladorTokens
         }
     }
 
-    public function exists($context){
+    public static function exists($context){
         $ci = $context;
         $existence = modeloTokens::chkUser($ci);
         return $existence;
