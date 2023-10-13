@@ -16,10 +16,10 @@ class controladorTokens
 
     public static function createToken($context)
     {
-        $ci = $context;
+        $ci = $context['ci'];
         $token = modeloTokens::generateToken($ci);
         // modeloTokens::setToken($token, $ci);
-        return $token;
+        echo $token;
     }
 
     public static function verify($context)
@@ -33,6 +33,6 @@ class controladorTokens
     public static function exists($context){
         $ci = $context;
         $existence = modeloTokens::chkUser($ci);
-        return $existence;
+        echo $existence;
     }
 }
