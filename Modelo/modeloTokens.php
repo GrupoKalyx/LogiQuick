@@ -1,13 +1,22 @@
 <?php
-
 require_once 'modeloBd.php';
+require_once '../vendor/autoload.php';
+use Firebase\JWT\JWT;
 
 class modeloTokens
 {
-    public static function generateToken()
+    public static function generateToken($ci)
     {
-        $token = bin2hex(random_bytes(32));
-        return $token;
+        $time = time();
+        $token = array(
+            "iat" => $time, //Tiempo en q inica el token
+            "exp" => $time + (60 * 60 * 24),
+            "data" => [
+                'ci' => $ci
+            ]
+        );
+        $jwt = JWT::encode($token, "423r3j34d3j3d3j383n7ud3j383n", 'HS256');
+        return $jwt;
     }
 
     public static function setToken($token, $ci)

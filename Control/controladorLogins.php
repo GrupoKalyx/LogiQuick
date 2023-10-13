@@ -1,7 +1,6 @@
 <?php
 require '../Modelo/modeloLogins.php';
-require 'controladorTokens.php';
-require 'controladorUsuarios.php';
+require 'superControlador.php';
 
 $context = match ($_SERVER['REQUEST_METHOD']) {
     'GET' => $_GET,
@@ -16,19 +15,18 @@ controladorLogins::$function($context);
 class controladorLogins
 {
 
-    public static function chequear($content)
+    public static function chequear($context)
     {
-        $ci = $content['post']['ci'];
-        $contrasenia = $content['post']['contrasenia'];
-        if (modeloLogins::existe($ci)) {
+        $ci = $context['ci'];
+        $contrasenia = $context['contrasenia'];
+        $existe = json_decode(superControlador('http://localhost/LogiQuick/Control/controladorCamiones.php', 'GET', array('function' => 'generateToken', 'ci' => $ci)), true);
+        if ($existe) {
             if (modeloLogins::contrasenia($ci, $contrasenia)) {
-
-                $_SESSION['ci'] = $ci;
+                $jwt = controladorTokens::createToken($ci);
                 $tokenExists = controladorTokens::exists($ci);
                 if ($tokenExists == false) {
-                    $_SESSION['token'] = $t->createToken($ci);
+                    $_SESSION['token'] = controladorTokens::createToken($ci);
                 }
-
                 $objTipo = json_decode(modeloLogins::tipo($ci), true);
                 $tipo = $objTipo['tipo'];
                 switch ($tipo) {

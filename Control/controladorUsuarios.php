@@ -1,63 +1,54 @@
 <?php
 require '../Modelo/modeloUsuarios.php';
+
+$context = match ($_SERVER['REQUEST_METHOD']) {
+    'GET' => $_GET,
+    'POST' => $_POST,
+    'PUT' => $_PUT,
+    'DELETE' => $_DELETE,
+};
+
+$function = $context['function'];
+controladorUsuarios::$function($context);
+
 class controladorUsuarios
 {
-    private $conn;
-
-    function __construct($conn)
-    {
-        $this->conn = $conn;
-    }
 
     public function ingresar($context)
     {
-        $ci = $context['post']['ci'];
-        $nombre = $context['post']['nombre'];
-        $contrasenia = $context['post']['contrasenia'];
-        $tipo = $context['post']['tipo'];
-        modeloUsuarios::alta($ci, $nombre, $contrasenia, $tipo, $this->conn);
+        $ci = $context['ci'];
+        $nombre = $context['nombre'];
+        $contrasenia = $context['contrasenia'];
+        $tipo = $context['tipo'];
+        modeloUsuarios::alta($ci, $nombre, $contrasenia, $tipo);
         header('location: ../../../Vista/indexAdministrador.php');
     }
-
+ 
     public function eliminar($context)
     {
-        $ci = $context['post']['ci'];
-        modeloUsuarios::baja($ci, $this->conn);
+        $ci = $context['ci'];
+        modeloUsuarios::baja($ci);
         header('location: ../../../Vista/indexAdministrador.php');
     }
 
     public function mostrar($context){
         $ci = $context;
-        $result = modeloUsuarios::muestra($ci, $this->conn);
+        $result = modeloUsuarios::muestra($ci);
         return $result;
     }
 
     public function listar($context)
     {
-        $result = json_decode(modeloUsuarios::listado($this->conn));
-
-        $arrayConsulta = array();
-
-        foreach ($result as $row) {
-            $ci = $row->ci;
-            $nombreUsuario = $row->nombre;
-            $tipoUsuario = $row->tipo;
-            array_push($arrayConsulta, ['CI: ' => $ci, '<br> Nombre: ' => $nombreUsuario, '<br> Tipo: ' => $tipoUsuario . '<br><br>']);
-        }
-
-        foreach ($arrayConsulta as $value) {
-            foreach ($value as $key => $v) {
-                echo "<a class='form__viewContent'> " . $key . " " . $v . "</a>";
-            }
-        }
+        $result = modeloUsuarios::listado();
+        return $result;
     }
 
     public function modificar($context)
     {
-        $ci = $context['post']['ci'];
-        $nombre = $context['post']['nombre'];
-        $contrasenia = $context['post']['contrasenia'];
-        modeloUsuarios::modificacion($ci, $nombre, $contrasenia, $this->conn);
+        $ci = $context['ci'];
+        $nombre = $context['nombre'];
+        $contrasenia = $context['contrasenia'];
+        modeloUsuarios::modificacion($ci, $nombre, $contrasenia);
         header('location: ../../../Vista/indexAdministrador.php');
     }
 }
