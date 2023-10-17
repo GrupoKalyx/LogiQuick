@@ -18,21 +18,46 @@ class controladorTokens
     {
         $ci = $context['ci'];
         $token = modeloTokens::generateToken($ci);
-        // modeloTokens::setToken($token, $ci);
-        echo $token;
+        $jwtExp = $token['iat'];
+        $jwt = modeloTokens::encodeToken($token);
+        modeloTokens::setToken($ci, $jwt, $jwtExp);
+        echo $jwt;
+    }
+
+    public static function updateToken($context)
+    {
+        $ci = $context['ci'];
+        $token = modeloTokens::generateToken($ci);
+        $jwtExp = $token['iat'];
+        $jwt = modeloTokens::encodeToken($token);
+        modeloTokens::updateToken($ci, $jwt, $jwtExp);
+        echo $jwt;
     }
 
     public static function verify($context)
     {
-        $token = $context['chkToken'];
-        if (modeloTokens::chkToken($token) == 0) {
-            echo "<script>alert('Hubo un error en la sesión, intente volverse a ingresar.');window.location='../../../Vista/login.php'</script>";
-        }
+        $token = $context['token'];
+        $ver = modeloTokens::chkToken($token);
+        if ($ver) { $ver = modeloTokens::chkExpiration($token); }
+        return $ver;
     }
 
-    public static function exists($context){
-        $ci = $context;
+    public static function expired($context)
+    {
+        $token = $context['token'];
+        $expiration = modeloTokens::chkExpiration($token);
+        return $expiration;
+    }
+
+    public static function exists($context)
+    {
+        $ci = $context['ci'];
         $existence = modeloTokens::chkUser($ci);
         echo $existence;
+    }
+
+    public static function getType($context){
+        $token = $context['token'];
+        
     }
 }

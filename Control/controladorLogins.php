@@ -18,17 +18,26 @@ class controladorLogins
     public static function chequear($context)
     {
         $ci = $context['ci'];
-        $contrasenia = $context['contrasenia'];
-        $existe = json_decode(superControlador('http://localhost/LogiQuick/Control/controladorCamiones.php', 'GET', array('function' => 'generateToken', 'ci' => $ci)), true);
-        if ($existe) {
-            if (modeloLogins::contrasenia($ci, $contrasenia)) {
-                $jwt = controladorTokens::createToken($ci);
-                $tokenExists = controladorTokens::exists($ci);
-                if ($tokenExists == false) {
-                    $_SESSION['token'] = controladorTokens::createToken($ci);
-                }
+        $contra = $context['contrasenia'];
+        //Chequea la existencia del usuario
+        $existe = superControlador('http://localhost/LogiQuick/Control/controladorLogins.php', 'GET', array('function' => 'existe', 'ci' => $ci));
+        if ($existe != false) {
+            //Chequea la contraseña
+            $contrasenia = superControlador('http://localhost/LogiQuick/Control/controladorLogins.php', 'GET', array('function' => 'contrasenia', 'ci' => $ci, 'contrasenia' => $contra));
+            if ($contrasenia) {
+                //Chequea si ya tiene un token
+                $token = superControlador('http://localhost/LogiQuick/Control/controladorTokens.php', 'GET', array('function' => 'exists', 'ci' => $ci));
+                //Busca el tipo del usuario
                 $objTipo = json_decode(modeloLogins::tipo($ci), true);
                 $tipo = $objTipo['tipo'];
+                if ($token == false) {
+                    //Si no lo tiene crea uno nuevo y lo establece en la base de datos
+                    $jwt = superControlador('http://localhost/LogiQuick/Control/controladorTokens.php', 'PUT', array('function' => 'createToken', 'ci' => $ci));
+                } else {
+                    //En caso de ya tener uno lo renueva y lo cambia en la bd
+                    $jwt = superControlador('http://localhost/LogiQuick/Control/controladorTokens.php', 'UPDATE', array('function' => 'updateToken', 'ci' => $ci));
+                }
+                $_SESSION['token'] = $jwt;
                 switch ($tipo) {
                     case 'Funcionario':
                         header("location: ../../../Vista/FunCentral.php");

@@ -1,6 +1,3 @@
-<?php
-require_once "../../Control/superControlador.php";
-?>
 <!DOCTYPE html>
 <html lang="es">
 

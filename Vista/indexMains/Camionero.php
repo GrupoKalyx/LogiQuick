@@ -1,3 +1,27 @@
+<?php
+require_once('../../Control/superControlador.php');
+session_start();
+if (isset($_SESSION['token'])) {
+  $ver = superControlador('http://localhost/LogiQuick/Control/controladorToken.php', 'GET', array('function' => 'verify', 'token' => $_SESSION['token']));
+  if ($ver) {
+    $tipo = $_SESSION['tipo'];
+    if($tipo == 'Camionero'){
+      
+    }
+  } else {
+
+    echo "<script>
+            alert('Tipo de usuario incorrecto, no tiene permisos para ingresar a esta área.');
+            window.location = 'login.php';
+        </script>";
+  }
+} else {
+  echo "<script>
+            alert('Inicie sesión para ingresar.');
+            window.location = 'login.php';
+        </script>";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,13 +70,3 @@
 </body>
 
 </html>
-
-<!-- Puede verificar la asignación de los camiones que le correspondan, iniciando así el viaje.
-Puede ver que lotes están asignados a su camión, así como sus paquetes.
-Puede verificar su llegada a un almacén.
-Puede ver la ruta que le fue asignada (desde el almacén origen hasta el almacén destino pasando tal vez por otros almacenes).
-Delivery:
-Puede verificar la asignación de los pickups que se le asignen.
-Puede visualizar los paquetes de su pickup asignada.
-Puede verificar su llegada a un destino, registrando la entrega de paquete correspondiente y enviando una notificación al mail del cliente dueño del paquete.
-Puede ver la ruta que le fue asignada (desde el almacén de origen pasando por todos los destinos de los paquetes que lleva). -->

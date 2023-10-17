@@ -240,5 +240,6 @@ CREATE TABLE IF NOT EXISTS `logiquickbd`.`Logins` (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `logiquickbd`.`tokens` (
   `ci` INT NULL,
-  `idToken` VARCHAR(64) NOT NULL,
-  PRIMARY KEY (`ci`));   
+  `token` VARCHAR(128) NOT NULL,
+  `tokenExp` int(11) NOT NULL,
+  PRIMARY KEY (`ci`));

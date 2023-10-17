@@ -2,8 +2,11 @@
 require_once('sql/dbconection.php');
 session_start();
 if (isset($_POST['btncerrar'])) {
-    $_SESSION['ci'] = null;
+    $_SESSION['token'] = null;
     header("location: loginAdmin.php");
+}
+if(isset($_SESSION['token'])){
+    .
 }
 ?>
 <!DOCTYPE html>
@@ -33,21 +36,9 @@ if (isset($_POST['btncerrar'])) {
     </header>
     <div>
         <br>
-        <h1 class="nav__text"> Bienvenid@:
-            <?php
-            if (isset($_SESSION['ci'])) {
-                $ci = $_SESSION['ci'];
-                $queryName = "SELECT nombre FROM `usuarios` WHERE ci = ? LIMIT 1";
-                $resultName = $conn->execute_query($queryName, [$ci]);
-                $fName = $resultName->fetch_array(MYSQLI_ASSOC);
-                $name = $fName['nombre'];
-                echo ($name);
-            }
-            ?>
-            <b></b>
-        </h1>
+        <h1 class="nav__text"> Backoffice </h1>
     </div>
-    
+
     <div class="form__container__backoffice"> <!-- CRUD de Usuarios -->
         <div class="form">
             <h2>Ingresar Usuarios Nuevos</h2>
