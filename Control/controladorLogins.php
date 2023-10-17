@@ -17,6 +17,7 @@ class controladorLogins
 
     public static function chequear($context)
     {
+        echo 'a';
         $ci = $context['ci'];
         $contra = $context['contrasenia'];
         //Chequea la existencia del usuario

@@ -6,7 +6,7 @@ if (isset($_POST['btncerrar'])) {
     header("location: loginAdmin.php");
 }
 if(isset($_SESSION['token'])){
-    .
+    
 }
 ?>
 <!DOCTYPE html>

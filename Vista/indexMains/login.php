@@ -1,15 +1,18 @@
-<?php if (isset($_SESSION)) {
-    session_destroy();
-} ?>
+<?php
+require_once '../../Control/superControlador.php';
+if(isset($_POST['login'])){
+    superControlador('http://localhost/LogiQuick/Control/controladorLogins.php', 'GET', array('function' => 'chequear', 'ci' => $_POST['ci'], 'contrasenia' => $_POST['contrasenia']));
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="estilos/FormStyle.css">
-    <link rel="stylesheet" href="estilos/Style.css">
-    <link rel="icon" type="image/x-icon" href="assets/logo.png">
+    <link rel="stylesheet" href="../estilos/FormStyle.css">
+    <link rel="stylesheet" href="../estilos/Style.css">
+    <link rel="icon" type="image/x-icon" href="../assets/logo.png">
     <!-- <script src="Traducir.js"></script> -->
     <title>LogiQuick</title>
 </head>
@@ -18,7 +21,7 @@
     <header>
         <nav class="navbar">
             <div class="navbar__logo">
-                <img src="assets/logo.png">
+                <img src="../assets/logo.png">
             </div>
             <div class="navbar">
                 <h1 class="nav__text">Bienvenido a LogiQuick!</h1>
@@ -27,7 +30,7 @@
         </nav>
     </header>
     <div class="form__container">
-        <form class="form" method="POST" action="../Control/superControlador.php/Logins/chequear">
+        <form class="form" method="POST">
             <h2 class="form__text">Ingrese sus Datos</h2>
             <div class="form__group">
                 <label class="form__label" for="ci">CI:</label>
