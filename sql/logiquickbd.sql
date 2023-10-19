@@ -225,21 +225,7 @@ CREATE TABLE IF NOT EXISTS `logiquickbd`.`Usuarios` (
   `ci` INT NOT NULL,
   `nombre` VARCHAR(45) NULL,
   `tipo` VARCHAR(45) NULL,
-  PRIMARY KEY (`ci`));
-
--- -----------------------------------------------------
--- Table `Logins`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `logiquickbd`.`Logins` (
-  `idLogin` INT NOT NULL,
   `contrasenia` VARCHAR(45) NULL,
-  PRIMARY KEY (`idLogin`));    
- 
--- -----------------------------------------------------
--- Table `tokens`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `logiquickbd`.`tokens` (
-  `ci` INT NULL,
   `token` VARCHAR(128) NOT NULL,
   `tokenExp` int(11) NOT NULL,
   PRIMARY KEY (`ci`));
