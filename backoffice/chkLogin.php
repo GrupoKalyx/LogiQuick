@@ -1,6 +1,6 @@
 <?php
 require_once('sql/dbconection.php');
-require_once('vendor/autoload.php');
+require_once('../vendor/autoload.php');
 USE Firebase\JWT\JWT;
 session_start();
 

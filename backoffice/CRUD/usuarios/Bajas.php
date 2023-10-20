@@ -4,8 +4,6 @@ require_once('../../sql/dbconection.php');
 $ci = $_POST['ci'];
 $query = "DELETE FROM usuarios WHERE ci = ?";
 $exc = $conn->execute_query($query, [$ci]);
-$query2 = "DELETE FROM logins WHERE idLogin = ?";
-$exc2 = $conn->execute_query($query2, [$ci]);
 
 $queryTipo = "SELECT tipo FROM `usuarios` WHERE ci = ?";
 $excTipo = $conn->execute_query($queryTipo, [$ci]);

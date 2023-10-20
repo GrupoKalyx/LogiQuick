@@ -5,10 +5,8 @@ $ci = $_POST['ci'];
 $nombre = $_POST['nombre'];
 $contrasenia = $_POST['contrasenia'];
 $tipo = $_POST['tipo'];
-$query = "INSERT INTO usuarios VALUES (?, ?, ?)";
-$exc = $conn->execute_query($query, [$ci, $nombre, $tipo]);
-$query2 = "INSERT INTO logins VALUES (?, ?)";
-$exc2 = $conn->execute_query($query2, [$ci, $contrasenia]);
+$query = "INSERT INTO usuarios (ci, nombre, contrasenia, tipo) VALUES (?, ?, ?, ?)";
+$exc = $conn->execute_query($query, [$ci, $nombre, $contrasenia, $tipo]);
 
 if ($tipo == 'Camionero' or $tipo == 'Delivery') {
   $telefono = $_POST['telefono'];

@@ -39,14 +39,14 @@ class controladorTokens
         $token = $context['token'];
         $ver = modeloTokens::chkToken($token);
         if ($ver) { $ver = modeloTokens::chkExpiration($token); }
-        return $ver;
+        echo $ver;
     }
 
     public static function expired($context)
     {
         $token = $context['token'];
         $expiration = modeloTokens::chkExpiration($token);
-        return $expiration;
+        echo $expiration;
     }
 
     public static function exists($context)
@@ -59,6 +59,6 @@ class controladorTokens
     public static function getType($context){
         $token = $context['token'];
         $tipo = modeloTokens::chkType($token);
-        return $tipo;
+        var_dump($tipo);
     }
 }
