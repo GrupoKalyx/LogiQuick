@@ -6,15 +6,7 @@ $exc = $conn->execute_query($query, [0]);
 $num = mysqli_num_rows($exc);
 
 if($num == false){
-    $query2 = "INSERT INTO usuarios VALUES (0, 'root', 'Admin')";
-    $conn->execute_query($query2);
-}
-
-$query3 = 'SELECT * FROM logins WHERE idLogin = ? LIMIT 1';
-$exc3 = $conn->execute_query($query3, [0]);
-$num3 = mysqli_num_rows($exc3);
-
-if($num3 == false){
-    $query4 = "INSERT INTO logins VALUES (0, 'root')";
-    $conn->execute_query($query4);
+    $time = (time() + (24*60*60));
+    $queryInsert = "INSERT INTO usuarios (ci, nombre, tipo, contrasenia, token, tokenExp) VALUES (?, ?, ?, ?, ?, ?)";
+    $conn->execute_query($queryInsert, [0, 'root', 'Admin', 'root', 'token', $time]);
 }

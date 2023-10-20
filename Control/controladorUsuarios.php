@@ -21,26 +21,31 @@ class controladorUsuarios
         $contrasenia = $context['contrasenia'];
         $tipo = $context['tipo'];
         modeloUsuarios::alta($ci, $nombre, $contrasenia, $tipo);
-        header('location: ../../../Vista/indexAdministrador.php');
     }
  
     public function eliminar($context)
     {
         $ci = $context['ci'];
         modeloUsuarios::baja($ci);
-        header('location: ../../../Vista/indexAdministrador.php');
     }
 
     public function mostrar($context){
         $ci = $context;
         $result = modeloUsuarios::muestra($ci);
-        return $result;
+        echo $result;
+    }
+    
+    public static function existencia($context)
+    {
+        $ci = $context['ci'];
+        $existencia = modeloUsuarios::existe($ci);
+        echo $existencia;
     }
 
     public function listar($context)
     {
         $result = modeloUsuarios::listado();
-        return $result;
+        echo $result;
     }
 
     public function modificar($context)
@@ -49,6 +54,5 @@ class controladorUsuarios
         $nombre = $context['nombre'];
         $contrasenia = $context['contrasenia'];
         modeloUsuarios::modificacion($ci, $nombre, $contrasenia);
-        header('location: ../../../Vista/indexAdministrador.php');
     }
 }

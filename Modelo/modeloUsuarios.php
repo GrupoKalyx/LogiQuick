@@ -7,10 +7,8 @@ class modeloUsuarios
     public static function alta($ci, $nombre, $contrasenia, $tipo)
     {
         $conn = modeloBd::conexion();
-        $query = "INSERT INTO usuarios VALUES (?, ?, ?)";
-        $conn->execute_query($query, [$ci, $nombre, $tipo]);
-        $query2 = "INSERT INTO logins VALUES (?, ?)";
-        $conn->execute_query($query2, [$ci, $contrasenia]);
+        $query = "INSERT INTO usuarios (ci, nombre, contrasenia, tipo,) VALUES (?, ?, ?, ?)";
+        $conn->execute_query($query, [$ci, $nombre, $contrasenia, $tipo]);
         $conn->close();
     }
 
@@ -30,6 +28,16 @@ class modeloUsuarios
         $fResult = $exc->fetch_array(MYSQLI_ASSOC);
         $conn->close();
         return json_encode($fResult);
+    }
+
+    public static function existe($ci)
+    {
+        $conn = modeloBd::conexion();
+        $query = "SELECT * FROM `usuarios` WHERE ci = ? LIMIT 1";
+        $result = $conn->execute_query($query, [$ci]);
+        $num = mysqli_num_rows($result);
+        $conn->close();
+        return $num;
     }
 
     public static function listado()

@@ -17,7 +17,8 @@ class controladorTokens
     public static function createToken($context)
     {
         $ci = $context['ci'];
-        $token = modeloTokens::generateToken($ci);
+        $tipo = $context['tipo'];
+        $token = modeloTokens::generateToken($ci, $tipo);
         $jwtExp = $token['iat'];
         $jwt = modeloTokens::encodeToken($token);
         modeloTokens::setToken($ci, $jwt, $jwtExp);
@@ -27,7 +28,8 @@ class controladorTokens
     public static function updateToken($context)
     {
         $ci = $context['ci'];
-        $token = modeloTokens::generateToken($ci);
+        $tipo = $context['tipo'];
+        $token = modeloTokens::generateToken($ci, $tipo);
         $jwtExp = $token['iat'];
         $jwt = modeloTokens::encodeToken($token);
         modeloTokens::updateToken($ci, $jwt, $jwtExp);
@@ -38,15 +40,17 @@ class controladorTokens
     {
         $token = $context['token'];
         $ver = modeloTokens::chkToken($token);
-        if ($ver) { $ver = modeloTokens::chkExpiration($token); }
-        return $ver;
+        if ($ver) {
+            $ver = modeloTokens::chkExpiration($token);
+        }
+        echo $ver;
     }
 
     public static function expired($context)
     {
         $token = $context['token'];
         $expiration = modeloTokens::chkExpiration($token);
-        return $expiration;
+        echo $expiration;
     }
 
     public static function exists($context)
@@ -56,8 +60,10 @@ class controladorTokens
         echo $existence;
     }
 
-    public static function getType($context){
+    public static function getType($context)
+    {
         $token = $context['token'];
-        
+        $tipo = modeloTokens::chkType($token);
+        var_dump($tipo);
     }
 }

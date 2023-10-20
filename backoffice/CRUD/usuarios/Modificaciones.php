@@ -4,10 +4,8 @@ require_once('../../sql/dbconection.php');
 $ci = $_POST['ci'];
 $nuevoNombre = $_POST['nombre'];
 $nuevaContrasenia = $_POST['contrasenia'];
-$query = "UPDATE usuarios SET nombre = ? WHERE ci = ?";
-$exc = $conn->execute_query($query, [$nuevoNombre, $ci]);
-$query2 = "UPDATE logins SET contrasenia = ? WHERE idLogin = ?";
-$exc2 = $conn->execute_query($query2, [$nuevaContrasenia, $ci]);
+$query = "UPDATE usuarios SET nombre = ? AND contrasenia = ? WHERE ci = ?";
+$exc = $conn->execute_query($query, [$nuevoNombre, $nuevaContrasenia, $ci]);
 
 $queryTipo = "SELECT tipo FROM `usuarios` WHERE ci = ?";
 $exc = $conn->execute_query($queryTipo, [$ci]);

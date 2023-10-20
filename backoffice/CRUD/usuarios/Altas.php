@@ -5,27 +5,27 @@ $ci = $_POST['ci'];
 $nombre = $_POST['nombre'];
 $contrasenia = $_POST['contrasenia'];
 $tipo = $_POST['tipo'];
-$query = "INSERT INTO usuarios VALUES (?, ?, ?)";
-$exc = $conn->execute_query($query, [$ci, $nombre, $tipo]);
-$query2 = "INSERT INTO logins VALUES (?, ?)";
-$exc2 = $conn->execute_query($query2, [$ci, $contrasenia]);
+$query = "INSERT INTO usuarios (ci, nombre, contrasenia, tipo) VALUES (?, ?, ?, ?)";
+$exc = $conn->execute_query($query, [$ci, $nombre, $contrasenia, $tipo]);
 
 if ($tipo == 'Camionero' or $tipo == 'Delivery') {
   $telefono = $_POST['telefono'];
   if ($tipo == 'Camionero') {
-    $query3 = "INSERT INTO conductores VALUES (?, ?, ?)";
-    $exc3 = $conn->execute_query($query3, [$ci, $nombre, $telefono]);
-    $query4 = "INSERT INTO camioneros VALUES (?, ?, ?)";
-    $exc4 = $conn->execute_query($query4, [$ci, $nombre, $telefono]);
+    $queryCond = "INSERT INTO conductores VALUES (?, ?, ?)";
+    $excCond = $conn->execute_query($queryCond, [$ci, $nombre, $telefono]);
+    $queryCam = "INSERT INTO camioneros VALUES (?, ?, ?)";
+    $excCam = $conn->execute_query($queryCam, [$ci, $nombre, $telefono]);
+    $exc = ($exc and $excCond and $excCam);
   } else if ($tipo == 'Delivery') {
-    $query3 = "INSERT INTO conductores VALUES (?, ?, ?)";
-    $exc3 = $conn->execute_query($query3, [$ci, $nombre, $telefono]);
-    $query4 = "INSERT INTO deliverys VALUES (?, ?, ?)";
-    $exc4 = $conn->execute_query($query4, [$ci, $nombre, $telefono]);
+    $queryCond = "INSERT INTO conductores VALUES (?, ?, ?)";
+    $excCond = $conn->execute_query($queryCond, [$ci, $nombre, $telefono]);
+    $queryDel = "INSERT INTO deliverys VALUES (?, ?, ?)";
+    $excDel = $conn->execute_query($queryDel, [$ci, $nombre, $telefono]);
+    $exc = ($exc and $excCond and $excDel);
   }
 }
 
-if ($exc and $exc2) {
+if ($exc) {
   echo "<script>alert('Usuario ingresado con éxito.');window.location='../../indexAdmin.php'</script>";
 } else {
   echo "<script>alert('Ha ocurrido un error inesperado.');window.location='../../indexAdmin.php'</script>";

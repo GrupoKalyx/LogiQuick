@@ -1,7 +1,7 @@
 <?php
 require_once('../../sql/dbconection.php');
 
-$query = "SELECT * FROM usuarios INNER JOIN logins WHERE usuarios.ci = logins.idLogin";
+$query = "SELECT * FROM usuarios";
 $result = $conn->execute_query($query);
 
 $arrayConsulta = array();
