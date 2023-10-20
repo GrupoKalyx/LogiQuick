@@ -21,7 +21,7 @@ class controladorLogins
         $ci = $context['ci'];
         $contra = $context['contrasenia'];
         //Chequea la existencia del usuario
-        $existe = superControlador('http://localhost/LogiQuick/Control/controladorLogins.php', 'GET', array('function' => 'existe', 'ci' => $ci));
+        $existe = superControlador('http://localhost/LogiQuick/Control/controladorUsuarios.php', 'GET', array('function' => 'existe', 'ci' => $ci)); 
         if ($existe != false) {
             //Chequea la contraseña
             $contrasenia = superControlador('http://localhost/LogiQuick/Control/controladorLogins.php', 'GET', array('function' => 'contrasenia', 'ci' => $ci, 'contrasenia' => $contra));
@@ -33,10 +33,10 @@ class controladorLogins
                 $tipo = $objTipo['tipo'];
                 if ($token == false) {
                     //Si no lo tiene crea uno nuevo y lo establece en la base de datos
-                    $jwt = superControlador('http://localhost/LogiQuick/Control/controladorTokens.php', 'PUT', array('function' => 'createToken', 'ci' => $ci));
+                    $jwt = superControlador('http://localhost/LogiQuick/Control/controladorTokens.php', 'PUT', array('function' => 'createToken', 'ci' => $ci, 'tipo' => $tipo));
                 } else {
                     //En caso de ya tener uno lo renueva y lo cambia en la bd
-                    $jwt = superControlador('http://localhost/LogiQuick/Control/controladorTokens.php', 'UPDATE', array('function' => 'updateToken', 'ci' => $ci));
+                    $jwt = superControlador('http://localhost/LogiQuick/Control/controladorTokens.php', 'UPDATE', array('function' => 'updateToken', 'ci' => $ci, 'tipo' => $tipo));
                 }
                 $_SESSION['token'] = $jwt;
                 switch ($tipo) {

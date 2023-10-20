@@ -58,6 +58,7 @@ class controladorTokens
 
     public static function getType($context){
         $token = $context['token'];
-        
+        $tipo = modeloTokens::chkType($token);
+        return $tipo;
     }
 }

@@ -69,4 +69,10 @@ class modeloTokens
         $conn->close();
         return $num;
     }
+
+    public static function chkType($token)
+    {
+        JWT::decode($token, "o^V*Ciytufd9*FDyutdf867IYTU7DF8567DytfdI8", 'HS256');
+        return $type;
+    }
 }
