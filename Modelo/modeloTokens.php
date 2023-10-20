@@ -6,7 +6,7 @@ use Firebase\JWT\JWT;
 
 class modeloTokens
 {
-    public static function generateToken($ci)
+    public static function generateToken($ci, $tipo)
     {
         $time = time();
         $token = array(
@@ -75,8 +75,8 @@ class modeloTokens
     public static function chkType($token)
     {
         list($headersB64, $payloadB64, $sig) = explode('.', $token);
-        $type = json_decode(base64_decode($headersB64), true);
-        // $type = $jwt['$type'];
-        return $type;
+        $payloadB64 = json_decode(base64_decode($payloadB64), true);
+        $type = $payloadB64['type'];
+        return $payloadB64;
     }
 }

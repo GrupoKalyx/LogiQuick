@@ -340,8 +340,8 @@ CREATE TABLE IF NOT EXISTS `logiquickbd`.`usuarios` (
   `nombre` VARCHAR(45) NULL DEFAULT NULL,
   `tipo` VARCHAR(45) NULL DEFAULT NULL,
   `contrasenia` VARCHAR(45) NULL DEFAULT NULL,
-  `token` VARCHAR(128) NOT NULL,
-  `tokenExp` INT(11) NOT NULL,
+  `token` VARCHAR(128) NULL,
+  `tokenExp` INT(11) NULL,
   PRIMARY KEY (`ci`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
