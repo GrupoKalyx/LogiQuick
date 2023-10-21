@@ -56,7 +56,7 @@ if ($existe) {
     }
 } else {
     echo "<script>
-            alert('Usuario inexistente ,re intente por favor.');
+            alert('Usuario inexistente, re intente por favor.');
             window.location = 'loginAdmin.php';
         </script>";
 }

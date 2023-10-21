@@ -25,9 +25,11 @@ class controladorLogins
             $contrasenia = modeloLogins::contrasenia($ci, $contra);
             if ($contrasenia) {
                 //Chequea si ya tiene un token
-                $token = superControlador('http://localhost/LogiQuick/Control/controladorTokens.php', 'GET', array('function' => 'exists', 'ci' => $ci));
+                // $token = superControlador('http://localhost/LogiQuick/Control/controladorTokens.php', 'GET', array('function' => 'exists', 'ci' => $ci));
+                $token = "";
                 //Busca el tipo del usuario
                 $query = modeloLogins::tipo($ci);
+                echo $query;
                 $objTipo = json_decode(modeloLogins::tipo($ci), true);
                 $tipo = $objTipo['tipo'];
                 if ($token) {
