@@ -8,6 +8,7 @@ class modeloBd
 
     public static function conexion()
     {
-        return $conn = new mysqli(self::$server, self::$user, self::$password, self::$dbname);
+        $conn = new mysqli(self::$server, self::$user, self::$password, self::$dbname);
+        return $conn;
     }
 }

@@ -4,8 +4,8 @@ require '../Modelo/modeloTokens.php';
 $context = match ($_SERVER['REQUEST_METHOD']) {
     'GET' => $_GET,
     'POST' => $_POST,
-    'PUT' => $_PUT,
-    'DELETE' => $_DELETE,
+    'PUT' => $_POST,
+    'DELETE' => $_POST
 };
 
 $function = $context['function'];

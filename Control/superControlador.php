@@ -10,13 +10,7 @@ function superControlador($url, $metodo, $parameters)
                 case 'GET':
                         curl_setopt($ch, CURLOPT_URL, $url . "?" . $parameters);
                         break;
-                case 'POST':
-                        curl_setopt($ch, CURLOPT_POSTFIELDS, $parameters);
-                        break;
-                case 'PUT':
-                        curl_setopt($ch, CURLOPT_POSTFIELDS, $parameters);
-                        break;
-                case 'DELETE':
+                case 'POST' or 'PUT' or 'DELETE':
                         curl_setopt($ch, CURLOPT_POSTFIELDS, $parameters);
                         break;
         }
