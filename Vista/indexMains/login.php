@@ -1,9 +1,3 @@
-<?php
-require_once '../../Control/superControlador.php';
-if(isset($_POST['login'])){
-    superControlador('http://localhost/LogiQuick/Control/controladorLogins.php', 'GET', array('function' => 'chequear', 'ci' => $_POST['ci'], 'contrasenia' => $_POST['contrasenia']));
-}
-?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -30,7 +24,8 @@ if(isset($_POST['login'])){
         </nav>
     </header>
     <div class="form__container">
-        <form class="form" method="POST">
+        <form class="form" method="POST" action="../../controladorLogin.php">
+            <input type="hidden" name="function" value="chequear">
             <h2 class="form__text">Ingrese sus Datos</h2>
             <div class="form__group">
                 <label class="form__label" for="ci">CI:</label>
