@@ -1,26 +1,7 @@
 <?php
 require_once('../../Control/superControlador.php');
 session_start();
-if (isset($_SESSION['token'])) {
-  $ver = superControlador('http://localhost/LogiQuick/Control/controladorToken.php', 'GET', array('function' => 'verify', 'token' => $_SESSION['token']));
-  if ($ver) {
-    $tipo = $_SESSION['tipo'];
-    if($tipo == 'Camionero'){
-      
-    }
-  } else {
-
-    echo "<script>
-            alert('Tipo de usuario incorrecto, no tiene permisos para ingresar a esta área.');
-            window.location = 'login.php';
-        </script>";
-  }
-} else {
-  echo "<script>
-            alert('Inicie sesión para ingresar.');
-            window.location = 'login.php';
-        </script>";
-}
+if (isset($_SESSION['token'])) superControlador('http://'.$_SERVER['HTTP_HOST'].'/Control/controladorTokens.php', 'GET', array('function' => 'verify', 'token' => $_SESSION['token'], 'tipo' => 'Camionero'));
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +20,7 @@ if (isset($_SESSION['token'])) {
     <nav class="navbar">
 
       <div class="navbar__logo">
-        <img src="assets/logo.png" alt="logo">
+        <img src="../assets/logo.png" alt="logo">
       </div>
 
       <ul class="navbar__list">

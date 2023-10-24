@@ -39,9 +39,18 @@ class controladorTokens
     public static function verify($context)
     {
         $token = $context['token'];
+        $tipo = $context['tipo'];
         $ver = modeloTokens::chkToken($token);
         if ($ver) {
             $ver = modeloTokens::chkExpiration($token);
+            if($ver){
+                $type = modeloTokens::getType($token);
+                if ($type != $tipo) echo "<script>alert('Usted no tiene permiso para ingresar a esta página.');window.location=../Vista/indexMains.php;</script>";
+            }else{
+                echo "<script>alert('Su token ha expirado, vuelva a ingresar sesión porfavor.');window.location=../Vista/indexMains.php;</script>";
+            }            
+        }else{
+            echo "<script>alert('El token es incorrecto, vuelva a ingresar sesión.');window.location=../Vista/indexMains.php;</script>";
         }
         echo $ver;
     }
@@ -63,7 +72,7 @@ class controladorTokens
     public static function getType($context)
     {
         $token = $context['token'];
-        $tipo = modeloTokens::chkType($token);
-        var_dump($tipo);
+        $tipo = modeloTokens::getType($token);
+        echo $tipo;
     }
 }

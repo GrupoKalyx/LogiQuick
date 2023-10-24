@@ -72,7 +72,7 @@ class modeloTokens
         return $num;
     }
 
-    public static function chkType($token)
+    public static function getType($token)
     {
         list($headersB64, $payloadB64, $sig) = explode('.', $token);
         $payloadB64 = json_decode(base64_decode($payloadB64), true);

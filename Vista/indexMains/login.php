@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../estilos/FormStyle.css">
-    <link rel="stylesheet" href="../estilos/Style.css">
+    <link rel="stylesheet" href="../estilos/style.css">
     <link rel="icon" type="image/x-icon" href="../assets/logo.png">
     <!-- <script src="Traducir.js"></script> -->
     <title>LogiQuick</title>
@@ -24,7 +24,7 @@
         </nav>
     </header>
     <div class="form__container">
-        <form class="form" method="POST" action="../../controladorLogin.php">
+        <form class="form" method="POST" action="../../Control/controladorLogins.php">
             <input type="hidden" name="function" value="chequear">
             <h2 class="form__text">Ingrese sus Datos</h2>
             <div class="form__group">
