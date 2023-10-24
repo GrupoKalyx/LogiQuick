@@ -52,7 +52,6 @@ class controladorTokens
         }else{
             echo "<script>alert('El token es incorrecto, vuelva a ingresar sesión.');window.location=../Vista/indexMains.php;</script>";
         }
-        echo $ver;
     }
 
     public static function expired($context)
@@ -65,7 +64,7 @@ class controladorTokens
     public static function exists($context)
     {
         $ci = $context['ci'];
-        $existence = modeloTokens::chkUser($ci);
+        $existence = modeloTokens::chkTokenExistence($ci);
         echo $existence;
     }
 

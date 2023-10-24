@@ -1,7 +1,7 @@
 <?php
 require_once('../../Control/superControlador.php');
 session_start();
-if (isset($_SESSION['token'])) superControlador('http://'.$_SERVER['HTTP_HOST'].'/Control/controladorTokens.php', 'GET', array('function' => 'verify', 'token' => $_SESSION['token'], 'tipo' => 'Camionero'));
+if (isset($_SESSION['token'])) superControlador('http://'.$_SERVER['HTTP_HOST'].'/Control/controladorTokens.php', 'GET', array('function' => 'verify', 'token' => $_SESSION['token'], 'tipo' => 'Delivery'));
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,8 +26,8 @@ if (isset($_SESSION['token'])) superControlador('http://'.$_SERVER['HTTP_HOST'].
       </div>
 
       <ul class="navbar__list">
-        <li class="navbar__list__item"><a href="RutaCamionero.php">Vizualizar rutas</a></li>
-        <li class="navbar__list__item"><a href="CamionAsignado.php">Camion asignado</a></li>
+        <li class="navbar__list__item"><a href="RutaDelivery.php">Vizualizar rutas</a></li>
+        <li class="navbar__list__item"><a href="PickupAsignado.php">Camion asignado</a></li>
       </ul>
       <!-- <button class="form__button" id="traductor-btn">Traducir Pagina</button> -->
       <div class="navbar__logout">
@@ -37,8 +37,7 @@ if (isset($_SESSION['token'])) superControlador('http://'.$_SERVER['HTTP_HOST'].
     </nav>
   </header>
 
-
-  <h1>Lista de Camioneros y sus Camiones Asignado</h1>
+  <h1>Lista de Deliverys y sus Pickups Asignado</h1>
 
   <div class="container">
     <div id="TableContainer">

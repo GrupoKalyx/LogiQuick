@@ -41,7 +41,7 @@ class modeloTokens
         $conn->close();
     }
 
-    public static function chkToken($token)
+    public static function chkTokenExistence($token)
     {
         $conn = modeloBd::conexion();
         $query = "SELECT token FROM usuarios WHERE token = ? LIMIT 1";
@@ -49,6 +49,17 @@ class modeloTokens
         $num = mysqli_num_rows($result);
         $conn->close();
         return $num;
+    }
+
+    public static function chkToken($token){
+        $conn = modeloBd::conexion();
+        $query = "SELECT token FROM usuarios WHERE token = ? LIMIT 1";
+        $result = $conn->execute_query($query, $token);
+        $fetch = $result->fetch_array(MYSQLI_ASSOC);
+        $bdToken = $fetch['token'];
+        $equal = ($bdToken == $token);
+        $conn->close();
+        return $equal;
     }
 
     public static function chkExpiration($token)

@@ -11,8 +11,9 @@ if (isset($_POST['asignar'])) {
   $url = 'http://localhost/LogiQuick/Control/controladorLlevan.php';
   $json = superControlador($url, 'PUT', array('function' => 'ingresar', 'idLote' => $idLote, 'matricula' => $matricula));
 }
+session_start();
+if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'] . '/Control/controladorTokens.php', 'GET', array('function' => 'verify', 'token' => $_SESSION['token'], 'tipo' => 'Funcionario'));
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 

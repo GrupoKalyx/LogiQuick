@@ -1,12 +1,12 @@
 <?php
 require_once('sql/dbconection.php');
 session_start();
+if(isset($_SESSION['token'])){
+    require_once('chkToken.php');
+}
 if (isset($_POST['btncerrar'])) {
     $_SESSION['token'] = null;
     header("location: loginAdmin.php");
-}
-if(isset($_SESSION['token'])){
-    
 }
 ?>
 <!DOCTYPE html>

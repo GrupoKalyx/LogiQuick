@@ -10,6 +10,8 @@ if (isset($_POST['generar'])) {
   $url = 'http://localhost/LogiQuick/Control/controladorLotean.php';
   superControlador($url, 'POST', array('function' => 'ingresar', 'idLote' => $idLote, 'paquetes' => $_POST['bulto']));
 }
+session_start();
+if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'] . '/Control/controladorTokens.php', 'GET', array('function' => 'verify', 'token' => $_SESSION['token'], 'tipo' => 'Funcionario'));
 ?>
 <!DOCTYPE html>
 <html lang="en">

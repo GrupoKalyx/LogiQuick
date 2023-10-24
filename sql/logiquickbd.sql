@@ -4,23 +4,11 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
--- -----------------------------------------------------
--- Schema mydb
--- -----------------------------------------------------
--- -----------------------------------------------------
--- Schema logiquickbd
--- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema logiquickbd
+-- Table `almacenes`
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `logiquickbd` DEFAULT CHARACTER SET utf8 ;
-USE `logiquickbd` ;
-
--- -----------------------------------------------------
--- Table `logiquickbd`.`almacenes`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `logiquickbd`.`almacenes` (
+CREATE TABLE IF NOT EXISTS `almacenes` (
   `idAlmacen` INT(11) NOT NULL,
   `calle` VARCHAR(45) NULL DEFAULT NULL,
   `departamento` VARCHAR(45) NULL DEFAULT NULL,
@@ -34,9 +22,9 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `logiquickbd`.`conductores`
+-- Table `conductores`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `logiquickbd`.`conductores` (
+CREATE TABLE IF NOT EXISTS `conductores` (
   `ci` INT(11) NOT NULL,
   `nombre` VARCHAR(45) NULL DEFAULT NULL,
   `telefono` INT(11) NULL DEFAULT NULL,
@@ -46,16 +34,16 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `logiquickbd`.`camioneros`
+-- Table `camioneros`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `logiquickbd`.`camioneros` (
+CREATE TABLE IF NOT EXISTS `camioneros` (
   `ci` INT(11) NOT NULL,
   `nombre` VARCHAR(45) NULL DEFAULT NULL,
   `telefono` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`ci`),
   
     FOREIGN KEY (`ci`)
-    REFERENCES `logiquickbd`.`conductores` (`ci`)
+    REFERENCES `conductores` (`ci`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -63,9 +51,9 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `logiquickbd`.`vehiculos`
+-- Table `vehiculos`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `logiquickbd`.`vehiculos` (
+CREATE TABLE IF NOT EXISTS `vehiculos` (
   `matricula` VARCHAR(45) NOT NULL,
   `disponibilidad` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`matricula`))
@@ -74,15 +62,15 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `logiquickbd`.`camiones`
+-- Table `camiones`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `logiquickbd`.`camiones` (
+CREATE TABLE IF NOT EXISTS `camiones` (
   `matricula` VARCHAR(45) NOT NULL,
   `disponibilidad` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`matricula`),
  
     FOREIGN KEY (`matricula`)
-    REFERENCES `logiquickbd`.`vehiculos` (`matricula`)
+    REFERENCES `vehiculos` (`matricula`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -90,9 +78,9 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `logiquickbd`.`conducen`
+-- Table `conducen`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `logiquickbd`.`conducen` (
+CREATE TABLE IF NOT EXISTS `conducen` (
   `matricula` VARCHAR(45) NOT NULL,
   `fecha_llegada` DATE NULL DEFAULT NULL,
   `fecha_salida` DATE NULL DEFAULT NULL,
@@ -100,12 +88,12 @@ CREATE TABLE IF NOT EXISTS `logiquickbd`.`conducen` (
   PRIMARY KEY (`matricula`, `ci`),
  
     FOREIGN KEY (`ci`)
-    REFERENCES `logiquickbd`.`camioneros` (`ci`)
+    REFERENCES `camioneros` (`ci`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
  
     FOREIGN KEY (`matricula`)
-    REFERENCES `logiquickbd`.`camiones` (`matricula`)
+    REFERENCES `camiones` (`matricula`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -113,16 +101,16 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `logiquickbd`.`deliverys`
+-- Table `deliverys`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `logiquickbd`.`deliverys` (
+CREATE TABLE IF NOT EXISTS `deliverys` (
   `ci` INT(11) NOT NULL,
   `nombre` VARCHAR(45) NULL DEFAULT NULL,
   `telefono` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`ci`),
  
     FOREIGN KEY (`ci`)
-    REFERENCES `logiquickbd`.`conductores` (`ci`)
+    REFERENCES `conductores` (`ci`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -130,9 +118,9 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `logiquickbd`.`paquetes`
+-- Table `paquetes`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `logiquickbd`.`paquetes` (
+CREATE TABLE IF NOT EXISTS `paquetes` (
   `numBulto` INT(11) NOT NULL AUTO_INCREMENT,
   `fechaLlegadaQc` DATE NULL DEFAULT NULL,
   `fechaEntrega` DATE NULL DEFAULT NULL,
@@ -150,15 +138,15 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `logiquickbd`.`pick_ups`
+-- Table `pick_ups`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `logiquickbd`.`pick_ups` (
+CREATE TABLE IF NOT EXISTS `pick_ups` (
   `matricula` VARCHAR(45) NOT NULL,
   `disponibilidad` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`matricula`),
  
     FOREIGN KEY (`matricula`)
-    REFERENCES `logiquickbd`.`vehiculos` (`matricula`)
+    REFERENCES `vehiculos` (`matricula`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -166,9 +154,9 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `logiquickbd`.`entregan`
+-- Table `entregan`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `logiquickbd`.`entregan` (
+CREATE TABLE IF NOT EXISTS `entregan` (
   `fecha_llegada` DATE NOT NULL,
   `fecha_salida` DATE NULL DEFAULT NULL,
   `matricula` VARCHAR(45) NOT NULL,
@@ -176,12 +164,12 @@ CREATE TABLE IF NOT EXISTS `logiquickbd`.`entregan` (
   PRIMARY KEY (`numBulto`, `matricula`),
  
     FOREIGN KEY (`numBulto`)
-    REFERENCES `logiquickbd`.`paquetes` (`numBulto`)
+    REFERENCES `paquetes` (`numBulto`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
  
     FOREIGN KEY (`matricula`)
-    REFERENCES `logiquickbd`.`pick_ups` (`matricula`)
+    REFERENCES `pick_ups` (`matricula`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -189,9 +177,9 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `logiquickbd`.`lotes`
+-- Table `lotes`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `logiquickbd`.`lotes` (
+CREATE TABLE IF NOT EXISTS `lotes` (
   `idLote` INT(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`idLote`))
 ENGINE = InnoDB
@@ -199,9 +187,9 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `logiquickbd`.`Rutas`
+-- Table `Rutas`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `logiquickbd`.`Rutas` (
+CREATE TABLE IF NOT EXISTS `Rutas` (
   `numRuta` INT NOT NULL,
   `departamento` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`numRuta`))
@@ -209,55 +197,55 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `logiquickbd`.`Almacen-Rutas`
+-- Table `Almacen-Rutas`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `logiquickbd`.`Almacen-Rutas` (
+CREATE TABLE IF NOT EXISTS `Almacen-Rutas` (
   `idAlmacen` INT NOT NULL,
   `numRuta` INT NOT NULL,
   PRIMARY KEY (`idAlmacen`, `numRuta`),
  
     FOREIGN KEY (`idAlmacen`)
-    REFERENCES `logiquickbd`.`almacenes` (`idAlmacen`)
+    REFERENCES `almacenes` (`idAlmacen`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
  
     FOREIGN KEY (`numRuta`)
-    REFERENCES `logiquickbd`.`Rutas` (`numRuta`)
+    REFERENCES `Rutas` (`numRuta`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `logiquickbd`.`lotes-Almacen-Rutas`
+-- Table `lotes-Almacen-Rutas`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `logiquickbd`.`lotes-Almacen-Rutas` (
+CREATE TABLE IF NOT EXISTS `lotes-Almacen-Rutas` (
   `idLote` INT NOT NULL,
   `idAlmacen` INT NOT NULL,
   `numRuta` INT NOT NULL,
   PRIMARY KEY (`idLote`, `idAlmacen`, `numRuta`),
  
     FOREIGN KEY (`idLote`)
-    REFERENCES `logiquickbd`.`lotes` (`idLote`)
+    REFERENCES `lotes` (`idLote`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
  
     FOREIGN KEY (`idAlmacen`)
-    REFERENCES `logiquickbd`.`Almacen-Rutas` (`idAlmacen`)
+    REFERENCES `Almacen-Rutas` (`idAlmacen`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
  
     FOREIGN KEY (`numRuta`)
-    REFERENCES `logiquickbd`.`Almacen-Rutas` (`numRuta`)
+    REFERENCES `Almacen-Rutas` (`numRuta`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `logiquickbd`.`llevan`
+-- Table `llevan`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `logiquickbd`.`llevan` (
+CREATE TABLE IF NOT EXISTS `llevan` (
   `matricula` VARCHAR(45) NOT NULL,
   `idLote` INT(11) NOT NULL,
   `idAlmacen` INT NOT NULL,
@@ -266,22 +254,22 @@ CREATE TABLE IF NOT EXISTS `logiquickbd`.`llevan` (
   `fecha_llegada` DATE NULL DEFAULT NULL,
   
     FOREIGN KEY (`matricula`)
-    REFERENCES `logiquickbd`.`camiones` (`matricula`)
+    REFERENCES `camiones` (`matricula`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
  
     FOREIGN KEY (`idLote`)
-    REFERENCES `logiquickbd`.`lotes-Almacen-Rutas` (`idLote`)
+    REFERENCES `lotes-Almacen-Rutas` (`idLote`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
  
     FOREIGN KEY (`idAlmacen`)
-    REFERENCES `logiquickbd`.`lotes-Almacen-Rutas` (`idAlmacen`)
+    REFERENCES `lotes-Almacen-Rutas` (`idAlmacen`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   
     FOREIGN KEY (`numRuta`)
-    REFERENCES `logiquickbd`.`lotes-Almacen-Rutas` (`numRuta`)
+    REFERENCES `lotes-Almacen-Rutas` (`numRuta`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -289,20 +277,20 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `logiquickbd`.`lotean`
+-- Table `lotean`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `logiquickbd`.`lotean` (
+CREATE TABLE IF NOT EXISTS `lotean` (
   `numBulto` INT(11) NOT NULL,
   `idLote` INT(11) NOT NULL,
   PRIMARY KEY (`numBulto`, `idLote`),
  
     FOREIGN KEY (`numBulto`)
-    REFERENCES `logiquickbd`.`paquetes` (`numBulto`)
+    REFERENCES `paquetes` (`numBulto`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
  
     FOREIGN KEY (`idLote`)
-    REFERENCES `logiquickbd`.`lotes` (`idLote`)
+    REFERENCES `lotes` (`idLote`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -310,9 +298,9 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `logiquickbd`.`manejan`
+-- Table `manejan`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `logiquickbd`.`manejan` (
+CREATE TABLE IF NOT EXISTS `manejan` (
   `matricula` VARCHAR(45) NOT NULL,
   `fecha_llegada` DATE NULL DEFAULT NULL,
   `fecha_salida` DATE NULL DEFAULT NULL,
@@ -320,12 +308,12 @@ CREATE TABLE IF NOT EXISTS `logiquickbd`.`manejan` (
   PRIMARY KEY (`matricula`, `ci`),
  
     FOREIGN KEY (`matricula`)
-    REFERENCES `logiquickbd`.`pick_ups` (`matricula`)
+    REFERENCES `pick_ups` (`matricula`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   
     FOREIGN KEY (`ci`)
-    REFERENCES `logiquickbd`.`deliverys` (`ci`)
+    REFERENCES `deliverys` (`ci`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -333,9 +321,9 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `logiquickbd`.`usuarios`
+-- Table `usuarios`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `logiquickbd`.`usuarios` (
+CREATE TABLE IF NOT EXISTS `usuarios` (
   `ci` INT(11) NOT NULL,
   `nombre` VARCHAR(45) NULL DEFAULT NULL,
   `tipo` VARCHAR(45) NULL DEFAULT NULL,
@@ -348,20 +336,20 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `logiquickbd`.`van`
+-- Table `van`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `logiquickbd`.`van` (
+CREATE TABLE IF NOT EXISTS `van` (
   `idLote` INT(11) NOT NULL,
   `idAlmacen` INT(11) NOT NULL,
   PRIMARY KEY (`idLote`, `idAlmacen`),
   
     FOREIGN KEY (`idLote`)
-    REFERENCES `logiquickbd`.`lotean` (`idLote`)
+    REFERENCES `lotean` (`idLote`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
  
     FOREIGN KEY (`idAlmacen`)
-    REFERENCES `logiquickbd`.`almacenes` (`idAlmacen`)
+    REFERENCES `almacenes` (`idAlmacen`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
