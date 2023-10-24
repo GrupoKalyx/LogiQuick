@@ -1,7 +1,7 @@
 <?php
 require_once('sql/dbconection.php');
 session_start();
-if(isset($_SESSION['token'])){
+if (isset($_SESSION['token'])) {
     require_once('chkToken.php');
 }
 if (isset($_POST['btncerrar'])) {
@@ -83,48 +83,6 @@ if (isset($_POST['btncerrar'])) {
         </div>
     </div>
 
-    <div class="form__container__backoffice"> <!-- CRUD de Almacenes -->
-        <div class="form">
-            <h2> Ingresar datos de Almacen</h2>
-            <form action="CRUD/almacenes/Altas.php" method="post" id="ingAlmacenForm">
-                Id de almacen <input type="text" class="form__input" name="idAlmacen"><br>
-                Num <input class="form__input" type="text" id="ingAlmacenNum" name="num"><br>
-                Calle <input class="form__input" type="text" id="ingAlmacenCalle" name="calle" required><br>
-                Localidad <input class="form__input" type="text" id="ingAlmacenLocalidad" name="localidad"><br>
-                Departamento <input class="form__input" type="text" id="ingAlmacenDepartamento" name="departamento" required><br><br>
-                <input type="hidden" name="ubiAlmacenLat" id="ingAlmacenLat">
-                <input type="hidden" name="ubiAlmacenLng" id="ingAlmacenLng">
-                <button class="form__button" id="ingAlmacen" type="button" onclick="myFunction('ingAlmacen');">Ingresar</button>
-            </form>
-        </div>
-        <div class="form">
-            <h2>Eliminar un almacen</h2>
-            <form action="CRUD/almacenes/Bajas.php" method="post">
-                Id de almacen<input class="form__input" type="text" name="idAlmacen"><br><br>
-                <button class="form__button" type="submit">Eliminar</button>
-            </form>
-        </div>
-        <div class="form" id="list">
-            <h2>Almacenes registrados</h2><br>
-            <iframe src="CRUD/almacenes/Consultas.php">
-            </iframe>
-        </div>
-        <div class="form">
-            <h2> Ingresar datos de Almacen a modificar</h2>
-            <form action="CRUD/almacenes/Modificaciones.php" method="post" id="modAlmacenForm">
-                Id de almacen <input class="form__input" type="text" name="idAlmacen">
-                <h2>Nuevos datos</h2>
-                Num <input class="form__input" type="text" id="modAlmacenNum" name="num"><br>
-                Calle / Ruta<input class="form__input" type="text" id="modAlmacenCalle" name="calle" required><br>
-                Localidad <input class="form__input" type="text" id="modAlmacenLocalidad" name="localidad"><br>
-                Departamento <input class="form__input" type="text" id="modAlmacenDepartamento" name="departamento" required><br><br>
-                <input type="hidden" name="ubiAlmacenLat" id="modAlmacenLat">
-                <input type="hidden" name="ubiAlmacenLng" id="modAlmacenLng">
-                <button class="form__button" id="modAlmacen" type="button" onclick="myFunction('modAlmacen');">Modificar</button>
-            </form>
-        </div>
-    </div>
-
     <div class="form__container__backoffice"> <!-- CRUD de Paquetes-->
         <div class="form">
             <h2>Ingresar paquete</h2>
@@ -199,6 +157,90 @@ if (isset($_POST['btncerrar'])) {
                 Numero de bulto <input class="form__input" text="text" name="numBulto"><br>
                 <h2>Nuevo paquete</h2>
                 Numero de bulto <input class="form__input" text="text" name="numNuevoPaquete">
+            </form>
+        </div>
+    </div>
+
+    <div class="form__container__backoffice"> <!-- CRUD de Almacenes -->
+        <div class="form">
+            <h2> Ingresar datos de Almacen</h2>
+            <form action="CRUD/almacenes/Altas.php" method="post" id="ingAlmacenForm">
+                Id de almacen <input type="text" class="form__input" name="idAlmacen"><br>
+                Num <input class="form__input" type="text" id="ingAlmacenNum" name="num"><br>
+                Calle <input class="form__input" type="text" id="ingAlmacenCalle" name="calle" required><br>
+                Localidad <input class="form__input" type="text" id="ingAlmacenLocalidad" name="localidad"><br>
+                Departamento <input class="form__input" type="text" id="ingAlmacenDepartamento" name="departamento" required><br><br>
+                <input type="hidden" name="ubiAlmacenLat" id="ingAlmacenLat">
+                <input type="hidden" name="ubiAlmacenLng" id="ingAlmacenLng">
+                <button class="form__button" id="ingAlmacen" type="button" onclick="myFunction('ingAlmacen');">Ingresar</button>
+            </form>
+        </div>
+        <div class="form">
+            <h2>Eliminar un almacen</h2>
+            <form action="CRUD/almacenes/Bajas.php" method="post">
+                Id de almacen<input class="form__input" type="text" name="idAlmacen"><br><br>
+                <button class="form__button" type="submit">Eliminar</button>
+            </form>
+        </div>
+        <div class="form" id="list">
+            <h2>Almacenes registrados</h2><br>
+            <iframe src="CRUD/almacenes/Consultas.php">
+            </iframe>
+        </div>
+        <div class="form">
+            <h2> Ingresar datos de Almacen a modificar</h2>
+            <form action="CRUD/almacenes/Modificaciones.php" method="post" id="modAlmacenForm">
+                Id de almacen <input class="form__input" type="text" name="idAlmacen">
+                <h2>Nuevos datos</h2>
+                Num <input class="form__input" type="text" id="modAlmacenNum" name="num"><br>
+                Calle / Ruta<input class="form__input" type="text" id="modAlmacenCalle" name="calle" required><br>
+                Localidad <input class="form__input" type="text" id="modAlmacenLocalidad" name="localidad"><br>
+                Departamento <input class="form__input" type="text" id="modAlmacenDepartamento" name="departamento" required><br><br>
+                <input type="hidden" name="ubiAlmacenLat" id="modAlmacenLat">
+                <input type="hidden" name="ubiAlmacenLng" id="modAlmacenLng">
+                <button class="form__button" id="modAlmacen" type="button" onclick="myFunction('modAlmacen');">Modificar</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="form__container__backoffice"> <!-- CRUD de Rutas -->
+        <div class="form">
+            <h2> Ingresar datos de Rutas</h2>
+            <form action="CRUD/rutas/Altas.php" method="post" id="ingAlmacenForm">
+                Id de almacen <input type="text" class="form__input" name="idAlmacen"><br>
+                Num <input class="form__input" type="text" id="ingAlmacenNum" name="num"><br>
+                Calle <input class="form__input" type="text" id="ingAlmacenCalle" name="calle" required><br>
+                Localidad <input class="form__input" type="text" id="ingAlmacenLocalidad" name="localidad"><br>
+                Departamento <input class="form__input" type="text" id="ingAlmacenDepartamento" name="departamento" required><br><br>
+                <input type="hidden" name="ubiAlmacenLat" id="ingAlmacenLat">
+                <input type="hidden" name="ubiAlmacenLng" id="ingAlmacenLng">
+                <button class="form__button" id="ingAlmacen" type="button" onclick="myFunction('ingAlmacen');">Ingresar</button>
+            </form>
+        </div>
+        <div class="form">
+            <h2>Eliminar un almacen</h2>
+            <form action="CRUD/almacenes/Bajas.php" method="post">
+                Id de almacen<input class="form__input" type="text" name="idAlmacen"><br><br>
+                <button class="form__button" type="submit">Eliminar</button>
+            </form>
+        </div>
+        <div class="form" id="list">
+            <h2>Almacenes registrados</h2><br>
+            <iframe src="CRUD/almacenes/Consultas.php">
+            </iframe>
+        </div>
+        <div class="form">
+            <h2> Ingresar datos de Almacen a modificar</h2>
+            <form action="CRUD/almacenes/Modificaciones.php" method="post" id="modAlmacenForm">
+                Id de almacen <input class="form__input" type="text" name="idAlmacen">
+                <h2>Nuevos datos</h2>
+                Num <input class="form__input" type="text" id="modAlmacenNum" name="num"><br>
+                Calle / Ruta<input class="form__input" type="text" id="modAlmacenCalle" name="calle" required><br>
+                Localidad <input class="form__input" type="text" id="modAlmacenLocalidad" name="localidad"><br>
+                Departamento <input class="form__input" type="text" id="modAlmacenDepartamento" name="departamento" required><br><br>
+                <input type="hidden" name="ubiAlmacenLat" id="modAlmacenLat">
+                <input type="hidden" name="ubiAlmacenLng" id="modAlmacenLng">
+                <button class="form__button" id="modAlmacen" type="button" onclick="myFunction('modAlmacen');">Modificar</button>
             </form>
         </div>
     </div>
