@@ -9,7 +9,6 @@ $context = match ($_SERVER['REQUEST_METHOD']) {
     'DELETE' => $_POST,
 };
 
-var_dump($context);
 $function = $context['function'];
 controladorLogins::$function($context);
 
@@ -38,7 +37,7 @@ class controladorLogins
                     $jwt = superControlador('http://'.$_SERVER['HTTP_HOST'].'/Control/controladorTokens.php', 'GET', array('function' => 'createToken', 'ci' => $ci, 'tipo' => $tipo));
                 }
                 $_SESSION['token'] = $token;
-                // Redirige al usuario a su respectivo index
+               // Redirige al usuario a su respectivo index
                 switch ($tipo) {
                     case 'Funcionario':
                         header("location: ../Vista/indexMains/FunExtCentral.php");
