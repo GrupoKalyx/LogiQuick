@@ -39,6 +39,7 @@ if ($paquete5 != NULL) {
   $query5 = "INSERT INTO lotean (idLote, numBulto) VALUES (?, ?)";
   $exc5 = $conn->execute_query($query5, [$idLote, $paquete5]);
 }
+$conn->close();
 
 if ($exc) {
   echo "<script>alert('Lote ingresado con éxito.');window.location='../../indexAdmin.php'</script>";

@@ -15,7 +15,7 @@ class modeloAlmacenes
     public static function modificacion($idAlmacen, $ubiAlmacen, $calle, $departamento, $localidad, $N_puerta)
     {
         $conn = modeloBd::conexion();
-        $query = "UPDATE usuarios SET ubiAlmacen = ? AND calle = ? AND departamento = ? AND localidad = ? AND N_puerta = ? WHERE id = ?";
+        $query = "UPDATE almacenes SET ubiAlmacen = ? AND calle = ? AND departamento = ? AND localidad = ? AND N_puerta = ? WHERE idAlmacen = ?";
         $conn->execute_query($query, [$ubiAlmacen, $calle, $departamento, $localidad, $N_puerta, $idAlmacen]);
         $conn->close();
     }

@@ -13,6 +13,7 @@ foreach ($departamentos as $dep => $nombreDep) {
 
 $query = "INSERT INTO rutas (numRuta, departamentos) VALUES (?, ?)";
 $exc = $conn->execute_query($query, [$numRuta, $stringDep]);
+$conn->close();
 
 if ($exc) {
   echo "<script>alert('Almacen ingresado con éxito.');window.location='../../indexAdmin.php'</script>";

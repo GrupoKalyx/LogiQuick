@@ -16,3 +16,4 @@ foreach ($arrayConsulta as $value) {
         echo "<a class='form__viewContent'> " . $key . " " . $v . " </a>";
     }
 }
+$conn->close();

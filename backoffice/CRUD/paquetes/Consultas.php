@@ -3,6 +3,7 @@
 
     $query = "SELECT * FROM paquetes";
     $result = mysqli_query($conn, $query);
+    $conn->close();
     $arrayConsulta = array();
 
     foreach ($result->fetch_all(MYSQLI_ASSOC) as $row) {

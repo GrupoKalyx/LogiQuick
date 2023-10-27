@@ -12,6 +12,7 @@ $lng = $_POST['coordenadasLng'];
 
 $query = "UPDATE paquetes SET gmailCliente = ?, num = ?, calle = ?, localidad = ?, departamento = ?, lat = ?, lng = ? WHERE numBulto = ?";
 $exc = $conn->execute_query($query, [$gmailCliente, $num, $calle, $localidad, $departamento, $lat, $lng, $numBulto]);
+$conn->close();
 
 if ($exc) {
   echo "<script>alert('Paquete actualizado con éxito.');window.location='../../indexAdmin.php'</script>";

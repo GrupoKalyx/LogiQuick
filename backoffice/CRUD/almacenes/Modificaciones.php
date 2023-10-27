@@ -11,6 +11,7 @@ $lng = $_POST['ubiAlmacenLng'];
 
 $query = "UPDATE almacenes SET lat = ?, lng = ?, num = ?, calle = ?, localidad = ?,  departamento = ?  WHERE idAlmacen = ?";
 $exc = $conn->execute_query($query, [$lat, $lng, $num, $calle, $localidad, $departamento, $idAlmacen]);
+$conn->close();
 
 if ($exc) {
   echo "<script>alert('Almacen modificado con éxito.');window.location='../../indexAdmin.php'</script>";

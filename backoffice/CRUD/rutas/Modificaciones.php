@@ -13,6 +13,7 @@ foreach ($departamentos as $dep => $nombreDep) {
 
 $query = "UPDATE rutas SET departamentos = ? WHERE numRuta = ?";
 $exc = $conn->execute_query($query, [$stringDep, $numRuta]);
+$conn->close();
 
 if ($exc) {
   echo "<script>alert('Almacen modificado con éxito.');window.location='../../indexAdmin.php'</script>";

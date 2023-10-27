@@ -4,6 +4,7 @@ require_once('../../sql/dbconection.php');
 $numBulto = $_POST['numBulto'];
 $query = "DELETE FROM paquetes WHERE numBulto = ?";
 $exc = $conn->execute_query($query, [$numBulto]);
+$conn->close();
 
 if ($exc) {
   echo "<script>alert('Paquete eliminado con éxito.');window.location='../../indexAdmin.php'</script>";

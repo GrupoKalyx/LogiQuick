@@ -4,6 +4,7 @@ require_once('../../sql/dbconection.php');
 $query = "SELECT * FROM almacenes";
 $result = mysqli_query($conn, $query);
 $arrayConsulta = array();
+$conn->close();
 
 foreach ($result->fetch_all(MYSQLI_ASSOC) as $row) {
     $idAlmacen = $row['idAlmacen'];

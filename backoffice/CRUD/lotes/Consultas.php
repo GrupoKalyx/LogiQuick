@@ -22,6 +22,7 @@ foreach ($result->fetch_all(MYSQLI_ASSOC) as $row) {
         array_push($arrayConsulta, ['--> Numero de bulto : ' => $paquete. '<br>']);
     }
 }
+$conn->close();
 
 foreach ($arrayConsulta as $value) {
     foreach ($value as $key => $v) {
