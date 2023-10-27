@@ -1,16 +1,18 @@
 <?php
 require_once('../../sql/dbconection.php');
 
-$idAlmacen = $_POST['idAlmacen'];
-$num = $_POST['num'];
-$calle = $_POST['calle'];
-$localidad = $_POST['localidad'];
-$departamento = $_POST['departamento'];
-$lat = $_POST['ubiAlmacenLat'];
-$lng = $_POST['ubiAlmacenLng'];
+$numRuta = $_POST['numRuta'];
+$departamentos = $_POST['departamentos'];
 
-$query = "UPDATE almacenes SET lat = ?, lng = ?, num = ?, calle = ?, localidad = ?,  departamento = ?  WHERE idAlmacen = ?";
-$exc = $conn->execute_query($query, [$lat, $lng, $num, $calle, $localidad, $departamento, $idAlmacen]);
+$stringDep = $departamentos[0];
+foreach ($departamentos as $dep => $nombreDep) {
+  if ($dep != 0){
+    $stringDep .= ", " . $nombreDep;
+  }
+}
+
+$query = "UPDATE rutas SET departamentos = ? WHERE numRuta = ?";
+$exc = $conn->execute_query($query, [$stringDep, $numRuta]);
 
 if ($exc) {
   echo "<script>alert('Almacen modificado con éxito.');window.location='../../indexAdmin.php'</script>";

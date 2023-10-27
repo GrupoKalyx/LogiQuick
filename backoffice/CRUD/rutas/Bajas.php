@@ -1,9 +1,9 @@
 <?php
 require_once('../../sql/dbconection.php');
 
-$idAlmacen = $_POST['idAlmacen'];
-$query = "DELETE FROM almacenes WHERE idAlmacen = ?";
-$exc = $conn->execute_query($query, [$idAlmacen]);
+$numRuta = $_POST['numRuta'];
+$query = "DELETE FROM rutas WHERE numRuta = ?";
+$exc = $conn->execute_query($query, [$numRuta]);
 
 if ($exc) {
   echo "<script>alert('Almacen eliminado con éxito.');window.location='../../indexAdmin.php' </script>";

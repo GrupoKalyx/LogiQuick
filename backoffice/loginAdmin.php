@@ -35,7 +35,7 @@ if (isset($_SESSION)) {
                 <input class="form__input" type="text" id="ci" name="ci" required>
             </div>
             <div class="form__group">
-                <label class="form__label" for="contrasenia">Contraseña: </label>
+                <label class="form__label" for="contrasenia">Contraseña:</label>
                 <input class="form__input" type="password" id="contrasenia" name="contrasenia" required>
             </div>
             <br>

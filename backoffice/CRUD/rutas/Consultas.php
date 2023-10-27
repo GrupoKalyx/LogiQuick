@@ -1,19 +1,14 @@
 <?php
 require_once('../../sql/dbconection.php');
 
-$query = "SELECT * FROM almacenes";
+$query = "SELECT * FROM rutas";
 $result = mysqli_query($conn, $query);
 $arrayConsulta = array();
 
 foreach ($result->fetch_all(MYSQLI_ASSOC) as $row) {
-    $idAlmacen = $row['idAlmacen'];
-    $lat = $row['lat'];
-    $lng = $row['lng'];
-    $N_puerta = $row['num'];
-    $calle = $row['calle'];
-    $localidad = $row['localidad'];
-    $departamento = $row['departamento'];
-    array_push($arrayConsulta, ['Id de almacen: ' => $idAlmacen, '<br> Ubicación: ' => $lat . ', ' . $lng, '<br> N_puerta: ' => $N_puerta, '<br> Calle: ' => $calle, '<br> Localidad: ' => $localidad, '<br> Departamento: ' => $departamento . '<br><br>']);
+    $numRuta = $row['numRuta'];
+    $departamentos = $row['departamentos'];
+    array_push($arrayConsulta, ['Id de almacen: ' => $numRuta, '<br> Departamentos: ' => $departamentos . '<br><br>']);
 }
 
 foreach ($arrayConsulta as $value) {

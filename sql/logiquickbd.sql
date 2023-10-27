@@ -189,9 +189,9 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 -- Table `Rutas`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Rutas` (
+CREATE TABLE IF NOT EXISTS `rutas` (
   `numRuta` INT NOT NULL,
-  `departamento` VARCHAR(45) NOT NULL,
+  `departamentos` VARCHAR(64) NOT NULL,
   PRIMARY KEY (`numRuta`))
 ENGINE = InnoDB;
 

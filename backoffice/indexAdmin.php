@@ -205,42 +205,83 @@ if (isset($_POST['btncerrar'])) {
 
     <div class="form__container__backoffice"> <!-- CRUD de Rutas -->
         <div class="form">
-            <h2> Ingresar datos de Rutas</h2>
-            <form action="CRUD/rutas/Altas.php" method="post" id="ingAlmacenForm">
-                Id de almacen <input type="text" class="form__input" name="idAlmacen"><br>
-                Num <input class="form__input" type="text" id="ingAlmacenNum" name="num"><br>
-                Calle <input class="form__input" type="text" id="ingAlmacenCalle" name="calle" required><br>
-                Localidad <input class="form__input" type="text" id="ingAlmacenLocalidad" name="localidad"><br>
-                Departamento <input class="form__input" type="text" id="ingAlmacenDepartamento" name="departamento" required><br><br>
-                <input type="hidden" name="ubiAlmacenLat" id="ingAlmacenLat">
-                <input type="hidden" name="ubiAlmacenLng" id="ingAlmacenLng">
-                <button class="form__button" id="ingAlmacen" type="button" onclick="myFunction('ingAlmacen');">Ingresar</button>
+            <h2>Ingresar datos de Rutas</h2>
+            <form action="CRUD/rutas/Altas.php" method="post">
+                Numero de ruta <input type="text" class="form__input" name="numRuta"><br>
+                <label for="depart">Departamento</label>
+                <select class="form__select" id="depart" name="departamentos[]">
+                    <option value="">Seleccionar departamento</option>
+                    <option value="Montevideo">Montevideo</option>
+                    <option value="Maldonado">Maldonado</option>
+                    <option value="Canelones">Canelones</option>
+                    <option value="Colonia">Colonia</option>
+                    <option value="San Jose">San Jose</option>
+                    <option value="Florida">Florida</option>
+                    <option value="Rivera">Rivera</option>
+                    <option value="Paysandu">Paysandu</option>
+                    <option value="Rio Negro">Rio Negro</option>
+                    <option value="Artigas">Artigas</option>
+                    <option value="Durazno">Durazno</option>
+                    <option value="Lavalleja">Lavalleja</option>
+                    <option value="Flores">Flores</option>
+                    <option value="Salto">Salto</option>
+                    <option value="Soriano">Soriano</option>
+                    <option value="Tacuarembo">Tacuarembo</option>
+                    <option value="Treinta y Tres">Treinta y Tres</option>
+                    <option value="Cerro Largo">Cerro Largo</option>
+                    <option value="Rocha">Rocha</option>
+                </select>
+                <br><br>
+                <div class="form__group" id="departamentosContainer">
+                    <!-- aca van paquetes nuevos-->
+                </div>
+                <button class="form__button" type="submit">Ingresar</button>
             </form>
         </div>
         <div class="form">
-            <h2>Eliminar un almacen</h2>
-            <form action="CRUD/almacenes/Bajas.php" method="post">
-                Id de almacen<input class="form__input" type="text" name="idAlmacen"><br><br>
+            <h2>Eliminar una ruta</h2>
+            <form action="CRUD/rutas/Bajas.php" method="post">
+                Numero de ruta<input class="form__input" type="text" name="numRuta"><br><br>
                 <button class="form__button" type="submit">Eliminar</button>
             </form>
         </div>
         <div class="form" id="list">
-            <h2>Almacenes registrados</h2><br>
-            <iframe src="CRUD/almacenes/Consultas.php">
+            <h2>Rutas registradas</h2><br>
+            <iframe src="CRUD/rutas/Consultas.php">
             </iframe>
         </div>
         <div class="form">
-            <h2> Ingresar datos de Almacen a modificar</h2>
-            <form action="CRUD/almacenes/Modificaciones.php" method="post" id="modAlmacenForm">
-                Id de almacen <input class="form__input" type="text" name="idAlmacen">
-                <h2>Nuevos datos</h2>
-                Num <input class="form__input" type="text" id="modAlmacenNum" name="num"><br>
-                Calle / Ruta<input class="form__input" type="text" id="modAlmacenCalle" name="calle" required><br>
-                Localidad <input class="form__input" type="text" id="modAlmacenLocalidad" name="localidad"><br>
-                Departamento <input class="form__input" type="text" id="modAlmacenDepartamento" name="departamento" required><br><br>
-                <input type="hidden" name="ubiAlmacenLat" id="modAlmacenLat">
-                <input type="hidden" name="ubiAlmacenLng" id="modAlmacenLng">
-                <button class="form__button" id="modAlmacen" type="button" onclick="myFunction('modAlmacen');">Modificar</button>
+            <h2>Modificar datos de ruta</h2>
+            <form action="CRUD/rutas/Modificaciones.php" method="post">
+                Numero de ruta <input type="text" class="form__input" name="numRuta"><br>
+                <label for="departMod">Nuevos departamentos</label>
+                <select class="form__select" id="departMod" name="departamentos[]">
+                    <option value="">Seleccionar departamento</option>
+                    <option value="Montevideo">Montevideo</option>
+                    <option value="Maldonado">Maldonado</option>
+                    <option value="Canelones">Canelones</option>
+                    <option value="Colonia">Colonia</option>
+                    <option value="San Jose">San Jose</option>
+                    <option value="Florida">Florida</option>
+                    <option value="Rivera">Rivera</option>
+                    <option value="Paysandu">Paysandu</option>
+                    <option value="Rio Negro">Rio Negro</option>
+                    <option value="Artigas">Artigas</option>
+                    <option value="Durazno">Durazno</option>
+                    <option value="Lavalleja">Lavalleja</option>
+                    <option value="Flores">Flores</option>
+                    <option value="Salto">Salto</option>
+                    <option value="Soriano">Soriano</option>
+                    <option value="Tacuarembo">Tacuarembo</option>
+                    <option value="Treinta y Tres">Treinta y Tres</option>
+                    <option value="Cerro Largo">Cerro Largo</option>
+                    <option value="Rocha">Rocha</option>
+                </select>
+                <br><br>
+                <div class="form__group" id="departamentosContainer">
+                    <!-- aca van paquetes nuevos-->
+                </div>
+                <button class="form__button" type="submit">Modificar</button>
             </form>
         </div>
     </div>
