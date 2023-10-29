@@ -1,14 +1,22 @@
-(function () {
-    const openButton = document.querySelector('.nav__links');
-    const menu = document.querySelector('.nav__item__link');
-    const closeMenu = document.querySelector('.nav__close');
+// Obtén referencias a los elementos del DOM
+const navMenu = document.querySelector('.nav__links--menu');
+const navMenuButton = document.querySelector('.nav__img');
+const navCloseButton = document.querySelector('.nav__close');
 
-    openButton.addEventListener('click', () => {
-        menu.classList.add('nav__link--show');
-    });
+// Función para mostrar el menú
+function mostrarMenu() {
+    navMenu.classList.add('nav__links--show');
+    document.documentElement.style.overflowY = 'hidden'; // Evita el desplazamiento de la página cuando el menú está abierto
+}
 
-    closeMenu.addEventListener('click', () => {
-        menu.classList.remove('nav__link--show');
-    });
+// Función para cerrar el menú
+function cerrarMenu() {
+    navMenu.classList.remove('nav__links--show');
+    document.documentElement.style.overflowY = 'auto'; // Restaura el desplazamiento de la página cuando el menú está cerrado
+}
 
-})();
+// Evento de clic para abrir el menú
+navMenuButton.addEventListener('click', mostrarMenu);
+
+// Evento de clic para cerrar el menú
+navCloseButton.addEventListener('click', cerrarMenu);

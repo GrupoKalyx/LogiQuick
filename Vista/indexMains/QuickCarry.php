@@ -35,24 +35,11 @@
 
             <ul class="nav__links nav__links--menu">
                 <li class="nav__item">
-                    <a href="#" class="nav__item__link">AA</a>
+                    <a href="../indexMains/login.php" class="nav__item__link">Login</a>
                 </li>
-                <li class="nav__item">
-                    <a href="#" class="nav__item__link">AA</a>
-                </li>
-                <li class="nav__item">
-                    <a href="#" class="nav__item__link">AA</a>
-                </li>
-                <li class="nav__item">
-                    <a href="#" class="nav__item__link">AA</a>
-                </li>
-
-                <img src="../assets/close.svg" class="nav__close">
             </ul>
 
-            <div class="nav__menu">
-                <img src="../assets/menu.svg" class="nav__img">
-            </div>
+          
         </nav>
 
         <section class="header__container container">
@@ -77,6 +64,33 @@
     <div id="map__generador">
 
     </div>
+
+ 
+
+
+<div info__container>
+    <div class="why-choose-us">
+        <div class="why-choose-us__item">
+            <h2 class="why-choose-us__title"><b>Por Qué Elegirnos</b></h2>
+            <ul class="why-choose-us__list">
+                <li class="why-choose-us__list-item"><b>Puntualidad Inquebrantable:</b> En QuickCarry, valoramos tu tiempo tanto como tú. Nos comprometemos a entregar tus mercancías de forma puntual, cada vez.</li>
+                <li class="why-choose-us__list-item"><b>Flexibilidad y Adaptabilidad:</b> Entendemos que cada negocio es único. Por eso, ofrecemos soluciones logísticas flexibles y personalizadas que se adaptan a las demandas cambiantes de tu empresa.</li>
+                <li class="why-choose-us__list-item"><b>Seguridad y Confianza:</b> Tu mercancía es valiosa y merece ser tratada con cuidado y seguridad. En QuickCarry, nos aseguramos de que tus envíos estén en las mejores manos en todo momento.</li>
+                <li class="why-choose-us__list-item"><b>Atención al Cliente de Primera Clase:</b> Estamos aquí para ayudarte en cada paso del camino. Nuestro equipo de atención al cliente está disponible para responder a tus preguntas y resolver cualquier problema que puedas tener.</li>
+            </ul>
+        </div>
+        <div class="why-choose-us__item">
+            <h2 class="why-choose-us__title"><b>Nuestros Servicios</b></h2>
+            <ul class="why-choose-us__list">
+                <li class="why-choose-us__list-item"><b>Transporte Local:</b> Ofrecemos servicios de transporte confiables a nivel local. Ya sea que necesites mover productos dentro de la ciudad o a través del país, QuickCarry lo hace posible.</li>
+                <li class="why-choose-us__list-item"><b>Gestión de Inventarios:</b> Optimizamos tu almacenamiento y gestión de inventarios para garantizar que siempre tengas lo que necesitas, cuando lo necesitas, sin excesos ni faltantes.</li>
+                <li class="why-choose-us__list-item"><b>Rastreo en Tiempo Real:</b> Mantén el control total sobre tus envíos con nuestro sistema de rastreo en tiempo real. Sabrás exactamente dónde está tu mercancía en cualquier momento.</li>
+                <li class="why-choose-us__list-item"><b>Entregas Express:</b> ¿Necesitas algo entregado rápidamente? Nuestro servicio de entregas express garantiza que tus envíos urgentes lleguen a su destino de manera segura y puntual.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
 
 
 

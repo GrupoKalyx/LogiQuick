@@ -346,3 +346,45 @@ button:hover {
         margin-left: 0; 
     }
 }
+
+.info__container{
+    height: 100%;
+   
+
+}
+
+.why-choose-us {
+    display: flex;
+    flex-direction: column; /* Los elementos estarán uno sobre el otro */
+    align-items: center; /* Centra los elementos horizontalmente */
+    padding: 40px; /* Agrega espacio alrededor del contenedor */
+    width: 50%;
+    margin: 0 auto;
+}
+
+.why-choose-us__item {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    border: 2px solid #154d55; /* Borde verde sólido */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    text-align: center; /* Centra el contenido del bloque */
+    margin-bottom: 20px; /* Espacio entre los elementos */
+}
+
+.why-choose-us__title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #154d55; /* Color verde para el título */
+}
+
+.why-choose-us__list {
+    list-style: none;
+    padding: 0;
+}
+
+.why-choose-us__list-item {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #333; /* Color del texto */
+}
