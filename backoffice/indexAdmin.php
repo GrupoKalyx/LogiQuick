@@ -19,6 +19,7 @@ if (isset($_POST['btncerrar'])) {
     <link rel="stylesheet" href="estilos/backofficeStyle.css">
     <link rel="icon" type="image/x-icon" href="assets/logo.png">
     <script src="../Vista/javascript/agregarCampoDepartamento.js"></script>
+    <script src="../Vista/javascript/agregarCampoBackoffice.js"></script>
     <title>LogiQuick</title>
 </head>
 
@@ -134,12 +135,10 @@ if (isset($_POST['btncerrar'])) {
         <div class="form">
             <h2>Ingresar lote</h2>
             <form action="CRUD\lotes\Altas.php" method="post">
-                Paquete 1 <br><input class="form__input" type="text" id="paquete1" name="paquete1"><br><br>
-                Paquete 2 <br><input class="form__input" type="text" id="paquete2" name="paquete2"><br><br>
-                Paquete 3 <br><input class="form__input" type="text" id="paquete3" name="paquete3"><br><br>
-                Paquete 4 <br><input class="form__input" type="text" id="paquete4" name="paquete4"><br><br>
-                Paquete 5 <br><input class="form__input" type="text" id="paquete5" name="paquete5"><br><br>
+                Paquete 0 <br><input class="form__input" type="text" id="paquete1" name="paquete1"><br><br>
+                <div id="contenedor-campos"></div>
                 <button type="submit" class="form__button" name="actionbtn">Ingresar</button>
+                <button class="form__button" onclick="agregarCampo(event)">Agregar Campo</button>
             </form>
         </div>
         <div class="form">
