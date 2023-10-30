@@ -13,7 +13,7 @@ if (isset($_SESSION['token'])) superControlador('http://'.$_SERVER['HTTP_HOST'].
   <link rel="stylesheet" href="../estilos/style.css">
   <link rel="icon" type="image/x-icon" href="../assets/logo.png">
   <title>LogiQuick</title>
-  <script src="../javascript/camioneroAsignado.js"></script>
+  <script src="../javascript/deliveryAsignado.js"></script>
 </head>
 
 <body class="body">
@@ -44,7 +44,7 @@ if (isset($_SESSION['token'])) superControlador('http://'.$_SERVER['HTTP_HOST'].
       <table id="Table">
         <thead>
           <tr>
-            <th>CI Camionero</th>
+            <th>CI Delivery</th>
             <th>Matricula</th>
           </tr>
         </thead>

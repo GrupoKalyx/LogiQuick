@@ -18,6 +18,7 @@ if (isset($_POST['btncerrar'])) {
     <link rel="stylesheet" href="estilos/FormStyleBackoffice2.css">
     <link rel="stylesheet" href="estilos/backofficeStyle.css">
     <link rel="icon" type="image/x-icon" href="assets/logo.png">
+    <script src="../Vista/javascript/agregarCampoDepartamento.js"></script>
     <title>LogiQuick</title>
 </head>
 
@@ -233,10 +234,13 @@ if (isset($_POST['btncerrar'])) {
                     <option value="Cerro Largo">Cerro Largo</option>
                     <option value="Rocha">Rocha</option>
                 </select>
-                <br><br>
-                <div class="form__group" id="departamentosContainer">
-                    <!-- aca van paquetes nuevos-->
-                </div>
+             
+                    <div class="form__group" id="departamentosContainer">
+                        <!-- aca van paquetes nuevos-->
+                    </div>
+                <button class="form__button" type="button" onclick="agregarDepartamentoCampo()">Agregar Departamento</button>
+                <br>
+                <br>
                 <button class="form__button" type="submit">Ingresar</button>
             </form>
         </div>

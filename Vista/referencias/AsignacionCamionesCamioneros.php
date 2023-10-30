@@ -6,7 +6,7 @@ if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'
 $url = 'http://localhost/LogiQuick/Control/controladorCamiones.php';
 $matriculas = json_decode(superControlador($url, 'GET', array('function' => 'listar')), true);
 
-$url = 'http://localhost/LogiQuick/Control/controladorLotes.php';
+$url = 'http://localhost/LogiQuick/Control/controladorCamioneros.php';
 $idLotes = json_decode(superControlador($url, 'GET', array('function' => 'listar')), true);
 
 if (isset($_POST['asignar'])) {
@@ -81,7 +81,7 @@ if (isset($_POST['asignar'])) {
   </header>
 
   <div class="form__container">
-    <form class="form" method="POST" action="testcamionero.php">
+    <form class="form" method="POST" action="../../Control/controladorConducen.php?accion=ingresar">
 
       <h2 class="form__text">Ingresar Lote a Camión</h2>
 
