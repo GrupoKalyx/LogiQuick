@@ -1,3 +1,15 @@
+<?php
+require_once('../../Control/superControlador.php');
+
+if (isset($_POST['ingresar'])) {
+  $url = 'http://localhost/LogiQuick/Control/controladorPaquetes.php';
+  $numBulto = json_decode(superControlador($url, 'POST', array('function' => 'ingresar', 'gmailCliente' => $_POST['gmailCliente'], 'num' => $_POST['num'], 'calle' => $_POST['calle'], 'localidad' => $_POST['localidad'], 'departamento' => $_POST['departamento'])), 1);
+  
+  $url = 'http://localhost/LogiQuick/Control/controladorPaquetes.php';
+  $infoPaquete = json_decode(superControlador($url, 'GET', array('function' => 'muestra', 'numBulto' => $numBulto['numBulto'])), 1);
+  var_dump($infoPaquete);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,12 +20,10 @@
   <link rel="stylesheet" href="../estilos/FormStyle.css">
   <link rel="icon" type="image/x-icon" href="../assets/logo.png">
   <title>LogiQuick</title>
-  <script src="../Traducir.js"></script>
+  <script src="../javascript/Traducir.js"></script>
 </head>
 
 <body class="body">
-
-
 
   <header>
     <nav class="navbar">
@@ -32,22 +42,12 @@
   </header>
 
   <div class="form__container">
-    <form class="form" method="POST" action="../../Control/superControlador.php/Paquetes/ingresar">
-      <input type="hidden" name="url" value="<?= $_SERVER['HOST_URI'] . $_SERVER['REQUEST_URI'] ?>">
+    <form class="form" method="POST">
       <h2 class="form__text">Ingrese datos del paquete</h2>
+
       <div class="form__group">
         <label class="form__label" for="gmailCliente">Correo del cliente:</label>
         <input class="form__input" type="text" id="gmailCliente" name="gmailCliente" required>
-      </div>
-
-      <div class="form__group">
-        <label class="form__label" for="fechaLlegada">Fecha de llegada:</label>
-        <input class="form__input" type="date" id="fechaLlegada" name="fechaLlegada" required>
-      </div>
-
-      <div class="form__group">
-        <label class="form__label" for="horaLlegada">Horario de llegada:</label>
-        <input class="form__input" type="time" id="horaLlegada" name="horaLlegada" required>
       </div>
 
       <div class="form__group">
@@ -70,7 +70,7 @@
         <input class="form__input" type="text" id="departamento" name="departamento" required>
       </div>
 
-      <button class="form__button" type="submit">Enviar</button>
+      <button class="form__button" type="submit" name="ingresar">Ingresar</button>
     </form>
   </div>
 

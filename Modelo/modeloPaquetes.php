@@ -4,9 +4,8 @@ require_once('modeloBd.php');
 
 class modeloPaquetes
 {
-    public static function alta($gmailCliente, $fechaLlegada, $horaLlegada, $num, $calle, $localidad, $departamento)
+    public static function alta($gmailCliente, $num, $calle, $localidad, $departamento)
     {
-        $fechaLlegada = $fechaLlegada . " " . $horaLlegada;
         $conn = modeloBd::conexion();
         do {
             $idRastreo = "";
@@ -14,16 +13,22 @@ class modeloPaquetes
                 $idRastreo .= mt_rand(0, 9);
             }
         } while (self::rastreo($idRastreo) != NULL);
-        $query = "INSERT INTO paquetes (gmailCliente, idRastreo, fechaLlegada, num, calle, localidad, departamento) VALUES (?, ?, ?, ?, ?, ?, ?)";
-        $conn->execute_query($query, [$gmailCliente, $idRastreo, $fechaLlegada, $num, $calle, $localidad, $departamento]);
+        $query = "INSERT INTO paquetes (gmailCliente, idRastreo, fechaCreacion, num, calle, localidad, departamento) VALUES (?, ?, NOW(), ?, ?, ?, ?)";
+        $conn->execute_query($query, [$gmailCliente, $idRastreo, $num, $calle, $localidad, $departamento]);
+        $queryLastId = "SELECT LAST_INSERT_ID();";
+        $excLastId = $conn->execute_query($queryLastId);
+        $fetch = $excLastId->fetch_array(MYSQLI_ASSOC);
+        $result = $fetch['LAST_INSERT_ID()'];
         $conn->close();
+        return json_encode($result);
     }
 
-    public static function modificacion($numBulto, $gmailCliente, $fechaLlegada, $num, $calle, $localidad, $departamento)
+    public static function modificacion($numBulto, $gmailCliente, $fechaLlegada, $horarioLlegada, $num, $calle, $localidad, $departamento)
     {
+        $fechaCreacion = $fechaLlegada . " " . $horarioLlegada;
         $conn = modeloBd::conexion();
-        $query = "UPDATE paquetes SET gmailCliente = ? AND fechaLlegada = ? AND num = ? AND calle = ? AND localidad = ? AND departamento = ? WHERE numBulto = ?";
-        $conn->execute_query($query, [$gmailCliente, $fechaLlegada, $num, $calle, $localidad, $departamento, $numBulto]);
+        $query = "UPDATE paquetes SET gmailCliente = ? AND fechaCreacion = ? AND num = ? AND calle = ? AND localidad = ? AND departamento = ? WHERE numBulto = ?";
+        $conn->execute_query($query, [$gmailCliente, $fechaCreacion, $num, $calle, $localidad, $departamento, $numBulto]);
         $conn->close();
     }
 
@@ -64,6 +69,7 @@ class modeloPaquetes
         $conn->close();
         return json_encode($result);
     }
+
     public static function listadoEnQc()
     {
         $conn = modeloBd::conexion();

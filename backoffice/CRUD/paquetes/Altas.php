@@ -23,8 +23,7 @@ do {
     echo ".";
 } while (existe($idRastreo, $conn));
 
-
-$query2 = "INSERT INTO paquetes (gmailCliente, idRastreo, num, calle, localidad, departamento, lat, lng) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+$query2 = "INSERT INTO paquetes (gmailCliente, idRastreo, fechaCreacion, num, calle, localidad, departamento, lat, lng) VALUES (?, ?, NOW(), ?, ?, ?, ?, ?, ?)";
 $exc2 = $conn->execute_query($query2, [$gmailCliente, $idRastreo, $num, $calle, $localidad, $departamento, $lat, $lng]);
 $conn->close();
 

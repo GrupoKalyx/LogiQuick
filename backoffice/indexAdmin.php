@@ -114,6 +114,8 @@ if (isset($_POST['btncerrar'])) {
             <form action="CRUD\paquetes\Modificaciones.php" method="post" id="modPaqueteForm">
                 Numero de bulto <input class="form__input" type="text" name="numBulto" required><br><br>
                 Correo del cliente <input class="form__input" type="text" name="gmailCliente"><br><br>
+                Fecha de creacion <input type="date" name="fechaLlegada">
+                Horario de creacion <input type="time" name="horarioLlegada">
                 Numero <input class="form__input" type="text" id="modPaqueteNum" name="num"><br><br>
                 Calle <input class="form__input" type="text" id="modPaqueteCalle" name="calle"><br><br>
                 Localidad <input class="form__input" type="text" id="modPaqueteLocalidad" name="localidad"><br><br>
@@ -297,6 +299,7 @@ if (isset($_POST['btncerrar'])) {
             </div>
         </div>
     </footer>
+
     <script>
         function myFunction(type) {
             if (`${type}` == 'ingAlmacen') {

@@ -82,8 +82,8 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `conducen` (
   `matricula` VARCHAR(45) NOT NULL,
-  `fecha_llegada` DATE NULL DEFAULT NULL,
-  `fecha_salida` DATE NULL DEFAULT NULL,
+  `fecha_llegada` DATETIME NULL DEFAULT NULL,
+  `fecha_salida` DATETIME NULL DEFAULT NULL,
   `ci` INT(11) NOT NULL,
   PRIMARY KEY (`matricula`, `ci`),
  
@@ -122,8 +122,8 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `paquetes` (
   `numBulto` INT(11) NOT NULL AUTO_INCREMENT,
-  `fechaLlegadaQc` DATE NULL DEFAULT NULL,
-  `fechaEntrega` DATE NULL DEFAULT NULL,
+  `fechaCreacion` DATETIME NULL DEFAULT NULL,
+  `fechaEntrega` DATETIME NULL DEFAULT NULL,
   `calle` VARCHAR(45) NULL DEFAULT NULL,
   `localidad` VARCHAR(45) NULL DEFAULT NULL,
   `departamento` VARCHAR(45) NULL DEFAULT NULL,
@@ -157,8 +157,8 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `entregan`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `entregan` (
-  `fecha_llegada` DATE NOT NULL,
-  `fecha_salida` DATE NULL DEFAULT NULL,
+  `fecha_llegada` DATETIME NOT NULL,
+  `fecha_salida` DATETIME NULL DEFAULT NULL,
   `matricula` VARCHAR(45) NOT NULL,
   `numBulto` INT(11) NOT NULL,
   PRIMARY KEY (`numBulto`, `matricula`),
@@ -250,8 +250,8 @@ CREATE TABLE IF NOT EXISTS `llevan` (
   `idLote` INT(11) NOT NULL,
   `idAlmacen` INT NOT NULL,
   `numRuta` INT NOT NULL,
-  `fecha_salida` DATE NULL DEFAULT NULL,
-  `fecha_llegada` DATE NULL DEFAULT NULL,
+  `fecha_salida` DATETIME NULL DEFAULT NULL,
+  `fecha_llegada` DATETIME NULL DEFAULT NULL,
   
     FOREIGN KEY (`matricula`)
     REFERENCES `camiones` (`matricula`)
@@ -302,8 +302,8 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `manejan` (
   `matricula` VARCHAR(45) NOT NULL,
-  `fecha_llegada` DATE NULL DEFAULT NULL,
-  `fecha_salida` DATE NULL DEFAULT NULL,
+  `fecha_llegada` DATETIME NULL DEFAULT NULL,
+  `fecha_salida` DATETIME NULL DEFAULT NULL,
   `ci` INT(11) NOT NULL,
   PRIMARY KEY (`matricula`, `ci`),
  

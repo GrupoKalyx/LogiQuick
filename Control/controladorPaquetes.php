@@ -16,14 +16,13 @@ class controladorPaquetes
     public static function ingresar($context)
     {
         $gmailCliente = $context['gmailCliente'];
-        $fechaLlegada = $context['fechaLlegada'];
-        $horaLlegada = $context['horaLlegada'];
         $num = $context['num'];
         $calle = $context['calle'];
         $localidad = $context['localidad'];
         $departamento = $context['departamento'];
 
-        modeloPaquetes::alta($gmailCliente, $fechaLlegada, $horaLlegada, $num, $calle, $localidad, $departamento);
+        $numBulto = modeloPaquetes::alta($gmailCliente, $num, $calle, $localidad, $departamento);
+        return $numBulto;
     }
 
     public static function modificar($context)
@@ -31,12 +30,13 @@ class controladorPaquetes
         $numBulto = $context['numBulto'];
         $gmailCliente = $context['gmailCliente'];
         $fechaLlegada = $context['fechaLlegada'];
+        $horarioLLegada = $context['horarioLLegada'];
         $num = $context['num'];
         $calle = $context['calle'];
         $localidad = $context['localidad'];
         $departamento = $context['departamento'];
 
-        modeloPaquetes::modificacion($numBulto, $gmailCliente, $fechaLlegada, $num, $calle, $localidad, $departamento);
+        modeloPaquetes::modificacion($numBulto, $gmailCliente, $fechaLlegada,$horarioLLegada, $num, $calle, $localidad, $departamento);
     }
     
     public static function eliminar($context)
