@@ -1,6 +1,6 @@
 async function obtenerDatos() {
         try {
-            const response = await fetch('http://localhost/logiquick/Control/controladorConducen.php?function=listar', {
+            const response = await fetch('http://localhost/logiquick/Control/controladorDeliverys.php?function=listar', {
                 headers: {
                     'Cache-Control': 'no-cache'
                 }
@@ -22,4 +22,3 @@ async function obtenerDatos() {
     }
     
     obtenerDatos(); 
-    
