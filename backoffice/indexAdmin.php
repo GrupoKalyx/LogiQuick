@@ -23,6 +23,7 @@ if (isset($_POST['btncerrar'])) {
 </head>
 
 <body>
+
     <header>
         <nav class="navbar">
             <div class="navbar__logo">
@@ -35,6 +36,7 @@ if (isset($_POST['btncerrar'])) {
             </div>
         </nav>
     </header>
+
     <div>
         <br>
         <h1 class="nav__text"> Backoffice </h1>
@@ -52,7 +54,7 @@ if (isset($_POST['btncerrar'])) {
                     <option value="Admin">Admin</option>
                     <option value="Funcionario">Funcionario central(QC)</option>
                     <option value="Externo">Funcionario externo</option>
-                    <option value=" ">Funcionario secundario</option>
+                    <option value="Secundario">Funcionario secundario</option>
                     <option value="Camionero">Camionero</option>
                     <option value="Delivery">Delivery</option>
                 </select><br><br>
@@ -234,10 +236,9 @@ if (isset($_POST['btncerrar'])) {
                     <option value="Cerro Largo">Cerro Largo</option>
                     <option value="Rocha">Rocha</option>
                 </select>
-             
-                    <div class="form__group" id="departamentosContainer">
-                        <!-- aca van paquetes nuevos-->
-                    </div>
+                <div class="form__group" id="departamentosContainer">
+                    <!-- aca van paquetes nuevos-->
+                </div>
                 <button class="form__button" type="button" onclick="agregarDepartamentoCampo()">Agregar Departamento</button>
                 <br>
                 <br>
@@ -347,6 +348,7 @@ if (isset($_POST['btncerrar'])) {
                 });
         }
     </script>
+
 </body>
 
 </html>
