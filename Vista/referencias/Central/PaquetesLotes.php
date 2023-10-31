@@ -10,6 +10,8 @@ if (isset($_POST['generar'])) {
   $url = 'http://localhost/LogiQuick/Control/controladorLotean.php';
   superControlador($url, 'POST', array('function' => 'ingresar', 'idLote' => $idLote, 'paquetes' => $_POST['bulto']));
 }
+session_start();
+if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'] . '/Control/controladorTokens.php', 'GET', array('function' => 'verify', 'token' => $_SESSION['token'], 'tipo' => 'Funcionario'));
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,19 +36,19 @@ if (isset($_POST['generar'])) {
         <li class="navbar__list__item"><a href="#">Verificar Entrada</a></li>
         <li class="navbar__list__item"><a href="#">Asignación</a>
           <ul class="navbar__submenu">
-            <li class="navbar__submenu__item"><a href="../referencias/AsignacionPaquetesLotes.php">Paquete
+            <li class="navbar__submenu__item"><a href="AsignacionPaquetesLotes.php">Paquete
                 a Lote</a></li>
-            <li class="navbar__submenu__item"><a href="../referencias/AsignacionLotesCamiones.php">Lote a
+            <li class="navbar__submenu__item"><a href="AsignacionLotesCamiones.php">Lote a
                 Camión</a></li>
-            <li class="navbar__submenu__item"><a href="../referencias/AsignacionCamionesCamioneros.php">Camionero
+            <li class="navbar__submenu__item"><a href="AsignacionCamionesCamioneros.php">Camionero
                 a Camión</a></li>
           </ul>
         </li>
         <li class="navbar__list__item"><a href="#">Seguimiento</a></li>
       </ul>
-      <!-- <button class="form__button" id="traductor-btn">Traducir Pagina </button> -->
+      <button class="form__button" id="traductor-btn">Traducir Pagina </button>
       <div class="navbar__logout">
-        <button class="navbar__logout__button"><a href="../login.php">Cerrar Sesión</a></button>
+        <button class="navbar__logout__button"><a href="../../indexMains/login.php">Cerrar Sesión</a></button>
       </div>
 
     </nav>

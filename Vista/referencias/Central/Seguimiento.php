@@ -43,13 +43,13 @@ if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'
                     <a href="#">Asignación</a>
                     <ul class="navbar__submenu">
                         <li class="navbar__submenu__item">
-                            <a href="../referencias/AsignacionPaquetesLotesCentral.php">Paquete a Lote</a>
+                            <a href="AsignacionPaquetesLotesCentral.php">Paquete a Lote</a>
                         </li>
                         <li class="navbar__submenu__item">
-                            <a href="../referencias/AsignacionLotesCamiones.php">Lote a Camión</a>
+                            <a href="AsignacionLotesCamiones.php">Lote a Camión</a>
                         </li>
                         <li class="navbar__submenu__item">
-                            <a href="../referencias/AsignacionCamionesCamioneros.php">Camionero a Camión</a>
+                            <a href="AsignacionCamionesCamioneros.php">Camionero a Camión</a>
                         </li>
                     </ul>
                 </li>

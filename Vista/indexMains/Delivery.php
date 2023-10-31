@@ -25,8 +25,8 @@ if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'
       </div>
 
       <ul class="navbar__list">
-        <li class="navbar__list__item"><a href="../referencias/RutaDelivery.php">Visualizar Ruta</a></li>
-        <li class="navbar__list__item"><a href="../referencias/PickupAsignado.php">Pickup asignado</a></li>
+        <li class="navbar__list__item"><a href="../referencias/Delivery/RutaDelivery.php">Visualizar Ruta</a></li>
+        <li class="navbar__list__item"><a href="../referencias/Delivery/PickupAsignado.php">Pickup asignado</a></li>
       </ul>
       <!-- <button class="form__button" id="traductor-btn">Traducir Pagina</button> -->
       <div class="navbar__logout">
