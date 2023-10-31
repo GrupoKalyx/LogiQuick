@@ -26,7 +26,7 @@ if (isset($_SESSION['token'])) superControlador('http://'.$_SERVER['HTTP_HOST'].
       </div>
 
       <ul class="navbar__list">
-        <li class="navbar__list__item"><a href="RutaCamionero.php">Vizualizar rutas</a></li>
+        <li class="navbar__list__item"><a href="RutaCamionero.php">Visualizar rutas</a></li>
         <li class="navbar__list__item"><a href="CamionAsignado.php">Camion asignado</a></li>
       </ul>
       <!-- <button class="form__button" id="traductor-btn">Traducir Pagina</button> -->

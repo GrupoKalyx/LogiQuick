@@ -238,10 +238,8 @@ if (isset($_POST['btncerrar'])) {
                 <div class="form__group" id="departamentosContainer">
                     <!-- aca van paquetes nuevos-->
                 </div>
-                <button class="form__button" type="button" onclick="agregarDepartamentoCampo()">Agregar Departamento</button>
-                <br>
-                <br>
                 <button class="form__button" type="submit">Ingresar</button>
+                <button class="form__button" type="button" onclick="agregarDepartamentoCampo()">Agregar Dpto</button>
             </form>
         </div>
         <div class="form">
