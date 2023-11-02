@@ -296,31 +296,31 @@ if (isset($_POST['btncerrar'])) {
         <div class="form">
             <h2>Ingresar datos de Rutas</h2>
             <form action="../Control/controladorAlmacenesRutas.php?function=ingresar" method="post">
-                Numero de ruta <input type="text" class="form__input" name="numRuta"><br>
                 <label for="idAlmacen">Seleccione un Almacén:</label>
                 <select class="form__select" id="idAlmacen" name="idAlmacen" required>
                     <?php
-                    require '../Modelo/modeloAlmacenes.php'; // Incluye el archivo PHP que contiene la lógica para obtener almacenes
-                    $almacenes = json_decode(modeloAlmacenes::listado()); // Función para obtener almacenes desde la base de datos
+                    require '../Modelo/modeloAlmacenes.php';
+                    $almacenes = json_decode(modeloAlmacenes::listado());
 
                     foreach ($almacenes as $almacen) {
-                        echo "<option value='" . $almacen['idAlmacen'] . "'>" . $almacen['nombre'] . "</option>";
+                        echo "<option value='" . $almacen->idAlmacen . "'>" . $almacen->num . " ". $almacen->calle  . " ". $almacen->departamento . "</option>";
                     }
                     ?>
                 </select><br>
 
                 <label for="idRuta">Seleccione una Ruta:</label>
-                <select class="form__select" id="idRuta" name="idRuta" required>
+                <select class="form__select" id="numRuta" name="numRuta" required>
                     <?php
-                    require '../Modelo/modeloRutas.php'; // Incluye el archivo PHP que contiene la lógica para obtener rutas
-                    $rutas = json_decode(modeloRutas::listado()); // Función para obtener rutas desde la base de datos
+                    require '../Modelo/modeloRutas.php';
+                    $rutas = json_decode(modeloRutas::listado());
 
                     foreach ($rutas as $ruta) {
-                        echo "<option value='" . $ruta['idRuta'] . "'>" . $ruta['nombre'] . "</option>";
+                        var_dump($ruta);
+                        echo "<option value='" . $ruta->numRuta . "'>" . $ruta->departamentos . "</option>";
                     }
                     ?>
-                </select><br>
-                    <button class="form__button" type="submit">Asociar</button>
+                </select>
+                <button class="form__button" type="submit">Asociar</button>
             </form>
         </div>
     </div>
