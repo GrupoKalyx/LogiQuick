@@ -20,6 +20,7 @@ if (isset($_POST['btncerrar'])) {
     <link rel="icon" type="image/x-icon" href="assets/logo.png">
     <script src="../Vista/javascript/agregarCampoDepartamento.js"></script>
     <script src="../Vista/javascript/agregarCampoBackoffice.js"></script>
+    <script src="../Vista/javascript/agregarCampoDepMod.js"></script>
     <title>LogiQuick</title>
 </head>
 
@@ -281,11 +282,45 @@ if (isset($_POST['btncerrar'])) {
                     <option value="Cerro Largo">Cerro Largo</option>
                     <option value="Rocha">Rocha</option>
                 </select>
-                <br><br>
-                <div class="form__group" id="departamentosContainer">
+
+                <div class="form__group" id="departamentosContainer2">
                     <!-- aca van paquetes nuevos-->
                 </div>
                 <button class="form__button" type="submit">Modificar</button>
+                <button class="form__button" type="button" onclick="DepartamentoCampoMod()">Agregar Dpto</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="form__container__backoffice">
+        <div class="form">
+            <h2>Ingresar datos de Rutas</h2>
+            <form action="../Control/controladorAlmacenesRutas.php?function=ingresar" method="post">
+                Numero de ruta <input type="text" class="form__input" name="numRuta"><br>
+                <label for="idAlmacen">Seleccione un Almacén:</label>
+                <select class="form__select" id="idAlmacen" name="idAlmacen" required>
+                    <?php
+                    require '../Modelo/modeloAlmacenes.php'; // Incluye el archivo PHP que contiene la lógica para obtener almacenes
+                    $almacenes = json_decode(modeloAlmacenes::listado()); // Función para obtener almacenes desde la base de datos
+
+                    foreach ($almacenes as $almacen) {
+                        echo "<option value='" . $almacen['idAlmacen'] . "'>" . $almacen['nombre'] . "</option>";
+                    }
+                    ?>
+                </select><br>
+
+                <label for="idRuta">Seleccione una Ruta:</label>
+                <select class="form__select" id="idRuta" name="idRuta" required>
+                    <?php
+                    require '../Modelo/modeloRutas.php'; // Incluye el archivo PHP que contiene la lógica para obtener rutas
+                    $rutas = json_decode(modeloRutas::listado()); // Función para obtener rutas desde la base de datos
+
+                    foreach ($rutas as $ruta) {
+                        echo "<option value='" . $ruta['idRuta'] . "'>" . $ruta['nombre'] . "</option>";
+                    }
+                    ?>
+                </select><br>
+                    <button class="form__button" type="submit">Asociar</button>
             </form>
         </div>
     </div>
