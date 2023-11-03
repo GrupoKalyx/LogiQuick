@@ -54,4 +54,24 @@ class controladorAlmacenes
         $result = modeloAlmacenes::muestraUltimo($idRastreo);
         echo $result;
     }
+    public static function mostrarDetallesAlmacen($context) {
+        $idAlmacen = $context['idAlmacen'];
+        $result = modeloAlmacenes::obtenerDetallesAlmacen($idAlmacen);
+        echo $result;
+    }
+
+    public static function mostrarAlmacenAsociadoRuta($context) {
+        $idAlmacen = $context['idAlmacen'];
+        $numRuta = $context['numRuta'];
+        $result = modeloAlmacenes::obtenerAlmacenAsociadoRuta($idAlmacen, $numRuta);
+        echo $result;
+    }
+
+    public static function mostrarAlmacenPorDepartamento($context) {
+        $departamento = $context['departamento'];
+        $result = modeloAlmacenes::obtenerAlmacenPorDepartamento($departamento);
+        echo $result;
+    }
+
+    
 }

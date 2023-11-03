@@ -49,4 +49,13 @@ class modeloRutas
                 $conn->execute_query($query, [$stringDep, $numRuta]);
                 $conn->close();
         }
+        public static function obtenerDetallesRuta($numRuta) {
+                $conn = modeloBd::conexion();
+                $query = "SELECT * FROM Rutas WHERE numRuta = ?";
+                $exc = $conn->execute_query($query, [$numRuta]);
+                $result = $exc->fetch_all(MYSQLI_ASSOC);
+                $conn->close();
+                return json_encode($result);
+            }
 }
+

@@ -38,4 +38,10 @@ class controladorRutas
         $departamentos = $context['departamentos'];
         modeloRutas::modificacion($numRuta, $departamentos);
     }
+
+    public static function mostrarDetallesRuta($context) {
+        $numRuta = $context['numRuta'];
+        $result = modeloRutas::obtenerDetallesRuta($numRuta);
+        echo $result;
+    }
 }
