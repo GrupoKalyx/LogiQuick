@@ -7,7 +7,7 @@ class modeloAlmacenesRutas
         public static function alta($numRuta, $idAlmacen)
         {
                 $conn = modeloBd::conexion();
-                $query = "INSERT INTO almacen-rutas (numRuta, idAlmacen) VALUES (?, ?);";
+                $query = "INSERT INTO almacen_rutas (numRuta, idAlmacen) VALUES (?, ?);";
                 $conn->execute_query($query, [$numRuta, $idAlmacen]);
                 $conn->close();
         }
@@ -15,7 +15,7 @@ class modeloAlmacenesRutas
         public static function baja($numRuta, $idAlmacen)
         {
                 $conn = modeloBd::conexion();
-                $query = "DELETE FROM almacen-rutas WHERE numRuta = ? AND idAlmacen ?";
+                $query = "DELETE FROM almacen_rutas WHERE numRuta = ? AND idAlmacen ?";
                 $conn->execute_query($query, [$numRuta, $idAlmacen]);
                 $conn->close();
         }
@@ -23,7 +23,7 @@ class modeloAlmacenesRutas
         public static function listado()
         {
                 $conn = modeloBd::conexion();
-                $query = "SELECT * FROM almacen-rutas";
+                $query = "SELECT * FROM almacen_rutas";
                 $result = $conn->execute_query($query);
                 $result = $result->fetch_all(MYSQLI_ASSOC);
                 $conn->close();

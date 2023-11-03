@@ -199,7 +199,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `Almacen-Rutas`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Almacen-Rutas` (
+CREATE TABLE IF NOT EXISTS `Almacen_Rutas` (
   `idAlmacen` INT NOT NULL,
   `numRuta` INT NOT NULL,
   PRIMARY KEY (`idAlmacen`, `numRuta`),
@@ -219,7 +219,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `lotes-Almacen-Rutas`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `lotes-Almacen-Rutas` (
+CREATE TABLE IF NOT EXISTS `lotes_Almacen_Rutas` (
   `idLote` INT NOT NULL,
   `idAlmacen` INT NOT NULL,
   `numRuta` INT NOT NULL,
@@ -231,12 +231,12 @@ CREATE TABLE IF NOT EXISTS `lotes-Almacen-Rutas` (
     ON UPDATE NO ACTION,
  
     FOREIGN KEY (`idAlmacen`)
-    REFERENCES `Almacen-Rutas` (`idAlmacen`)
+    REFERENCES `Almacen_Rutas` (`idAlmacen`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
  
     FOREIGN KEY (`numRuta`)
-    REFERENCES `Almacen-Rutas` (`numRuta`)
+    REFERENCES `Almacen_Rutas` (`numRuta`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -259,17 +259,17 @@ CREATE TABLE IF NOT EXISTS `llevan` (
     ON UPDATE NO ACTION,
  
     FOREIGN KEY (`idLote`)
-    REFERENCES `lotes-Almacen-Rutas` (`idLote`)
+    REFERENCES `lotes_Almacen_Rutas` (`idLote`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
  
     FOREIGN KEY (`idAlmacen`)
-    REFERENCES `lotes-Almacen-Rutas` (`idAlmacen`)
+    REFERENCES `lotes_Almacen_Rutas` (`idAlmacen`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   
     FOREIGN KEY (`numRuta`)
-    REFERENCES `lotes-Almacen-Rutas` (`numRuta`)
+    REFERENCES `lotes_Almacen_Rutas` (`numRuta`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB

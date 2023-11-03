@@ -293,37 +293,37 @@ if (isset($_POST['btncerrar'])) {
     </div>
 
     <div class="form__container__backoffice">
-        <div class="form">
-            <h2>Ingresar datos de Rutas</h2>
-            <form action="../Control/controladorAlmacenesRutas.php?function=ingresar" method="post">
-                <label for="idAlmacen">Seleccione un Almacén:</label>
-                <select class="form__select" id="idAlmacen" name="idAlmacen" required>
-                    <?php
-                    require '../Modelo/modeloAlmacenes.php';
-                    $almacenes = json_decode(modeloAlmacenes::listado());
+    <div class="form">
+        <h2>Ingresar datos de Rutas</h2>
+        <form action="../Control/controladorAlmacenesRutas.php?function=ingresar" method="post">
+            <label for="idAlmacen">Seleccione un Almacén:</label>
+            <select class="form__select" id="idAlmacen" name="idAlmacen" required>
+                <?php
+                require '../Modelo/modeloAlmacenes.php';
+                $almacenes = json_decode(modeloAlmacenes::listado());
 
-                    foreach ($almacenes as $almacen) {
-                        echo "<option value='" . $almacen->idAlmacen . "'>" . $almacen->num . " ". $almacen->calle  . " ". $almacen->departamento . "</option>";
-                    }
-                    ?>
-                </select><br>
+                foreach ($almacenes as $almacen) {
+                    echo "<option value='" . $almacen->idAlmacen . "'>" . $almacen->idAlmacen . " - " . $almacen->num . " " . $almacen->calle . " " . $almacen->departamento . "</option>";
+                }
+                ?>
+            </select><br>
 
-                <label for="idRuta">Seleccione una Ruta:</label>
-                <select class="form__select" id="numRuta" name="numRuta" required>
-                    <?php
-                    require '../Modelo/modeloRutas.php';
-                    $rutas = json_decode(modeloRutas::listado());
+            <label for="numRuta">Seleccione una Ruta:</label>
+            <select class="form__select" id="numRuta" name="numRuta" required>
+                <?php
+                require '../Modelo/modeloRutas.php';
+                $rutas = json_decode(modeloRutas::listado());
 
-                    foreach ($rutas as $ruta) {
-                        var_dump($ruta);
-                        echo "<option value='" . $ruta->numRuta . "'>" . $ruta->departamentos . "</option>";
-                    }
-                    ?>
-                </select>
-                <button class="form__button" type="submit">Asociar</button>
-            </form>
-        </div>
+                foreach ($rutas as $ruta) {
+                    echo "<option value='" . $ruta->numRuta . "'>" . $ruta->numRuta . " - " . $ruta->departamentos . "</option>";
+                }
+                ?>
+            </select>
+            <input type="hidden" name="function" value="ingresar">
+            <button class="form__button" type="submit">Asociar</button>
+        </form>
     </div>
+</div>
 
     <footer>
         <div class="footer">
