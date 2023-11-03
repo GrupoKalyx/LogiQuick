@@ -1,5 +1,5 @@
 <?php
-require_once('../../Control/superControlador.php');
+require_once('../../../Control/superControlador.php');
 session_start();
 if (isset($_SESSION['token'])) superControlador('http://'.$_SERVER['HTTP_HOST'].'/Control/controladorTokens.php', 'GET', array('function' => 'verify', 'token' => $_SESSION['token'], 'tipo' => 'Camionero'));
 ?>
@@ -10,10 +10,10 @@ if (isset($_SESSION['token'])) superControlador('http://'.$_SERVER['HTTP_HOST'].
   <script src="Traducir.js"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../estilos/style.css">
-  <link rel="icon" type="image/x-icon" href="../assets/logo.png">
+  <link rel="stylesheet" href="../../estilos/style.css">
+  <link rel="icon" type="image/x-icon" href="../../assets/logo.png">
   <title>LogiQuick</title>
-  <script src="../javascript/camioneroAsignado.js"></script>
+  <script src="../../javascript/camioneroAsignado.js"></script>
 </head>
 
 <body class="body">
@@ -22,7 +22,7 @@ if (isset($_SESSION['token'])) superControlador('http://'.$_SERVER['HTTP_HOST'].
     <nav class="navbar">
 
       <div class="navbar__logo">
-        <img src="../assets/logo.png" alt="logo">
+        <img src="../../assets/logo.png" alt="logo">
       </div>
 
       <ul class="navbar__list">

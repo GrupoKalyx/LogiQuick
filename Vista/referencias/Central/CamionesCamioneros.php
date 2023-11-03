@@ -1,5 +1,5 @@
 <?php
-require '../../Control/superControlador.php';
+require_once('../../../Control/superControlador.php');
 session_start();
 if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Control/controladorTokens.php', 'GET', array('function' => 'verify', 'token' => $_SESSION['token'], 'tipo' => 'Funcionario'));
 

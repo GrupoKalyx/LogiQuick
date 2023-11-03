@@ -1,5 +1,5 @@
 <?php
-require_once('../../Control/superControlador.php');
+require_once('../../../Control/superControlador.php');
 session_start();
 if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'] . '/Control/controladorTokens.php', 'GET', array('function' => 'verify', 'token' => $_SESSION['token'], 'tipo' => 'Funcionario'));
 ?>
@@ -9,9 +9,9 @@ if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../estilos/style.css">
-    <link rel="stylesheet" href="../estilos/mapsStyle.css">
-    <link rel="icon" type="image/x-icon" href="assets/logo.png">
+    <link rel="stylesheet" href="../../estilos/style.css">
+    <link rel="stylesheet" href="../../estilos/mapsStyle.css">
+    <link rel="icon" type="image/x-icon" href="../../assets/logo.png">
     <!-- Incluye Leaflet CSS y JS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
@@ -33,7 +33,7 @@ if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'
     <header>
         <nav class="navbar">
             <div class="navbar__logo">
-                <img src="../assets/logo.png" alt="logo">
+                <img src="../../assets/logo.png" alt="logo">
             </div>
             <ul class="navbar__list">
                 <li class="navbar__list__item">

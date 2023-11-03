@@ -1,5 +1,5 @@
 <?php
-require_once('../../Control/superControlador.php');
+require_once('../../../Control/superControlador.php');
 
 $url = 'http://localhost/LogiQuick/Control/controladorPaquetes.php';
 $paquetes = json_decode(superControlador($url, 'GET', array('function' => 'listarSinLote')), true);

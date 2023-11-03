@@ -1,5 +1,5 @@
 <?php
-require '../../Control/superControlador.php';
+require_once('../../../Control/superControlador.php');
 
 $url = 'http://localhost/LogiQuick/Control/controladorCamiones.php';
 $matriculas = json_decode(superControlador($url, 'GET', array('function' => 'listar')), true);

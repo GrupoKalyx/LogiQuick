@@ -1,5 +1,5 @@
 <?php
-require_once('../../Control/superControlador.php');
+require_once('../../../Control/superControlador.php');
 
 if (isset($_POST['ingresar'])) {
   $url = 'http://localhost/LogiQuick/Control/controladorPaquetes.php';

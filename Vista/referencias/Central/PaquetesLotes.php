@@ -1,6 +1,5 @@
 <?php
-require '../../Control/superControlador.php';
-
+require_once('../../../Control/superControlador.php');
 $url = 'http://localhost/LogiQuick/Control/controladorPaquetes.php';
 $paquetes = json_decode(superControlador($url, 'GET', array('function' => 'listarSinLote')), true);
 
@@ -19,9 +18,9 @@ if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../estilos/style.css">
-  <link rel="stylesheet" href="../estilos/FormStyle.css">
-  <link rel="icon" type="image/x-icon" href="../assets/logo.png">
+  <link rel="stylesheet" href="../../estilos/style.css">
+  <link rel="stylesheet" href="../../estilos/FormStyle.css">
+  <link rel="icon" type="image/x-icon" href="../../assets/logo.png">
   <title>LogiQuick</title>
 </head>
 
@@ -83,7 +82,7 @@ if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'
   </div>
 
   <!-- <script src="Traducir.js"></script> -->
-  <script src="../javascript/agregarCampo.js"></script>
+  <script src="../../javascript/agregarCampo.js"></script>
 
   <footer>
     <div class="footer">

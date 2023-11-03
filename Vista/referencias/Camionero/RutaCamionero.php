@@ -1,5 +1,5 @@
 <?php
-require_once('../../Control/superControlador.php');
+require_once('../../../Control/superControlador.php');
 session_start();
 if (isset($_SESSION['token'])) superControlador('http://'.$_SERVER['HTTP_HOST'].'/Control/controladorTokens.php', 'GET', array('function' => 'verify', 'token' => $_SESSION['token'], 'tipo' => 'Camionero'));
 ?>
@@ -9,9 +9,9 @@ if (isset($_SESSION['token'])) superControlador('http://'.$_SERVER['HTTP_HOST'].
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../estilos/style.css">
-  <link rel="stylesheet" href="../estilos/FormStyle.css">
-  <link rel="stylesheet" href="../estilos/mapsStyle.css">
+  <link rel="stylesheet" href="../../estilos/style.css">
+  <link rel="stylesheet" href="../../estilos/FormStyle.css">
+  <link rel="stylesheet" href="../../estilos/mapsStyle.css">
   <title>LogiQuick</title>
   <script src="Traducir.js"></script>
   <!-- Incluye Leaflet CSS y JS -->
@@ -29,7 +29,7 @@ if (isset($_SESSION['token'])) superControlador('http://'.$_SERVER['HTTP_HOST'].
   <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
   <link rel="stylesheet" href="RoutingMachine/dist/leaflet-routing-machine.css">
 
-  <script src="../javascript/rutaCamionero.js"></script>
+  <script src="../../javascript/rutaCamionero.js"></script>
 </head>
 
 <body class="body">
@@ -38,7 +38,7 @@ if (isset($_SESSION['token'])) superControlador('http://'.$_SERVER['HTTP_HOST'].
     <nav class="navbar">
 
       <div class="navbar__logo">
-        <img src="../assets/logo.png" alt="logo">
+        <img src="../../assets/logo.png" alt="logo">
       </div>
 
       <ul class="navbar__list">
