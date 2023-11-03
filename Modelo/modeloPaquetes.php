@@ -6,13 +6,13 @@ class modeloPaquetes
 {
     public static function alta($gmailCliente, $num, $calle, $localidad, $departamento)
     {
-        $conn = modeloBd::conexion();
         do {
             $idRastreo = "";
             for ($i = 0; $i < 16; $i++) {
                 $idRastreo .= mt_rand(0, 9);
             }
         } while (self::rastreo($idRastreo) != NULL);
+        $conn = modeloBd::conexion();
         $query = "INSERT INTO paquetes (gmailCliente, idRastreo, fechaCreacion, num, calle, localidad, departamento) VALUES (?, ?, NOW(), ?, ?, ?, ?)";
         $conn->execute_query($query, [$gmailCliente, $idRastreo, $num, $calle, $localidad, $departamento]);
         $queryLastId = "SELECT LAST_INSERT_ID();";
@@ -97,7 +97,7 @@ class modeloPaquetes
         $exc = $conn->execute_query($query, [$idRastreo]);
         $result = $exc->fetch_array(MYSQLI_ASSOC);
         $conn->close();
-        return json_encode($result);
+        return $result;
     }
 
     public static function existe($tipoId, $id)

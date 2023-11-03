@@ -4,10 +4,10 @@ require_once('../../../Control/superControlador.php');
 if (isset($_POST['ingresar'])) {
   $url = 'http://localhost/LogiQuick/Control/controladorPaquetes.php';
   $numBulto = json_decode(superControlador($url, 'POST', array('function' => 'ingresar', 'gmailCliente' => $_POST['gmailCliente'], 'num' => $_POST['num'], 'calle' => $_POST['calle'], 'localidad' => $_POST['localidad'], 'departamento' => $_POST['departamento'])), 1);
-  
-  $url = 'http://localhost/LogiQuick/Control/controladorPaquetes.php';
-  $infoPaquete = json_decode(superControlador($url, 'GET', array('function' => 'muestra', 'numBulto' => $numBulto['numBulto'])), 1);
-  var_dump($infoPaquete);
+  echo $numBulto['numBulto'];
+  // $url = 'http://localhost/LogiQuick/Control/controladorPaquetes.php';
+  // $infoPaquete = json_decode(superControlador($url, 'GET', array('function' => 'muestra', 'numBulto' => $numBulto['numBulto'])), 1);
+  // var_dump($infoPaquete);
 }
 ?>
 <!DOCTYPE html>
@@ -16,9 +16,9 @@ if (isset($_POST['ingresar'])) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../estilos/style.css">
-  <link rel="stylesheet" href="../estilos/FormStyle.css">
-  <link rel="icon" type="image/x-icon" href="../assets/logo.png">
+  <link rel="stylesheet" href="../../estilos/style.css">
+  <link rel="stylesheet" href="../../estilos/FormStyle.css">
+  <link rel="icon" type="image/x-icon" href="../../assets/logo.png">
   <title>LogiQuick</title>
   <script src="../javascript/Traducir.js"></script>
 </head>
@@ -28,7 +28,7 @@ if (isset($_POST['ingresar'])) {
   <header>
     <nav class="navbar">
       <div class="navbar__logo">
-        <img src="../assets/logo.png" alt="logo">
+        <img src="../../assets/logo.png" alt="logo">
       </div>
       <ul class="navbar__list">
         <li class="navbar__list__item"><a href="#">Verificar Llegadas</a></li>
