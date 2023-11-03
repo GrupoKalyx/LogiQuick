@@ -24,18 +24,18 @@ if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'
       </div>
       <ul class="navbar__list">
         <li class="navbar__list__item"><a href="../referencias/Externo/VerificarLlegadas.php">Verificar Llegadas</a></li>
-        <li class="navbar__list__item"><a href="../referencias/IngresarPaquete.php">Ingresar Paquetes</a></li>
+        <li class="navbar__list__item"><a href="../referencias/Externo/IngresarPaquete.php">Ingresar Paquetes</a></li>
         <li class="navbar__list__item">
           <a href="#">Asignación</a>
           <ul class="navbar__submenu">
             <li class="navbar__submenu__item">
-              <a href="../referencias/AsignacionPaquetesLotesCentral.php">Paquete a Lote</a>
+              <a href="../referencias/Externo/AsignacionPaquetesLotesCentral.php">Paquete a Lote</a>
             </li>
             <li class="navbar__submenu__item">
-              <a href="../referencias/AsignacionLotesCamiones.php">Lote a Camión</a>
+              <a href="../referencias/Externo/AsignacionLotesCamiones.php">Lote a Camión</a>
             </li>
             <li class="navbar__submenu__item">
-              <a href="../referencias/AsignacionCamionesCamioneros.php">Camionero a Camión</a>
+              <a href="../referencias/Externo/AsignacionCamionesCamioneros.php">Camionero a Camión</a>
             </li>
           </ul>
         </li>

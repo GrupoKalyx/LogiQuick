@@ -10,6 +10,7 @@ if (isset($_SESSION['token'])) superControlador('http://'.$_SERVER['HTTP_HOST'].
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../estilos/style.css">
+  <link rel="icon" type="image/x-icon" href="../assets/logo.png">
   <title>LogiQuick</title>
   <!-- <script src="Traducir.js"></script> -->
 </head>

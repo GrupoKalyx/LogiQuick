@@ -30,7 +30,7 @@ if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'
       </ul>
       <!-- <button class="form__button" id="traductor-btn">Traducir Pagina</button> -->
       <div class="navbar__logout">
-        <button class="navbar__logout__button"><a href="#">Cerrar Sesión</a></button>
+        <button class="navbar__logout__button"><a href="login.php">Cerrar Sesión</a></button>
       </div>
 
     </nav>

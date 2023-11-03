@@ -42,7 +42,7 @@ if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'
             </ul>
             <div class="navbar__logout">
                 <button class="navbar__logout__button">
-                    <a href="#">Cerrar Sesión</a>
+                    <a href="login.php">Cerrar Sesión</a>
                 </button>
             </div>
             <!-- <button class="form__button" id="traductor-btn">Traducir Pagina </button> -->

@@ -19,7 +19,7 @@ if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'
     <header>
         <nav class="navbar">
             <div class="navbar__logo">
-                <img src="assets/logo.png" alt="logo">
+                <img src="../assets/logo.png" alt="logo">
             </div>
             <ul class="navbar__list">
                 <li class="navbar__list__item">
@@ -29,10 +29,10 @@ if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'
                     <a href="#">Asignación</a>
                     <ul class="navbar__submenu">
                         <li class="navbar__submenu__item">
-                            <a href="../referencias/AsignacionLotesCamiones.php">Lote a Camión</a>
+                            <a href="../referencias/Secundario/PaquetesPickups.php">Paquetes a Pickup</a>
                         </li>
                         <li class="navbar__submenu__item">
-                            <a href="../referencias/AsignacionCamionesCamioneros.php">Camionero a Camión</a>
+                            <a href="../referencias/Secundario/PickupsDelivery.php">Delivery a Pickup</a>
                         </li>
                     </ul>
                 </li>
@@ -42,7 +42,7 @@ if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'
             </ul>
             <div class="navbar__logout">
                 <button class="navbar__logout__button">
-                    <a href="#">Cerrar Sesión</a>
+                    <a href="login.php">Cerrar Sesión</a>
                 </button>
             </div>
 
