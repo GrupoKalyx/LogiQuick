@@ -136,12 +136,16 @@ if (isset($_POST['btncerrar'])) {
         <div class="form">
             <h2>Ingresar lote</h2>
             <form action="CRUD\lotes\Altas.php" method="post">
-                Paquete 0 <br><input class="form__input" type="text" id="paquete1" name="paquete1"><br><br>
-                <div id="contenedor-campos"></div>
+                <div id="contenedor-campos">
+                    Paquete 1 <br>
+                    <input class="form__input" type="text" name="paquete[]"><br><br>
+                </div>
                 <button type="submit" class="form__button" name="actionbtn">Ingresar</button>
                 <button class="form__button" onclick="agregarCampo(event)">Agregar Campo</button>
             </form>
         </div>
+
+
         <div class="form">
             <h2>Eliminar Lote</h2>
             <form action="CRUD\lotes\Bajas.php" method="post">
@@ -293,37 +297,37 @@ if (isset($_POST['btncerrar'])) {
     </div>
 
     <div class="form__container__backoffice">
-    <div class="form">
-        <h2>Ingresar datos de Rutas</h2>
-        <form action="../Control/controladorAlmacenesRutas.php?function=ingresar" method="post">
-            <label for="idAlmacen">Seleccione un Almacén:</label>
-            <select class="form__select" id="idAlmacen" name="idAlmacen" required>
-                <?php
-                require '../Modelo/modeloAlmacenes.php';
-                $almacenes = json_decode(modeloAlmacenes::listado());
+        <div class="form">
+            <h2>Ingresar datos de Rutas</h2>
+            <form action="../Control/controladorAlmacenesRutas.php?function=ingresar" method="post">
+                <label for="idAlmacen">Seleccione un Almacén:</label>
+                <select class="form__select" id="idAlmacen" name="idAlmacen" required>
+                    <?php
+                    require '../Modelo/modeloAlmacenes.php';
+                    $almacenes = json_decode(modeloAlmacenes::listado());
 
-                foreach ($almacenes as $almacen) {
-                    echo "<option value='" . $almacen->idAlmacen . "'>" . $almacen->idAlmacen . " - " . $almacen->num . " " . $almacen->calle . " " . $almacen->departamento . "</option>";
-                }
-                ?>
-            </select><br>
+                    foreach ($almacenes as $almacen) {
+                        echo "<option value='" . $almacen->idAlmacen . "'>" . $almacen->idAlmacen . " - " . $almacen->num . " " . $almacen->calle . " " . $almacen->departamento . "</option>";
+                    }
+                    ?>
+                </select><br>
 
-            <label for="numRuta">Seleccione una Ruta:</label>
-            <select class="form__select" id="numRuta" name="numRuta" required>
-                <?php
-                require '../Modelo/modeloRutas.php';
-                $rutas = json_decode(modeloRutas::listado());
+                <label for="numRuta">Seleccione una Ruta:</label>
+                <select class="form__select" id="numRuta" name="numRuta" required>
+                    <?php
+                    require '../Modelo/modeloRutas.php';
+                    $rutas = json_decode(modeloRutas::listado());
 
-                foreach ($rutas as $ruta) {
-                    echo "<option value='" . $ruta->numRuta . "'>" . $ruta->numRuta . " - " . $ruta->departamentos . "</option>";
-                }
-                ?>
-            </select>
-            <input type="hidden" name="function" value="ingresar">
-            <button class="form__button" type="submit">Asociar</button>
-        </form>
+                    foreach ($rutas as $ruta) {
+                        echo "<option value='" . $ruta->numRuta . "'>" . $ruta->numRuta . " - " . $ruta->departamentos . "</option>";
+                    }
+                    ?>
+                </select>
+                <input type="hidden" name="function" value="ingresar">
+                <button class="form__button" type="submit">Asociar</button>
+            </form>
+        </div>
     </div>
-</div>
 
     <footer>
         <div class="footer">

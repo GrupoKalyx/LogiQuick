@@ -145,52 +145,80 @@ document.addEventListener('DOMContentLoaded', async function () {
                     const almacenesEnDepartamento = await obtenerAlmacenesPorDepartamento(departamento);
                     return almacenesEnDepartamento;
                 }));
-                
+
                 const coordenadasAlmacenes = almacenesCoincidentes.flat().map(almacen => [almacen.lat, almacen.lng]);
 
-                if (coordenadasAlmacenes.length > 0) {
-                    const centro = coordenadasAlmacenes[0];
-                    map = L.map('map').setView(centro, 8.5 );
+                // Obtener los paquetes asociados al lote
+                const paquetesPorLote = await muestraPaquetesAsociados(loteAlmacenRuta.idLote);
+
+                const coordenadasPaquetes = [];
+
+                if (paquetesPorLote.length > 0) {
+                    paquetesPorLote.forEach(async (paquete) => {
+                        // Obtener el departamento del paquete
+                        const departamentoPaquete = paquete.departamento;
+
+                        // Verificar si el departamento del paquete está en los departamentos de la ruta
+                        if (departamentosRuta.includes(departamentoPaquete)) {
+                            const coordenadasPaquete = await codificarCoordenadas(paquete.direccion);
+                            coordenadasPaquetes.push([coordenadasPaquete.latitud, coordenadasPaquete.longitud]);
+                        }
+                    });
+                }
+
+                if (coordenadasAlmacenes.length > 0 || coordenadasPaquetes.length > 0) {
+                    // Establecer el centro del mapa en las coordenadas del primer almacén
+                    const centro = coordenadasAlmacenes.length > 0 ? coordenadasAlmacenes[0] : coordenadasPaquetes[0];
+                    map = L.map('map').setView(centro, 8.5);
     
                     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                         attribution: '© OpenStreetMap contributors'
                     }).addTo(map);
 
                     const iconoPersonalizadoAlmacen = L.icon({
-                        iconUrl: '../../assets/AlmacenIcon.png', // Reemplaza 'ruta/a/tu/imagen.png' con la ruta de tu imagen personalizada
+                        iconUrl: '../../assets/AlmacenIcon.png',
                         iconSize: [40, 40],
                         iconAnchor: [25, 50],
                         popupAnchor: [0, -50]
                     });
-    
+
+                    const iconoPersonalizadoPaquete = L.icon({
+                        iconUrl: '../../assets/PaqueteIcon.png',
+                        iconSize: [40, 40],
+                        iconAnchor: [25, 50],
+                        popupAnchor: [0, -50]
+                    });
+
+                    const plazaIndependenciaCoordenadas = [-34.903611, -56.188056];
+                    const iconoPersonalizadoCamion = L.icon({
+                        iconUrl: '../../assets/CamionIcon.png',
+                        iconSize: [40, 40],
+                        iconAnchor: [25, 50],
+                        popupAnchor: [0, -50]
+                    })
+
+                    // Agregar marcadores para los almacenes en el mapa
                     coordenadasAlmacenes.forEach(coordenada => {
-                        L.marker(coordenada, { icon: iconoPersonalizadoAlmacen}).addTo(map)
-                            .bindPopup(`Latitud: ${coordenada[0]}, Longitud: ${coordenada[1]}`);
+                        L.marker(coordenada, { icon: iconoPersonalizadoAlmacen }).addTo(map)
+                            .bindPopup(`Almacén - Latitud: ${coordenada[0]}, Longitud: ${coordenada[1]}`);
+                    });
 
-                            const plazaIndependenciaCoordenadas = [-34.903611, -56.188056];
+                    const plazaMarker = L.marker(plazaIndependenciaCoordenadas, { icon: iconoPersonalizadoCamion }).addTo(map)
+                    .bindPopup('CENTRAL QUICKCARRY');
 
-                            // Icono personalizado
-                            const iconoPersonalizadoCamion = L.icon({
-                                iconUrl: '../../assets/CamionIcon.png', // Reemplaza 'ruta/a/tu/imagen.png' con la ruta de tu imagen personalizada
-                                iconSize: [40, 40],
-                                iconAnchor: [25, 50],
-                                popupAnchor: [0, -50]
-                            });
-                            
-                        
-                            // Agrega un marcador en la Plaza Independencia con el icono personalizado
-                            const plazaMarker = L.marker(plazaIndependenciaCoordenadas, { icon: iconoPersonalizadoCamion }).addTo(map)
-                                .bindPopup('CENTRAL QUICKCARRY');
+                    // Agregar marcadores para los paquetes en el mapa
+                    coordenadasPaquetes.forEach(coordenada => {
+                        L.marker(coordenada, { icon: iconoPersonalizadoPaquete }).addTo(map)
+                            .bindPopup(`Paquete - Latitud: ${coordenada[0]}, Longitud: ${coordenada[1]}`);
                     });
                 } else {
-                    console.error('No se encontraron almacenes para los departamentos proporcionados.');
+                    console.error('No se encontraron almacenes o paquetes para los departamentos proporcionados.');
                 }
             });
         });
     } catch (error) {
         console.error('Error en la solicitud:', error);
     }
-
     function eliminarMapa() {
         if (map) {
             map.remove();
@@ -234,6 +262,16 @@ document.addEventListener('DOMContentLoaded', async function () {
             return almacenes;
         } catch (error) {
             console.error('Error al obtener almacenes por departamento:', error);
+            return [];
+        }
+    }
+    async function muestraPaquetesAsociados(idLote) {
+        try {
+            const response = await fetch(`http://localhost/LogiQuick/Control/controladorLotes.php?function=muestraPaquetesAsociados&idLote=${idLote}`);
+            const paquetes = await response.json();
+            return paquetes;
+        } catch (error) {
+            console.error('Error al obtener paquetes por lote:', error);
             return [];
         }
     }
