@@ -1,15 +1,3 @@
-<?php
-require_once('../../../Control/superControlador.php');
-
-if (isset($_POST['ingresar'])) {
-  $url = 'http://localhost/LogiQuick/Control/controladorPaquetes.php';
-  $numBulto = json_decode(superControlador($url, 'POST', array('function' => 'ingresar', 'gmailCliente' => $_POST['gmailCliente'], 'num' => $_POST['num'], 'calle' => $_POST['calle'], 'localidad' => $_POST['localidad'], 'departamento' => $_POST['departamento'])), 1);
-  echo $numBulto['numBulto'];
-  // $url = 'http://localhost/LogiQuick/Control/controladorPaquetes.php';
-  // $infoPaquete = json_decode(superControlador($url, 'GET', array('function' => 'muestra', 'numBulto' => $numBulto['numBulto'])), 1);
-  // var_dump($infoPaquete);
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,7 +8,7 @@ if (isset($_POST['ingresar'])) {
   <link rel="stylesheet" href="../../estilos/FormStyle.css">
   <link rel="icon" type="image/x-icon" href="../../assets/logo.png">
   <title>LogiQuick</title>
-  <script src="../javascript/Traducir.js"></script>
+  <script src="../../javascript/Traducir.js"></script>
 </head>
 
 <body class="body">
@@ -42,7 +30,7 @@ if (isset($_POST['ingresar'])) {
   </header>
 
   <div class="form__container">
-    <form class="form" method="POST">
+    <form class="form" method="POST" id="ingresarForm" >
       <h2 class="form__text">Ingrese datos del paquete</h2>
 
       <div class="form__group">
@@ -70,11 +58,11 @@ if (isset($_POST['ingresar'])) {
         <input class="form__input" type="text" id="departamento" name="departamento" required>
       </div>
 
-      <button class="form__button" type="submit" name="ingresar">Ingresar</button>
+      <button class="form__button" type="button" name="ingresar" onclick="myFunction();">Ingresar</button>
     </form>
   </div>
 
-  <script src="../javascript/Traducir.js"></script>
+  <script src="../../javascript/Traducir.js"></script>
 
   <footer>
     <div class="footer">
@@ -89,6 +77,34 @@ if (isset($_POST['ingresar'])) {
       </div>
     </div>
   </footer>
+
+  <script>
+    function myFunction() {
+
+      var num = document.getElementById('num').value;
+      var calle = document.getElementById('calle').value;
+      var localidad = document.getElementById('localidad').value;
+      var departamento = document.getElementById('departamento').value;
+
+      const direccion = encodeURI(`${num}, ${calle}, ${localidad}, ${departamento}, Uruguay`);
+      const apiKey = '3111bb8dce164ee18ff3bfcf4a4bfc24';
+      const url = `https://api.opencagedata.com/geocode/v1/json?q=${direccion}&key=${apiKey}`;
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          var coordinates = data.results[0].geometry; // Obtener las coordenadas de la respuesta de la API
+          var lat = coordinates.lat;
+          var lng = coordinates.lng;
+
+          document.getElementById(`lat`).value = `${lat}`;
+          document.getElementById(`lng`).value = `${lng}`;
+          document.getElementById(`ingresarForm`).submit();
+        })
+        .catch(error => {
+          console.error('Error al obtener las coordenadas:', error);
+        });
+    }
+  </script>
 </body>
 
 </html>

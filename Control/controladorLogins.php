@@ -19,25 +19,25 @@ class controladorLogins
         $ci = $context['ci'];
         $contra = $context['contrasenia'];
         // Chequea la existencia del usuario
-        $existe = superControlador('http://'.$_SERVER['HTTP_HOST'].'/Control/controladorUsuarios.php', 'GET', array('function' => 'existencia', 'ci' => $ci));
+        $existe = superControlador('http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Control/controladorUsuarios.php', 'GET', array('function' => 'existencia', 'ci' => $ci));
         if ($existe and isset($ci)) {
             // Chequea la contraseña
             $contrasenia = modeloLogins::contrasenia($ci, $contra);
             if ($contrasenia and isset($contra)) {
                 // Chequea si ya tiene un token
-                $token = superControlador('http://'.$_SERVER['HTTP_HOST'].'/Control/controladorTokens.php', 'GET', array('function' => 'exists', 'ci' => $ci));
+                $token = superControlador('http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Control/controladorTokens.php', 'GET', array('function' => 'exists', 'ci' => $ci));
                 // Busca el tipo del usuario
                 $objTipo = json_decode(modeloLogins::tipo($ci), true);
                 $tipo = $objTipo['tipo'];
                 if ($token) {
                     // En caso de ya tener uno lo renueva y lo cambia en la bd
-                    $jwt = superControlador('http://'.$_SERVER['HTTP_HOST'].'/Control/controladorTokens.php', 'GET', array('function' => 'updateToken', 'ci' => $ci, 'tipo' => $tipo));
+                    $jwt = superControlador('http://' . $_SERVER['HTTP_HOST'] . '/Control/controladorTokens.php', 'GET', array('function' => 'updateToken', 'ci' => $ci, 'tipo' => $tipo));
                 } else {
                     //Si no lo tiene crea uno nuevo y lo establece en la base de datos
-                    $jwt = superControlador('http://'.$_SERVER['HTTP_HOST'].'/Control/controladorTokens.php', 'GET', array('function' => 'createToken', 'ci' => $ci, 'tipo' => $tipo));
+                    $jwt = superControlador('http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Control/controladorTokens.php', 'GET', array('function' => 'createToken', 'ci' => $ci, 'tipo' => $tipo));
                 }
-                $_SESSION['token'] = $token;
-               // Redirige al usuario a su respectivo index
+                $_SESSION['token'] = $jwt;
+                // Redirige al usuario a su respectivo index
                 switch ($tipo) {
                     case 'Funcionario':
                         header("location: ../Vista/indexMains/FunExtCentral.php");
@@ -58,16 +58,13 @@ class controladorLogins
                         echo '<script>window.location="../Vista/indexMains/login.php";alert("Tipo de usuario desconocido, re intente por favor!");</script>';
                 }
             } else {
-                echo "<script>
-                window.location='../Vista/indexMains/login.php;
+                echo "
+                <script>
                 alert('La contraseña ingresada es incorrecta, revise los datos ingresados y vuelva a intentar.');
                 </script>";
             }
         } else {
-            echo "<script>
-            window.location='../Vista/indexMains/login.php';
-            alert('Usuario inexistente, re intente por favor.');
-            </script>";
+            echo "<script> alert('Usuario inexistente, re intente por favor.'); </script>";
         }
     }
 }

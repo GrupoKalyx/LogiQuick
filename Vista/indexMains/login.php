@@ -1,3 +1,11 @@
+<?php
+require_once('../../Control/superControlador.php');
+if (isset($_POST['login'])) {
+    $_POST['login'] = NULL;
+    $url = 'http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Control/controladorLogins.php';
+    superControlador($url, 'GET', array('function' => 'chequear', 'ci' => $_POST['ci'], 'contrasenia' => $_POST['contrasenia']));
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -7,7 +15,7 @@
     <link rel="stylesheet" href="../estilos/FormStyle.css">
     <link rel="stylesheet" href="../estilos/style.css">
     <link rel="icon" type="image/x-icon" href="../assets/logo.png">
-    <!-- <script src="Traducir.js"></script> -->
+    <script src="Traducir.js"></script>
     <title>LogiQuick</title>
 </head>
 
@@ -20,12 +28,11 @@
             <div class="navbar">
                 <h1 class="nav__text">Bienvenido a LogiQuick!</h1>
             </div>
-            <!-- <button class="form__button" id="traductor-btn">Traducir Pagina</button> -->
+            <button class="form__button" id="traductor-btn">Traducir Pagina</button>
         </nav>
     </header>
     <div class="form__container">
-        <form class="form" method="POST" action="../../Control/controladorLogins.php">
-            <input type="hidden" name="function" value="chequear">
+        <form class="form" method="POST">
             <h2 class="form__text">Ingrese sus Datos</h2>
             <div class="form__group">
                 <label class="form__label" for="ci">CI:</label>
