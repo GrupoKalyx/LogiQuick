@@ -20,8 +20,10 @@ class controladorPaquetes
         $calle = $context['calle'];
         $localidad = $context['localidad'];
         $departamento = $context['departamento'];
+        $lat = $context['lat'];
+        $lng = $context['lng'];
 
-        $numBulto = modeloPaquetes::alta($gmailCliente, $num, $calle, $localidad, $departamento);
+        $numBulto = modeloPaquetes::alta($gmailCliente, $num, $calle, $localidad, $departamento, $lat, $lng);
         echo $numBulto;
     }
 

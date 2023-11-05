@@ -4,7 +4,7 @@ require_once('modeloBd.php');
 
 class modeloPaquetes
 {
-    public static function alta($gmailCliente, $num, $calle, $localidad, $departamento)
+    public static function alta($gmailCliente, $num, $calle, $localidad, $departamento, $lat, $lng)
     {
         do {
             $idRastreo = "";
@@ -12,9 +12,6 @@ class modeloPaquetes
                 $idRastreo .= mt_rand(0, 9);
             }
         } while (self::rastreo($idRastreo) != NULL);
-
-
-        
         $conn = modeloBd::conexion();
         $query = "INSERT INTO paquetes (gmailCliente, idRastreo, fechaCreacion, num, calle, localidad, departamento, lat, lng) VALUES (?, ?, NOW(), ?, ?, ?, ?, ?, ?)";
         $conn->execute_query($query, [$gmailCliente, $idRastreo, $num, $calle, $localidad, $departamento, $lat, $lng]);
