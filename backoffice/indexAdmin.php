@@ -339,6 +339,7 @@ if (isset($_POST['btncerrar'])) {
 
     <script>
         function myFunction(type) {
+            
             if (`${type}` == 'ingAlmacen') {
                 var num = document.getElementById('ingAlmacenNum').value;
                 var calle = document.getElementById('ingAlmacenCalle').value;

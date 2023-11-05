@@ -4,10 +4,9 @@ require_once('../../../Control/superControlador.php');
 if (isset($_POST['ingresar'])) {
   $url = 'http://localhost/LogiQuick/Control/controladorPaquetes.php';
   $numBulto = json_decode(superControlador($url, 'POST', array('function' => 'ingresar', 'gmailCliente' => $_POST['gmailCliente'], 'num' => $_POST['num'], 'calle' => $_POST['calle'], 'localidad' => $_POST['localidad'], 'departamento' => $_POST['departamento'])), 1);
-  echo $numBulto['numBulto'];
-  // $url = 'http://localhost/LogiQuick/Control/controladorPaquetes.php';
-  // $infoPaquete = json_decode(superControlador($url, 'GET', array('function' => 'muestra', 'numBulto' => $numBulto['numBulto'])), 1);
-  // var_dump($infoPaquete);
+  $url = 'http://localhost/LogiQuick/Control/controladorPaquetes.php';
+  $infoPaquete = json_decode(superControlador($url, 'GET', array('function' => 'muestra', 'numBulto' => $numBulto['numBulto'])), 1);
+  var_dump($infoPaquete);
 }
 ?>
 <!DOCTYPE html>
@@ -20,7 +19,7 @@ if (isset($_POST['ingresar'])) {
   <link rel="stylesheet" href="../../estilos/FormStyle.css">
   <link rel="icon" type="image/x-icon" href="../../assets/logo.png">
   <title>LogiQuick</title>
-  <script src="../javascript/Traducir.js"></script>
+  <script src="../../javascript/Traducir.js"></script>
 </head>
 
 <body class="body">
@@ -74,7 +73,7 @@ if (isset($_POST['ingresar'])) {
     </form>
   </div>
 
-  <script src="../javascript/Traducir.js"></script>
+  <script src="../../javascript/Traducir.js"></script>
 
   <footer>
     <div class="footer">
