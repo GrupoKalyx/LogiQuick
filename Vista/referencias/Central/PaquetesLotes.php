@@ -29,10 +29,9 @@ if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'
   <header>
     <nav class="navbar">
       <div class="navbar__logo">
-        <img src="../assets/logo.png" alt="logo">
+        <img src="../../assets/logo.png" alt="logo">
       </div>
       <ul class="navbar__list">
-        <li class="navbar__list__item"><a href="#">Verificar Entrada</a></li>
         <li class="navbar__list__item"><a href="#">Asignación</a>
           <ul class="navbar__submenu">
             <li class="navbar__submenu__item"><a href="AsignacionPaquetesLotes.php">Paquete
@@ -43,9 +42,9 @@ if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'
                 a Camión</a></li>
           </ul>
         </li>
-        <li class="navbar__list__item"><a href="#">Seguimiento</a></li>
+        <li class="navbar__list__item"><a href="Seguimiento.php">Seguimiento</a></li>
       </ul>
-      <button class="form__button" id="traductor-btn">Traducir Pagina </button>
+      <button class="form__button" id="traductor-btn">Traducir Pagina</button>
       <div class="navbar__logout">
         <button class="navbar__logout__button"><a href="../../indexMains/login.php">Cerrar Sesión</a></button>
       </div>

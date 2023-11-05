@@ -34,7 +34,6 @@ if (isset($_POST['asignar'])) {
         <img src="../assets/logo.png" alt="logo">
       </div>
       <ul class="navbar__list">
-        <li class="navbar__list__item"><a href="#">Verificar Entrada</a></li>
         <li class="navbar__list__item"><a href="#">Asignación</a>
           <ul class="navbar__submenu">
             <li class="navbar__submenu__item"><a href="AsignacionPaquetesLotes.php">Paquete a Lote</a></li>
@@ -42,7 +41,7 @@ if (isset($_POST['asignar'])) {
             <li class="navbar__submenu__item"><a href="AsignacionCamionesCamioneros.php">Camionero a Camión</a></li>
           </ul>
         </li>
-        <li class="navbar__list__item"><a href="#">Seguimiento</a></li>
+        <li class="navbar__list__item"><a href="Seguimiento.php">Seguimiento</a></li>
       </ul>
       <!-- <button class="form__button" id="traductor-btn">Traducir Pagina </button> -->
       <div class="navbar__logout">

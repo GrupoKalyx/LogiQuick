@@ -37,19 +37,16 @@ if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'
             </div>
             <ul class="navbar__list">
                 <li class="navbar__list__item">
-                    <a href="#">Verificar Entrada</a>
-                </li>
-                <li class="navbar__list__item">
                     <a href="#">Asignación</a>
                     <ul class="navbar__submenu">
                         <li class="navbar__submenu__item">
-                            <a href="AsignacionPaquetesLotesCentral.php">Paquete a Lote</a>
+                            <a href="PaquetesLotesCentral.php">Paquete a Lote</a>
                         </li>
                         <li class="navbar__submenu__item">
-                            <a href="AsignacionLotesCamiones.php">Lote a Camión</a>
+                            <a href="LotesCamiones.php">Lote a Camión</a>
                         </li>
                         <li class="navbar__submenu__item">
-                            <a href="AsignacionCamionesCamioneros.php">Camionero a Camión</a>
+                            <a href="CamionesCamioneros.php">Camionero a Camión</a>
                         </li>
                     </ul>
                 </li>

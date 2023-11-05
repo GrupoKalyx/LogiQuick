@@ -1,8 +1,7 @@
 <?php
 require_once('../../../Control/superControlador.php');
-
 $url = 'http://localhost/LogiQuick/Control/controladorPaquetes.php';
-$paquetes = json_decode(superControlador($url, 'GET', array('function' => 'listarSinLote')), true);
+$paquetes = json_decode(superControlador($url, 'GET', array('function' => 'listar')), true);
 
 if (isset($_POST['generar'])) {
   $url = 'http://localhost/LogiQuick/Control/controladorLotes.php';
@@ -10,6 +9,8 @@ if (isset($_POST['generar'])) {
   $url = 'http://localhost/LogiQuick/Control/controladorLotean.php';
   superControlador($url, 'POST', array('function' => 'ingresar', 'idLote' => $idLote, 'paquetes' => $_POST['bulto']));
 }
+session_start();
+if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'] . '/Control/controladorTokens.php', 'GET', array('function' => 'verify', 'token' => $_SESSION['token'], 'tipo' => 'Funcionario'));
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,19 +32,20 @@ if (isset($_POST['generar'])) {
         <img src="../../assets/logo.png" alt="logo">
       </div>
       <ul class="navbar__list">
-        <li class="navbar__list__item"><a href="IngresarPaquete.php">Ingresar paquete</a></li>
+        <li class="navbar__list__item"><a href="IngresarPaquetes">Ingresar Paquetes</a></li>
         <li class="navbar__list__item"><a href="#">Asignación</a>
           <ul class="navbar__submenu">
-            <li class="navbar__submenu__item"><a href="AsignacionPaquetesLotes.php">Paquete
+            <li class="navbar__submenu__item"><a href="PaquetesLotes.php">Paquete
                 a Lote</a></li>
-            <li class="navbar__submenu__item"><a href="AsignacionLotesCamiones.php">Lote a
+            <li class="navbar__submenu__item"><a href="LotesCamiones.php">Lote a
                 Camión</a></li>
-            <li class="navbar__submenu__item"><a href="AsignacionCamionesCamioneros.php">Camionero
+            <li class="navbar__submenu__item"><a href="CamionesCamioneros.php">Camionero
                 a Camión</a></li>
           </ul>
         </li>
+        <li class="navbar__list__item"><a href="#">Seguimiento</a></li>
       </ul>
-      <!-- <button class="form__button" id="traductor-btn">Traducir Pagina </button> -->
+      <button class="form__button" id="traductor-btn">Traducir Pagina </button>
       <div class="navbar__logout">
         <button class="navbar__logout__button"><a href="../../indexMains/login.php">Cerrar Sesión</a></button>
       </div>
@@ -67,11 +69,11 @@ if (isset($_POST['generar'])) {
 
         </select>
       </div>
-      <div class="form__group" id="paquetesContainer">
+      <div class="form__group" id="contenedor-campos">
         <!-- aca van paquetes nuevos-->
       </div>
 
-      <button type="button" class="form__button" id="agregarCampo">Agregar Campo</button>
+      <button type="button" class="form__button" id="agregarCampoFuncionario">Agregar Campo</button>
 
 
       <button class="form__button" type="submit" name="generar">Generar Lote</button>
@@ -80,7 +82,7 @@ if (isset($_POST['generar'])) {
   </div>
 
   <!-- <script src="Traducir.js"></script> -->
-  <script src="../javascript/agregarCampo.js"></script>
+  <script src="../../javascript/agregarCampoFuncionario.js"></script>
 
   <footer>
     <div class="footer">

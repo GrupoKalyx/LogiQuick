@@ -19,7 +19,6 @@
         <img src="../../assets/logo.png" alt="logo">
       </div>
       <ul class="navbar__list">
-        <li class="navbar__list__item"><a href="#">Verificar Llegadas</a></li>
         <li class="navbar__list__item"><a href="#">Ingresar Paquetes</a></li>
       </ul>
       <button class="form__button" id="traductor-btn">Traducir Pagina</button>
@@ -30,7 +29,7 @@
   </header>
 
   <div class="form__container">
-    <form class="form" method="POST" id="ingresarForm" >
+    <form class="form" method="POST" id="ingresarForm" action="ingresarScript.php">
       <h2 class="form__text">Ingrese datos del paquete</h2>
 
       <div class="form__group">
