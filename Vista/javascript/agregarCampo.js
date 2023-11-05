@@ -1,47 +1,27 @@
 document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("agregarCampo").addEventListener("click", function () {
+    var contadorCampos = 1; // Contador para asignar nombres únicos a los campos
 
+    document.getElementById("agregarCampo").addEventListener("click", function () {
         var nuevoDiv = document.createElement("div");
         nuevoDiv.className = "form__group";
 
-
         var nuevoLabel = document.createElement("label");
         nuevoLabel.className = "form__label";
-        nuevoLabel.textContent = "Paquete:";
+        nuevoLabel.textContent = "Paquete " + contadorCampos + ":";
 
+        var nuevoInput = document.createElement("input");
+        nuevoInput.className = "form__input";
+        nuevoInput.type = "text";
+        nuevoInput.name = "paquete" + contadorCampos; // Asigna un nombre único al campo
+        nuevoInput.value = ""; // Establece un valor predeterminado
 
-        var nuevoSelect = document.createElement("select");
-        nuevoSelect.className = "form__select";
-        nuevoSelect.name = "bulto[]";
-
-
-        var opcionDefault = document.createElement("option");
-        opcionDefault.value = "";
-        opcionDefault.textContent = "Seleccionar paquete";
-        nuevoSelect.appendChild(opcionDefault);
-
-        // ajax
-        fetch("http://localhost/logiquick/Control/controladorPaquetes.php?function=listarSinLote")
-            .then(response => response.json()) // Parsea la respuesta  JSON
-            .then(paquetes => {
-
-                paquetes.forEach(function (paquete) {
-                    var nuevaOpcion = document.createElement("option");
-                    nuevaOpcion.value = paquete.numBulto;
-                    nuevaOpcion.textContent = paquete.numBulto;
-                    nuevoSelect.appendChild(nuevaOpcion);
-                });
-            })
-            .catch(error => {
-                console.error("Error:", error);
-            });
-
+        // Incrementar el contador para asignar un nombre único al siguiente campo
+        contadorCampos++;
 
         nuevoDiv.appendChild(nuevoLabel);
-        nuevoDiv.appendChild(nuevoSelect);
+        nuevoDiv.appendChild(nuevoInput);
 
-
-        var paquetesContainer = document.getElementById("paquetesContainer");
+        var paquetesContainer = document.getElementById("contenedor-campos");
         paquetesContainer.appendChild(nuevoDiv);
     });
 });

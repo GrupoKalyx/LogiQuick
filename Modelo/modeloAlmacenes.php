@@ -53,4 +53,36 @@ class modeloAlmacenes
         $conn->close();
         return json_encode($result);
     }
+
+    public static function obtenerDetallesAlmacen($idAlmacen)
+    {
+        $conn = modeloBd::conexion();
+        $query = "SELECT * FROM almacenes WHERE idAlmacen = ?";
+        $exc = $conn->execute_query($query, [$idAlmacen]);
+        $result = $exc->fetch_all(MYSQLI_ASSOC);
+        $conn->close();
+        return json_encode($result);
+    }
+
+    public static function obtenerAlmacenAsociadoRuta($idAlmacen, $numRuta)
+    {
+        $conn = modeloBd::conexion();
+        $query = "SELECT * 
+        FROM almacenes AS a
+        JOIN Almacen_Rutas AS ar ON a.idAlmacen = ar.idAlmacen
+        JOIN Rutas AS r ON ar.numRuta = r.numRuta
+        WHERE a.idAlmacen = $idAlmacen AND r.numRuta = $numRuta;";
+        $exc = $conn->execute_query($query, [$idAlmacen, $numRuta]);
+        $result = $exc->fetch_all(MYSQLI_ASSOC);
+        return json_encode($result);
+    }
+
+    public static function obtenerAlmacenPorDepartamento($departamento)
+    {
+        $conn = modeloBd::conexion();
+        $query = "SELECT * FROM almacenes WHERE departamento = ?";
+        $exc = $conn->execute_query($query, [$departamento]);
+        $result = $exc->fetch_all(MYSQLI_ASSOC);
+        return json_encode($result);
+    }
 }

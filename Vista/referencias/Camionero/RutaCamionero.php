@@ -61,7 +61,8 @@ if (isset($_SESSION['token'])) superControlador('http://'.$_SERVER['HTTP_HOST'].
           <tr>
             <th>Num Lote</th>
             <th>Almacen Destino</th>
-            <th>Dirección Almacen</th>
+            <th>Ruta</th>
+            
           </tr>
         </thead>
         <tbody>
