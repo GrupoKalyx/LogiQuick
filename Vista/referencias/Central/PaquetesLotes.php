@@ -69,11 +69,11 @@ if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'
 
         </select>
       </div>
-      <div class="form__group" id="paquetesContainer">
+      <div class="form__group" id="contenedor-campos">
         <!-- aca van paquetes nuevos-->
       </div>
 
-      <button type="button" class="form__button" id="agregarCampo">Agregar Campo</button>
+      <button type="button" class="form__button" id="agregarCampoFuncionario">Agregar Campo</button>
 
 
       <button class="form__button" type="submit" name="generar">Generar Lote</button>
@@ -82,7 +82,7 @@ if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'
   </div>
 
   <!-- <script src="Traducir.js"></script> -->
-  <script src="../../javascript/agregarCampo.js"></script>
+  <script src="../../javascript/agregarCampoFuncionario.js"></script>
 
   <footer>
     <div class="footer">
