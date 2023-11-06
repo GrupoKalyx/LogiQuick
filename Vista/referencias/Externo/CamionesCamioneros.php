@@ -57,13 +57,13 @@ if (isset($_POST['asignar'])) {
 
 <body class="body">
 
-  <header>
+<header>
     <nav class="navbar">
       <div class="navbar__logo">
         <img src="../../assets/logo.png" alt="logo">
       </div>
       <ul class="navbar__list">
-        <li class="navbar__list__item"><a href="IngresarPaquete.php">Ingresa paquete</a></li>
+        <li class="navbar__list__item"><a href="IngresarPaquetes.php">Ingreso de Paquetes</a></li>
         <li class="navbar__list__item"><a href="#">Asignación</a>
           <ul class="navbar__submenu">
             <li class="navbar__submenu__item"><a href="PaquetesLotes.php">Paquete a Lote</a></li>
@@ -71,7 +71,6 @@ if (isset($_POST['asignar'])) {
             <li class="navbar__submenu__item"><a href="CamionesCamioneros.php">Camionero a Camión</a></li>
           </ul>
         </li>
-        <li class="navbar__list__item"><a href="#">Seguimiento</a></li>
       </ul>
       <!-- <button class="form__button" id="traductor-btn">Traducir Pagina </button> -->
       <div class="navbar__logout">

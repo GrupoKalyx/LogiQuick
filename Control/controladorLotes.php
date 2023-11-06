@@ -36,6 +36,7 @@ class controladorLotes
         $idLote = $context['idLote'];
         return modeloLotes::existe($idLote);
     }
+    
     public static function muestraPaquetesAsociados($context){
         $idLote = $context['idLote'];
         $result = modeloLotes::paquetesAsociados($idLote);

@@ -7,8 +7,17 @@ class modeloLlevan
         public static function alta($matricula, $idLote, $numBulto)
         {
                 $conn = modeloBd::conexion();
-                $query = "INSERT INTO llevan (matricula, idLote, numBulto) VALUES (?, ?, ?)";
-                $conn->execute_query($query, [$matricula, $idLote, $numBulto]);
+                $queryValues = array();
+                $bindParams = array();
+                foreach ($numBulto as $key => $value) {
+                        array_push($queryValues,  '(?, ?, ?)');
+                        array_push($bindParams, $matricula);
+                        array_push($bindParams, $idLote);
+                        array_push($bindParams, $value);
+                }
+                $queryValues = implode(', ', $queryValues);
+                $query = "INSERT INTO llevan (matricula, idLote, numBulto) VALUES " . $queryValues;
+                $conn->execute_query($query, $bindParams);
                 $conn->close();
         }
 

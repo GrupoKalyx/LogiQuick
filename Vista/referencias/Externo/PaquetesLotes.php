@@ -1,7 +1,7 @@
 <?php
 require_once('../../../Control/superControlador.php');
 $url = 'http://localhost/LogiQuick/Control/controladorPaquetes.php';
-$paquetes = json_decode(superControlador($url, 'GET', array('function' => 'listar')), true);
+$paquetes = json_decode(superControlador($url, 'GET', array('function' => 'listarSinLote')), true);
 
 if (isset($_POST['generar'])) {
   $url = 'http://localhost/LogiQuick/Control/controladorLotes.php';
@@ -26,30 +26,25 @@ if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'
 
 <body class="body">
 
-  <header>
+<header>
     <nav class="navbar">
       <div class="navbar__logo">
         <img src="../../assets/logo.png" alt="logo">
       </div>
       <ul class="navbar__list">
-        <li class="navbar__list__item"><a href="IngresarPaquetes">Ingresar Paquetes</a></li>
+        <li class="navbar__list__item"><a href="IngresarPaquetes.php">Ingreso de Paquetes</a></li>
         <li class="navbar__list__item"><a href="#">Asignación</a>
           <ul class="navbar__submenu">
-            <li class="navbar__submenu__item"><a href="PaquetesLotes.php">Paquete
-                a Lote</a></li>
-            <li class="navbar__submenu__item"><a href="LotesCamiones.php">Lote a
-                Camión</a></li>
-            <li class="navbar__submenu__item"><a href="CamionesCamioneros.php">Camionero
-                a Camión</a></li>
+            <li class="navbar__submenu__item"><a href="PaquetesLotes.php">Paquete a Lote</a></li>
+            <li class="navbar__submenu__item"><a href="LotesCamiones.php">Lote a Camión</a></li>
+            <li class="navbar__submenu__item"><a href="CamionesCamioneros.php">Camionero a Camión</a></li>
           </ul>
         </li>
-        <li class="navbar__list__item"><a href="#">Seguimiento</a></li>
       </ul>
       <button class="form__button" id="traductor-btn">Traducir Pagina </button>
       <div class="navbar__logout">
         <button class="navbar__logout__button"><a href="../../indexMains/login.php">Cerrar Sesión</a></button>
       </div>
-
     </nav>
   </header>
 

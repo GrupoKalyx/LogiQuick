@@ -40,8 +40,18 @@ class modeloLotean
         public static function listado()
         {
                 $conn = modeloBd::conexion();
-                $query = "SELECT * FROM almacenes";
+                $query = "SELECT * FROM lotean";
                 $result = $conn->execute_query($query);
+                $result = $result->fetch_all(MYSQLI_ASSOC);
+                $conn->close();
+                return json_encode($result);
+        }
+
+        public static function listadoLote($idLote)
+        {
+                $conn = modeloBd::conexion();
+                $query = "SELECT numBulto FROM lotean WHERE idLote = ?";
+                $result = $conn->execute_query($query, [$idLote]);
                 $result = $result->fetch_all(MYSQLI_ASSOC);
                 $conn->close();
                 return json_encode($result);

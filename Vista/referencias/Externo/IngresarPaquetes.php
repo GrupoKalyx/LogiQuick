@@ -13,17 +13,24 @@
 
 <body class="body">
 
-  <header>
+<header>
     <nav class="navbar">
       <div class="navbar__logo">
         <img src="../../assets/logo.png" alt="logo">
       </div>
       <ul class="navbar__list">
-        <li class="navbar__list__item"><a href="#">Ingresar Paquetes</a></li>
+        <li class="navbar__list__item"><a href="IngresarPaquetes.php">Ingreso de Paquetes</a></li>
+        <li class="navbar__list__item"><a href="#">Asignación</a>
+          <ul class="navbar__submenu">
+            <li class="navbar__submenu__item"><a href="PaquetesLotes.php">Paquete a Lote</a></li>
+            <li class="navbar__submenu__item"><a href="LotesCamiones.php">Lote a Camión</a></li>
+            <li class="navbar__submenu__item"><a href="CamionesCamioneros.php">Camionero a Camión</a></li>
+          </ul>
+        </li>
       </ul>
-      <button class="form__button" id="traductor-btn">Traducir Pagina</button>
+      <button class="form__button" id="traductor-btn">Traducir Pagina </button>
       <div class="navbar__logout">
-        <button class="navbar__logout__button"><a href="#">Cerrar Sesión</a></button>
+        <button class="navbar__logout__button"><a href="../../indexMains/login.php">Cerrar Sesión</a></button>
       </div>
     </nav>
   </header>

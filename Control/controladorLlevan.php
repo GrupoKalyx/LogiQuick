@@ -17,8 +17,9 @@ class controladorLlevan
     public static function ingresar($context)
     {
         $matricula = $context['matricula']; 
-        $idLote = $context['idLote']; 
+        $idLote = $context['idLote'];
         $numBulto = $context['numBulto'];
+
         modeloLLevan::alta($matricula, $idLote, $numBulto);
     }
 
@@ -38,7 +39,7 @@ class controladorLlevan
 
     public static function listarEnLote($context)
     {
-        $result = modeloLlevan::listado();
+        $result = modeloLlevan::actualmenteEnLote();
         return $result;
     }
 }

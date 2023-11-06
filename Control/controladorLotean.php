@@ -41,6 +41,13 @@ class controladorLotean
         echo $result;
     }
 
+    public static function listarLote($context)
+    {
+        $idLote = $context['idLote'];
+        $result = modeloLotean::listadoLote($idLote);
+        echo $result;
+    }
+
     public static function modificar($context)
     {
         $idLote = $context['idLote'];
