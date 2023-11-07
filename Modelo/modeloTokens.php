@@ -51,7 +51,8 @@ class modeloTokens
         return $num;
     }
 
-    public static function chkToken($token){
+    public static function chkToken($token)
+    {
         $conn = modeloBd::conexion();
         $query = "SELECT token FROM usuarios WHERE token = ? LIMIT 1";
         $result = $conn->execute_query($query, $token);
@@ -87,7 +88,17 @@ class modeloTokens
     {
         list($headersB64, $payloadB64, $sig) = explode('.', $token);
         $payloadB64 = json_decode(base64_decode($payloadB64), true);
+        $payloadB64 = $payloadB64['data'];
         $type = $payloadB64['type'];
         return $type;
+    }
+
+    public static function getCi($token)
+    {
+        list($headersB64, $payloadB64, $sig) = explode('.', $token);
+        $payloadB64 = json_decode(base64_decode($payloadB64), true);
+        $payloadB64 = $payloadB64['data'];
+        $ci = $payloadB64['ci'];
+        return $ci;
     }
 }

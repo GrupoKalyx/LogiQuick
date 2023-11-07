@@ -74,4 +74,11 @@ class controladorTokens
         $tipo = modeloTokens::getType($token);
         echo $tipo;
     }
+
+    public static function getCi($context)
+    {
+        $token = $context['token'];
+        $tipo = modeloTokens::getCi($token);
+        echo $tipo;
+    }
 }
