@@ -14,6 +14,7 @@ class modeloLlevan
                         array_push($bindParams, $matricula);
                         array_push($bindParams, $idLote);
                         array_push($bindParams, $value);
+                        echo $value;
                 }
                 $queryValues = implode(', ', $queryValues);
                 $query = "INSERT INTO llevan (matricula, idLote, numBulto) VALUES " . $queryValues;
