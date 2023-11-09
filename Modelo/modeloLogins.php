@@ -1,5 +1,4 @@
 <?php
-
 require_once('modeloBd.php');
 
 class modeloLogins
@@ -9,7 +8,7 @@ class modeloLogins
         $conn = modeloBd::conexion();
         $query = "SELECT * FROM `usuarios` WHERE ci = ? AND contrasenia = ? LIMIT 1";
         $result = $conn->execute_query($query, [$ci, $contrasenia]);
-        $num = mysqli_num_rows($result);
+        $num = $result->num_rows;
         $conn->close();
         return $num;
     }

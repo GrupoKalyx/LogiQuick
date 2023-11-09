@@ -1,3 +1,8 @@
+<?php
+require_once('../../Control/superControlador.php');
+$url = 'http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Control/controladorLogins.php';
+if (isset($_POST['login'])) echo superControlador($url, 'GET', array('function' => 'chequear', 'ci' => $_POST['ci'], 'contrasenia' => $_POST['contrasenia']));
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -7,7 +12,7 @@
     <link rel="stylesheet" href="../estilos/FormStyle.css">
     <link rel="stylesheet" href="../estilos/style.css">
     <link rel="icon" type="image/x-icon" href="../assets/logo.png">
-    <script src="Traducir.js"></script>
+    <script src="../javascript/Traducir.js"></script>
     <title>LogiQuick</title>
 </head>
 
@@ -41,8 +46,8 @@
     <footer>
         <div class="footer">
             <ul class="footer_list">
-                <li class="footer__list__item"><a href="">¡Contactanos!</a></li>
-                <li class="footer__list__item"><a href="">Sobre Nosotros</a></li>
+                <li class="footer__list__item"><a href="../">¡Contactanos!</a></li>
+                <li class="footer__list__item"><a href="../">Sobre Nosotros</a></li>
             </ul>
             <div class="footer__copyright">
                 <p>Copyright © 2023 Kalyx Software. Todos los derechos reservados</p>

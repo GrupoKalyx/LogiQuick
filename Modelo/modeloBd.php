@@ -4,7 +4,7 @@ class modeloBd
     static $server = "127.0.0.1";
     static $user = "root";
     static $password = "";
-    static $dbname = "logiquickbd";
+    static $dbname = "kalyx";
 
     public static function conexion()
     {

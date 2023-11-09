@@ -25,17 +25,6 @@ class controladorTokens
         echo $jwt;
     }
 
-    public static function updateToken($context)
-    {
-        $ci = $context['ci'];
-        $tipo = $context['tipo'];
-        $token = modeloTokens::generateToken($ci, $tipo);
-        $jwtExp = $token['iat'];
-        $jwt = modeloTokens::encodeToken($token);
-        modeloTokens::updateToken($ci, $jwt, $jwtExp);
-        echo $jwt;
-    }
-
     public static function verify($context)
     {
         $token = $context['token'];

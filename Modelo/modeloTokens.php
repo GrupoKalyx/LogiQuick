@@ -28,18 +28,11 @@ class modeloTokens
     public static function setToken($ci, $jwt, $jwtExp)
     {
         $conn = modeloBd::conexion();
-        $query = "INSERT INTO usuarios (ci, token, tokenExp) VALUES (?, ?, ?)";
-        $conn->execute_query($query, [$ci, $jwt, $jwtExp]);
-        $conn->close();
-    }
-
-    public static function updateToken($ci, $jwt, $jwtExp)
-    {
-        $conn = modeloBd::conexion();
-        $query = "UPDATE usuarios SET token = ? AND tokenExp = ? WHERE ci = ?";
+        $query = "UPDATE usuarios SET token =  ? , tokenExp = ? WHERE ci = ?";
         $conn->execute_query($query, [$jwt, $jwtExp, $ci]);
         $conn->close();
     }
+
 
     public static function chkTokenExistence($token)
     {
