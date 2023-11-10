@@ -322,7 +322,7 @@ if (isset($_POST['btncerrar'])) {
             </form>
         </div>
         <div class="form">
-            <h2>Dar de baja Usuario</h2>
+            <h2>Dar de baja vehiculo</h2>
             <form class="m" action="CRUD/vehiculos/Bajas.php" method="post">
                 Matricula <input class="form__input" type="text" name="matricula"><br><br>
                 <button class="form__button" type="submit">Eliminar</button>
