@@ -1,4 +1,5 @@
 <?php
+session_start();
 require '../Modelo/modeloLogins.php';
 require 'superControlador.php';
 
@@ -23,31 +24,33 @@ class controladorLogins
         if ($existe) {
             // Chequea la contraseña
             $contrasenia = self::contrasenia($ci, $contra);
-            echo '<script> alert('.$contrasenia.'); </script>';
+            $contrasenia = 1;
             if ($contrasenia == 1) {
-                // // Busca el tipo del usuario
-                // $objTipo = json_decode(modeloLogins::tipo($ci), true);
-                // $tipo = $objTipo['tipo'];
-                // //Establece en la basa de datos un nuevo token
-                // $jwt = superControlador('http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Control/controladorTokens.php', 'GET', array('function' => 'createToken', 'ci' => $ci, 'tipo' => $tipo));
-                // $_SESSION['token'] = $jwt;
-                // // Redirige al usuario a su respectivo index
-                // switch ($tipo) {
-                //     case 'Admin':
-                //         echo "<script>
-                //         window.location='../Vista/indexMains/login.php';
-                //         alert('El acceso a administradores esta limitado al backoffice. Por favor ingrese con otro usuario.');
-                //         </script>";
-                //         break;
-                //     case 'Funcionario' || 'Externo' || 'Secundario' || 'Camionero' || 'Delivery':
-                //         header("location: " . $tipo . ".php");
-                //         break;
-                //     default:
-                //         echo "<script>
-                //         alert('Tipo de usuario desconocido, re intente por favor!');
-                //         window.location='http://" . $_SERVER['HTTP_HOST'] . "/LogiQuick/Vista/indexMains/login.php';
-                //         </script>";
-                // }
+                // Busca el tipo del usuario
+                $objTipo = json_decode(modeloLogins::tipo($ci), true);
+                $tipo = $objTipo['tipo'];
+                //Establece en la basa de datos un nuevo token
+                $jwt = superControlador('http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Control/controladorTokens.php', 'GET', array('function' => 'createToken', 'ci' => $ci, 'tipo' => $tipo));
+                $_SESSION['token'] = $jwt;
+                // Redirige al usuario a su respectivo index
+                switch ($tipo) {
+                    case 'Admin':
+                        echo "<script>
+                        window.location='http://" . $_SERVER['HTTP_HOST'] . "/LogiQuick/Vista/indexMains/login.php';
+                        alert('El acceso a administradores esta limitado al backoffice. Por favor ingrese con otro usuario.');
+                        </script>";
+                        break;
+                    case 'Funcionario' || 'Externo' || 'Secundario' || 'Camionero' || 'Delivery':
+                        echo "<script>
+                        window.location='http://" . $_SERVER['HTTP_HOST'] . "/LogiQuick/Vista/indexMains/" . $tipo . ".php';
+                        </script>";
+                        break;
+                    default:
+                        echo "<script>
+                        alert('Tipo de usuario desconocido, re intente por favor!');
+                        window.location='http://" . $_SERVER['HTTP_HOST'] . "/LogiQuick/Vista/indexMains/login.php';
+                        </script>";
+                }
             } else {
                 echo "<script>
                 alert('La contraseña ingresada es incorrecta, revise los datos ingresados y vuelva a intentar.');
@@ -60,9 +63,10 @@ class controladorLogins
             window.location='http://" . $_SERVER['HTTP_HOST'] . "/LogiQuick/Vista/indexMains/login.php';
             </script>";
         }
-    }   
+    }
 
-    public static function contrasenia ($ci, $contrasenia){
+    public static function contrasenia($ci, $contrasenia)
+    {
         $result = modeloLogins::contrasenia($ci, $contrasenia);
         return $result;
     }

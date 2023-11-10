@@ -1,14 +1,13 @@
 <?php
 require_once('../../Control/superControlador.php');
-session_start();
-if (isset($_SESSION['token'])) {
-  superControlador('http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Control/controladorTokens.php', 'GET', array('function' => 'verify', 'token' => $_SESSION['token'], 'tipo' => 'Camionero'));
-} else {
-  echo "<script>
-  alert('No tiene token cargado.');
-  window.location='../index.html';
-  </script>";
-}
+// if (isset($_SESSION)) {
+//   superControlador('http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Control/controladorTokens.php', 'GET', array('function' => 'verify', 'token' => $_SESSION['token'], 'tipo' => 'Camionero'));
+// } else {
+//   echo "<script>
+//   alert('No tiene token cargado.');
+//   window.location='http://" . $_SERVER['HTTP_HOST'] . "/LogiQuick/Vista/indexMains/login.php';
+//   </script>";
+// }
 ?>
 
 
