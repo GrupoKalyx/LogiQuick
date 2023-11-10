@@ -42,4 +42,11 @@ class controladorLlevan
         $result = modeloLlevan::actualmenteEnLote();
         return $result;
     }
+
+    public static function LoteDeConductor($context)
+    {
+        $ci = $context['ci'];
+        $result = modeloLlevan::LoteDeConductor($ci);
+        return $result;
+    }
 }
