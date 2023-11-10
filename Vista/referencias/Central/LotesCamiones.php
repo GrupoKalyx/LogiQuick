@@ -36,9 +36,9 @@ if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'
       <ul class="navbar__list">
         <li class="navbar__list__item"><a href="#">Asignación</a>
           <ul class="navbar__submenu">
-            <li class="navbar__submenu__item"><a href="AsignacionPaquetesLotes.php">Paquete a Lote</a></li>
-            <li class="navbar__submenu__item"><a href="AsignacionLotesCamiones.php">Lote a Camión</a></li>
-            <li class="navbar__submenu__item"><a href="AsignacionCamionesCamioneros.php">Camionero a Camión</a></li>
+            <li class="navbar__submenu__item"><a href="PaquetesLotes.php">Paquete a Lote</a></li>
+            <li class="navbar__submenu__item"><a href="LotesCamiones.php">Lote a Camión</a></li>
+            <li class="navbar__submenu__item"><a href="CamionesCamioneros.php">Camionero a Camión</a></li>
           </ul>
         </li>
         <li class="navbar__list__item"><a href="Seguimiento.php">Seguimiento</a></li>

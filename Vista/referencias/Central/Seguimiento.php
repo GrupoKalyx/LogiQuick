@@ -40,7 +40,7 @@ if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'
                     <a href="#">Asignación</a>
                     <ul class="navbar__submenu">
                         <li class="navbar__submenu__item">
-                            <a href="PaquetesLotesCentral.php">Paquete a Lote</a>
+                            <a href="PaquetesLotes.php">Paquete a Lote</a>
                         </li>
                         <li class="navbar__submenu__item">
                             <a href="LotesCamiones.php">Lote a Camión</a>

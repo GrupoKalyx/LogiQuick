@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             fila.setAttribute('data-numRuta', departamentosRuta);
 
             fila.addEventListener('click', async function () {
-                eliminarMapa(); // Eliminar el mapa existente al hacer clic en una fila
+                eliminarMapa(); 
 
                 const departamentosRuta = celdaNumRuta.textContent.split(',').map(dep => dep.trim());
 
@@ -52,10 +52,10 @@ document.addEventListener('DOMContentLoaded', async function () {
 
                 if (paquetesPorLote.length > 0) {
                     paquetesPorLote.forEach(async (paquete) => {
-                        // Obtener el departamento del paquete
+                       
                         const departamentoPaquete = paquete.departamento;
 
-                        // Verificar si el departamento del paquete está en los departamentos de la ruta
+                 
                         if (departamentosRuta.includes(departamentoPaquete)) {
                             const coordenadasPaquete = await codificarCoordenadas(paquete.direccion);
                             coordenadasPaquetes.push([coordenadasPaquete.latitud, coordenadasPaquete.longitud]);
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                 }
 
                 if (coordenadasAlmacenes.length > 0 || coordenadasPaquetes.length > 0) {
-                    // Establecer el centro del mapa en las coordenadas del primer almacén
+                
                     const centro = coordenadasAlmacenes.length > 0 ? coordenadasAlmacenes[0] : coordenadasPaquetes[0];
                     map = L.map('map').setView(centro, 8.5);
 
@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                         popupAnchor: [0, -50]
                     })
 
-                    // Agregar marcadores para los almacenes en el mapa
+                  
                     coordenadasAlmacenes.forEach(coordenada => {
                         L.marker(coordenada, {
                                 icon: iconoPersonalizadoAlmacen
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                         }).addTo(map)
                         .bindPopup('CENTRAL QUICKCARRY');
 
-                    // Agregar marcadores para los paquetes en el mapa
+                 
                     coordenadasPaquetes.forEach(coordenada => {
                         L.marker(coordenada, {
                                 icon: iconoPersonalizadoPaquete
