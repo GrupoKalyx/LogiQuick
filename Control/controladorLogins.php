@@ -1,5 +1,4 @@
 <?php
-session_start();
 require '../Modelo/modeloLogins.php';
 require 'superControlador.php';
 

@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once('../../Control/superControlador.php');
 $url = 'http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Control/controladorLogins.php';
 if (isset($_POST['login'])) echo superControlador($url, 'GET', array('function' => 'chequear', 'ci' => $_POST['ci'], 'contrasenia' => $_POST['contrasenia']));

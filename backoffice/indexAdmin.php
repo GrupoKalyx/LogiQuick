@@ -184,12 +184,16 @@ if (isset($_POST['btncerrar'])) {
                 <label for="numRuta">Seleccione una Ruta:</label>
                 <select class="form__select" id="numRuta" name="numRuta" required>
                     <?php
-                    require 'rutas/Listar.php';
+                    require_once('sql/dbconection.php');
+                    $query = "SELECT * FROM rutas";
+                    $result = $conn->execute_query($query);
+                    $rutas = $result->fetch_all(MYSQLI_ASSOC);
                     foreach ($rutas as $ruta) {
                         echo "<option value='" . $ruta['numRuta'] . "'>" . $ruta['numRuta'] . " - " . $ruta['departamentos'] . "</option>";
                     }
                     ?>
                 </select>
+                <br><br>
                 <button class="form__button" id="ingAlmacen" type="button" onclick="myFunction('ingAlmacen');">Ingresar</button>
             </form>
         </div>
@@ -305,6 +309,43 @@ if (isset($_POST['btncerrar'])) {
         </div>
     </div>
 
+    <div class="form__container__backoffice"> <!-- CRUD de Vehiculos -->
+        <div class="form">
+            <h2>Ingresar Vehiculos Nuevos</h2>
+            <form action="CRUD/vehiculos/Altas.php" method="post">
+                Matricula <input class="form__input" type="text" name="matricula" required><br>
+                Tipo de vehiculo <select class="form__input" name="tipo">
+                    <option value="camion">Camion</option>
+                    <option value="pickup">Pickup</option>
+                </select><br><br>
+                <button class="form__button" type="submit">Ingresar</button>
+            </form>
+        </div>
+        <div class="form">
+            <h2>Dar de baja Usuario</h2>
+            <form class="m" action="CRUD/vehiculos/Bajas.php" method="post">
+                Matricula <input class="form__input" type="text" name="matricula"><br><br>
+                <button class="form__button" type="submit">Eliminar</button>
+            </form>
+        </div>
+        <div class="form" id="list">
+            <h2>Vehiculos registrados</h2><br>
+            <iframe src="CRUD/vehiculos/Consultas.php">
+            </iframe>
+        </div>
+        <div class="form">
+            <h2>Modificar vehiculos</h2>
+            <form action="CRUD/vehiculos/Modificaciones.php" method="post">
+                Matricula <input class="form__input" type="text" name="matricula"><br>
+                <h2>Nuevos datos</h2>
+                Cambiar disponibilidad <input class="form__input" type="text" name="disponibilidad"><br>
+                <br>
+                <button class="form__button" type="submit">Modificar</button>
+            </form>
+        </div>
+    </div>
+
+    tipo
     <footer>
         <div class="footer">
             <ul class="footer_list">

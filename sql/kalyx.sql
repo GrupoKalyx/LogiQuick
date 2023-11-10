@@ -21,7 +21,6 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
 
-
 -- -----------------------------------------------------
 -- Table `conductores`
 -- -----------------------------------------------------
@@ -141,7 +140,7 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 -- Table `pick_ups`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `pick_ups` (
+CREATE TABLE IF NOT EXISTS `pickups` (
   `matricula` VARCHAR(45) NOT NULL,
   `disponibilidad` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`matricula`),
@@ -200,7 +199,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `Almacen-Rutas`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Almacen_Rutas` (
+CREATE TABLE IF NOT EXISTS `almacen_rutas` (
   `idAlmacen` INT NOT NULL,
   `numRuta` INT NOT NULL,
   PRIMARY KEY (`idAlmacen`, `numRuta`),
@@ -220,7 +219,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `lotes-Almacen-Rutas`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `lotes_Almacen_Rutas` (
+CREATE TABLE IF NOT EXISTS `lotes_almacen_rutas` (
   `idLote` INT NOT NULL,
   `idAlmacen` INT NOT NULL,
   `numRuta` INT NOT NULL,
