@@ -4,29 +4,19 @@ require_once('modeloBd.php');
 
 class modeloLlevan
 {
-        public static function alta($matricula, $idLote, $numBulto, $numRuta)
+        public static function alta($matricula, $idLote, $idAlmacen, $numRuta)
         {
                 $conn = modeloBd::conexion();
-                $queryValues = array();
-                $bindParams = array();
-                foreach ($numBulto as $key => $value) {
-                        array_push($queryValues,  '(?, ?, ?)');
-                        array_push($bindParams, $matricula);
-                        array_push($bindParams, $idLote);
-                        array_push($bindParams, $value);
-                        echo $value;
-                }
-                $queryValues = implode(', ', $queryValues);
-                $query = "INSERT INTO llevan (matricula, idLote, numBulto) VALUES " . $queryValues;
-                $conn->execute_query($query, $bindParams);
+                $query = "INSERT INTO llevan (matricula, idLote, idAlmacen, numRuta) VALUES (?, ?, ?, ?);";
+                $conn->execute_query($query, [$matricula, $idLote, $idAlmacen, $numRuta]);
                 $conn->close();
         }
 
-        public static function baja($matricula, $idLote, $numBulto, $numRuta)
+        public static function baja($matricula, $idLote, $idAlmacen, $numRuta)
         {
                 $conn = modeloBd::conexion();
-                $query = "DELETE FROM llevan WHERE matricula = $matricula AND idLote = $idLote AND numBulto = $numBulto";
-                $conn->execute_query($query, [$matricula, $idLote, $numBulto]);
+                $query = "DELETE FROM llevan WHERE matricula = $matricula AND idLote = $idLote AND idAlmacen = $idAlmacen AND numRuta = $numRuta";
+                $conn->execute_query($query, [$matricula, $idLote, $idAlmacen, $numRuta]);
                 $conn->close();
         }
 

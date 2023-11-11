@@ -32,6 +32,12 @@ class controladorLotes
         echo $result;
     }
 
+    public static function listarExterno($context)
+    {
+        $result = modeloLotes::listadoExterno();
+        echo $result;
+    }
+
     public static function existe($context){
         $idLote = $context['idLote'];
         return modeloLotes::existe($idLote);

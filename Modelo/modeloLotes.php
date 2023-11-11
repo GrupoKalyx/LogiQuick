@@ -28,13 +28,23 @@ class modeloLotes
     public static function listado()
     {
         $conn = modeloBd::conexion();
-        $query = "SELECT * FROM  lotes";
+        $query = "SELECT * FROM lotes";
         $result = $conn->execute_query($query);
         $result = $result->fetch_all(MYSQLI_ASSOC);
         $conn->close();
         return json_encode($result);
     }
 
+    public static function listadoExterno()
+    {
+        $conn = modeloBd::conexion();
+        $query = "SELECT * FROM lotes WHERE idLote NOT IN (SELECT idLote FROM llevan);";
+        $result = $conn->execute_query($query);
+        $result = $result->fetch_all(MYSQLI_ASSOC);
+        $conn->close();
+        return json_encode($result);
+    }
+    
     public static function existe($idLote)
     {
         $conn = modeloBd::conexion();

@@ -54,7 +54,7 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `vehiculos`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `vehiculos` (
-  `matricula` VARCHAR(8) NOT NULL,
+  `matricula` VARCHAR(7) NOT NULL,
   `disponibilidad` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`matricula`))
 ENGINE = InnoDB
@@ -65,7 +65,7 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `camiones`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `camiones` (
-  `matricula` VARCHAR(8) NOT NULL,
+  `matricula` VARCHAR(7) NOT NULL,
   `disponibilidad` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`matricula`),
  
@@ -81,7 +81,7 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `conducen`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `conducen` (
-  `matricula` VARCHAR(8) NOT NULL,
+  `matricula` VARCHAR(7) NOT NULL,
   `fecha_llegada` DATETIME NULL DEFAULT NULL,
   `fecha_salida` DATETIME NULL DEFAULT NULL,
   `ci` INT(11) NOT NULL,
@@ -141,7 +141,7 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `pickups`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `pickups` (
-  `matricula` VARCHAR(8) NOT NULL,
+  `matricula` VARCHAR(7) NOT NULL,
   `disponibilidad` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`matricula`),
  
@@ -159,7 +159,7 @@ DEFAULT CHARACTER SET = utf8;
 CREATE TABLE IF NOT EXISTS `entregan` (
   `fecha_llegada` DATETIME NOT NULL,
   `fecha_salida` DATETIME NULL DEFAULT NULL,
-  `matricula` VARCHAR(8) NOT NULL,
+  `matricula` VARCHAR(7) NOT NULL,
   `numBulto` INT(11) NOT NULL,
   PRIMARY KEY (`numBulto`, `matricula`),
  
@@ -246,7 +246,7 @@ ENGINE = InnoDB;
 -- Table `llevan`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `llevan` (
-  `matricula` VARCHAR(8) NOT NULL,
+  `matricula` VARCHAR(7) NOT NULL,
   `idLote` INT(11) NOT NULL,
   `idAlmacen` INT NOT NULL,
   `numRuta` INT NOT NULL,
@@ -301,7 +301,7 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `manejan`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `manejan` (
-  `matricula` VARCHAR(8) NOT NULL,
+  `matricula` VARCHAR(7) NOT NULL,
   `fecha_llegada` DATETIME NULL DEFAULT NULL,
   `fecha_salida` DATETIME NULL DEFAULT NULL,
   `ci` INT(11) NOT NULL,

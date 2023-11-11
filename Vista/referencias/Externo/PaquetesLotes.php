@@ -76,7 +76,7 @@ if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'
     </form>
   </div>
 
-  <!-- <script src="Traducir.js"></script> -->
+  <script src="../../javascript/Traducir.js"></script>
   <script src="../../javascript/agregarCampoFuncionario.js"></script>
 
   <footer>
