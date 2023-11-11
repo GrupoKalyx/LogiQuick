@@ -59,7 +59,7 @@ if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'
           <option value="">Seleccionar lote</option>
           <?php
           foreach ($idLotes as $idLote) {
-            echo "<option value='$idLote'>$idLote</option>";
+            echo "<option value='". $idLote['idLote']."'>". $idLote['idLote']."</option>";
           }
           ?>
         </select>
@@ -70,7 +70,7 @@ if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'
           <option value="">Seleccionar camion</option>
           <?php
           foreach ($matriculas as $matricula) {
-            echo "<option value='$matricula'>$matricula</option>";
+            echo "<option value='". $matricula['matricula']."'>". $matricula['matricula']."</option>";
           }
           ?>
         </select>

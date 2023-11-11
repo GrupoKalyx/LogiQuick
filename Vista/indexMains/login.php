@@ -33,7 +33,7 @@ if (isset($_POST['login'])) echo superControlador($url, 'GET', array('function' 
             <h2 class="form__text">Ingrese sus Datos</h2>
             <div class="form__group">
                 <label class="form__label" for="ci">CI:</label>
-                <input class="form__input" type="text" id="ci" name="ci" required>
+                <input class="form__input" type="number" id="ci" name="ci" required>
             </div>
             <div class="form__group">
                 <label class="form__label" for="contrasenia">Contraseña:</label>

@@ -23,9 +23,6 @@ if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'
             </div>
             <ul class="navbar__list">
                 <li class="navbar__list__item">
-                    <a href="#">Verificar Entrada</a>
-                </li>
-                <li class="navbar__list__item">
                     <a href="#">Asignación</a>
                     <ul class="navbar__submenu">
                         <li class="navbar__submenu__item">
