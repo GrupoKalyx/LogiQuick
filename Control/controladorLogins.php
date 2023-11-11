@@ -27,7 +27,8 @@ class controladorLogins
             if ($contrasenia == 1) {
                 // Busca el tipo del usuario
                 $objTipo = json_decode(modeloLogins::tipo($ci), true);
-                $tipo = $objTipo['tipo']; // Redirige al usuario a su respectivo index
+                $tipo = $objTipo['tipo']; 
+                // Redirige al usuario a su respectivo index
                 switch ($tipo) {
                     case 'Admin':
                         header('http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Vista/indexMains/' . $tipo . '.php');

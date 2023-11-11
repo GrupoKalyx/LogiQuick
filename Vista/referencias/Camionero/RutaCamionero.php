@@ -1,7 +1,9 @@
 <?php
-require_once('../../../Control/superControlador.php');
 session_start();
+require_once('../../../Control/superControlador.php');
+
 if (isset($_SESSION['token'])) superControlador('http://'.$_SERVER['HTTP_HOST'].'/Control/controladorTokens.php', 'GET', array('function' => 'verify', 'token' => $_SESSION['token'], 'tipo' => 'Camionero'));
+if (isset($_SESSION['ci']))  superControlador('http://'.$_SERVER['HTTP_HOST'].'/Control/controladorLlevan.php', 'GET', array('function' => 'verify', 'token' => $_SESSION['ci']));
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +15,7 @@ if (isset($_SESSION['token'])) superControlador('http://'.$_SERVER['HTTP_HOST'].
   <link rel="stylesheet" href="../../estilos/FormStyle.css">
   <link rel="stylesheet" href="../../estilos/mapsStyle.css">
   <title>LogiQuick</title>
-  <script src="Traducir.js"></script>
+  <script src="../../javascript/Traducir.js"></script>
   <!-- Incluye Leaflet CSS y JS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>

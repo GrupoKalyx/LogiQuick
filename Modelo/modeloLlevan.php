@@ -43,7 +43,7 @@ class modeloLlevan
         public static function LoteDeConductor($ci)
         {
                 $conn = modeloBd::conexion();
-                $query = "SELECT ll.idLote FROM llevan ll JOIN conducen c ON ll.matricula = c.matricula WHERE c.ci = ? AND ll.fecha_llegada IS NULL;";
+                $query = "SELECT ll.* FROM llevan ll JOIN conducen c ON ll.matricula = c.matricula WHERE c.ci = ? AND ll.fecha_salida IS NULL;";
                 $exc = $conn->execute_query($query, [$ci]);
                 $result = $exc->fetch_all(MYSQLI_ASSOC);
                 $conn->close();
