@@ -97,7 +97,7 @@ class modeloPaquetes
         $exc = $conn->execute_query($query, [$idRastreo]);
         $result = $exc->fetch_array(MYSQLI_ASSOC);
         $conn->close();
-        return $result;
+        return json_encode($result);
     }
 
     public static function existe($tipoId, $id)

@@ -42,11 +42,14 @@ class modeloAlmacenes
     {
         $conn = modeloBd::conexion();
         $query = "SELECT a.*
-                    FROM Almacenes a
-                    JOIN Van v ON a.idAlmacen = v.idAlmacen
-                    JOIN Lotean l ON v.idLote = l.idLote
-                    JOIN Paquetes p ON l.numBulto = p.numBulto
-                    WHERE p.idRastreo = ?;";
+        FROM almacenes a
+        JOIN llevan lv ON a.idAlmacen = lv.idAlmacen
+        JOIN lotes_almacen_rutas lar ON lv.idLote = lar.idLote AND lv.idAlmacen = lar.idAlmacen AND lv.numRuta = lar.numRuta
+        JOIN lotean l ON lar.idLote = l.idLote
+        JOIN paquetes p ON l.numBulto = p.numBulto
+        WHERE p.idRastreo = ? 
+        ORDER BY lv.fecha_llegada DESC
+        LIMIT 1; ";
 
         $exc = $conn->execute_query($query, [$idRastreo]);
         $result = $exc->fetch_array(MYSQLI_ASSOC);

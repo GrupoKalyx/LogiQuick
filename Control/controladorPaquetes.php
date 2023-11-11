@@ -82,7 +82,8 @@ class controladorPaquetes
     {
         $idRastreo = $context['idRastreo'];
         $result = modeloPaquetes::rastreo($idRastreo);
-        echo $result;
+        echo $result;   
+        
     }
 
     public static function verificar($context)
