@@ -54,7 +54,7 @@ if (isset($_POST['btncerrar'])) {
                 Telefono <input class="form__input" type="text" name="telefono"><br><br>
                 Tipo de usuario <select class="form__input" name="tipo">
                     <option value="Admin">Admin</option>
-                    <option value="Funcionario">Funcionario central(QC)</option>
+                    <option value="Central">Funcionario central(QC)</option>
                     <option value="Externo">Funcionario externo</option>
                     <option value="Secundario">Funcionario secundario</option>
                     <option value="Camionero">Camionero</option>
@@ -345,7 +345,6 @@ if (isset($_POST['btncerrar'])) {
         </div>
     </div>
 
-    tipo
     <footer>
         <div class="footer">
             <ul class="footer_list">

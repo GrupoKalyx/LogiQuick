@@ -18,17 +18,19 @@ class controladorLlevan
     {
         $matricula = $context['matricula']; 
         $idLote = $context['idLote'];
-        $numBulto = $context['numBulto'];
+        $idAlmacen = $context['idAlmacen'];
+        $numRuta = $context['numRuta'];
 
-        modeloLLevan::alta($matricula, $idLote, $numBulto);
+        modeloLLevan::alta($matricula, $idLote, $idAlmacen, $numRuta);
     }
 
     public static function eliminar($context)
     {
         $matricula = $context['matricula']; 
         $idLote = $context['idLote']; 
-        $numBulto = $context['numBulto'];
-        modeloLLevan::baja($matricula, $idLote, $numBulto);
+        $idAlmacen = $context['idAlmacen'];
+        $numRuta = $context['numRuta'];
+        modeloLLevan::baja($matricula, $idLote, $idAlmacen, $numRuta);
     }
 
     public static function listar($context)
@@ -36,13 +38,7 @@ class controladorLlevan
         $result = modeloLlevan::listado();
         return $result;
     }
-
-    public static function listarEnLote($context)
-    {
-        $result = modeloLlevan::actualmenteEnLote();
-        return $result;
-    }
-
+    
     public static function LoteDeConductor($context)
     {
         $ci = $context['ci'];

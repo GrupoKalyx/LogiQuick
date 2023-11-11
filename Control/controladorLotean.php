@@ -35,6 +35,14 @@ class controladorLotean
         modeloPaquetes::baja($idLote);
     }
 
+    public static function modificar($context)
+    {
+        $idLote = $context['idLote'];
+        $numBulto = $context['numBulto'];
+        $nuevoNumBulto = $context['nuevoNumBulto'];
+        modeloLotean::modificacion($idLote, $numBulto, $nuevoNumBulto);
+    }
+
     public static function listar($context)
     {
         $result = modeloLotean::listado();
@@ -48,11 +56,9 @@ class controladorLotean
         echo $result;
     }
 
-    public static function modificar($context)
+    public static function listarActualmenteEnLote($context)
     {
-        $idLote = $context['idLote'];
-        $numBulto = $context['numBulto'];
-        $nuevoNumBulto = $context['nuevoNumBulto'];
-        modeloLotean::modificacion($idLote, $numBulto, $nuevoNumBulto);
+        $result = modeloLotean::actualmenteEnLote();
+        echo $result;
     }
 }

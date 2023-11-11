@@ -1,8 +1,9 @@
 <?php
 session_start();
 require_once('../../Control/superControlador.php');
-if (isset($_SESSION)) {
-  superControlador('http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Control/controladorTokens.php', 'GET', array('function' => 'verify', 'token' => $_SESSION['token'], 'tipo' => 'Camionero'));
+if (isset($_SESSION['ci'])) {
+  //   superControlador('http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Control/controladorTokens.php', 'GET', array('function' => 'verify', 'token' => $_SESSION['token'], 'tipo' => 'Camionero'));
+  $idLotes = superControlador('http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Control/controladorLlevan.php', 'GET', array('function' => 'LoteDeConductor', 'ci' => $_SESSION['ci']));
 } else {
   echo "<script>
   alert('No tiene token cargado.');
@@ -10,10 +11,8 @@ if (isset($_SESSION)) {
   </script>";
 }
 ?>
-
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8">
@@ -21,7 +20,7 @@ if (isset($_SESSION)) {
   <link rel="stylesheet" href="../estilos/style.css">
   <link rel="icon" type="image/x-icon" href="../assets/logo.png">
   <title>LogiQuick</title>
-  <!-- <script src="Traducir.js"></script> -->
+  <script src="../Traducir.js"></script>
 </head>
 
 <body class="body">

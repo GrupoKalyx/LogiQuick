@@ -57,6 +57,17 @@ class modeloLotean
                 return json_encode($result);
         }
 
+
+        public static function actualmenteEnLote()
+        {
+                $conn = modeloBd::conexion();
+                $query = "SELECT numBulto FROM llevan WHERE fecha_llegada = NULL";
+                $result = $conn->execute_query($query);
+                $result = $result->fetch_all(MYSQLI_ASSOC);
+                $conn->close();
+                return json_encode($result);
+        }
+
         public static function existe($idLote, $numBulto)
         {
                 $conn = modeloBd::conexion();
