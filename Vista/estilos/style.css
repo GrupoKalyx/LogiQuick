@@ -315,3 +315,34 @@ table tr:hover {
     width: 0em;
   }
 }
+
+
+#info-container {
+  display: flex;
+  justify-content: space-around; /* Alinea los elementos con espacio entre ellos */
+  align-items: flex-end; /* Alinea los elementos al final del contenedor */
+  
+}
+
+#info-icons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 10px; /* Ajusta el margen entre los elementos según sea necesario */
+}
+
+#info-icons img {
+  width: 50px; /* Ajusta el ancho según sea necesario */
+  height: 50px; /* Ajusta la altura según sea necesario */
+  margin-bottom: 5px; /* Espacio entre el icono y el texto */
+}
+
+#info-text p {
+  margin: 0; /* Elimina el margen predeterminado del párrafo */
+}
+
+
+
+  
+

@@ -55,9 +55,11 @@ if (isset($_SESSION['ci']))  superControlador('http://'.$_SERVER['HTTP_HOST'].'/
     </nav>
   </header>
 
+  
+
   <div class="container">
 
-    <div id="TableContainer">
+    <div id="TableContainer" >
       <table id="Table">
         <thead>
           <tr>
@@ -71,9 +73,31 @@ if (isset($_SESSION['ci']))  superControlador('http://'.$_SERVER['HTTP_HOST'].'/
 
         </tbody>
       </table>
+      <div class="tableButtons">
+      <button class="form__button">Empezar Viaje</button>
+      <button class="form__button">Marcar Entrega</button>
     </div>
+    </div>
+    
     <div id="map"></div>
 
+  </div>
+
+  <div id="info-container">
+    <div id="info-icons">
+      <img src="../../assets/CamionIcon.png" alt="Icono 1">
+      <p>Posición de Salida </p>
+    </div>
+
+    <div id="info-icons">
+      <img src="../../assets/AlmacenIcon.png" alt="Icono 2">
+      <p>Almacenes en tu Ruta</p>
+    </div>
+
+    <div id="info-icons">
+      <img src="../../assets/AlmacenDestinoIcon.png" alt="Icono 3">
+      <p>Tu Almacen Destino</p>
+    </div>
   </div>
 
   <footer>
