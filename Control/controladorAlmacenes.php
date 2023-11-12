@@ -55,8 +55,8 @@ class controladorAlmacenes
         echo $result;
     }
     public static function mostrarDetallesAlmacen($context) {
-        $idAlmacen = $context['idAlmacen'];
-        $result = modeloAlmacenes::obtenerDetallesAlmacen($idAlmacen);
+        $idLote = $context['idLote'];
+        $result = modeloAlmacenes::obtenerDetallesAlmacen($idLote);
         echo $result;
     }
 

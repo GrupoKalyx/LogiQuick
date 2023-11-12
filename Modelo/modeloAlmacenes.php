@@ -57,11 +57,14 @@ class modeloAlmacenes
         return json_encode($result);
     }
 
-    public static function obtenerDetallesAlmacen($idAlmacen)
+    public static function obtenerDetallesAlmacen($idLote)
     {
         $conn = modeloBd::conexion();
-        $query = "SELECT * FROM almacenes WHERE idAlmacen = ?";
-        $exc = $conn->execute_query($query, [$idAlmacen]);
+        $query = "SELECT a.*
+        FROM almacenes a
+        JOIN lotes_almacen_rutas lar ON a.idAlmacen = lar.idAlmacen
+        WHERE lar.idLote = ?;";
+        $exc = $conn->execute_query($query, [$idLote]);
         $result = $exc->fetch_all(MYSQLI_ASSOC);
         $conn->close();
         return json_encode($result);

@@ -43,6 +43,7 @@ class controladorLlevan
     {
         $ci = $context['ci'];
         $result = modeloLlevan::LoteDeConductor($ci);
+        var_dump($result);
         return $result;
     }
 }

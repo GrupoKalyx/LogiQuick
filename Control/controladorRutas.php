@@ -40,8 +40,8 @@ class controladorRutas
     }
 
     public static function mostrarDetallesRuta($context) {
-        $numRuta = $context['numRuta'];
-        $result = modeloRutas::obtenerDetallesRuta($numRuta);
+        $idLote = $context['idLote'];
+        $result = modeloRutas::obtenerDetallesRuta($idLote);
         echo $result;
     }
 }

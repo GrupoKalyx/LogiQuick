@@ -49,10 +49,13 @@ class modeloRutas
                 $conn->execute_query($query, [$stringDep, $numRuta]);
                 $conn->close();
         }
-        public static function obtenerDetallesRuta($numRuta) {
+        public static function obtenerDetallesRuta($idLote) {
                 $conn = modeloBd::conexion();
-                $query = "SELECT * FROM Rutas WHERE numRuta = ?";
-                $exc = $conn->execute_query($query, [$numRuta]);
+                $query = "SELECT r.*
+                FROM Rutas r
+                JOIN lotes_almacen_rutas lar ON r.numRuta = lar.numRuta
+                WHERE lar.idLote = ?;";
+                $exc = $conn->execute_query($query, [$idLote]);
                 $result = $exc->fetch_all(MYSQLI_ASSOC);
                 $conn->close();
                 return json_encode($result);
