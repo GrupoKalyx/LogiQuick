@@ -55,8 +55,6 @@ if (isset($_SESSION['ci']))  superControlador('http://'.$_SERVER['HTTP_HOST'].'/
     </nav>
   </header>
 
-  
-
   <div class="container">
 
     <div id="TableContainer" >
@@ -73,10 +71,10 @@ if (isset($_SESSION['ci']))  superControlador('http://'.$_SERVER['HTTP_HOST'].'/
 
         </tbody>
       </table>
-      <div class="tableButtons">
-      <button class="form__button">Empezar Viaje</button>
-      <button class="form__button">Marcar Entrega</button>
-    </div>
+       <div class="tableButtons">
+         <button class="form__button empezar-viaje-btn">Empezar Viaje</button>
+         <button class="form__button">Marcar Entrega</button>
+       </div>
     </div>
     
     <div id="map"></div>
