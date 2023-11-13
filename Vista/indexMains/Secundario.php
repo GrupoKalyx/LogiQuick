@@ -1,7 +1,7 @@
 <?php
 require_once('../../Control/superControlador.php');
 session_start();
-if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'] . '/Control/controladorTokens.php', 'GET', array('function' => 'verify', 'token' => $_SESSION['token'], 'tipo' => 'Secundario'));
+// if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'] . '/Control/controladorTokens.php', 'GET', array('function' => 'verify', 'token' => $_SESSION['token'], 'tipo' => 'Secundario'));
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +12,7 @@ if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'
     <link rel="stylesheet" href="../estilos/style.css">
     <link rel="icon" type="image/x-icon" href="assets/logo.png">
     <title>LogiQuick</title>
-    <!-- <script src="Traducir.js"></script> -->
+    <script src="Traducir.js"></script>
 </head>
 
 <body class="body">

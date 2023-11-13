@@ -1,17 +1,7 @@
 <?php
 session_start();
 require_once('../../Control/superControlador.php');
-if (isset($_SESSION['token'])) { superControlador('http://'.$_SERVER['HTTP_HOST'].'/Control/controladorTokens.php', 'GET', array('function' => 'verify', 'token' => $_SESSION['token'], 'tipo' => 'Camionero')); } else {
-if (isset($_SESSION['ci'])) {
-  $idLotes = superControlador('http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Control/controladorLlevan.php', 'GET', array('function' => 'LoteDeConductor', 'ci' => $_SESSION['ci']));
-} else {
-  echo "<script>
-  alert('No tiene token cargado.');
-  window.location='http://" . $_SERVER['HTTP_HOST'] . "/LogiQuick/Vista/indexMains/login.php';
-  </script>";
-}
-}
-?>
+// if (isset($_SESSION['token'])) superControlador('http://'.$_SERVER['HTTP_HOST'].'/Control/controladorTokens.php', 'GET', array('function' => 'verify', 'token' => $_SESSION['token'], 'tipo' => 'Camionero'));?>
 <!DOCTYPE html>
 <html lang="es">
 

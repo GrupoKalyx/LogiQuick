@@ -1,7 +1,7 @@
 <?php
-require_once('../../../Control/superControlador.php');
 session_start();
-if (isset($_SESSION['token'])) superControlador('http://'.$_SERVER['HTTP_HOST'].'/Control/controladorTokens.php', 'GET', array('function' => 'verify', 'token' => $_SESSION['token'], 'tipo' => 'Delivery'));
+require_once('../../../Control/superControlador.php');
+// if (isset($_SESSION['token'])) superControlador('http://'.$_SERVER['HTTP_HOST'].'/Control/controladorTokens.php', 'GET', array('function' => 'verify', 'token' => $_SESSION['token'], 'tipo' => 'Delivery'));
 ?>
 <!DOCTYPE html>
 <html lang="en">
