@@ -77,7 +77,7 @@ if (isset($_SESSION['ci'])) {
       </table>
        <div class="tableButtons">
          <button class="form__button empezar-viaje-btn">Empezar Viaje</button>
-         <button class="form__button">Marcar Entrega</button>
+         <button class="form__button finalizar-viaje-btn">Marcar Entrega</button>
        </div>
     </div>
     
