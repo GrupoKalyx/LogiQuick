@@ -61,7 +61,7 @@ public static function LoteDeConductor($ci)
         {
             $conn = modeloBd::conexion();
             $fechaSalida = date("Y-m-d H:i:s");
-            $query = "UPDATE llevan SET fecha_salida = '$fechaSalida' WHERE idLote = ? AND '$fechaSalida' IS NOT NULL";
+            $query = "UPDATE llevan SET fecha_salida = '$fechaSalida' WHERE idLote = ? AND fecha_saluda IS NOT NULL";
             $conn->execute_query($query, [$idLote]);
             var_dump($idLote);
             $conn->close();   
