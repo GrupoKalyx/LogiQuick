@@ -31,6 +31,16 @@ class modeloCamiones
                 return json_encode($result);
         }
 
+        public static function listadoSinConductor()
+        {
+                $conn = modeloBd::conexion();
+                $query = "SELECT matricula FROM (SELECT matricula FROM camiones LEFT JOIN conductores) JOIN (SELECT matricula FROM camiones JOIN conducen WHERE disponiblidad  = 'enALmacen' AND fecha_llegada IS NOT NULL)";
+                $result = $conn->execute_query($query);
+                $result = $result->fetch_all(MYSQLI_ASSOC);
+                $conn->close();
+                return json_encode($result);
+        }
+
         public static function modificacion($disponibilidad, $matricula)
         {
                 $conn = modeloBd::conexion();
