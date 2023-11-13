@@ -43,7 +43,7 @@ class controladorLogins
                         $_SESSION['token'] = $jwt;
                         $_SESSION['ci'] = $ci;
                         echo "<script>
-                        window.location='http://" . $_SERVER['HTTP_HOST'] . "/LogiQuick/Vista/indexMains/".$tipo.".php';
+                        window.location='http://" . $_SERVER['HTTP_HOST'] . "/LogiQuick/Vista/indexMains/".$tipo.".php?ci=". $ci ."';
                         </script>";
                         break;
                         // window.location='" .$tipo . ".php';

@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once('../../Control/superControlador.php');
+if (isset($_GET['ci'])) {$_SESSION['ci'] = $_GET['ci']; header('location: Camionero.php');}
 // if (isset($_SESSION['token'])) superControlador('http://'.$_SERVER['HTTP_HOST'].'/Control/controladorTokens.php', 'GET', array('function' => 'verify', 'token' => $_SESSION['token'], 'tipo' => 'Camionero'));?>
 <!DOCTYPE html>
 <html lang="es">
