@@ -96,10 +96,6 @@ if (isset($_SESSION['ci'])) {
       <p>Almacenes en tu Ruta</p>
     </div>
 
-    <div id="info-icons">
-      <img src="../../assets/AlmacenDestinoIcon.png" alt="Icono 3">
-      <p>Tu Almacen Destino</p>
-    </div>
   </div>
 
   <footer>
