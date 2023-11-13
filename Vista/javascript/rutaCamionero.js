@@ -190,21 +190,13 @@ document.addEventListener('DOMContentLoaded', async function () {
     
     async function marcarSalida(idLote) {
         try {
-            
-            const response = await axios.post('http://localhost/LogiQuick/Control/controladorLlevan.php', {
-                function: 'MarcarSalida',
-                idLote: idLote
-            }, {
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
-
+            const response = await axios.get(`http://localhost/LogiQuick/Control/controladorLlevan.php?function=MarcarSalida&idLote=${idLote}`);
             console.log(response.data);
         } catch (error) {
             console.error('Error al marcar la salida:', error);
         }
     }
+    
 });
 
 
