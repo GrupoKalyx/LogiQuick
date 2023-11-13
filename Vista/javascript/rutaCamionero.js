@@ -1,9 +1,10 @@
 
+
 document.addEventListener('DOMContentLoaded', async function () {
     let map = null;
     try {
-        //  const ci = "57019460" //await fetch ('http://localhost/LogiQuick/Control/controladorTokens.php?function=getCi');
-        const responseConductor = await fetch(`http://localhost/LogiQuick/Control/controladorLotesAlmacenesRutas.php?function=listar`, {
+         const ci = "57019460" //await fetch ('http://localhost/LogiQuick/Control/controladorTokens.php?function=getCi');
+        const responseConductor = await fetch(`http://localhost/LogiQuick/Control/controladorLlevan.php?function=LoteDeConductor&ci=${ci}`, {
             headers: {
                 'Cache-Control': 'no-cache'
             }
@@ -159,7 +160,7 @@ document.addEventListener('DOMContentLoaded', async function () {
   
 
     function obtenerIdLoteDesdeFila(fila) {
-        const idLoteCell = fila.querySelector('td:first-child'); 
+        const idLoteCell = fila.querySelector('td:first-child'); // Suponiendo que el primer td contiene el idLote
         if (idLoteCell) {
             return idLoteCell.innerText.trim();
         } else {
@@ -167,32 +168,19 @@ document.addEventListener('DOMContentLoaded', async function () {
             return null;
         }
     }
-    
+ 
     const buttons = document.querySelectorAll('.empezar-viaje-btn');
-    
+
     buttons.forEach(button => {
         button.addEventListener('click', async function () {
             if (idLoteSeleccionado !== null) {
                 console.log('Empezar Viaje para idLote:', idLoteSeleccionado);
-    
+
                 try {
-                    const response = await marcarSalida(idLoteSeleccionado);
-                    console.log(response.data); // Muestra la respuesta del servidor
-                    // Puedes hacer más cosas con la respuesta si es necesario
+                    
+                    await marcarSalida(idLoteSeleccionado);
                 } catch (error) {
                     console.error('Error al realizar la solicitud:', error);
-    
-                    if (error.response) {
-                        // La solicitud fue hecha y el servidor respondió con un estado de error
-                        console.error('Respuesta del servidor:', error.response.data);
-                        console.error('Código de estado HTTP:', error.response.status);
-                    } else if (error.request) {
-                        // La solicitud fue hecha pero no se recibió ninguna respuesta
-                        console.error('No se recibió respuesta del servidor.');
-                    } else {
-                        // Ocurrió un error antes de enviar la solicitud
-                        console.error('Error al enviar la solicitud:', error.message);
-                    }
                 }
             } else {
                 console.error('No hay un idLote seleccionado.');
@@ -202,25 +190,21 @@ document.addEventListener('DOMContentLoaded', async function () {
     
     async function marcarSalida(idLote) {
         try {
-            const response = await axios.post(
-                'http://localhost/LogiQuick/Control/controladorLlevan.php',
-                {
-                    function: 'MarcarSalida',
-                    idLote: idLote
-                },
-                {
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
+            
+            const response = await axios.post('http://localhost/LogiQuick/Control/controladorLlevan.php', {
+                function: 'MarcarSalida',
+                idLote: idLote
+            }, {
+                headers: {
+                    'Content-Type': 'application/json'
                 }
-            );
-    
-            return response; // Devuelve la respuesta para que puedas manejarla fuera de la función
+            });
+
+            console.log(response.data);
         } catch (error) {
-            throw error; // Lanza el error para que pueda ser manejado en el bloque catch correspondiente
+            console.error('Error al marcar la salida:', error);
         }
     }
-    
 });
 
 
@@ -398,4 +382,3 @@ document.addEventListener('DOMContentLoaded', async function () {
     
 
 // });
-
