@@ -46,4 +46,10 @@ class controladorLlevan
         var_dump($result);
         return $result;
     }
+    public static function MarcarSalida($context)
+    {
+        $idLote = $context['idLote'];
+        var_dump($idLote);
+        modeloLlevan::MarcarSalida($idLote);
+    }
 }
