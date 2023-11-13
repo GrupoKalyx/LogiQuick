@@ -152,4 +152,81 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
 
     // Resto del código...
+
+
+
+
+
+    //PARA EL BOTON
+  
+
+    function obtenerIdLoteDesdeFila(fila) {
+        const idLoteCell = fila.querySelector('td:first-child'); // Suponiendo que el primer td contiene el idLote
+        if (idLoteCell) {
+            return idLoteCell.innerText.trim();
+        } else {
+            console.error('No se ha encontrado la celda de idLote en la fila.');
+            return null;
+        }
+    }
+ 
+    const buttonSalida = document.querySelectorAll('.empezar-viaje-btn');
+
+    buttonSalida.forEach(button => {
+        button.addEventListener('click', async function () {
+            if (idLoteSeleccionado !== null) {
+                console.log('Empezar Viaje para idLote:', idLoteSeleccionado);
+
+                try {
+                    
+                    await marcarSalida(idLoteSeleccionado);
+                } catch (error) {
+                    console.error('Error al realizar la solicitud:', error);
+                }
+            } else {
+                console.error('No hay un idLote seleccionado.');
+            }
+        });
+    });
+    
+    async function marcarSalida(idLote) {
+        try {
+            const response = await axios.get(`http://localhost/LogiQuick/Control/controladorLlevan.php?function=MarcarSalida&idLote=${idLote}`);
+            console.log(response.data);
+        } catch (error) {
+            console.error('Error al marcar la salida:', error);
+        }
+    }
+
+    const buttonLlegada = document.querySelectorAll('.finalizar-viaje-btn');
+
+    buttonLlegada.forEach(button => {
+        button.addEventListener('click', async function () {
+            if (idLoteSeleccionado !== null) {
+                console.log('Finalizar Viaje para idLote:', idLoteSeleccionado);
+
+                try {
+                    
+                    await marcarLlegada(idLoteSeleccionado);
+                } catch (error) {
+                    console.error('Error al realizar la solicitud:', error);
+                }
+            } else {
+                console.error('No hay un idLote seleccionado.');
+            }
+        });
+    });
+    
+    async function marcarLlegada(idLote) {
+        try {
+            const response = await axios.get(`http://localhost/LogiQuick/Control/controladorLlevan.php?function=MarcarLlegada&idLote=${idLote}`);
+            console.log(response.data);
+        } catch (error) {
+            console.error('Error al marcar la salida:', error);
+        }
+    }
+
+    
 });
+
+
