@@ -1,5 +1,4 @@
 
-
 document.addEventListener('DOMContentLoaded', async function () {
     let map = null;
     try {
@@ -160,7 +159,7 @@ document.addEventListener('DOMContentLoaded', async function () {
   
 
     function obtenerIdLoteDesdeFila(fila) {
-        const idLoteCell = fila.querySelector('td:first-child'); // Suponiendo que el primer td contiene el idLote
+        const idLoteCell = fila.querySelector('td:first-child'); 
         if (idLoteCell) {
             return idLoteCell.innerText.trim();
         } else {
