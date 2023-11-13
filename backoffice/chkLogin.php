@@ -24,14 +24,14 @@ if ($existe) {
                 $fResult =  $resultType->fetch_array(MYSQLI_ASSOC);
                 $tipo = $fResult['tipo'];
                 if ($tipo == "Admin") {
-                        //Genera un token
-                        $time = time();
-                        $token = array("iat" => $time, "exp" => $time + (60 * 60 * 24), "data" => ['ci' => $ci, 'tipo' => 'Admin']);
-                        $jwt = JWT::encode($token, "o^V*Ciytufd9*FDyutdf867IYTU7DF8567DytfdI8", 'HS256');
-                        //Actualiza el token en la bd
-                        $queryToken = "UPDATE usuarios SET token = ? AND tokenExp = ?";
-                        $conn->execute_query($queryToken, [$jwt, $token['exp']]);
-                        $_SESSION['token'] = $token;
+                        // //Genera un token
+                        // $time = time();
+                        // $token = array("iat" => $time, "exp" => $time + (60 * 60 * 24), "data" => ['ci' => $ci, 'tipo' => 'Admin']);
+                        // $jwt = JWT::encode($token, "o^V*Ciytufd9*FDyutdf867IYTU7DF8567DytfdI8", 'HS256');
+                        // //Actualiza el token en la bd
+                        // $queryToken = "UPDATE usuarios SET token = ? AND tokenExp = ?";
+                        // $conn->execute_query($queryToken, [$jwt, $token['exp']]);
+                        // $_SESSION['token'] = $token;
                         header("location: indexAdmin.php");
                 } else {
                         echo "<script>

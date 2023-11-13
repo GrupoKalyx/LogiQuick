@@ -3,7 +3,7 @@ session_start();
 require_once('../../../Control/superControlador.php');
 
 if (isset($_SESSION['token'])) superControlador('http://'.$_SERVER['HTTP_HOST'].'/Control/controladorTokens.php', 'GET', array('function' => 'verify', 'token' => $_SESSION['token'], 'tipo' => 'Camionero'));
-if (isset($_SESSION['ci']))  superControlador('http://'.$_SERVER['HTTP_HOST'].'/Control/controladorLlevan.php', 'GET', array('function' => 'LoteDeConductor', 'ci' => $_SESSION['ci']));
+if (isset($_SESSION['ci'])) superControlador('http://'.$_SERVER['HTTP_HOST'].'/Control/controladorLlevan.php', 'GET', array('function' => 'LoteDeConductor', 'ci' => $_SESSION['ci']));
 ?>
 <!DOCTYPE html>
 <html lang="en">

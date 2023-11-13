@@ -29,32 +29,24 @@ class modeloLlevan
                 $conn->close();
                 return json_encode($result);
         }
-
-//         public static function LoteDeConductor($ci)
-// //         {
-// //                 $conn = modeloBd::conexion();
-// //                 $query = "SELECT * FROM llevan ll JOIN conducen c ON ll.matricula = c.matricula WHERE c.ci = ? AND ll.fecha_salida IS NULL;";
-// //                 $exc = $conn->execute_query($query, [$ci]);
-// //                 $result = $exc->fetch_all(MYSQLI_ASSOC);
-// //                 $conn->close();
-// //                 return json_encode($result);
-// //         }
+        
         public static function LoteDeConductor($ci)
         {
         $conn = modeloBd::conexion();
+        // $query = "SELECT * FROM llevan ll JOIN conducen c ON ll.matricula = c.matricula WHERE c.ci = ? AND ll.fecha_salida IS NULL;";
         $query = "SELECT l.*
         FROM conductores c
         JOIN conducen con ON c.ci = con.ci
         JOIN llevan lv ON con.matricula = lv.matricula
         JOIN lotes l ON lv.idLote = l.idLote
-        WHERE c.ci = ?;
-        ";
+        WHERE c.ci = ?;";
         $exc = $conn->execute_query($query, [$ci]);
         $result = $exc->fetch_all(MYSQLI_ASSOC);
         $conn->close();
         return json_encode($result);
-        
         }
+<<<<<<< HEAD
+=======
 
 
         public static function MarcarSalida($idLote)
@@ -69,4 +61,5 @@ class modeloLlevan
         
 
 
+>>>>>>> 6c972dff8161906d04b284c6845587ee06e9e1cf
 }

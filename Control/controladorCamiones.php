@@ -33,6 +33,12 @@ class controladorCamiones
                 echo $result;
         }
 
+        public static function listarSinConductor($context)
+        {
+                $result = modeloCamiones::listadoSinConductor();
+                echo $result;
+        }
+
         public static function modificar($context)
         {
                 $disponibilidad = $context['disponibilidad'];
