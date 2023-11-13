@@ -39,29 +39,29 @@ class modeloLlevan
 // //                 $conn->close();
 // //                 return json_encode($result);
 // //         }
-        public static function LoteDeConductor($ci)
-        {
-        $conn = modeloBd::conexion();
-        $query = "SELECT l.*
+public static function LoteDeConductor($ci)
+{
+    $conn = modeloBd::conexion();
+    $query = "SELECT l.*, lv.fecha_salida, lv.fecha_llegada
         FROM conductores c
         JOIN conducen con ON c.ci = con.ci
         JOIN llevan lv ON con.matricula = lv.matricula
         JOIN lotes l ON lv.idLote = l.idLote
-        WHERE c.ci = ?;
-        ";
-        $exc = $conn->execute_query($query, [$ci]);
-        $result = $exc->fetch_all(MYSQLI_ASSOC);
-        $conn->close();
-        return json_encode($result);
-        
-        }
+        WHERE c.ci = ? AND lv.fecha_salida IS NOT NULL AND lv.fecha_llegada IS NOT NULL;
+    ";
+    $exc = $conn->execute_query($query, [$ci]);
+    $result = $exc->fetch_all(MYSQLI_ASSOC);
+    $conn->close();
+    return json_encode($result);
+}
+
 
 
         public static function MarcarSalida($idLote)
         {
             $conn = modeloBd::conexion();
             $fechaSalida = date("Y-m-d H:i:s");
-            $query = "UPDATE llevan SET fecha_salida = '$fechaSalida' WHERE idLote = ? AND '$fechaSalida' NOT NULL";
+            $query = "UPDATE llevan SET fecha_salida = '$fechaSalida' WHERE idLote = ? AND '$fechaSalida' IS NOT NULL";
             $conn->execute_query($query, [$idLote]);
             var_dump($idLote);
             $conn->close();   
