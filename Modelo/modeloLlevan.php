@@ -45,21 +45,4 @@ class modeloLlevan
         $conn->close();
         return json_encode($result);
         }
-<<<<<<< HEAD
-=======
-
-
-        public static function MarcarSalida($idLote)
-        {
-            $conn = modeloBd::conexion();
-            $fechaSalida = date("Y-m-d H:i:s");
-            $query = "UPDATE llevan SET fecha_salida = '$fechaSalida' WHERE idLote = ?";
-            $conn->execute_query($query, [$idLote]);
-            var_dump($idLote);
-            $conn->close();   
-        }
-        
-
-
->>>>>>> 6c972dff8161906d04b284c6845587ee06e9e1cf
 }

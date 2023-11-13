@@ -152,9 +152,6 @@ document.addEventListener('DOMContentLoaded', async function () {
             return [];
         }
     }
-<<<<<<< HEAD
-});
-=======
 
 
 
@@ -385,4 +382,3 @@ document.addEventListener('DOMContentLoaded', async function () {
 
 // });
 
->>>>>>> 6c972dff8161906d04b284c6845587ee06e9e1cf
