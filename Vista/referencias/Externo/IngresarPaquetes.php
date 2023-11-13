@@ -1,3 +1,13 @@
+<?php
+session_start();
+require_once('../../../Control/superControlador.php');
+if(isset($_POST['ingresar'])){
+$url = 'http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Control/controladorPaquetes.php';
+$numBulto = superControlador($url, 'POST', array('function' => 'ingresar', 'gmailCliente' => $_POST['gmailCliente'], 'num' => $_POST['num'], 'calle' => $_POST['calle'], 'localidad' => $_POST['localidad'], 'departamento' => $_POST['departamento'], 'lat' => $_POST['lat'], 'lng' => $_POST['lng']));
+$url = 'http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Control/controladorPaquetes.php';
+$infoPaquete = superControlador($url, 'GET', array('function' => 'mostrar', 'numBulto' => $numBulto));
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +23,7 @@
 
 <body class="body">
 
-<header>
+  <header>
     <nav class="navbar">
       <div class="navbar__logo">
         <img src="../../assets/logo.png" alt="logo">
@@ -63,6 +73,10 @@
         <label class="form__label" for="departamento">Departamento:</label>
         <input class="form__input" type="text" id="departamento" name="departamento" required>
       </div>
+
+      <input type="hidden" id="lat" name="lat">
+
+      <input type="hidden" id="lng" name="lng">
 
       <button class="form__button" type="button" name="ingresar" onclick="myFunction();">Ingresar</button>
     </form>

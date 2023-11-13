@@ -4,7 +4,7 @@ require_once('../../../Control/superControlador.php');
 // if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'] . '/Control/controladorTokens.php', 'GET', array('function' => 'verify', 'token' => $_SESSION['token'], 'tipo' => 'Funcionario'));
 
 $url = 'http://localhost/LogiQuick/Control/controladorCamiones.php';
-$matriculas = json_decode(superControlador($url, 'GET', array('function' => 'listarSinConductor')), true);
+$matriculas = json_decode(superControlador($url, 'GET', array('function' => 'listar')), true);
 
 $url = 'http://localhost/LogiQuick/Control/controladorCamioneros.php';
 $camioneros = json_decode(superControlador($url, 'GET', array('function' => 'listar')), true);
