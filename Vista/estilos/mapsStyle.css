@@ -24,3 +24,38 @@ overflow-y: auto;
 width: 100%;
 }
 
+.tableButtons {
+        text-align: center; /* Centra los botones */
+    }
+
+.form__button {
+        margin: 10px; /* Añade margen para separar los botones */
+ }
+
+
+
+@media (max-width: 700px) {
+        .container {
+            grid-template-columns: 1fr; /* Una sola columna */
+        }
+    
+        #TableContainer {
+            order: 1; /* Cambia el orden para que aparezca debajo del mapa */
+        }
+    
+        #map {
+            order: 2; /* Cambia el orden para que aparezca encima de la tabla */
+        }
+        .tableButtons {
+                text-align: center; /* Centra los botones */
+            }
+        
+            .form__button {
+                margin: 10px; /* Añade margen para separar los botones */
+            }
+    }
+    
+
+
+
+
