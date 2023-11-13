@@ -3,7 +3,7 @@
 document.addEventListener('DOMContentLoaded', async function () {
     let map = null;
     try {
-         const ci = "57019460" //await fetch ('http://localhost/LogiQuick/Control/controladorTokens.php?function=getCi');
+        
         const responseConductor = await fetch(`http://localhost/LogiQuick/Control/controladorLlevan.php?function=LoteDeConductor&ci=${ci}`, {
             headers: {
                 'Cache-Control': 'no-cache'
