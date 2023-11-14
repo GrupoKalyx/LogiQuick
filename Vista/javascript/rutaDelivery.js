@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     let numBultoSeleccionado = null;
 
     try {
-        const response = await fetch(`http://localhost/logiquick/Control/controladorPaquetes.php?function=PaqueteAsignadoDelivery&ci=${ci}`, {
+        const response = await fetch(`http://localhost/logiquick/Control/controladorPaquetes.php?function=PaqueteAsignadoDelivery&ci=${ci}}`, {
             headers: {
                 'Cache-Control': 'no-cache'
             }

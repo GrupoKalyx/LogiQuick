@@ -72,11 +72,20 @@ class modeloentregan
         {
             $conn = modeloBd::conexion();
             $fechaLlegada = date("Y-m-d H:i:s");
-            $query = "UPDATE entregan SET fecha_llegada = '$fechaLlegada' WHERE numBulto = ? 
-            /* AND fecha_llegada IS NOT NULL */
-            ";
-            $conn->execute_query($query, [$numBulto]);
+        
+            // Actualizar 'entregan'
+            $queryEntregan = "UPDATE entregan SET fecha_llegada = '$fechaLlegada' WHERE numBulto = ?";
+            $successEntregan = $conn->execute_query($queryEntregan, [$numBulto]);
+        
             var_dump($numBulto);
-            $conn->close();   
+        
+            // Si la primera actualización fue exitosa, actualizar 'paquetes'
+            if ($successEntregan) {
+                $queryPaquetes = "UPDATE paquetes SET fechaEntrega = '$fechaLlegada' WHERE numBulto = ?";
+                $conn->execute_query($queryPaquetes, [$numBulto]);
+            }
+        
+            $conn->close();
         }
+        
 }
