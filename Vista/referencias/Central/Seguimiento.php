@@ -1,7 +1,8 @@
 <?php
 session_start();
 require_once('../../../Control/superControlador.php');
-if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'] . '/Control/controladorTokens.php', 'GET', array('function' => 'verify', 'token' => $_SESSION['token'], 'tipo' => 'Funcionario'));
+// if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'] . '/Control/controladorTokens.php', 'GET', array('function' => 'verify', 'token' => $_SESSION['token'], 'tipo' => 'Funcionario'));
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -97,7 +98,7 @@ if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'
         </div>
     </footer>
 
-    <script src="../javascript/Seguimiento.js"></script>
+    <script src="../../javascript/Seguimiento.js"></script>
 </body>
 
 </html>

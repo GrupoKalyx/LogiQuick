@@ -4,18 +4,18 @@ require_once('modeloBd.php');
 
 class modeloConducen
 {
-        public static function alta($ci, $matricula)
+        public static function alta($matricula, $ci)
         {
                 $conn = modeloBd::conexion();
-                $query = "INSERT INTO Conducen (matricula, ci) VALUES (?, ?);";
-                $conn->execute_query($query, [$ci, $matricula]);
+                $query = "INSERT INTO `conducen` (`matricula`, `fecha_llegada`, `fecha_salida`, `ci`) VALUES (?, NULL, NULL, ?);";
+                $conn->execute_query($query, [$matricula, $ci]);
                 $conn->close();
         }
 
-        public static function baja($ci, $matricula)
+        public static function baja($matricula, $ci)
         {
                 $conn = modeloBd::conexion();
-                $query = "DELETE FROM Conducen WHERE matricula = ? AND ci = ?";
+                $query = "DELETE FROM conducen WHERE matricula = ? AND ci = ?";
                 $conn->execute_query($query, [$ci, $matricula]);
                 $conn->close();
         }
@@ -23,7 +23,7 @@ class modeloConducen
         public static function listado()
         {
                 $conn = modeloBd::conexion();
-                $query = "SELECT * FROM Conducen";
+                $query = "SELECT * FROM conducen";
                 $result = $conn->execute_query($query);
                 $result = $result->fetch_all(MYSQLI_ASSOC);
                 $conn->close();
@@ -34,7 +34,7 @@ class modeloConducen
         {
                 $conn = modeloBd::conexion();
                 $query = "SELECT c.*
-                FROM camiones c JOIN Conducen m
+                FROM camiones c JOIN conducen m
                 ON c.ci = m.ci 
                 WHERE c.ci = ?";
                 $exc = $conn->execute_query($query, [$ci]);
@@ -47,7 +47,7 @@ class modeloConducen
         {
                 $conn = modeloBd::conexion();
                 $query = "SELECT c.*
-                FROM camioneros c JOIN Conducen m
+                FROM camioneros c JOIN conducen m
                 ON c.matricula = m.matricula
                 WHERE c.matricula = ?";
                 $exc = $conn->execute_query($query, [$matricula]);

@@ -30,21 +30,21 @@ VALUES (1);
 -- -----------------------------------------------------------------------------------------------
 
 -- Ahora el lote va a un Quick Carry-----------------------------------------------------------------
-INSERT INTO `lotes_almacen_rutas` (`idLote`, `idAlmacen`, `numRuta`) 
+INSERT INTO `van` (`idLote`, `idAlmacen`, `numRuta`) 
 VALUES ('1', '0', '0');
 -- -----------------------------------------------------------------------------------------------
 
 -- Creando un camion--------------------------------------------------------------
 INSERT INTO `vehiculos`(`matricula`, `disponibilidad`) 
-VALUES ('STP 1234', 'enAlmacen');
+VALUES ('STP1234', 'enAlmacen');
 
 INSERT INTO `camiones`(`matricula`, `disponibilidad`) 
-VALUES ('STP 1234', 'enAlmacen');
+VALUES ('STP1234', 'enAlmacen');
 -- -----------------------------------------------------------------------------------------------
 
 -- Asignando el lote a un camion--------------------------------------------------------------
 INSERT INTO `llevan` (`matricula`, `fecha_llegada`, `fecha_salida`, `idLote`, `idAlmacen`, `numRuta`) 
-VALUES ('STP 1234', NULL, NULL, '1', '0', '0');
+VALUES ('STP1234', NULL, NULL, '1', '0', '0');
 -- -----------------------------------------------------------------------------------------------
 
 -- Insertando el usuario de un camionero--------------------------------------------------------------
@@ -60,7 +60,7 @@ VALUES (83021834, 'Carlos', 9666666);
 
 -- Asignando al camionero al camion--------------------------------------------------------------
 INSERT INTO `conducen` (`matricula`, `fecha_llegada`, `fecha_salida`, `ci`) 
-VALUES ('STP 1234', NULL, NULL, '83021834');
+VALUES ('STP1234', NULL, NULL, '83021834');
 -- -----------------------------------------------------------------------------------------------
 
 
@@ -159,7 +159,7 @@ VALUES
 (3, 3);
 
 -- lotes-Almacen-Rutas
-INSERT INTO lotes_Almacen_Rutas (idLote, idAlmacen, numRuta) 
+INSERT INTO van (idLote, idAlmacen, numRuta) 
 VALUES 
 (1, 1, 1),
 (2, 2, 2),
@@ -303,9 +303,9 @@ VALUES
    (3, 3);
    
 
--- 14. *lotes_Almacen_Rutas:*
+-- 14. *van:*
 --   sql
-   INSERT INTO lotes_Almacen_Rutas (idLote, idAlmacen, numRuta) VALUES
+   INSERT INTO van (idLote, idAlmacen, numRuta) VALUES
    (1, 1, 1),
    (2, 2, 2),
    (3, 3, 3);

@@ -16,16 +16,16 @@ class controladorConducen
 
     public static function ingresar($context)
     {
-        $ci = $context['ci'];
         $matricula = $context['matricula'];
-        modeloConducen::alta($ci, $matricula);
+        $ci = $context['ci'];
+        modeloConducen::alta($matricula, $ci);
     }
 
     public static function eliminar($context)
     {
-        $ci = $context['ci'];
         $matricula = $context['matricula'];
-        modeloConducen::baja($ci, $matricula);
+        $ci = $context['ci'];
+        modeloConducen::baja($matricula, $ci);
     }
 
     public static function listar($context)

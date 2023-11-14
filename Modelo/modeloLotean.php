@@ -17,6 +17,7 @@ class modeloLotean
                 }
                 $impValues = implode(", ", $values);
                 $query = "INSERT INTO lotean (numBulto, idLote) VALUES " . $impValues;
+                echo $query;
                 $conn->execute_query($query, $bindArray);
                 $conn->close();
         }

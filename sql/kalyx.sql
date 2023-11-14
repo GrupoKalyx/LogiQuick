@@ -217,9 +217,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `lotes-Almacen-Rutas`
+-- Table `lotes-almacen-rutas`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `lotes_almacen_rutas` (
+CREATE TABLE IF NOT EXISTS `lotes-almacen-rutas` (
   `idLote` INT NOT NULL,
   `idAlmacen` INT NOT NULL,
   `numRuta` INT NOT NULL,
@@ -252,6 +252,7 @@ CREATE TABLE IF NOT EXISTS `llevan` (
   `numRuta` INT NOT NULL,
   `fecha_salida` DATETIME NULL DEFAULT NULL,
   `fecha_llegada` DATETIME NULL DEFAULT NULL,
+  PRIMARY KEY (`matricula`, `idLote`, `idAlmacen`, `numRuta`),
   
     FOREIGN KEY (`matricula`)
     REFERENCES `camiones` (`matricula`)
@@ -259,17 +260,17 @@ CREATE TABLE IF NOT EXISTS `llevan` (
     ON UPDATE NO ACTION,
  
     FOREIGN KEY (`idLote`)
-    REFERENCES `lotes_Almacen_Rutas` (`idLote`)
+    REFERENCES `lotes-almacen-rutas` (`idLote`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
  
     FOREIGN KEY (`idAlmacen`)
-    REFERENCES `lotes_Almacen_Rutas` (`idAlmacen`)
+    REFERENCES `lotes-almacen-rutas` (`idAlmacen`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   
     FOREIGN KEY (`numRuta`)
-    REFERENCES `lotes_Almacen_Rutas` (`numRuta`)
+    REFERENCES `lotes-almacen-rutas` (`numRuta`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -331,27 +332,6 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `token` VARCHAR(128) NULL,
   `tokenExp` INT(11) NULL,
   PRIMARY KEY (`ci`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `van`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `van` (
-  `idLote` INT(11) NOT NULL,
-  `idAlmacen` INT(11) NOT NULL,
-  PRIMARY KEY (`idLote`, `idAlmacen`),
-  
-    FOREIGN KEY (`idLote`)
-    REFERENCES `lotean` (`idLote`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
- 
-    FOREIGN KEY (`idAlmacen`)
-    REFERENCES `almacenes` (`idAlmacen`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
