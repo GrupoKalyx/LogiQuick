@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
             await Promise.all(lotesConductor.map(async loteConductor => {
                 try {
-                    // Agregar una condición para mostrar solo filas con fecha_llegada igual a null
+                    
                     if (loteConductor.fecha_llegada === null) {
                         const fila = tabla.insertRow();
                         const idLoteCell = fila.insertCell();
@@ -44,12 +44,12 @@ document.addEventListener('DOMContentLoaded', async function () {
 
                             const idLoteClicado = obtenerIdLoteDesdeFila(this);
 
-                            // Verifica si se obtuvo un idLote válido
+                         
                             if (idLoteClicado !== null) {
                                 console.log('idLote clicado:', idLoteClicado);
                                 idLoteSeleccionado = idLoteClicado;
 
-                                // Resto del código...
+                                
                             } else {
                                 console.error('No se pudo obtener el idLote desde la fila.');
                             }
@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
     }
 
-    // Resto del código...
+
 
 
 
@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', async function () {
   
 
     function obtenerIdLoteDesdeFila(fila) {
-        const idLoteCell = fila.querySelector('td:first-child'); // Suponiendo que el primer td contiene el idLote
+        const idLoteCell = fila.querySelector('td:first-child'); 
         if (idLoteCell) {
             return idLoteCell.innerText.trim();
         } else {

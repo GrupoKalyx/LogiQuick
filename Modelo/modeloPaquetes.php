@@ -130,4 +130,22 @@ class modeloPaquetes
         $conn->close();
         return json_encode($estado);
     }
+
+    public static function PaqueteAsignadoDelivery($ci) 
+    {
+        $conn = modeloBd::conexion();
+        $query = "SELECT p.*
+        FROM deliverys d
+        JOIN manejan m ON d.ci = m.ci
+        JOIN entregan e ON m.matricula = e.matricula
+        JOIN paquetes p ON e.numBulto = p.numBulto
+        WHERE d.ci = ?;
+        
+        
+        ";
+        $exc = $conn->execute_query($query, [$ci]);
+        $result = $exc->fetch_all(MYSQLI_ASSOC);
+        $conn->close();
+        return json_encode($result);
+    }
 }

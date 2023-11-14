@@ -25,33 +25,33 @@ width: 100%;
 }
 
 .tableButtons {
-        text-align: center; /* Centra los botones */
+        text-align: center; 
     }
 
 .form__button {
-        margin: 10px; /* Añade margen para separar los botones */
+        margin: 10px; 
  }
 
 
 
 @media (max-width: 700px) {
         .container {
-            grid-template-columns: 1fr; /* Una sola columna */
+            grid-template-columns: 1fr; 
         }
     
         #TableContainer {
-            order: 1; /* Cambia el orden para que aparezca debajo del mapa */
+            order: 1; 
         }
     
         #map {
-            order: 2; /* Cambia el orden para que aparezca encima de la tabla */
+            order: 2; 
         }
         .tableButtons {
-                text-align: center; /* Centra los botones */
+                text-align: center; 
             }
         
             .form__button {
-                margin: 10px; /* Añade margen para separar los botones */
+                margin: 10px; 
             }
     }
     

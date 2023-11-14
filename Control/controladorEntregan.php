@@ -47,4 +47,17 @@ class controladorEntregan
         $result = modeloEntregan::muestraPaquetes($matricula);
         echo $result;
     }
+
+    public static function MarcarSalida($context)
+    {
+        $numBulto = $context['numBulto'];
+        var_dump($numBulto);
+        modeloEntregan::MarcarSalida($numBulto);
+    }
+    public static function MarcarLlegada($context)
+    {
+        $numBulto = $context['numBulto'];
+        var_dump($numBulto);
+        modeloEntregan::MarcarLlegada($numBulto);
+    }
 }

@@ -101,4 +101,12 @@ class controladorPaquetes
         $result = modeloPaquetes::muestraEstado($tipoId, $id);
         echo $result;
     }
+
+    public static function PaqueteAsignadoDelivery($context)
+    {
+        $ci = $context['ci'];
+        $result = modeloPaquetes::PaqueteAsignadoDelivery($ci);
+        var_dump($result);
+        return $result;
+    }
 }
