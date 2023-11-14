@@ -1,0 +1,6 @@
+<IfModule mod_rewrite.c>
+   RewriteEngine On
+   RewriteBase /
+
+   RewriteRule ^LogiQuick/(.*)$ kalyx/$1 [L,NC]
+</IfModule>

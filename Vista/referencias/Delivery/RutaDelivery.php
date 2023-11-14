@@ -1,7 +1,13 @@
 <?php
 session_start();
 require_once('../../../Control/superControlador.php');
-// if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/ontrol/controladorTokens.php', 'GET', array('function' => 'verify', 'token' => $_SESSION['token'], 'tipo' => 'Delivery'));
+
+if (isset($_SESSION['ci'])) {
+  echo '<script>';
+  echo 'const ci = "' . $_SESSION['ci'] . '";';
+  echo '</script>';
+}  
+// if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'] . '/Control/controladorTokens.php', 'GET', array('function' => 'verify', 'token' => $_SESSION['token'], 'tipo' => 'Delivery'));
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +35,7 @@ require_once('../../../Control/superControlador.php');
   <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
   <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
   <link rel="stylesheet" href="RoutingMachine/dist/leaflet-routing-machine.css">
-  <script src="../../javascript/Seguimiento.js"></script>
+  <script src="../../javascript/rutaDelivery.js"></script>
 </head>
 
 <body class="body">
@@ -66,6 +72,10 @@ require_once('../../../Control/superControlador.php');
 
         </tbody>
       </table>
+      <div class="tableButtons">
+         <button class="form__button empezar-viaje-btn">Empezar Viaje</button>
+         <button class="form__button finalizar-viaje-btn">Marcar Entrega</button>
+       </div>
     </div>
     <div id="map"></div>
   </div>

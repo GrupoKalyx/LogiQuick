@@ -55,4 +55,37 @@ class modeloentregan
                 $conn->close();
                 return json_encode($result);
         }
+
+        public static function MarcarSalida($numBulto)
+        {
+            $conn = modeloBd::conexion();
+            $fechaSalida = date("Y-m-d H:i:s");
+            $query = "UPDATE entregan SET fecha_salida = '$fechaSalida' WHERE numBulto = ? 
+            /* AND fecha_salida IS NOT NULL */
+            ";
+            $conn->execute_query($query, [$numBulto]);
+            var_dump($numBulto);
+            $conn->close();   
+        }
+
+        public static function MarcarLlegada($numBulto)
+        {
+            $conn = modeloBd::conexion();
+            $fechaLlegada = date("Y-m-d H:i:s");
+        
+            // Actualizar 'entregan'
+            $queryEntregan = "UPDATE entregan SET fecha_llegada = '$fechaLlegada' WHERE numBulto = ?";
+            $successEntregan = $conn->execute_query($queryEntregan, [$numBulto]);
+        
+            var_dump($numBulto);
+        
+            // Si la primera actualización fue exitosa, actualizar 'paquetes'
+            if ($successEntregan) {
+                $queryPaquetes = "UPDATE paquetes SET fechaEntrega = '$fechaLlegada' WHERE numBulto = ?";
+                $conn->execute_query($queryPaquetes, [$numBulto]);
+            }
+        
+            $conn->close();
+        }
+        
 }
