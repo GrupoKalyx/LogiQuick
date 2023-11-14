@@ -32,6 +32,12 @@ class controladorLotes
         echo $result;
     }
 
+    public static function listarEnQc($context)
+    {
+        $result = modeloLotes::listadoEnQc();
+        echo $result;
+    }
+
     public static function listarExterno($context)
     {
         $result = modeloLotes::listadoExterno();

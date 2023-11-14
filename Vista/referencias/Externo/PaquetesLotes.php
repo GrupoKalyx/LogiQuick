@@ -1,6 +1,6 @@
 <?php
 session_start();
-// if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'] . '/Control/controladorTokens.php', 'GET', array('function' => 'verify', 'token' => $_SESSION['token'], 'tipo' => 'Funcionario'));
+// if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Control/controladorTokens.php', 'GET', array('function' => 'verify', 'token' => $_SESSION['token'], 'tipo' => 'Funcionario'));
 require_once('../../../Control/superControlador.php');
 $url = 'http://localhost/LogiQuick/Control/controladorPaquetes.php';
 $paquetes = json_decode(superControlador($url, 'GET', array('function' => 'listarSinLote')), true);

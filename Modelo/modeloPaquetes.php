@@ -73,7 +73,7 @@ class modeloPaquetes
     public static function listadoEnQc()
     {
         $conn = modeloBd::conexion();
-        $query = "SELECT p.* FROM paquetes p JOIN (SELECT DISTINCT l.numBulto FROM lotean l JOIN (SELECT idLote FROM llevan WHERE idAlmacen = 0 AND fecha_llegada IS NOT NULL) lot ON lot.idLote = l.idLote) lote ON p.numBulto = lote.numBulto;"; //agregar condicion de no asignacion a otro lote
+        $query = "SELECT DISTINCT * FROM paquetes p JOIN lotean l JOIN llevan lv ON p.numBulto = l.numBulto AND l.idLote = lv.idLote WHERE lv.idAlmacen = 0 AND lv.fecha_llegada IS NOT NULL;";
         $result = $conn->execute_query($query);
         $result = $result->fetch_all(MYSQLI_ASSOC);
         $conn->close();

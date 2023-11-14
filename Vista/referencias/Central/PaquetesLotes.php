@@ -1,14 +1,14 @@
 <?php
 session_start();
-// if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'] . '/Control/controladorTokens.php', 'GET', array('function' => 'verify', 'token' => $_SESSION['token'], 'tipo' => 'Funcionario'));
+// if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Control/controladorTokens.php', 'GET', array('function' => 'verify', 'token' => $_SESSION['token'], 'tipo' => 'Funcionario'));
 require_once('../../../Control/superControlador.php');
-$url = 'http://localhost/LogiQuick/Control/controladorPaquetes.php';
+$url = 'http://'.$_SERVER['HTTP_HOST'].'/LogiQuick/Control/controladorPaquetes.php';
 $paquetes = json_decode(superControlador($url, 'GET', array('function' => 'listarEnQc')), true);
 
 if (isset($_POST['generar'])) {
-  $url = 'http://localhost/LogiQuick/Control/controladorLotes.php';
+  $url = 'http://'.$_SERVER['HTTP_HOST'].'/LogiQuick/Control/controladorLotes.php';
   $idLote = json_decode(superControlador($url, 'POST', array('function' => 'ingresar')), 1);
-  $url = 'http://localhost/LogiQuick/Control/controladorLotean.php';
+  $url = 'http://'.$_SERVER['HTTP_HOST'].'/LogiQuick/Control/controladorLotean.php';
   superControlador($url, 'POST', array('function' => 'ingresar', 'idLote' => $idLote, 'paquetes' => $_POST['bulto']));
 }
 ?>

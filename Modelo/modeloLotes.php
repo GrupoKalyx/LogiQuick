@@ -35,6 +35,16 @@ class modeloLotes
         return json_encode($result);
     }
 
+    public static function listadoEnQc()
+    {
+        $conn = modeloBd::conexion();
+        $query = "SELECT DISTINCT * FROM llevan lv WHERE lv.idAlmacen = 0 AND lv.fecha_llegada IS NOT NULL;";
+        $result = $conn->execute_query($query);
+        $result = $result->fetch_all(MYSQLI_ASSOC);
+        $conn->close();
+        return json_encode($result);
+    }
+
     public static function listadoExterno()
     {
         $conn = modeloBd::conexion();

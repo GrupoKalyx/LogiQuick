@@ -217,9 +217,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `lotes-almacen-rutas`
+-- Table `lotes_almacen_rutas`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `lotes-almacen-rutas` (
+CREATE TABLE IF NOT EXISTS `lotes_almacen_rutas` (
   `idLote` INT NOT NULL,
   `idAlmacen` INT NOT NULL,
   `numRuta` INT NOT NULL,
@@ -260,17 +260,17 @@ CREATE TABLE IF NOT EXISTS `llevan` (
     ON UPDATE NO ACTION,
  
     FOREIGN KEY (`idLote`)
-    REFERENCES `lotes-almacen-rutas` (`idLote`)
+    REFERENCES `lotes_almacen_rutas` (`idLote`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
  
     FOREIGN KEY (`idAlmacen`)
-    REFERENCES `lotes-almacen-rutas` (`idAlmacen`)
+    REFERENCES `lotes_almacen_rutas` (`idAlmacen`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   
     FOREIGN KEY (`numRuta`)
-    REFERENCES `lotes-almacen-rutas` (`numRuta`)
+    REFERENCES `lotes_almacen_rutas` (`numRuta`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB

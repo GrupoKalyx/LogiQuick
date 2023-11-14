@@ -1,11 +1,11 @@
 <?php
 session_start();
 require_once('../../../Control/superControlador.php');
-if(isset($_POST['valueSubmit'])){
-$url = 'http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Control/controladorPaquetes.php';
-$numBulto = superControlador($url, 'POST', array('function' => 'ingresar', 'gmailCliente' => $_POST['gmailCliente'], 'num' => $_POST['num'], 'calle' => $_POST['calle'], 'localidad' => $_POST['localidad'], 'departamento' => $_POST['departamento'], 'lat' => $_POST['lat'], 'lng' => $_POST['lng']));
-$url = 'http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Control/controladorPaquetes.php';
-$infoPaquete = superControlador($url, 'GET', array('function' => 'mostrar', 'numBulto' => $numBulto));
+if (isset($_POST['valueSubmit'])) {
+  $url = 'http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Control/controladorPaquetes.php';
+  $numBulto = superControlador($url, 'POST', array('function' => 'ingresar', 'gmailCliente' => $_POST['gmailCliente'], 'num' => $_POST['num'], 'calle' => $_POST['calle'], 'localidad' => $_POST['localidad'], 'departamento' => $_POST['departamento'], 'lat' => $_POST['lat'], 'lng' => $_POST['lng']));
+  $url = 'http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Control/controladorPaquetes.php';
+  $infoPaquete = superControlador($url, 'GET', array('function' => 'mostrar', 'numBulto' => $numBulto));
 }
 ?>
 <!DOCTYPE html>

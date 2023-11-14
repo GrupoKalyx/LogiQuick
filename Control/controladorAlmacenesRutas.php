@@ -33,5 +33,11 @@ class controladorAlmacenesRutas
         $result = modeloAlmacenesRutas::listado();
         echo $result;
     }
+
+    public static function mostrarRutaDeAlmacen($context){
+        $idAlmacen = $context['idAlmacen'];
+        $result = modeloAlmacenesRutas::muestraRutaDeAlmacen($idAlmacen);
+        echo $result;
+    }
 }
 

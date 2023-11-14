@@ -1,17 +1,23 @@
 <?php
 session_start();
-// if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'] . '/Control/controladorTokens.php', 'GET', array('function' => 'verify', 'token' => $_SESSION['token'], 'tipo' => 'Funcionario'));
+// if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Control/controladorTokens.php', 'GET', array('function' => 'verify', 'token' => $_SESSION['token'], 'tipo' => 'Funcionario'));
 require_once('../../../Control/superControlador.php');
 
-$url = 'http://localhost/LogiQuick/Control/controladorCamiones.php';
+$url = 'http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Control/controladorCamiones.php';
 $matriculas = json_decode(superControlador($url, 'GET', array('function' => 'listar')), true);
 
-$url = 'http://localhost/LogiQuick/Control/controladorLotes.php';
-$idLotes = json_decode(superControlador($url, 'GET', array('function' => 'listar')), true);
+$url = 'http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Control/controladorLotes.php';
+$idLotes = json_decode(superControlador($url, 'GET', array('function' => 'listarEnQc')), true);
+
+$url = 'http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Control/controladorAlmacenes.php';
+$idAlmacenes = json_decode(superControlador($url, 'GET', array('function' => 'listarSecundarios')), true);
 
 if (isset($_POST['asignar'])) {
-  $url = 'http://localhost/LogiQuick/Control/controladorLlevan.php';
-  $json = superControlador($url, 'PUT', array('function' => 'ingresar', 'idLote' => $idLote, 'matricula' => $matricula));
+  $url = 'http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Control/controladorAlmacenesRutas.php';
+  $numRuta = json_decode(superControlador($url, 'GET', array('function' => 'mostrarAlmacenDeRuta', 'idAlmacen' => $_POST['idAlmacen'])), true);
+  echo $numRuta;
+  $url = 'http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Control/controladorLlevan.php';
+  superControlador($url, 'POST', array('function' => 'ingresar', 'idLote' => $_POST['idLote'], 'matricula' => $_POST['matricula'], 'idAlmacen' => $_POST['idAlmacen']));
 }
 ?>
 <!DOCTYPE html>
@@ -51,15 +57,15 @@ if (isset($_POST['asignar'])) {
   </header>
 
   <div class="form__container">
-    <form class="form" method="POST">
-      <h2 class="form__text">Ingresar Lote a Camión</h2>
+    <form class="form" method="POST" action='LotesCamiones.php'>
+      <h2 class="form__text">Ingresar lote a Camión</h2>
       <div class="form__group">
         <label class="form__label" for="idLote">Lote:</label>
         <select class="form__select" id="idLote" name="idLote" required>
           <option value="">Seleccionar lote</option>
           <?php
           foreach ($idLotes as $idLote) {
-            echo "<option value='". $idLote['idLote']."'>". $idLote['idLote']."</option>";
+            echo "<option value='" . $idLote['idLote'] . "'>" . $idLote['idLote'] . "</option>";
           }
           ?>
         </select>
@@ -70,7 +76,18 @@ if (isset($_POST['asignar'])) {
           <option value="">Seleccionar camion</option>
           <?php
           foreach ($matriculas as $matricula) {
-            echo "<option value='". $matricula['matricula']."'>". $matricula['matricula']."</option>";
+            echo "<option value='" . $matricula['matricula'] . "'>" . $matricula['matricula'] . "</option>";
+          }
+          ?>
+        </select>
+      </div>
+      <div class="form__group">
+        <label class="form__label" for="idLote">Almacen:</label>
+        <select class="form__select" id="idAlmacen" name="idAlmacen" required>
+          <option value="">Seleccionar almacen</option>
+          <?php
+          foreach ($idAlmacenes as $idAlmacen) {
+            echo "<option value='" . $idAlmacen['idAlmacen'] . "'>" . $idAlmacen['idAlmacen'] . " - " . $idAlmacen['departamento'] . "</option>";
           }
           ?>
         </select>
@@ -79,7 +96,7 @@ if (isset($_POST['asignar'])) {
     </form>
   </div>
 
-  <!-- <script src="Traducir.js"></script> -->
+  <script src="../../javascript/Traducir.js"></script>
 
   <footer>
     <div class="footer">

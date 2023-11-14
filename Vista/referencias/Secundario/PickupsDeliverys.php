@@ -1,47 +1,18 @@
 <?php
 require_once('../../../Control/superControlador.php');
 session_start();
-if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'] . '/Control/controladorTokens.php', 'GET', array('function' => 'verify', 'token' => $_SESSION['token'], 'tipo' => 'Funcionario'));
+// if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'] . '/Control/controladorTokens.php', 'GET', array('function' => 'verify', 'token' => $_SESSION['token'], 'tipo' => 'Funcionario'));
 
-$url = 'http://localhost/LogiQuick/Control/controladorCamiones.php';
+$url = 'http://'.$_SERVER['HTTP_HOST'].'/LogiQuick/Control/controladorCamiones.php';
 $matriculas = json_decode(superControlador($url, 'GET', array('function' => 'listar')), true);
 
-$url = 'http://localhost/LogiQuick/Control/controladorCamioneros.php';
+$url = 'http://'.$_SERVER['HTTP_HOST'].'/LogiQuick/Control/controladorCamioneros.php';
 $idLotes = json_decode(superControlador($url, 'GET', array('function' => 'listar')), true);
 
 if (isset($_POST['asignar'])) {
-  $url = 'http://localhost/LogiQuick/Control/controladorLlevan.php';
+  $url = 'http://'.$_SERVER['HTTP_HOST'].'/LogiQuick/Control/controladorLlevan.php';
   $json = superControlador($url, 'PUT', array('function' => 'ingresar', 'idLote' => $idLote, 'matricula' => $matricula));
 }
-
-// $sql = "SELECT nombre FROM camioneros";
-// $result = $conn->query($sql);
-
-// // Verificar si se obtuvieron resultados
-// if ($result->num_rows > 0) {
-//   $nombres = array();
-//   while ($row = $result->fetch_assoc()) {
-//     $nombres[] = $row["nombre"];
-//   }
-// } else {
-//   echo "No se encontraron datos en la tabla nombre.";
-// }
-
-// $sql2 = "SELECT matricula FROM camiones";
-// $result2 = $conn->query($sql2);
-
-// // Verificar si se obtuvieron resultados
-// if ($result2->num_rows > 0) {
-//   $matriculas = array();
-//   while ($row = $result2->fetch_assoc()) {
-//     $matriculas[] = $row["matricula"];
-//   }
-// } else {
-//   echo "No se encontraron datos en la tabla matricula.";
-// }
-
-// // Cerrar la conexión a la base de datos
-// $conn->close();
 ?>
 <!DOCTYPE html>
 <html lang="en">

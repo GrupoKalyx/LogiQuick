@@ -12,14 +12,6 @@ class modeloAlmacenes
         $conn->close();
     }
 
-    public static function modificacion($idAlmacen, $ubiAlmacen, $calle, $departamento, $localidad, $N_puerta)
-    {
-        $conn = modeloBd::conexion();
-        $query = "UPDATE almacenes SET ubiAlmacen = ? AND calle = ? AND departamento = ? AND localidad = ? AND N_puerta = ? WHERE idAlmacen = ?";
-        $conn->execute_query($query, [$ubiAlmacen, $calle, $departamento, $localidad, $N_puerta, $idAlmacen]);
-        $conn->close();
-    }
-
     public static function baja($idAlmacen)
     {
         $conn = modeloBd::conexion();
@@ -28,10 +20,28 @@ class modeloAlmacenes
         $conn->close();
     }
 
+    public static function modificacion($idAlmacen, $ubiAlmacen, $calle, $departamento, $localidad, $N_puerta)
+    {
+        $conn = modeloBd::conexion();
+        $query = "UPDATE almacenes SET ubiAlmacen = ? AND calle = ? AND departamento = ? AND localidad = ? AND N_puerta = ? WHERE idAlmacen = ?";
+        $conn->execute_query($query, [$ubiAlmacen, $calle, $departamento, $localidad, $N_puerta, $idAlmacen]);
+        $conn->close();
+    }
+
     public static function listado()
     {
         $conn = modeloBd::conexion();
         $query = "SELECT * FROM almacenes";
+        $exc = $conn->execute_query($query);
+        $result = $exc->fetch_all(MYSQLI_ASSOC);
+        $conn->close();
+        return json_encode($result);
+    }
+
+    public static function listadoSecundarios()
+    {
+        $conn = modeloBd::conexion();
+        $query = "SELECT * FROM almacenes WHERE idAlmacen NOT IN (0)";
         $exc = $conn->execute_query($query);
         $result = $exc->fetch_all(MYSQLI_ASSOC);
         $conn->close();

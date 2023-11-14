@@ -25,15 +25,15 @@ require_once('../../../Control/superControlador.php');
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
   <!-- Incluye Leaflet Routing Machine CSS y JS -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
-  <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+  <!-- <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
+  <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script> -->
 
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
   <!-- Incluye Leaflet Control Geocoder CSS y JS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
   <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
-  <link rel="stylesheet" href="RoutingMachine/dist/leaflet-routing-machine.css">
+  <!-- <link rel="stylesheet" href="RoutingMachine/dist/leaflet-routing-machine.css"> -->
 
   <script src="../../javascript/rutaCamionero.js"></script>
 </head>

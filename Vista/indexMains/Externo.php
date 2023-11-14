@@ -24,7 +24,7 @@ if (isset($_GET['ci'])) {$_SESSION['ci'] = $_GET['ci']; header('location: Extern
         <img src="../assets/logo.png" alt="logo">
       </div>
       <ul class="navbar__list">
-        <li class="navbar__list__item"><a href="../referencias/Externo/IngresarPaquete.php">Ingresar Paquetes</a></li>
+        <li class="navbar__list__item"><a href="../referencias/Externo/IngresarPaquetes.php">Ingresar Paquetes</a></li>
         <li class="navbar__list__item">
           <a href="#">Asignación</a>
           <ul class="navbar__submenu">

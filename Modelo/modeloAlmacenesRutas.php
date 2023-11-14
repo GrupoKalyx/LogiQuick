@@ -29,4 +29,14 @@ class modeloAlmacenesRutas
                 $conn->close();
                 return json_encode($result);
         }
+
+        public static function muestraRutaDeAlmacen($idAlmacen)
+        {
+                $conn = modeloBd::conexion();
+                $query = "SELECT numRuta FROM almacen_rutas WHERE idAlmacen = ?";
+                $result = $conn->execute_query($query, [$idAlmacen]);
+                $result = $result->fetch_array(MYSQLI_ASSOC);
+                $conn->close();
+                return json_encode($result);
+        }
 }

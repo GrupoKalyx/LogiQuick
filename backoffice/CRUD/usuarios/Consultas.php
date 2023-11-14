@@ -12,7 +12,7 @@ foreach ($result->fetch_all(MYSQLI_ASSOC) as $row) {
     $contrasenia = $row['contrasenia'];
     $tipo = $row['tipo'];
     if ($tipo == 'Camionero' or $tipo == 'Delivery') {
-        $queryTelefono = "SELECT telefono FROM Conductores WHERE ci = ? LIMIT 1";
+        $queryTelefono = "SELECT telefono FROM conductores WHERE ci = ? LIMIT 1";
         $exc = $conn->execute_query($queryTelefono, [$ci]);
         $fExc = $exc->fetch_array(MYSQLI_ASSOC);
         $telefono = $fExc['telefono'];

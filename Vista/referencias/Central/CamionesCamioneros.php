@@ -10,7 +10,7 @@ $url = 'http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Control/controladorCamion
 $camioneros = json_decode(superControlador($url, 'GET', array('function' => 'listar')), true);
 
 if (isset($_POST['asignar'])) {
-  $url = 'http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Control/controladorLlevan.php';
+  $url = 'http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Control/controladorConducen.php';
   superControlador($url, 'PUT', array('function' => 'ingresar', 'ci' => $ci, 'matricula' => $matricula));
 }
 ?>
@@ -23,7 +23,7 @@ if (isset($_POST['asignar'])) {
   <link rel="stylesheet" href="../../estilos/style.css">
   <link rel="stylesheet" href="../../estilos/FormStyle.css">
   <link rel="icon" type="image/x-icon" href="../../assets/logo.png">
-  <title>LogiQuick</title>
+  <title>Logiquick</title>
 </head>
 
 <body class="body">
