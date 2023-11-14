@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once('../../../Control/superControlador.php');
-if(isset($_POST['ingresar'])){
+if(isset($_POST['valueSubmit'])){
 $url = 'http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Control/controladorPaquetes.php';
 $numBulto = superControlador($url, 'POST', array('function' => 'ingresar', 'gmailCliente' => $_POST['gmailCliente'], 'num' => $_POST['num'], 'calle' => $_POST['calle'], 'localidad' => $_POST['localidad'], 'departamento' => $_POST['departamento'], 'lat' => $_POST['lat'], 'lng' => $_POST['lng']));
 $url = 'http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Control/controladorPaquetes.php';
@@ -38,7 +38,7 @@ $infoPaquete = superControlador($url, 'GET', array('function' => 'mostrar', 'num
           </ul>
         </li>
       </ul>
-      <button class="form__button" id="traductor-btn">Traducir Pagina </button>
+      <button class="form__button" id="traductor-btn">Traducir Pagina</button>
       <div class="navbar__logout">
         <button class="navbar__logout__button"><a href="../../indexMains/login.php">Cerrar Sesión</a></button>
       </div>
@@ -46,7 +46,7 @@ $infoPaquete = superControlador($url, 'GET', array('function' => 'mostrar', 'num
   </header>
 
   <div class="form__container">
-    <form class="form" method="POST" id="ingresarForm" action="ingresarScript.php">
+    <form class="form" method="POST" id="ingresarForm" action="IngresarPaquetes.php">
       <h2 class="form__text">Ingrese datos del paquete</h2>
 
       <div class="form__group">
@@ -78,7 +78,9 @@ $infoPaquete = superControlador($url, 'GET', array('function' => 'mostrar', 'num
 
       <input type="hidden" id="lng" name="lng">
 
-      <button class="form__button" type="button" name="ingresar" onclick="myFunction();">Ingresar</button>
+      <input type="hidden" id="valueSubmit" name="valueSubmit">
+
+      <button class="form__button" type="button" onclick="myFunction();">Ingresar</button>
     </form>
   </div>
 
@@ -118,6 +120,7 @@ $infoPaquete = superControlador($url, 'GET', array('function' => 'mostrar', 'num
 
           document.getElementById(`lat`).value = `${lat}`;
           document.getElementById(`lng`).value = `${lng}`;
+          document.getElementById(`valueSubmit`).value = `valueSubmit`;
           document.getElementById(`ingresarForm`).submit();
         })
         .catch(error => {

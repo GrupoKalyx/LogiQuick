@@ -81,7 +81,7 @@ class controladorPaquetes
     public static function rastrear($context)
     {
         $idRastreo = $context['idRastreo'];
-        $result = modeloPaquetes::rastreo($idRastreo);
+        $result = modeloPaquetes::idRastreoExiste($idRastreo);
         echo $result;   
         
     }

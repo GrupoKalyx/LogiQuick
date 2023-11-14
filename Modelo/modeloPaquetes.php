@@ -11,7 +11,7 @@ class modeloPaquetes
             for ($i = 0; $i < 11; $i++) {
                 $idRastreo .= mt_rand(0, 9);
             }
-        } while (self::rastreo($idRastreo) != NULL);
+        } while (self::idRastreoExiste($idRastreo));
         $conn = modeloBd::conexion();
         $query = "INSERT INTO paquetes (gmailCliente, idRastreo, fechaCreacion, num, calle, localidad, departamento, lat, lng) VALUES (?, ?, NOW(), ?, ?, ?, ?, ?, ?)";
         $conn->execute_query($query, [$gmailCliente, $idRastreo, $num, $calle, $localidad, $departamento, $lat, $lng]);
@@ -90,14 +90,14 @@ class modeloPaquetes
         return json_encode($result);
     }
 
-    public static function rastreo($idRastreo)
+    public static function idRastreoExiste($idRastreo)
     {
         $conn = modeloBd::conexion();
         $query = "SELECT * FROM paquetes WHERE idRastreo = ?";
         $exc = $conn->execute_query($query, [$idRastreo]);
-        $result = $exc->fetch_array(MYSQLI_ASSOC);
+        $num = mysqli_num_rows($exc);
         $conn->close();
-        return json_encode($result);
+        return $num;
     }
 
     public static function existe($tipoId, $id)
