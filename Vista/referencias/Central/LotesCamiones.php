@@ -1,23 +1,28 @@
 <?php
 session_start();
-// if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Control/controladorTokens.php', 'GET', array('function' => 'verify', 'token' => $_SESSION['token'], 'tipo' => 'Funcionario'));
+// if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'] . '/kalyx/Control/controladorTokens.php', 'GET', array('function' => 'verify', 'token' => $_SESSION['token'], 'tipo' => 'Funcionario'));
 require_once('../../../Control/superControlador.php');
 
-$url = 'http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Control/controladorCamiones.php';
+$url = 'http://' . $_SERVER['HTTP_HOST'] . '/kalyx/Control/controladorCamiones.php';
 $matriculas = json_decode(superControlador($url, 'GET', array('function' => 'listar')), true);
 
-$url = 'http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Control/controladorLotes.php';
+$url = 'http://' . $_SERVER['HTTP_HOST'] . '/kalyx/Control/controladorLotes.php';
 $idLotes = json_decode(superControlador($url, 'GET', array('function' => 'listarEnQc')), true);
 
-$url = 'http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Control/controladorAlmacenes.php';
+$url = 'http://' . $_SERVER['HTTP_HOST'] . '/kalyx/Control/controladorAlmacenes.php';
 $idAlmacenes = json_decode(superControlador($url, 'GET', array('function' => 'listarSecundarios')), true);
 
 if (isset($_POST['asignar'])) {
-  $url = 'http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Control/controladorAlmacenesRutas.php';
+  $url = 'http://' . $_SERVER['HTTP_HOST'] . '/kalyx/Control/controladorAlmacenesRutas.php';
   $numRuta = json_decode(superControlador($url, 'GET', array('function' => 'mostrarAlmacenDeRuta', 'idAlmacen' => $_POST['idAlmacen'])), true);
-  echo $numRuta;
-  $url = 'http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Control/controladorLlevan.php';
-  superControlador($url, 'POST', array('function' => 'ingresar', 'idLote' => $_POST['idLote'], 'matricula' => $_POST['matricula'], 'idAlmacen' => $_POST['idAlmacen']));
+  $url = 'http://' . $_SERVER['HTTP_HOST'] . '/kalyx/Control/controladorLlevan.php';
+  $success = superControlador($url, 'POST', array('function' => 'ingresar', 'idLote' => $_POST['idLote'], 'matricula' => $_POST['matricula'], 'idAlmacen' => $_POST['idAlmacen']));
+
+  if ($success) {
+    echo '<script>alert("Camionero asignado con éxito");</script>';
+  } else {	
+    echo '<script>alert("Ha ocurrido un error inesperado.");</script>';
+  }
 }
 ?>
 <!DOCTYPE html>

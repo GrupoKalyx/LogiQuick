@@ -20,7 +20,7 @@ class controladorLogins
         $ci = $context['ci'];
         $contra = $context['contrasenia'];
         // Chequea la existencia del usuario
-        $existe = superControlador('http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Control/controladorUsuarios.php', 'GET', array('function' => 'existencia', 'ci' => $ci));
+        $existe = superControlador('http://' . $_SERVER['HTTP_HOST'] . '/kalyx/Control/controladorUsuarios.php', 'GET', array('function' => 'existencia', 'ci' => $ci));
         if ($existe) {
             // Chequea la contraseña
             $contrasenia = self::contrasenia($ci, $contra);
@@ -31,7 +31,7 @@ class controladorLogins
                 // Redirige al usuario a su respectivo index
                 switch ($tipo) {
                     case 'Admin':
-                        header('http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Vista/indexMains/' . $tipo . '.php');
+                        header('http://' . $_SERVER['HTTP_HOST'] . '/kalyx/Vista/indexMains/' . $tipo . '.php');
                         echo "<script>
                         window.location='login.php';
                         alert('El acceso a administradores esta limitado al backoffice. Por favor ingrese con otro usuario.');
@@ -39,30 +39,30 @@ class controladorLogins
                         break;
                     case 'Funcionario' || 'Externo' || 'Secundario' || 'Camionero' || 'Delivery':
                         //Establece en la basa de datos un nuevo token
-                        $jwt = superControlador('http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Control/controladorTokens.php', 'GET', array('function' => 'createToken', 'ci' => $ci, 'tipo' => $tipo));
+                        $jwt = superControlador('http://' . $_SERVER['HTTP_HOST'] . '/kalyx/Control/controladorTokens.php', 'GET', array('function' => 'createToken', 'ci' => $ci, 'tipo' => $tipo));
                         $_SESSION['token'] = $jwt;
                         $_SESSION['ci'] = $ci;
                         echo "<script>
-                        window.location='http://" . $_SERVER['HTTP_HOST'] . "/LogiQuick/Vista/indexMains/".$tipo.".php?ci=". $ci ."';
+                        window.location='http://" . $_SERVER['HTTP_HOST'] . "/kalyx/Vista/indexMains/".$tipo.".php?ci=". $ci ."';
                         </script>";
                         break;
                         // window.location='" .$tipo . ".php';
                     default:
                         echo "<script>
                         alert('Tipo de usuario desconocido, re intente por favor!');
-                        window.location='http://" . $_SERVER['HTTP_HOST'] . "/LogiQuick/Vista/indexMains/login.php';
+                        window.location='http://" . $_SERVER['HTTP_HOST'] . "/kalyx/Vista/indexMains/login.php';
                         </script>";
                 }
             } else {
                 echo "<script>
                 alert('La contraseña ingresada es incorrecta, revise los datos ingresados y vuelva a intentar.');
-                window.location='http://" . $_SERVER['HTTP_HOST'] . "/LogiQuick/Vista/indexMains/login.php';
+                window.location='http://" . $_SERVER['HTTP_HOST'] . "/kalyx/Vista/indexMains/login.php';
                 </script>";
             }
         } else {
             echo "<script>
             alert('Usuario inexistente, re intente por favor.');
-            window.location='http://" . $_SERVER['HTTP_HOST'] . "/LogiQuick/Vista/indexMains/login.php';
+            window.location='http://" . $_SERVER['HTTP_HOST'] . "/kalyx/Vista/indexMains/login.php';
             </script>";
         }
     }

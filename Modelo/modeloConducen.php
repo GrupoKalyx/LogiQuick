@@ -8,8 +8,9 @@ class modeloConducen
         {
                 $conn = modeloBd::conexion();
                 $query = "INSERT INTO `conducen` (`matricula`, `fecha_llegada`, `fecha_salida`, `ci`) VALUES (?, NULL, NULL, ?);";
-                $conn->execute_query($query, [$matricula, $ci]);
+                $success = $conn->execute_query($query, [$matricula, $ci]);
                 $conn->close();
+                return $success;
         }
 
         public static function baja($matricula, $ci)

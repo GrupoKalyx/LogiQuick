@@ -1,17 +1,22 @@
 <?php
 require_once('../../../Control/superControlador.php');
 session_start();
-// if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Control/controladorTokens.php', 'GET', array('function' => 'verify', 'token' => $_SESSION['token'], 'tipo' => 'Funcionario'));
+// if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'] . '/kalyx/Control/controladorTokens.php', 'GET', array('function' => 'verify', 'token' => $_SESSION['token'], 'tipo' => 'Funcionario'));
 
-$url = 'http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Control/controladorCamiones.php';
-$matriculas = json_decode(superControlador($url, 'GET', array('function' => 'listar')), true);
-
-$url = 'http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Control/controladorCamioneros.php';
+$url = 'http://' . $_SERVER['HTTP_HOST'] . '/kalyx/Control/controladorCamioneros.php';
 $camioneros = json_decode(superControlador($url, 'GET', array('function' => 'listar')), true);
 
+$url = 'http://' . $_SERVER['HTTP_HOST'] . '/kalyx/Control/controladorCamiones.php';
+$matriculas = json_decode(superControlador($url, 'GET', array('function' => 'listar')), true);
+
 if (isset($_POST['asignar'])) {
-  $url = 'http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Control/controladorConducen.php';
-  superControlador($url, 'PUT', array('function' => 'ingresar', 'ci' => $ci, 'matricula' => $matricula));
+  $url = 'http://' . $_SERVER['HTTP_HOST'] . '/kalyx/Control/controladorConducen.php';
+  $success = superControlador($url, 'POST', array('function' => 'ingresar', 'ci' => $ci, 'matricula' => $matricula));
+  if ($success) {
+    echo '<script>alert("Camionero asignado con éxito");</script>';
+  } else {	
+    echo '<script>alert("Ha ocurrido un error inesperado.");</script>';
+  }
 }
 ?>
 <!DOCTYPE html>
@@ -31,7 +36,7 @@ if (isset($_POST['asignar'])) {
   <header>
     <nav class="navbar">
       <div class="navbar__logo">
-        <img src="../assets/logo.png" alt="logo">
+        <img src="../../assets/logo.png" alt="logo">
       </div>
       <ul class="navbar__list">
         <li class="navbar__list__item"><a href="#">Asignación</a>

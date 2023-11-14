@@ -7,7 +7,7 @@ if (isset($_SESSION['ci'])) {
   echo 'const ci = "' . $_SESSION['ci'] . '";';
   echo '</script>';
 }  
-// if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'] . '/Control/controladorTokens.php', 'GET', array('function' => 'verify', 'token' => $_SESSION['token'], 'tipo' => 'Delivery'));
+// if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'] . '/kalyx/Control/controladorTokens.php', 'GET', array('function' => 'verify', 'token' => $_SESSION['token'], 'tipo' => 'Delivery'));
 ?>
 <!DOCTYPE html>
 <html lang="en">

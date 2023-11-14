@@ -8,24 +8,27 @@ class modeloAlmacenes
     {
         $conn = modeloBd::conexion();
         $query = "INSERT INTO almacenes VALUES (?, ?, ?, ?, ?, ?)";
-        $conn->execute_query($query, [$idAlmacen, $ubiAlmacen, $calle, $departamento, $localidad, $N_puerta]);
+        $success = $conn->execute_query($query, [$idAlmacen, $ubiAlmacen, $calle, $departamento, $localidad, $N_puerta]);
         $conn->close();
+        return $success;
     }
 
     public static function baja($idAlmacen)
     {
         $conn = modeloBd::conexion();
         $query = "DELETE FROM almacenes WHERE idAlmacen = ?";
-        $conn->execute_query($query, [$idAlmacen]);
+        $success = $conn->execute_query($query, [$idAlmacen]);
         $conn->close();
+        return $success;
     }
 
     public static function modificacion($idAlmacen, $ubiAlmacen, $calle, $departamento, $localidad, $N_puerta)
     {
         $conn = modeloBd::conexion();
         $query = "UPDATE almacenes SET ubiAlmacen = ? AND calle = ? AND departamento = ? AND localidad = ? AND N_puerta = ? WHERE idAlmacen = ?";
-        $conn->execute_query($query, [$ubiAlmacen, $calle, $departamento, $localidad, $N_puerta, $idAlmacen]);
+        $success = $conn->execute_query($query, [$ubiAlmacen, $calle, $departamento, $localidad, $N_puerta, $idAlmacen]);
         $conn->close();
+        return $success;
     }
 
     public static function listado()

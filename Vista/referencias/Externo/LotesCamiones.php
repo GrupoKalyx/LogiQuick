@@ -1,21 +1,21 @@
 <?php
 session_start();
-// if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Control/controladorTokens.php', 'GET', array('function' => 'verify', 'token' => $_SESSION['token'], 'tipo' => 'Funcionario'));
+// if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'] . '/kalyx/Control/controladorTokens.php', 'GET', array('function' => 'verify', 'token' => $_SESSION['token'], 'tipo' => 'Funcionario'));
 
 require_once('../../../Control/superControlador.php');
 // Listado de camiones
-$url = 'http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Control/controladorCamiones.php';
+$url = 'http://' . $_SERVER['HTTP_HOST'] . '/kalyx/Control/controladorCamiones.php';
 $matriculas = json_decode(superControlador($url, 'GET', array('function' => 'listar')), true);
 // Listado de lotes en CRECOM
-$url = 'http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Control/controladorLotes.php';
+$url = 'http://' . $_SERVER['HTTP_HOST'] . '/kalyx/Control/controladorLotes.php';
 $idLotes = json_decode(superControlador($url, 'GET', array('function' => 'listarExterno')), true);
 
 if (isset($_POST['asignar'])) {
   // Direcciona el lote al almacen
-  $url = 'http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Control/controladorLotesAlmacenesRutas.php';
+  $url = 'http://' . $_SERVER['HTTP_HOST'] . '/kalyx/Control/controladorLotesAlmacenesRutas.php';
   superControlador($url, 'POST', array('function' => 'ingresar', 'idLote' => $_POST['idLote'], 'idAlmacen' => '0', 'numRuta' => '0'));
   // Lo asigna al camion
-  $url = 'http://' . $_SERVER['HTTP_HOST'] . '/LogiQuick/Control/controladorLlevan.php';
+  $url = 'http://' . $_SERVER['HTTP_HOST'] . '/kalyx/Control/controladorLlevan.php';
   superControlador($url, 'POST', array('function' => 'ingresar', 'idLote' => $_POST['idLote'], 'matricula' => $_POST['matricula'], 'idAlmacen' => '0', 'numRuta' => '0'));
 }
 ?>

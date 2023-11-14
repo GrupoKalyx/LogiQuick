@@ -1,3 +1,18 @@
+-- Informacion de Quick Carry---------------------------------------------------------------------
+INSERT INTO almacenes (idAlmacen, calle, departamento, localidad, num, lat, lng) 
+VALUES ('0', 'Baltimore', 'Montevideo', 'Peñarol', ' 1651', '-34.83001', '-56.19339');
+-- -----------------------------------------------------------------------------------------------
+
+-- Ruta 0 para envios de CRECOM a Quick Carry-----------------------------------------------------
+INSERT INTO rutas (numRuta, departamentos) 
+VALUES ('0', 'Montevideo');
+-- -----------------------------------------------------------------------------------------------
+
+-- Asignando Quick Carry a la RUta 0--------------------------------------------------------------
+INSERT INTO almacen_rutas (idAlmacen, numRuta) 
+VALUES ('0', '0');
+-- -----------------------------------------------------------------------------------------------
+
 -- Insertando el usuario de un camionero--------------------------------------------------------------
 INSERT INTO `usuarios`(`ci`, `nombre`, `tipo`, `contrasenia`) 
 VALUES 	(11111111,'root','Admin','root'),
