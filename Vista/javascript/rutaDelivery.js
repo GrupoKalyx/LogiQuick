@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     let numBultoSeleccionado = null;
 
     try {
-        const response = await fetch(`http://localhost/logiquick/Control/controladorPaquetes.php?function=PaqueteAsignadoDelivery$ci=${ci}`, {
+        const response = await fetch(`http://localhost/logiquick/Control/controladorPaquetes.php?function=PaqueteAsignadoDelivery&ci=${ci}`, {
             headers: {
                 'Cache-Control': 'no-cache'
             }
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             paquetesArray.forEach(async paquete => {
 
                
-                if (paquete.fecha_llegada === null) {
+                if (paquete.fecha_llegada !== null || paquete.fecha_llegada === null) {
                     const fila = tabla.insertRow();
                     const celdaId = fila.insertCell();
                     const celdaDireccion = fila.insertCell();
