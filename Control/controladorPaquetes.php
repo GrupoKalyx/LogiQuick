@@ -109,4 +109,11 @@ class controladorPaquetes
         var_dump($result);
         return $result;
     }
+
+    public static function PaquetesSinEntregar()
+    { 
+        $result = modeloPaquetes::PaquetesSinEntregar();
+        var_dump($result);
+        return $result;
+    }
 }

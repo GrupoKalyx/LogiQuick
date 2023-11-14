@@ -1,52 +1,36 @@
 document.addEventListener('DOMContentLoaded', async function () {
     try {
-        const response = await fetch('http://localhost/Logiquick/Control/controladorPaquetes.php?function=listar', {
+        const response = await fetch('http://localhost/Logiquick/Control/controladorPaquetes.php?function=PaquetesSinEntregar', {
             headers: {
                 'Cache-Control': 'no-cache'
             }
         });
-        const paquetes = await response.json();
-        const tabla = document.getElementById('Table').getElementsByTagName('tbody')[0];
+        const paquetes = await response.text();
+        
+        const jsonString = paquetes.match(/\[.*\]/);
 
-        paquetes.forEach(async paquete => {
+        if (jsonString) {
+            const paquetesArray = JSON.parse(jsonString[0]);
 
-            const fila = tabla.insertRow();
-            const celdaId = fila.insertCell();
-            const celdaDireccion = fila.insertCell();
-            
+            const tabla = document.getElementById('Table').getElementsByTagName('tbody')[0];
+        
+            paquetesArray.forEach(async paquete => {
 
-           
-            celdaId.textContent = paquete.numBulto;
-            celdaDireccion.textContent = paquete.num + ' ' + paquete.calle + ', ' + paquete.departamento;
+                const fila = tabla.insertRow();
+                const celdaId = fila.insertCell();
+                const celdaDireccion = fila.insertCell();
 
-            fila.setAttribute('data-id', paquete.numBulto);
+                celdaId.textContent = paquete.numBulto;
+                celdaDireccion.textContent = paquete.num + ' ' + paquete.calle + ', ' + paquete.departamento;
 
-            
-            fila.addEventListener('click', async function () {
-                eliminarMapa();
-                const idRastreo = paquete.idRastreo
-                console.log(idRastreo);
+                fila.setAttribute('data-id', paquete.numBulto);
 
-                try {
-                    
-                    const response = await fetch(`http://localhost/LogiQuick/Control/controladorAlmacenes.php?function=mostrarUltimo&idRastreo=${idRastreo}`, {
-                        headers: {
-                            'Cache-Control': 'no-cache'
-                        }
-                    });
-                    const almacen = await response.json();
-                    console.log(almacen)
-
-                    if (almacen && almacen.lat && almacen.lng) {
-                        marcarRutaEnMapa(paquete.lat, paquete.lng, almacen.lat, almacen.lng);
-                    } else {
-                        console.error('Datos de latitud y longitud inválidos para el almacén o el paquete.');
-                    }
-                } catch (error) {
-                    console.error('Error al obtener datos del almacén:', error);
-                }
+                fila.addEventListener('click', function () {
+                    eliminarMapa();
+                    marcarPuntoEnMapa(paquete.lat, paquete.lng);
+                });
             });
-        });
+        } // Cierra el bloque if
     } catch (error) {
         console.error('Error en la solicitud:', error);
     }
@@ -60,25 +44,16 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
     }
 
-    function marcarRutaEnMapa(latitudDestino, longitudDestino, latitudAlmacen, longitudAlmacen) {
-        map = L.map('map').setView([latitudAlmacen, longitudAlmacen], 13);
+    function marcarPuntoEnMapa(latitud, longitud) {
+        map = L.map('map').setView([latitud, longitud], 13);
+
+        const destinoMarker = L.marker([latitud, longitud], { name: 'Destino' }).addTo(map); // Marcador del destino con nombre
+        destinoMarker.bindTooltip('Destino', { permanent: true, direction: 'top' });
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '© OpenStreetMap contributors'
         }).addTo(map);
 
-        const destinoMarker = L.marker([latitudDestino, longitudDestino]).addTo(map);
-
-        L.Routing.control({
-            waypoints: [
-                L.latLng(latitudAlmacen, longitudAlmacen),
-                L.latLng(latitudDestino, longitudDestino)
-            ],
-            routeWhileDragging: true,
-            show: true,
-            language: 'es'
-        }).addTo(map);
+        L.marker([latitud, longitud]).addTo(map);
     }
-
-
 });

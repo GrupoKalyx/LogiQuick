@@ -148,4 +148,14 @@ class modeloPaquetes
         $conn->close();
         return json_encode($result);
     }
+
+    public static function PaquetesSinEntregar()
+    {
+        $conn = modeloBd::conexion();
+        $query = "SELECT * FROM paquetes WHERE fechaEntrega IS NULL"; //agregar condicion de no asignacion a otro lote
+        $result = $conn->execute_query($query);
+        $result = $result->fetch_all(MYSQLI_ASSOC);
+        $conn->close();
+        return json_encode($result);
+    }
 }
