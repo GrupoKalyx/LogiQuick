@@ -157,7 +157,7 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `entregan`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `entregan` (
-  `fecha_llegada` DATETIME NOT NULL,
+  `fecha_llegada` DATETIME NULL DEFAULT NULL,
   `fecha_salida` DATETIME NULL DEFAULT NULL,
   `matricula` VARCHAR(7) NOT NULL,
   `numBulto` INT(11) NOT NULL,

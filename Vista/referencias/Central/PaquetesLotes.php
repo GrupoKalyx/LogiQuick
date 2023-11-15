@@ -3,7 +3,7 @@ session_start();
 // if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'] . '/kalyx/Control/controladorTokens.php', 'GET', array('function' => 'verify', 'token' => $_SESSION['token'], 'tipo' => 'Funcionario'));
 require_once('../../../Control/superControlador.php');
 $url = 'http://'.$_SERVER['HTTP_HOST'].'/kalyx/Control/controladorPaquetes.php';
-$paquetes = json_decode(superControlador($url, 'GET', array('function' => 'listarEnQc')), true);
+$paquetes = json_decode(superControlador($url, 'GET', array('function' => 'listarEnQcExterior')), true);
 
 if (isset($_POST['generar'])) {
   $url = 'http://'.$_SERVER['HTTP_HOST'].'/kalyx/Control/controladorLotes.php';

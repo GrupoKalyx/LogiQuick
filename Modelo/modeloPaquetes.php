@@ -70,10 +70,20 @@ class modeloPaquetes
         return json_encode($result);
     }
 
-    public static function listadoEnQc()
+    public static function listadoEnQcExterior()
     {
         $conn = modeloBd::conexion();
-        $query = "SELECT DISTINCT * FROM paquetes p JOIN lotean l JOIN llevan lv ON p.numBulto = l.numBulto AND l.idLote = lv.idLote WHERE lv.idAlmacen = 0 AND lv.fecha_llegada IS NOT NULL;";
+        $query = "SELECT DISTINCT * FROM paquetes p JOIN lotean l JOIN llevan lv ON p.numBulto = l.numBulto AND l.idLote = lv.idLote WHERE lv.idAlmacen = 0 AND lv.fecha_llegada IS NOT NULL AND departamento IS NOT IN ('Montevideo');";
+        $result = $conn->execute_query($query);
+        $result = $result->fetch_all(MYSQLI_ASSOC);
+        $conn->close();
+        return json_encode($result);
+    }
+
+    public static function listadoEnQcMontevideo()
+    {
+        $conn = modeloBd::conexion();
+        $query = "SELECT DISTINCT * FROM paquetes p JOIN lotean l JOIN llevan lv ON p.numBulto = l.numBulto AND l.idLote = lv.idLote WHERE lv.idAlmacen = 0 AND lv.fecha_llegada IS NOT NULL AND departamento = 'Montevideo';";
         $result = $conn->execute_query($query);
         $result = $result->fetch_all(MYSQLI_ASSOC);
         $conn->close();

@@ -65,9 +65,15 @@ class controladorPaquetes
         echo $json;
     }
 
-    public static function listarEnQc($context)
+    public static function listarEnQcExterior($context)
     {
-        $json = modeloPaquetes::listadoEnQc();
+        $json = modeloPaquetes::listadoEnQcExterior();
+        echo $json;
+    }
+
+    public static function listarEnQcMontevideo($context)
+    {
+        $json = modeloPaquetes::listadoEnQcMontevideo();
         echo $json;
     }
 
