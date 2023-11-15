@@ -52,7 +52,7 @@ if (isset($_POST['asignar'])) {
           </ul>
         </li>
         <li class="navbar__list__item">
-          <a href="#">Seguimiento</a>
+          <a href="../referencias/Secundario/SeguimientoSecundario.php">Seguimiento</a>
         </li>
       </ul>
       <div class="navbar__logout">
