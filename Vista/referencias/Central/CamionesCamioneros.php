@@ -44,6 +44,7 @@ if (isset($_POST['asignar'])) {
             <li class="navbar__submenu__item"><a href="PaquetesLotes.php">Paquete a Lote</a></li>
             <li class="navbar__submenu__item"><a href="LotesCamiones.php">Lote a Camión</a></li>
             <li class="navbar__submenu__item"><a href="CamionesCamioneros.php">Camionero a Camión</a></li>
+            <li class="navbar__submenu__item"><a href="PaquetesPickups.php">Paquete a Pickup</a></li>
           </ul>
         </li>
         <li class="navbar__list__item"><a href="Seguimiento.php">Seguimiento</a></li>

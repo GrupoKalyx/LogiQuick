@@ -19,7 +19,7 @@ class controladorConducen
         $matricula = $context['matricula'];
         $ci = $context['ci'];
         $success = modeloConducen::alta($matricula, $ci);
-        return $success;
+        echo $success;
     }
 
     public static function eliminar($context)

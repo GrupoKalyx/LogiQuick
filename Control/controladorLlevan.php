@@ -22,7 +22,7 @@ class controladorLlevan
         $numRuta = $context['numRuta'];
 
         $success = modeloLLevan::alta($matricula, $idLote, $idAlmacen, $numRuta);
-        return $success;
+        echo $success;
     }
 
     public static function eliminar($context)

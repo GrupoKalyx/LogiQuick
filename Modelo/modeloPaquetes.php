@@ -168,4 +168,14 @@ class modeloPaquetes
         $conn->close();
         return json_encode($result);
     }
+
+    public static function listadoEnSecundario()
+    {
+        $conn = modeloBd::conexion();
+        $query = "SELECT p.* FROM paquetes p JOIN (SELECT l.* FROM lotean l JOIN llevan lv ON l.idLote = lv.idLote WHERE idAlmacen != (0) AND fecha_llegada IS NOT NULL) lotean ON lotean.numBulto = p.numBulto WHERE fechaEntrega IS NULL;";
+        $result = $conn->execute_query($query);
+        $result = $result->fetch_all(MYSQLI_ASSOC);
+        $conn->close();
+        return json_encode($result);
+    }
 }

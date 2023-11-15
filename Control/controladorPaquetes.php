@@ -116,10 +116,16 @@ class controladorPaquetes
         return $result;
     }
 
-    public static function PaquetesSinEntregar()
+    public static function PaquetesSinEntregar($context)
     { 
         $result = modeloPaquetes::PaquetesSinEntregar();
         var_dump($result);
         return $result;
+    }
+
+    public static function listarEnSecundario($context)
+    {
+        $json = modeloPaquetes::listadoEnSecundario();
+        echo $json;
     }
 }

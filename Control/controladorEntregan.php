@@ -18,7 +18,8 @@ class controladorEntregan
     {
         $numBulto = $context['numBulto'];
         $matricula = $context['matricula'];
-        modeloEntregan::alta($numBulto, $matricula);
+        $success = modeloEntregan::alta($numBulto, $matricula);
+        echo $success;
     }
 
     public static function eliminar($context)

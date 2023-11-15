@@ -1,7 +1,10 @@
 <?php
 session_start();
 require_once('../../Control/superControlador.php');
-if (isset($_GET['ci'])) {$_SESSION['ci'] = $_GET['ci']; header('location: Central.php');}
+if (isset($_GET['ci'])) {
+    $_SESSION['ci'] = $_GET['ci'];
+    header('location: Central.php');
+}
 // if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'] . '/Control/controladorTokens.php', 'GET', array('function' => 'verify', 'token' => $_SESSION['token'], 'tipo' => 'Funcionario'));
 ?>
 <!DOCTYPE html>
@@ -34,6 +37,9 @@ if (isset($_GET['ci'])) {$_SESSION['ci'] = $_GET['ci']; header('location: Centra
                         </li>
                         <li class="navbar__submenu__item">
                             <a href="../referencias/Central/CamionesCamioneros.php">Camionero a Camión</a>
+                        </li>
+                        <li class="navbar__submenu__item">
+                            <a href="PaquetesPickups.php">Paquete a Pickup</a>
                         </li>
                     </ul>
                 </li>

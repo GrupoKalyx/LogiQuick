@@ -49,6 +49,9 @@ require_once('../../../Control/superControlador.php');
                         <li class="navbar__submenu__item">
                             <a href="CamionesCamioneros.php">Camionero a Camión</a>
                         </li>
+                        <li class="navbar__submenu__item">
+                            <a href="PaquetesPickups.php">Paquete a Pickup</a>
+                        </li>
                     </ul>
                 </li>
                 <li class="navbar__list__item">
@@ -64,23 +67,23 @@ require_once('../../../Control/superControlador.php');
             <!-- <button class="form__button" id="traductor-btn">Traducir Pagina </button> -->
         </nav>
     </header>
-    
+
     <div class="container">
-    <div id="TableContainer">
-      <table id="Table">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Dirección</th>
-          </tr>
-        </thead>
-        <tbody>
-          
-        </tbody>
-      </table>
+        <div id="TableContainer">
+            <table id="Table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Dirección</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+        <div id="map"></div>
     </div>
-     <div id="map"></div>
-  </div>
 
     <footer>
         <div class="footer">
