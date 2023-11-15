@@ -11,7 +11,13 @@ $matriculas = json_decode(superControlador($url, 'GET', array('function' => 'lis
 
 if (isset($_POST['asignar'])) {
   $url = 'http://' . $_SERVER['HTTP_HOST'] . '/kalyx/Control/controladorEntregan.php';
-  $json = superControlador($url, 'POST', array('function' => 'ingresar', 'bultos' => $_POST['bulto'], 'matricula' => $_POST['matricula']));
+  $success = superControlador($url, 'POST', array('function' => 'ingresar', 'bultos' => $_POST['bulto'], 'matricula' => $_POST['matricula']));
+
+  if ($success) {
+    echo '<script>alert("Paquete/s asignado/s con éxito");</script>';
+  } else {
+    echo '<script>alert("Ha ocurrido un error inesperado.");</script>';
+  }
 }
 ?>
 <!DOCTYPE html>
@@ -22,7 +28,7 @@ if (isset($_POST['asignar'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../../estilos/style.css">
   <link rel="stylesheet" href="../../estilos/FormStyle.css">
-  <link rel="icon" type="image/x-icon" href="../assets/logo.png">
+  <link rel="icon" type="image/x-icon" href="../../assets/logo.png">
   <title>LogiQuick</title>
 </head>
 
@@ -31,7 +37,7 @@ if (isset($_POST['asignar'])) {
   <header>
     <nav class="navbar">
       <div class="navbar__logo">
-        <img src="../assets/logo.png" alt="logo">
+        <img src="../../assets/logo.png" alt="logo">
       </div>
       <ul class="navbar__list">
         <li class="navbar__list__item">
@@ -55,7 +61,7 @@ if (isset($_POST['asignar'])) {
         </button>
       </div>
 
-      <!-- <button class="form__button" id="traductor-btn">Traducir Pagina </button> -->
+      <button class="form__button" id="traductor-btn">Traducir Pagina </button>
     </nav>
   </header>
 
@@ -88,7 +94,7 @@ if (isset($_POST['asignar'])) {
     </form>
   </div>
 
-  <!-- <script src="Traducir.js"></script> -->
+  <script src="../../javascript/Traducir.js"></script>
 
   <footer>
     <div class="footer">

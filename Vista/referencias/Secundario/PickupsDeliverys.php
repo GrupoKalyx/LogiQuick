@@ -11,7 +11,7 @@ $idLotes = json_decode(superControlador($url, 'GET', array('function' => 'listar
 
 if (isset($_POST['asignar'])) {
   $url = 'http://' . $_SERVER['HTTP_HOST'] . '/kalyx/Control/controladorLlevan.php';
-  $json = superControlador($url, 'POST', array('function' => 'ingresar', 'idLote' => $idLote, 'matricula' => $matricula));
+  $json = superControlador($url, 'POST', array('function' => 'ingresar', 'ci' => $_POST['ci'], 'matricula' => $_POST['matricula']));
 }
 ?>
 <!DOCTYPE html>
@@ -31,7 +31,7 @@ if (isset($_POST['asignar'])) {
   <header>
     <nav class="navbar">
       <div class="navbar__logo">
-        <img src="../assets/logo.png" alt="logo">
+        <img src="../../assets/logo.png" alt="logo">
       </div>
       <ul class="navbar__list">
         <li class="navbar__list__item">
@@ -55,7 +55,7 @@ if (isset($_POST['asignar'])) {
         </button>
       </div>
 
-      <!-- <button class="form__button" id="traductor-btn">Traducir Pagina </button> -->
+      <button class="form__button" id="traductor-btn">Traducir Pagina </button>
     </nav>
   </header>
 
@@ -92,7 +92,7 @@ if (isset($_POST['asignar'])) {
     </form>
   </div>
 
-  <script src="Traducir.js"></script>
+  <script src="../../javascript/Traducir.js"></script>
 
   <footer>
     <div class="footer">

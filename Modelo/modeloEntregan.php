@@ -6,9 +6,19 @@ class modeloentregan
 {
         public static function alta($numBulto, $matricula)
         {
+                
                 $conn = modeloBd::conexion();
-                $query = "INSERT INTO entregan (matricula, numBulto) VALUES (?, ?);";
-                $success = $conn->execute_query($query, [$numBulto, $matricula]);
+                $bindArray = array();
+                $values = array();
+                foreach ($numBulto as $paquete) {
+                        array_push($bindArray, $paquete);
+                        array_push($bindArray, $matricula);
+                        array_push($values, "(?, ?)");
+                }
+                $impValues = implode(", ", $values);
+                $query = "INSERT INTO entregan (numBulto, matricula) VALUES " . $impValues;
+                echo $query;
+                $success = $conn->execute_query($query, $bindArray);
                 $conn->close();
                 return $success;
         }

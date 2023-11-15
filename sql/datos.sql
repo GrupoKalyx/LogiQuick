@@ -3,24 +3,14 @@ INSERT INTO
     `usuarios`(`ci`, `nombre`, `tipo`, `contrasenia`)
 VALUES
     (11111111, 'root', 'Admin', 'root'),
-    (
-        83021834,
-        'Carlos Lopez',
-        'Camionero',
-        'cymacoRepuestos'
-    ),
+    (83021834, 'Carlos Lopez', 'Camionero', 'cymacoRepuestos'),
     (17878836, 'Jasinto viera', 'Camionero', 'Buquebus'),
     (51111367, 'Maria Pia', 'Delivery', 'UESdelivery'),
     (56472367, 'Susana Gimenez', 'Delivery', 'DACVHI'),
     (16142527, 'Juan Carlos', 'Central', 'CentroJuan'),
     (15673459, 'Agustin arolas', 'Central', 'ArolasAg'),
     (08945643, 'Enzo Guido', 'Externo', 'guido22'),
-    (
-        76875748,
-        'Enzo palermo',
-        'Secundario',
-        'exaculir23'
-    );
+    (76875748, 'Enzo palermo', 'Secundario', 'exaculir23');
 
 -- almacenes
 -- Informacion de Quick Carry --
@@ -229,9 +219,10 @@ VALUES
 INSERT INTO
     `conductores`(`ci`, `nombre`, `telefono`)
 VALUES
-    (83021834, 'Carlos', 9666666),
-    (51111367, 'Maria pia', 987654321),
-(17878836, 'Jasinto viera', '0993456');
+    (83021834, 'Carlos', '09666666'),
+    (51111367, 'Maria pia', '098764321'),
+    (17878836, 'Jasinto viera', '099345627'),
+    (56472367, 'Susana Gimenez', '097623458');
 
 -- Uusarion Camioneros --
 INSERT INTO
@@ -244,7 +235,8 @@ VALUES
 INSERT INTO
     deliverys (ci, nombre, telefono)
 VALUES
-    (51111367, 'Maria pia', 987654321);
+    (51111367, 'Maria pia', 987654321),
+    (56472367, 'Susana Gimenez', '097623458');
 
 -- Manejan --
 INSERT INTO
@@ -285,9 +277,9 @@ VALUES
     (5, 2),
     (6, 3);
 
--- lotes_Almacen_Rutas --
+-- lotes_almacen_rutas --
 INSERT INTO
-    `lotes-Almacen-Rutas` (idLote, idAlmacen, numRuta)
+    `lotes_almacen_rutas` (idLote, idAlmacen, numRuta)
 VALUES
     (1, 4, 1),
     (2, 5, 2),

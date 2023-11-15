@@ -13,14 +13,14 @@ if (isset($_GET['ci'])) {$_SESSION['ci'] = $_GET['ci']; header('location: Secund
     <link rel="stylesheet" href="../estilos/style.css">
     <link rel="icon" type="image/x-icon" href="assets/logo.png">
     <title>LogiQuick</title>
-    <script src="Traducir.js"></script>
+    <script src="../javascript/Traducir.js"></script>
 </head>
 
 <body class="body">
     <header>
         <nav class="navbar">
             <div class="navbar__logo">
-                <img src="../assets/logo.png" alt="logo">
+                <img src="assets/logo.png" alt="logo">
             </div>
             <ul class="navbar__list">
                 <li class="navbar__list__item">
@@ -30,7 +30,7 @@ if (isset($_GET['ci'])) {$_SESSION['ci'] = $_GET['ci']; header('location: Secund
                             <a href="../referencias/Secundario/PaquetesPickups.php">Paquetes a Pickup</a>
                         </li>
                         <li class="navbar__submenu__item">
-                            <a href="../referencias/Secundario/PickupsDelivery.php">Delivery a Pickup</a>
+                            <a href="../referencias/Secundario/PickupsDeliverys.php">Delivery a Pickup</a>
                         </li>
                     </ul>
                 </li>
@@ -44,7 +44,7 @@ if (isset($_GET['ci'])) {$_SESSION['ci'] = $_GET['ci']; header('location: Secund
                 </button>
             </div>
 
-            <!-- <button class="form__button" id="traductor-btn">Traducir Pagina </button> -->
+            <button class="form__button" id="traductor-btn">Traducir Pagina </button>
         </nav>
     </header>
     <div class="espacio__blanco"></div>
