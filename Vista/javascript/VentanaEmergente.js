@@ -157,7 +157,7 @@ document.getElementById('tracking__form').addEventListener('submit', async funct
 });
 
 function obtenerDatosPaquete(idRastreo) {
-    return fetch(`http://localhost/LogiQuick/Control/controladorPaquetes.php?function=rastrear&idRastreo=${idRastreo}`)
+    return fetch(`http://localhost/kalyx/Control/controladorPaquetes.php?function=rastrear&idRastreo=${idRastreo}`)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Error en la solicitud: ' + response.statusText);
@@ -167,7 +167,7 @@ function obtenerDatosPaquete(idRastreo) {
 }
 
 function obtenerEstadoPaquete(idRastreo) {
-    return fetch(`http://localhost/LogiQuick/Control/controladorPaquetes.php?function=mostrarEstado&tipoId=idRastreo&idRastreo=${idRastreo}`)
+    return fetch(`http://localhost/kalyx/Control/controladorPaquetes.php?function=mostrarEstado&tipoId=idRastreo&idRastreo=${idRastreo}`)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Error en la solicitud: ' + response.statusText);
@@ -177,7 +177,7 @@ function obtenerEstadoPaquete(idRastreo) {
 }
 
 function obtenerDatosAlmacen(idRastreo) {
-    return fetch(`http://localhost/LogiQuick/Control/controladorAlmacenes.php?function=mostrarUltimo&idRastreo=${idRastreo}`)
+    return fetch(`http://localhost//kalyx/Control/controladorAlmacenes.php?function=mostrarUltimo&idRastreo=${idRastreo}`)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Error en la solicitud: ' + response.statusText);
