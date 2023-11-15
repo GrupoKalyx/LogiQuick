@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     let idLoteSeleccionado = null;
 
     try {
-        const responseConductor = await fetch(`http://localhost/LogiQuick/Control/controladorLlevan.php?function=LoteDeConductor&ci=${ci}`, {
+        const responseConductor = await fetch(`http://localhost/kalyx/Control/controladorLlevan.php?function=LoteDeConductor&ci=${ci}`, {
             headers: {
                 'Cache-Control': 'no-cache'
             }
@@ -129,20 +129,20 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
 
     async function obtenerDetallesAlmacen(idLote) {
-        const response = await fetch(`http://localhost/LogiQuick/Control/controladorAlmacenes.php?function=mostrarDetallesAlmacen&idLote=${idLote}`);
+        const response = await fetch(`http://localhost/kalyx/Control/controladorAlmacenes.php?function=mostrarDetallesAlmacen&idLote=${idLote}`);
         const almacen = await response.json();
         return almacen;
     }
 
     async function obtenerDetallesRuta(idLote) {
-        const response = await fetch(`http://localhost/LogiQuick/Control/controladorRutas.php?function=mostrarDetallesRuta&idLote=${idLote}`);
+        const response = await fetch(`http://localhost/kalyx/Control/controladorRutas.php?function=mostrarDetallesRuta&idLote=${idLote}`);
         const ruta = await response.json();
         return ruta;
     }
 
     async function obtenerAlmacenesPorDepartamento(departamento) {
         try {
-            const response = await fetch(`http://localhost/LogiQuick/Control/controladorAlmacenes.php?function=mostrarAlmacenPorDepartamento&departamento=${departamento}`);
+            const response = await fetch(`http://localhost/kalyx/Control/controladorAlmacenes.php?function=mostrarAlmacenPorDepartamento&departamento=${departamento}`);
             const almacenes = await response.json();
             return almacenes;
         } catch (error) {
@@ -191,8 +191,9 @@ document.addEventListener('DOMContentLoaded', async function () {
     
     async function marcarSalida(idLote) {
         try {
-            const response = await axios.get(`http://localhost/LogiQuick/Control/controladorLlevan.php?function=MarcarSalida&idLote=${idLote}`);
+            const response = await axios.get(`http://localhost/kalyx/Control/controladorLlevan.php?function=MarcarSalida&idLote=${idLote}`);
             console.log(response.data);
+            alert('Viaje iniciado con éxito');
         } catch (error) {
             console.error('Error al marcar la salida:', error);
         }
@@ -219,8 +220,12 @@ document.addEventListener('DOMContentLoaded', async function () {
     
     async function marcarLlegada(idLote) {
         try {
-            const response = await axios.get(`http://localhost/LogiQuick/Control/controladorLlevan.php?function=MarcarLlegada&idLote=${idLote}`);
+            const response = await axios.get(`http://localhost/kalyx/Control/controladorLlevan.php?function=MarcarLlegada&idLote=${idLote}`);
             console.log(response.data);
+            alert('Entregado con éxito');
+    
+            // Recargar la página
+            location.reload();
         } catch (error) {
             console.error('Error al marcar la salida:', error);
         }

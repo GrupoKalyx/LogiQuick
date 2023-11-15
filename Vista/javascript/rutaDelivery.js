@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     let numBultoSeleccionado = null;
 
     try {
-        const response = await fetch(`http://localhost/logiquick/Control/controladorPaquetes.php?function=PaqueteAsignadoDelivery&ci=${ci}}`, {
+        const response = await fetch(`http://localhost/kalyx/Control/controladorPaquetes.php?function=PaqueteAsignadoDelivery&ci=${ci}}`, {
             headers: {
                 'Cache-Control': 'no-cache'
             }
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                             
                             try {
 
-                                const response = await fetch(`http://localhost/LogiQuick/Control/controladorAlmacenes.php?function=mostrarUltimo&idRastreo=${idRastreo}`, {
+                                const response = await fetch(`http://localhost/kalyx/Control/controladorAlmacenes.php?function=mostrarUltimo&idRastreo=${idRastreo}`, {
                                     headers: {
                                         'Cache-Control': 'no-cache'
                                     }
@@ -134,8 +134,9 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     async function marcarSalida(numBulto) {
         try {
-            const response = await axios.get(`http://localhost/LogiQuick/Control/controladorEntregan.php?function=MarcarSalida&numBulto=${numBulto}`);
+            const response = await axios.get(`http://localhost/kalyx/Control/controladorEntregan.php?function=MarcarSalida&numBulto=${numBulto}`);
             console.log(response.data);
+            alert('Viaje iniciado con éxito');
         } catch (error) {
             console.error('Error al marcar la salida:', error);
         }
@@ -161,8 +162,12 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     async function marcarLlegada(numBulto) {
         try {
-            const response = await axios.get(`http://localhost/LogiQuick/Control/controladorEntregan.php?function=MarcarLlegada&numBulto=${numBulto}`);
+            const response = await axios.get(`http://localhost/kalyx/Control/controladorEntregan.php?function=MarcarLlegada&numBulto=${numBulto}`);
             console.log(response.data);
+            alert('Entregado con éxito');
+    
+            // Recargar la página
+             location.reload();
         } catch (error) {
             console.error('Error al marcar la llegada:', error);
         }
