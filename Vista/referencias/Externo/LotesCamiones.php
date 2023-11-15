@@ -16,7 +16,12 @@ if (isset($_POST['asignar'])) {
   superControlador($url, 'POST', array('function' => 'ingresar', 'idLote' => $_POST['idLote'], 'idAlmacen' => '0', 'numRuta' => '0'));
   // Lo asigna al camion
   $url = 'http://' . $_SERVER['HTTP_HOST'] . '/kalyx/Control/controladorLlevan.php';
-  superControlador($url, 'POST', array('function' => 'ingresar', 'idLote' => $_POST['idLote'], 'matricula' => $_POST['matricula'], 'idAlmacen' => '0', 'numRuta' => '0'));
+  $success = superControlador($url, 'POST', array('function' => 'ingresar', 'idLote' => $_POST['idLote'], 'matricula' => $_POST['matricula'], 'idAlmacen' => '0', 'numRuta' => '0'));
+  if ($success) {
+    echo '<script>alert("Lote asignado con éxito.");</script>';
+  } else {
+    echo '<script>alert("Ha ocurrido un error inesperado.");</script>';
+  }
 }
 ?>
 <!DOCTYPE html>

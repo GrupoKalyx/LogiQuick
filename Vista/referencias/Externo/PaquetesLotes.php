@@ -2,14 +2,19 @@
 session_start();
 // if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'] . '/kalyx/Control/controladorTokens.php', 'GET', array('function' => 'verify', 'token' => $_SESSION['token'], 'tipo' => 'Funcionario'));
 require_once('../../../Control/superControlador.php');
-$url = 'http://'.$_SERVER['HTTP_HOST'].'/kalyx/Control/controladorPaquetes.php';
+$url = 'http://' . $_SERVER['HTTP_HOST'] . '/kalyx/Control/controladorPaquetes.php';
 $paquetes = json_decode(superControlador($url, 'GET', array('function' => 'listarSinLote')), true);
 
 if (isset($_POST['generar'])) {
-  $url = 'http://'.$_SERVER['HTTP_HOST'].'/kalyx/Control/controladorLotes.php';
+  $url = 'http://' . $_SERVER['HTTP_HOST'] . '/kalyx/Control/controladorLotes.php';
   $idLote = json_decode(superControlador($url, 'POST', array('function' => 'ingresar')), 1);
-  $url = 'http://'.$_SERVER['HTTP_HOST'].'/kalyx/Control/controladorLotean.php';
+  $url = 'http://' . $_SERVER['HTTP_HOST'] . '/kalyx/Control/controladorLotean.php';
   superControlador($url, 'POST', array('function' => 'ingresar', 'idLote' => $idLote, 'paquetes' => $_POST['bulto']));
+  if ($success) {
+    echo '<script>alert("Lote creado con éxito.");</script>';
+  } else {
+    echo '<script>alert("Ha ocurrido un error inesperado.");</script>';
+  }
 }
 ?>
 <!DOCTYPE html>
@@ -26,7 +31,7 @@ if (isset($_POST['generar'])) {
 
 <body class="body">
 
-<header>
+  <header>
     <nav class="navbar">
       <div class="navbar__logo">
         <img src="../../assets/logo.png" alt="logo">

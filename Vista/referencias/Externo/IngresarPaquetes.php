@@ -5,7 +5,12 @@ if (isset($_POST['valueSubmit'])) {
   $url = 'http://' . $_SERVER['HTTP_HOST'] . '/kalyx/Control/controladorPaquetes.php';
   $numBulto = superControlador($url, 'POST', array('function' => 'ingresar', 'gmailCliente' => $_POST['gmailCliente'], 'num' => $_POST['num'], 'calle' => $_POST['calle'], 'localidad' => $_POST['localidad'], 'departamento' => $_POST['departamento'], 'lat' => $_POST['lat'], 'lng' => $_POST['lng']));
   $url = 'http://' . $_SERVER['HTTP_HOST'] . '/kalyx/Control/controladorPaquetes.php';
-  $infoPaquete = superControlador($url, 'GET', array('function' => 'mostrar', 'numBulto' => $numBulto));
+  $infoPaquete = json_decode(superControlador($url, 'GET', array('function' => 'mostrar', 'numBulto' => $numBulto)), true);
+  if (isset($infoPaquete)) {
+    echo '<script>alert("El paquete se ingresó con el número de bulto '. $infoPaquete['numBulto'] .'.");</script>';
+  } else {
+    echo '<script>alert("Ha ocurrido un error inesperado.");</script>';
+  }
 }
 ?>
 <!DOCTYPE html>

@@ -19,7 +19,7 @@ if (isset($_POST['asignar'])) {
   $success = superControlador($url, 'POST', array('function' => 'ingresar', 'idLote' => $_POST['idLote'], 'matricula' => $_POST['matricula'], 'idAlmacen' => $_POST['idAlmacen']));
 
   if ($success) {
-    echo '<script>alert("Camionero asignado con éxito");</script>';
+    echo '<script>alert("Lote asignado con éxito");</script>';
   } else {	
     echo '<script>alert("Ha ocurrido un error inesperado.");</script>';
   }

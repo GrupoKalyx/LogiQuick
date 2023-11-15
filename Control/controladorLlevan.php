@@ -21,7 +21,8 @@ class controladorLlevan
         $idAlmacen = $context['idAlmacen'];
         $numRuta = $context['numRuta'];
 
-        modeloLLevan::alta($matricula, $idLote, $idAlmacen, $numRuta);
+        $success = modeloLLevan::alta($matricula, $idLote, $idAlmacen, $numRuta);
+        return $success;
     }
 
     public static function eliminar($context)

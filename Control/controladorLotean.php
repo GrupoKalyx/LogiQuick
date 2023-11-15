@@ -26,7 +26,8 @@ class controladorLotean
     {
         $idLote = $context['idLote'];
         $paquetes = $context['paquetes'];
-        modeloLotean::alta($idLote, $paquetes);
+        $success = modeloLotean::alta($idLote, $paquetes);
+        return $success;
     }
 
     public static function eliminar($context)

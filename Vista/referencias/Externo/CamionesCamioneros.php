@@ -11,7 +11,13 @@ $camioneros = json_decode(superControlador($url, 'GET', array('function' => 'lis
 
 if (isset($_POST['asignar'])) {
   $url = 'http://' . $_SERVER['HTTP_HOST'] . '/kalyx/Control/controladorConducen.php';
-  superControlador($url, 'POST', array('function' => 'ingresar', 'ci' => $ci, 'matricula' => $matricula));
+  $success = superControlador($url, 'POST', array('function' => 'ingresar', 'ci' => $ci, 'matricula' => $matricula));
+
+  if ($success) {
+    echo '<script>alert("Camionero asignado con éxito.");</script>';
+  } else {
+    echo '<script>alert("Hubo un error inesperado.");</script>';
+  }
 }
 ?>
 <!DOCTYPE html>

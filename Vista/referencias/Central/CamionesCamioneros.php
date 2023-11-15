@@ -14,7 +14,7 @@ if (isset($_POST['asignar'])) {
   $success = superControlador($url, 'POST', array('function' => 'ingresar', 'ci' => $ci, 'matricula' => $matricula));
   if ($success) {
     echo '<script>alert("Camionero asignado con éxito");</script>';
-  } else {	
+  } else {
     echo '<script>alert("Ha ocurrido un error inesperado.");</script>';
   }
 }
@@ -62,11 +62,11 @@ if (isset($_POST['asignar'])) {
 
       <div class="form__group">
         <label class="form__label" for="Camionero">Camionero:</label>
-        <select class="form__select" id="nombre" name="nombre" required>
+        <select class="form__select" id="nombre" name="ci" required>
           <option value="">Seleccionar camionero</option>
           <?php
-          foreach ($nombres as $nombre) {
-            echo "<option value='$nombre'>$nombre</option>";
+          foreach ($camioneros as $camionero) {
+            echo "<option value=" . $camionero['ci'] . ">" . $camionero['ci'] . " - ". $camionero['nombre'] .  "</option>";
           }
           ?>
         </select>
@@ -74,11 +74,11 @@ if (isset($_POST['asignar'])) {
 
       <div class="form__group">
         <label class="form__label" for="camion">Camión:</label>
-        <select class="form__select" id="camion" name="camion" required>
+        <select class="form__select" id="camion" name="matricula" required>
           <option value="">Seleccionar camion</option>
           <?php
           foreach ($matriculas as $matricula) {
-            echo "<option value='$matricula'>$matricula</option>";
+            echo "<option value=" . $matricula['matricula'] . ">" . $matricula['matricula'] . "</option>";
           }
           ?>
         </select>

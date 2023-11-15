@@ -8,8 +8,9 @@ class modeloLlevan
         {
                 $conn = modeloBd::conexion();
                 $query = "INSERT INTO llevan (matricula, idLote, idAlmacen, numRuta) VALUES (?, ?, ?, ?);";
-                $conn->execute_query($query, [$matricula, $idLote, $idAlmacen, $numRuta]);
+                $success = $conn->execute_query($query, [$matricula, $idLote, $idAlmacen, $numRuta]);
                 $conn->close();
+                return $success;
         }
 
         public static function baja($matricula, $idLote, $idAlmacen, $numRuta)
