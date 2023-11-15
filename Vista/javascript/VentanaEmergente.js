@@ -103,7 +103,7 @@ document.getElementById('tracking__form').addEventListener('submit', async funct
         const resultado3 = await obtenerDatosAlmacen(idRastreo);
 
         function obtenerDatosPaquete(idRastreo) {
-            return fetch(`http://localhost/LogiQuick/Control/controladorPaquetes.php?function=rastrear&idRastreo=${idRastreo}`)
+            return fetch(`http://localhost/kalyx/Control/controladorPaquetes.php?function=rastrear&idRastreo=${idRastreo}`)
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Error en la solicitud: ' + response.statusText);
@@ -113,7 +113,7 @@ document.getElementById('tracking__form').addEventListener('submit', async funct
         }
 
         function obtenerEstadoPaquete(idRastreo) {
-            return fetch(`http://localhost/LogiQuick/Control/controladorPaquetes.php?function=mostrarEstado&tipoId=idRastreo&idRastreo=${idRastreo}`)
+            return fetch(`http://localhost/kalyx/Control/controladorPaquetes.php?function=mostrarEstado&tipoId=idRastreo&idRastreo=${idRastreo}`)
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Error en la solicitud: ' + response.statusText);
@@ -123,7 +123,7 @@ document.getElementById('tracking__form').addEventListener('submit', async funct
         }
 
         function obtenerDatosAlmacen(idRastreo) {
-            return fetch(`http://localhost/LogiQuick/Control/controladorAlmacenes.php?function=mostrarUltimo&idRastreo=${idRastreo}`)
+            return fetch(`http://localhost/kalyx/Control/controladorAlmacenes.php?function=mostrarUltimo&idRastreo=${idRastreo}`)
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Error en la solicitud: ' + response.statusText);
@@ -155,15 +155,15 @@ document.getElementById('tracking__form').addEventListener('submit', async funct
             const iconoPersonalizadoAlmacen = L.icon({
                 iconUrl: '../assets/AlmacenIcon.png',
                 iconSize: [40, 40],
-                iconAnchor: [20, 40], // Punto donde el icono se conecta con el mapa
-                popupAnchor: [0, -40] // Punto donde aparece el pop-up en relación con el icono
+                iconAnchor: [20, 40], 
+                popupAnchor: [0, -40] 
             });
 
             const iconoPersonalizadoPaquete = L.icon({
                 iconUrl: '../assets/PaqueteIcon.png',
                 iconSize: [40, 40],
-                iconAnchor: [20, 40], // Punto donde el icono se conecta con el mapa
-                popupAnchor: [0, -40] // Punto donde aparece el pop-up en relación con el icono
+                iconAnchor: [20, 40], 
+                popupAnchor: [0, -40] 
             });
 
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

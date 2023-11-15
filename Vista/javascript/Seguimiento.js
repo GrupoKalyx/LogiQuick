@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', async function () {
     try {
-        const response = await fetch('http://localhost/Logiquick/Control/controladorPaquetes.php?function=PaquetesSinEntregar', {
+        const response = await fetch('http://localhost/kalyx/Control/controladorPaquetes.php?function=PaquetesSinEntregar', {
             headers: {
                 'Cache-Control': 'no-cache'
             }
