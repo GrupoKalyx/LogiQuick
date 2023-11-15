@@ -62,14 +62,17 @@ if (isset($_POST['asignar'])) {
       <h2 class="form__text">Ingresar lote a Camión</h2>
       <div class="form__group">
         <label class="form__label" for="idLote">Lote:</label>
-        <select class="form__select" id="idLote" name="idLote" required>
+        <select class="form__select" id="idLote" name="idLote[]" required>
           <option value="">Seleccionar lote</option>
           <?php
-          foreach ($paquetes as $paquete) {
-            echo "<option value='" . $paquete['numBulto'] . "'>" . $paquete['numBulto'] . "</option>";
+          foreach ($idLotes as $idLote) {
+            echo "<option value='" . $idLote['idLote'] . "'>" . $idLote['idLote'] . "</option>";
           }
           ?>
         </select>
+        <div class="form__group" id="contenedor-campos">
+        <!-- aca van paquetes nuevos-->
+      </div>
       </div>
       <div class="form__group">
         <label class="form__label" for="camion">Camión:</label>
@@ -93,12 +96,16 @@ if (isset($_POST['asignar'])) {
           ?>
         </select>
       </div>
+     
+
+      <button type="button" class="form__button" id="agregarCampoFuncionarioCentral">Agregar Campo</button>
+
       <button class="form__button" name="asignar" type="submit">Asignar</button>
     </form>
   </div>
 
   <script src="../../javascript/Traducir.js"></script>
-
+  <script src="../../javascript/agregarCampoLote.js"></script>
   <footer>
     <div class="footer">
       <ul class="footer_list">

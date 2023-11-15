@@ -79,6 +79,9 @@ if (isset($_POST['asignar'])) {
           ?>
         </select>
       </div>
+      <div class="form__group" id="contenedor-campos">
+        <!-- aca van paquetes nuevos-->
+      </div>
       <div class="form__group">
         <label class="form__label" for="camion">Pickup:</label>
         <select class="form__select" id="matricula" name="matricula" required>
@@ -90,11 +93,16 @@ if (isset($_POST['asignar'])) {
           ?>
         </select>
       </div>
+      
+
+      <button type="button" class="form__button" id="agregarCampoPaquete">Agregar Campo</button>
+
       <button class="form__button" name="asignar" type="submit">Asignar</button>
     </form>
   </div>
 
   <script src="../../javascript/Traducir.js"></script>
+  <script src="../../javascript/agregarCampoSecundario.js"></script>
 
   <footer>
     <div class="footer">
