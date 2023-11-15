@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             paquetesArray.forEach(async paquete => {
 
                
-                if (paquete.fecha_llegada !== null || paquete.fecha_llegada === null) {
+                if (paquete.fecha_llegada !== null || paquete.fecha_llegada === "0000-00-00 00:00:00") {
                     const fila = tabla.insertRow();
                     const celdaId = fila.insertCell();
                     const celdaDireccion = fila.insertCell();
