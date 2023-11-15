@@ -9,7 +9,7 @@ $camioneros = json_decode(superControlador($url, 'GET', array('function' => 'lis
 $url = 'http://' . $_SERVER['HTTP_HOST'] . '/kalyx/Control/controladorCamiones.php';
 $matriculas = json_decode(superControlador($url, 'GET', array('function' => 'listar')), true);
 
-if (isset($_POST['asignar'])) {
+if (isset($_POST['ingresar'])) {
   $url = 'http://' . $_SERVER['HTTP_HOST'] . '/kalyx/Control/controladorConducen.php';
   $success = superControlador($url, 'POST', array('function' => 'ingresar', 'ci' => $ci, 'matricula' => $matricula));
   
@@ -58,7 +58,7 @@ if (isset($_POST['asignar'])) {
   </header>
 
   <div class="form__container">
-    <form class="form" method="POST" action="../../Control/controladorConducen.php?accion=ingresar">
+    <form class="form" method="POST" action="CamionesCamioneros.php">
 
       <h2 class="form__text">Ingresar Lote a Camión</h2>
 
@@ -86,7 +86,7 @@ if (isset($_POST['asignar'])) {
         </select>
       </div>
 
-      <button class="form__button" type="submit">Ingresar</button>
+      <button class="form__button" name="ingresar" type="submit">Ingresar</button>
     </form>
   </div>
 

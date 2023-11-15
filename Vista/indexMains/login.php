@@ -12,7 +12,7 @@ if (isset($_POST['login'])) echo superControlador($url, 'GET', array('function' 
     <link rel="stylesheet" href="../estilos/FormStyle.css">
     <link rel="stylesheet" href="../estilos/style.css">
     <link rel="icon" type="image/x-icon" href="../assets/logo.png">
-    <script src="../javascript/Traducir.js"></script>
+    <!-- <script src="../javascript/Traducir.js"></script> -->
     <title>LogiQuick</title>
 </head>
 

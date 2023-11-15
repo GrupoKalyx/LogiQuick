@@ -12,7 +12,7 @@ if (isset($_GET['ci'])) {$_SESSION['ci'] = $_GET['ci']; header('location: Camion
   <link rel="stylesheet" href="../estilos/style.css">
   <link rel="icon" type="image/x-icon" href="../assets/logo.png">
   <title>LogiQuick</title>
-  <script src="../Traducir.js"></script>
+  <!-- <script src="../Traducir.js"></script> -->
 </head>
 
 <body class="body">
@@ -28,7 +28,7 @@ if (isset($_GET['ci'])) {$_SESSION['ci'] = $_GET['ci']; header('location: Camion
         <li class="navbar__list__item"><a href="../referencias/Camionero/RutaCamionero.php">Visualizar Ruta</a></li>
         <li class="navbar__list__item"><a href="../referencias/Camionero/CamionAsignado.php">Camion Asignados</a></li>
       </ul>
-      <button class="form__button" id="traductor-btn">Traducir Pagina</button>
+      <!-- <button class="form__button" id="traductor-btn">Traducir Pagina</button> -->
       <div class="navbar__logout">
         <button class="navbar__logout__button"><a href="login.php">Cerrar Sesión</a></button>
       </div>

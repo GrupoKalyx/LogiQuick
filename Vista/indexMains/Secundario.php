@@ -13,7 +13,7 @@ if (isset($_GET['ci'])) {$_SESSION['ci'] = $_GET['ci']; header('location: Secund
     <link rel="stylesheet" href="../estilos/style.css">
     <link rel="icon" type="image/x-icon" href="assets/logo.png">
     <title>LogiQuick</title>
-    <script src="../javascript/Traducir.js"></script>
+    <!-- <script src="../javascript/Traducir.js"></script> -->
 </head>
 
 <body class="body">
