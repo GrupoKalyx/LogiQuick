@@ -11,7 +11,7 @@ $matriculas = json_decode(superControlador($url, 'GET', array('function' => 'lis
 
 if (isset($_POST['ingresar'])) {
   $url = 'http://' . $_SERVER['HTTP_HOST'] . '/kalyx/Control/controladorConducen.php';
-  $success = superControlador($url, 'POST', array('function' => 'ingresar', 'ci' => $ci, 'matricula' => $matricula));
+  $success = superControlador($url, 'POST', array('function' => 'ingresar', 'ci' => $_POST['ci'], 'matricula' => $_POST['matricula']));
   
   if ($success) {
     echo '<script>alert("Camionero asignado con éxito");</script>';
