@@ -21,7 +21,7 @@ if (isset($_POST['asignar'])) {
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8">
@@ -71,7 +71,7 @@ if (isset($_POST['asignar'])) {
       <div class="form__group">
         <label class="form__label" for="bulto">Paquete:</label>
         <select class="form__select" id="bulto" name="bulto[]" required>
-          <option value="">Seleccionar lote</option>
+          <option value="">Seleccionar paquete</option>
           <?php
           foreach ($paquetes as $paquete) {
             echo "<option value='" . $paquete['numBulto'] . "'>" . $paquete['numBulto'] . "</option>";
@@ -82,7 +82,7 @@ if (isset($_POST['asignar'])) {
       <div class="form__group">
         <label class="form__label" for="camion">Pickup:</label>
         <select class="form__select" id="matricula" name="matricula" required>
-          <option value="">Seleccionar camion</option>
+          <option value="">Seleccionar pickup</option>
           <?php
           foreach ($matriculas as $pickup) {
             echo "<option value='" . $pickup['matricula'] . "'>" . $pickup['matricula'] . "</option>";

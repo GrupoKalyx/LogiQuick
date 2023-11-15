@@ -3,19 +3,25 @@ require_once('../../../Control/superControlador.php');
 session_start();
 // if (isset($_SESSION['token'])) superControlador('http://' . $_SERVER['HTTP_HOST'] . '/Control/controladorTokens.php', 'GET', array('function' => 'verify', 'token' => $_SESSION['token'], 'tipo' => 'Funcionario'));
 
-$url = 'http://' . $_SERVER['HTTP_HOST'] . '/kalyx/Control/controladorCamiones.php';
+$url = 'http://' . $_SERVER['HTTP_HOST'] . '/kalyx/Control/controladorPickups.php';
 $matriculas = json_decode(superControlador($url, 'GET', array('function' => 'listar')), true);
 
-$url = 'http://' . $_SERVER['HTTP_HOST'] . '/kalyx/Control/controladorCamioneros.php';
-$idLotes = json_decode(superControlador($url, 'GET', array('function' => 'listar')), true);
+$url = 'http://' . $_SERVER['HTTP_HOST'] . '/kalyx/Control/controladorDeliverys.php';
+$nombres = json_decode(superControlador($url, 'GET', array('function' => 'listar')), true);
 
 if (isset($_POST['asignar'])) {
-  $url = 'http://' . $_SERVER['HTTP_HOST'] . '/kalyx/Control/controladorLlevan.php';
-  $json = superControlador($url, 'POST', array('function' => 'ingresar', 'ci' => $_POST['ci'], 'matricula' => $_POST['matricula']));
+  $url = 'http://' . $_SERVER['HTTP_HOST'] . '/kalyx/Control/controladorManejan.php';
+  $success = superControlador($url, 'POST', array('function' => 'ingresar', 'ci' => $_POST['ci'], 'matricula' => $_POST['matricula']));
+
+  if ($success) {
+    echo '<script>alert("Delivery asignado con éxito");</script>';
+  } else {
+    echo '<script>alert("Ha ocurrido un error inesperado.");</script>';
+  }
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8">
@@ -60,35 +66,35 @@ if (isset($_POST['asignar'])) {
   </header>
 
   <div class="form__container">
-    <form class="form" method="POST" action="../../Control/controladorConducen.php?accion=ingresar">
+    <form class="form" method="POST" action="PickupsDeliverys.php">
 
-      <h2 class="form__text">Ingresar Lote a Camión</h2>
+      <h2 class="form__text">Asignar Delivery a Pickup</h2>
 
       <div class="form__group">
-        <label class="form__label" for="Camionero">Camionero:</label>
-        <select class="form__select" id="nombre" name="nombre" required>
-          <option value="">Seleccionar camionero</option>
+        <label class="form__label" for="Camionero">Delivery:</label>
+        <select class="form__select" id="nombre" name="ci" required>
+          <option value="">Seleccionar delivery</option>
           <?php
           foreach ($nombres as $nombre) {
-            echo "<option value='$nombre'>$nombre</option>";
+            echo "<option value='" . $nombre['ci'] . "'>" . $nombre['ci'] . " - " . $nombre['nombre'] . "</option>";
           }
           ?>
         </select>
       </div>
 
       <div class="form__group">
-        <label class="form__label" for="camion">Camión:</label>
-        <select class="form__select" id="camion" name="camion" required>
-          <option value="">Seleccionar camion</option>
+        <label class="form__label" for="camion">Pickup:</label>
+        <select class="form__select" id="camion" name="matricula" required>
+          <option value="">Seleccionar pickup</option>
           <?php
           foreach ($matriculas as $matricula) {
-            echo "<option value='$matricula'>$matricula</option>";
+            echo "<option value='" . $matricula['matricula'] . "'>" . $matricula['matricula'] . "</option>";
           }
           ?>
         </select>
       </div>
 
-      <button class="form__button" type="submit">Ingresar</button>
+      <button class="form__button" type="submit" name="asignar">Asignar</button>
     </form>
   </div>
 

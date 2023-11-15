@@ -18,7 +18,8 @@ class controladorManejan
     {
         $ci = $context['ci'];
         $matricula = $context['matricula'];
-        modeloManejan::alta($ci, $matricula);
+        $success = modeloManejan::alta($ci, $matricula);
+        echo $success;
     }
 
     public static function eliminar($context)

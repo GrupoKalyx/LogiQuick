@@ -8,8 +8,9 @@ class modeloManejan
         {
                 $conn = modeloBd::conexion();
                 $query = "INSERT INTO manejan (matricula, ci) VALUES (?, ?);";
-                $conn->execute_query($query, [$ci, $matricula]);
+                $success = $conn->execute_query($query, [$ci, $matricula]);
                 $conn->close();
+                return $success;
         }
 
         public static function baja($ci, $matricula)
