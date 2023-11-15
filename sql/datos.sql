@@ -2,7 +2,6 @@
 INSERT INTO
     `usuarios`(`ci`, `nombre`, `tipo`, `contrasenia`)
 VALUES
-    (11111111, 'root', 'Admin', 'root'),
     (83021834, 'Carlos Lopez', 'Camionero', 'cymacoRepuestos'),
     (17878836, 'Jasinto viera', 'Camionero', 'Buquebus'),
     (51111367, 'Maria Pia', 'Delivery', 'UESdelivery'),
