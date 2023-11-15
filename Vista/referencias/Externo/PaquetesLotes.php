@@ -9,7 +9,7 @@ if (isset($_POST['generar'])) {
   $url = 'http://' . $_SERVER['HTTP_HOST'] . '/kalyx/Control/controladorLotes.php';
   $idLote = json_decode(superControlador($url, 'POST', array('function' => 'ingresar')), 1);
   $url = 'http://' . $_SERVER['HTTP_HOST'] . '/kalyx/Control/controladorLotean.php';
-  superControlador($url, 'POST', array('function' => 'ingresar', 'idLote' => $idLote, 'paquetes' => $_POST['bulto']));
+  $success = superControlador($url, 'POST', array('function' => 'ingresar', 'idLote' => $idLote, 'paquetes' => $_POST['bulto']));
   if ($success) {
     echo '<script>alert("Lote creado con éxito.");</script>';
   } else {
