@@ -19,7 +19,7 @@ if (isset($_SESSION['ci'])) {
   <link rel="stylesheet" href="../../estilos/FormStyle.css">
   <link rel="stylesheet" href="../../estilos/mapsStyle.css">
   <title>LogiQuick</title>
-  <script src="Traducir.js"></script>
+  <!-- <script src="Traducir.js"></script> -->
 
   <!-- Incluye Leaflet CSS y JS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />

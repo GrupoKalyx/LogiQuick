@@ -66,8 +66,8 @@ VALUES
         'Maldonado',
         'La Barra Maldonado',
         52,
-        '34,90969',
-        '54,85333'
+        '-34.909916',
+        '-54.853303'
     ),
     (
         5,
@@ -75,8 +75,8 @@ VALUES
         'Montevideo',
         'Montevideo',
         789,
-        '-34,9076',
-        '-56,2044'
+        '-34.9076',
+        '-56.2044'
     ),
     (
         6,
@@ -84,8 +84,8 @@ VALUES
         'Colonia',
         'Colonia',
         456,
-        '34,20465',
-        '58,06493'
+        '-34.20465',
+        '-58.06493'
     );
 
 -- vehiculos --
@@ -192,6 +192,34 @@ VALUES
         '-34.35',
         '-55.76667'
     );
+    INSERT INTO
+    `paquetes`(
+        `numBulto`,
+        `fechaCreacion`,
+        `fechaEntrega`,
+        `calle`,
+        `localidad`,
+        `departamento`,
+        `num`,
+        `gmailCliente`,
+        `idRastreo`,
+        `lat`,
+        `lng`
+    )
+VALUES
+    (
+        '5',
+        NOW(),
+        NULL,
+        'Colonia 2271',
+        'Montevideo',
+        'Montevideo',
+        '0',
+        'supergmail@gmail.com',
+        '889296134',
+        '-34.897517',
+        '-56.167829'
+    );
 
 -- lotes
 INSERT INTO
@@ -200,6 +228,7 @@ VALUES
     (1),
     (2),
     (3);
+    
 
 -- Vehiculos Camiones --
 INSERT INTO
@@ -266,7 +295,8 @@ INSERT INTO
 VALUES
     (1, 1),
     (2, 2),
-    (3, 3);
+    (3, 3),
+    (5, 1);
 
 -- almacen_rutas --
 INSERT INTO
@@ -282,7 +312,8 @@ INSERT INTO
 VALUES
     (1, 4, 1),
     (2, 5, 2),
-    (3, 6, 3);
+    (3, 6, 3),
+    (1 , 0 ,0);
 
 -- llevan --
 INSERT INTO
@@ -310,7 +341,18 @@ VALUES
         2,
         '2023-01-02 09:00:00',
         '2023-11-01 08:00:00'
+    
+    ),
+    (
+        'STP7654',
+        1,
+        0,
+        0,
+        '2023-01-02 09:00:00',
+        '2023-11-01 08:00:00'
+    
     );
+    
 
 -- entregan --
 INSERT INTO

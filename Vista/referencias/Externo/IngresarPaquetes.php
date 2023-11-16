@@ -43,7 +43,7 @@ if (isset($_POST['valueSubmit'])) {
           </ul>
         </li>
       </ul>
-      <button class="form__button" id="traductor-btn">Traducir Pagina</button>
+      <!-- <button class="form__button" id="traductor-btn">Traducir Pagina</button> -->
       <div class="navbar__logout">
         <button class="navbar__logout__button"><a href="../../indexMains/login.php">Cerrar Sesión</a></button>
       </div>

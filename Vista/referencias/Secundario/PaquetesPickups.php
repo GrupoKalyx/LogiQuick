@@ -58,7 +58,7 @@ if (isset($_POST['asignar'])) {
         </button>
       </div>
 
-      <button class="form__button" id="traductor-btn">Traducir Pagina </button>
+      <!-- <button class="form__button" id="traductor-btn">Traducir Pagina </button> -->
     </nav>
   </header>
 
@@ -98,7 +98,7 @@ if (isset($_POST['asignar'])) {
     </form>
   </div>
 
-  <script src="../../javascript/Traducir.js"></script>
+  <!-- <script src="../../javascript/Traducir.js"></script> -->
   <script src="../../javascript/agregarCampoSecundario.js"></script>
 
   <footer>

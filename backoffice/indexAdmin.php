@@ -142,8 +142,6 @@ if (isset($_POST['btncerrar'])) {
                 <button class="form__button" onclick="agregarCampo(event)">Agregar Campo</button>
             </form>
         </div>
-
-
         <div class="form">
             <h2>Eliminar Lote</h2>
             <form action="CRUD\lotes\Bajas.php" method="post">

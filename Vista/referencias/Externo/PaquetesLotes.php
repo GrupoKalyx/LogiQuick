@@ -46,7 +46,7 @@ if (isset($_POST['generar'])) {
           </ul>
         </li>
       </ul>
-      <button class="form__button" id="traductor-btn">Traducir Pagina </button>
+      <!-- <button class="form__button" id="traductor-btn">Traducir Pagina </button> -->
       <div class="navbar__logout">
         <button class="navbar__logout__button"><a href="../../indexMains/login.php">Cerrar Sesión</a></button>
       </div>
@@ -81,7 +81,7 @@ if (isset($_POST['generar'])) {
     </form>
   </div>
 
-  <script src="../../javascript/Traducir.js"></script>
+  <!-- <script src="../../javascript/Traducir.js"></script> -->
   <script src="../../javascript/agregarCampoFuncionario.js"></script>
 
   <footer>
