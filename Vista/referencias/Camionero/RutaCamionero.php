@@ -19,7 +19,7 @@ require_once('../../../Control/superControlador.php');
   <link rel="stylesheet" href="../../estilos/FormStyle.css">
   <link rel="stylesheet" href="../../estilos/mapsStyle.css">
   <title>LogiQuick</title>
-  <script src="../../javascript/Traducir.js"></script>
+  <!-- <script src="../../javascript/Traducir.js"></script> -->
   <!-- Incluye Leaflet CSS y JS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>

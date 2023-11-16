@@ -42,7 +42,7 @@ if (isset($_GET['ci'])) {$_SESSION['ci'] = $_GET['ci']; header('location: Secund
                 </button>
             </div>
 
-            <button class="form__button" id="traductor-btn">Traducir Pagina </button>
+            <!-- <button class="form__button" id="traductor-btn">Traducir Pagina </button> -->
         </nav>
     </header>
     <div class="espacio__blanco"></div>
