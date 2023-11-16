@@ -157,7 +157,7 @@ if (isset($_POST['btncerrar'])) {
         <div class="form">
             <h2>Modificar datos del Lote</h2>
             <form action="CRUD\lotes\Modificaciones.php" method="post">
-                <h2>Modificar datos del Lote</h2>
+                <h2>Modigficar datos del Lote</h2>
                 Numero de lote <input class="form__input" text="text" name="numLote"><br>
                 Numero de bulto <input class="form__input" text="text" name="numBulto"><br>
                 <h2>Nuevo paquete</h2>
