@@ -23,7 +23,7 @@ if (isset($_POST['valueSubmit'])) {
   <link rel="stylesheet" href="../../estilos/FormStyle.css">
   <link rel="icon" type="image/x-icon" href="../../assets/logo.png">
   <title>LogiQuick</title>
-  <script src="../../javascript/Traducir.js"></script>
+  <!-- <script src="../../javascript/Traducir.js"></script> -->
 </head>
 
 <body class="body">
@@ -89,7 +89,7 @@ if (isset($_POST['valueSubmit'])) {
     </form>
   </div>
 
-  <script src="../../javascript/Traducir.js"></script>
+  <!-- <script src="../../javascript/Traducir.js"></script> -->
 
   <footer>
     <div class="footer">

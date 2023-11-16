@@ -12,7 +12,7 @@ $matriculas = json_decode(superControlador($url, 'GET', array('function' => 'lis
 if (isset($_POST['ingresar'])) {
   $url = 'http://' . $_SERVER['HTTP_HOST'] . '/kalyx/Control/controladorConducen.php';
   $success = superControlador($url, 'POST', array('function' => 'ingresar', 'ci' => $_POST['ci'], 'matricula' => $_POST['matricula']));
-  
+
   if ($success) {
     echo '<script>alert("Camionero asignado con éxito");</script>';
   } else {
@@ -60,7 +60,7 @@ if (isset($_POST['ingresar'])) {
   <div class="form__container">
     <form class="form" method="POST" action="CamionesCamioneros.php">
 
-      <h2 class="form__text">Ingresar Lote a Camión</h2>
+      <h2 class="form__text">Asignar Camionero a Camión</h2>
 
       <div class="form__group">
         <label class="form__label" for="Camionero">Camionero:</label>
@@ -68,7 +68,7 @@ if (isset($_POST['ingresar'])) {
           <option value="">Seleccionar camionero</option>
           <?php
           foreach ($camioneros as $camionero) {
-            echo "<option value=" . $camionero['ci'] . ">" . $camionero['ci'] . " - ". $camionero['nombre'] .  "</option>";
+            echo "<option value=" . $camionero['ci'] . ">" . $camionero['ci'] . " - " . $camionero['nombre'] .  "</option>";
           }
           ?>
         </select>
